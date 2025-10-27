@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="~/assets/font/flaticon.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <!--  Owl Carousel Theme CSS -->
+    <link rel="stylesheet" href="~/assets/css/owl.theme.default.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="~/assets/css/meanmenu.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- Dark CSS -->
+    <link rel="stylesheet" href="~/assets/css/dark.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/cendidate.css" />
+    <!-- Title CSS -->
+    <title>Everb - Business Consulting HTML Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"  />
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
+</head>
+<body>
+
+    @await Component.InvokeAsync("Header")
+    @RenderBody()
+    @await Component.InvokeAsync("Footer")
+
+    <script src="~/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Subscribe From JS -->
+    <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
+    <!-- Form Validator JS -->
+    <script src="~/assets/js/form-validator.min.js"></script>
+    <!-- Contact JS -->
+    <script src="~/assets/js/contact-form-script.js"></script>
+    <!-- Owl Carousel Slider JS -->
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Mixit Up JS -->
+    <script src="~/assets/js/jquery.mixitup.min.js"></script>
+    <!-- Meanmenu JS -->
+    <script src="~/assets/js/meanmenu.js"></script>
+    <!-- Custom JS -->
+    <script src="~/assets/js/custom.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,2061 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\C#\\Project_sem_3\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Project_sem_3.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Project_sem_3.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\apexcharts.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\apexcharts.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\audioplayer.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\audioplayer.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\dataTables.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\dataTables.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\editor-katex.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\editor-katex.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\editor.atom-one-dark.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\editor.atom-one-dark.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\editor.quill.snow.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\editor.quill.snow.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\file-upload.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\file-upload.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\flatpickr.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\flatpickr.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_AMS-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_AMS-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_AMS-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_AMS-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_AMS-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_AMS-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Bold-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Bold-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Bold-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Bold-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Bold.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Bold.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Caligraphic-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Bold-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Bold-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Bold-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Bold-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Bold.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Bold.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Fraktur-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Bold-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Bold-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Bold-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Bold-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Bold.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Bold.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-BoldItalic-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-BoldItalic-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-BoldItalic-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-BoldItalic-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-BoldItalic.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-BoldItalic.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Italic-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Italic-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Italic-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Italic-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Italic.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Italic.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Main-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-BoldItalic-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-BoldItalic-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-BoldItalic-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-BoldItalic-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-BoldItalic.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-BoldItalic.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-Italic-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-Italic-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-Italic-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-Italic-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-Italic.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Math-Italic.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Bold-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Bold-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Bold-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Bold-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Bold.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Bold.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Italic-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Italic-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Italic-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Italic-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Italic.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Italic.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_SansSerif-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Script-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Script-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Script-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Script-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Script-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Script-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size1-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size1-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size1-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size1-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size1-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size1-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size2-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size2-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size2-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size2-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size2-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size2-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size3-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size3-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size3-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size3-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size3-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size3-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size4-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size4-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size4-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size4-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size4-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Size4-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Typewriter-Regular-2.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Typewriter-Regular-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Typewriter-Regular-3.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Typewriter-Regular-3.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\fonts\\KaTeX_Typewriter-Regular.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\fonts\\KaTeX_Typewriter-Regular.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\full-calendar.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\full-calendar.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\jquery-jvectormap-2.0.5.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\jquery-jvectormap-2.0.5.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\magnific-popup.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\prism.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\prism.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\lib\\slick.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\slick.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\remixicon.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\remixicon.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\fonts\\remixicon117c.eot",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\remixicon117c.eot"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\fonts\\remixicon117c.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\remixicon117c.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\fonts\\remixicon117c.ttf",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\remixicon117c.ttf"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\fonts\\remixicon117c.woff",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\remixicon117c.woff"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\fonts\\remixicon117c.woff2",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\remixicon117c.woff2"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\arrow-down.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\arrow-down.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\asset\\asset-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\asset\\asset-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\asset\\asset-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\asset\\asset-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\asset\\asset-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\asset\\asset-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\asset\\asset-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\asset\\asset-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\asset\\asset-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\asset\\asset-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\auth\\auth-img.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\auth\\auth-img.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\auth\\envelop-icon.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\auth\\envelop-icon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\auth\\forgot-pass-img.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\auth\\forgot-pass-img.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-group1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-group1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-group2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-group2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-group3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-group3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-group4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-group4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-group5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-group5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-group6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-group6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-shape1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-shape1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-shape2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-shape2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar-shape3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar-shape3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\avatar2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\avatar2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\avatar\\status-avatar.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\avatar\\status-avatar.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog-details.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog-details.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\blog\\blog7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\blog\\blog7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\card-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\card-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\card-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\card-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\card-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\card-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\card-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\card-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\card-overlay-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\card-overlay-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\horizontal-card-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\horizontal-card-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\horizontal-card-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\horizontal-card-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\horizontal-card-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\horizontal-card-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card-component\\horizontal-card-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card-component\\horizontal-card-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card\\card-bg.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card\\card-bg.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card\\card-logo.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card\\card-logo.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\card\\payment-icon.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\card\\payment-icon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\carousel-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\carousel-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\carousel-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\carousel-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\carousel-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\carousel-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\carousel-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\carousel-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\mutiple-carousel-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\mutiple-carousel-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\mutiple-carousel-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\mutiple-carousel-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\mutiple-carousel-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\mutiple-carousel-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\carousel\\mutiple-carousel-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\carousel\\mutiple-carousel-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\10.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\10.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\11.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\11.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\8.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\8.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\9.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\9.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chat\\chat-main.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chat\\chat-main.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\empty-message-icon1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\empty-message-icon1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\empty-message-icon2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\empty-message-icon2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\image-generator1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\image-generator1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\image-generator2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\image-generator2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\image-generator3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\image-generator3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\image-generator4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\image-generator4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\chatgpt\\image-generator5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\chatgpt\\image-generator5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\coming-soon\\coming-soon.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\coming-soon\\coming-soon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\coming-soon\\maintenance.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\coming-soon\\maintenance.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\bitcoin.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\bitcoin.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\crypto-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\crypto-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\crypto-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\crypto-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\crypto-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\crypto-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\crypto-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\crypto-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\crypto-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\crypto-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\crypto-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\crypto-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\paypal.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\paypal.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\wallet-icon1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\wallet-icon1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\wallet-icon2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\wallet-icon2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\wallet-icon3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\wallet-icon3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\crypto\\wallet-icon4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\crypto\\wallet-icon4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\currency\\crypto-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\currency\\crypto-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\currency\\crypto-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\currency\\crypto-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\currency\\crypto-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\currency\\crypto-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\currency\\crypto-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\currency\\crypto-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\currency\\crypto-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\currency\\crypto-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\error-img.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\error-img.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\faq-img.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\faq-img.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\favicon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag-tag.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag-tag.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\flags\\flag8.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\flags\\flag8.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img10.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img10.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img11.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img11.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img12.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img12.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img8.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img8.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gallery\\gallery-img9.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gallery\\gallery-img9.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\gif\\success-img3.gif",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\gif\\success-img3.gif"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\doctor-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\doctor-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\doctor-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\doctor-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\doctor-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\doctor-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\doctor-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\doctor-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\doctor-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\doctor-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\doctor-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\doctor-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\icon-pdf.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\icon-pdf.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\icon-text.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\icon-text.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\treatment-icon1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\treatment-icon1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\treatment-icon2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\treatment-icon2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\treatment-icon3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\treatment-icon3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\treatment-icon4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\treatment-icon4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\treatment-icon5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\treatment-icon5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eight\\treatment-icon6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eight\\treatment-icon6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\bg\\bg-orange-gradient.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\bg\\bg-orange-gradient.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\bg\\radial-bg1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\bg\\radial-bg1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\bg\\radial-bg2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\bg\\radial-bg2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\bg\\radial-bg3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\bg\\radial-bg3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon1.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon1.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon2.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon2.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon3.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon3.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon4.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\earn-cat-icon4.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon1.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon1.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon2.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon2.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon3.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon3.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon4.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\icons\\home-eleven-icon4.svg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\officer-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\officer-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\officer-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\officer-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\officer-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\officer-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\officer-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\officer-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-eleven\\officer-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-eleven\\officer-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\payment1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\payment1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\payment2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\payment2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\payment3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\payment3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\payment4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\payment4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\socials1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\socials1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\socials2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\socials2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\socials3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\socials3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\socials4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\socials4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\socials5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\socials5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\source-icon1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\source-icon1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\source-icon2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\source-icon2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\source-icon3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\source-icon3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\source-icon4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\source-icon4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\ticket1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\ticket1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\ticket2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\ticket2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\ticket3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\ticket3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-nine\\trail-bg.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-nine\\trail-bg.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\category-icon1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\category-icon1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\category-icon2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\category-icon2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\category-icon3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\category-icon3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\category-icon4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\category-icon4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\category-icon5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\category-icon5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\category-icon6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\category-icon6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\student-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\student-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\student-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\student-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\student-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\student-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\student-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\student-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\student-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\student-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\home-six\\student-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\home-six\\student-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\kanban\\kanban-1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\kanban\\kanban-1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\kanban\\kanban-2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\kanban\\kanban-2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\lang-flag.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\lang-flag.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\lists\\list-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\lists\\list-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\lists\\list-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\lists\\list-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\lists\\list-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\lists\\list-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\lists\\list-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\lists\\list-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\lists\\list-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\lists\\list-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\logo-icon.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\logo-icon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\logo-light.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\logo-light.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\logo.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\bitcoin.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\bitcoin.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\creator-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\creator-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\creator-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\creator-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\creator-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\creator-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\creator-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\creator-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\creator-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\creator-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\featured-creator1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\featured-creator1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\featured-creator2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\featured-creator2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nf-card-img.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nf-card-img.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-gradient-bg.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-gradient-bg.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-items-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-items-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-items-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-items-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-items-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-items-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-items-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-items-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-items-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-items-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-items-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-items-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-offer-img7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-offer-img7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-user-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-user-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-user-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-user-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-user-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-user-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\nft\\nft-user-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\nft\\nft-user-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notice\\board-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notice\\board-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notice\\board-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notice\\board-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notice\\board-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notice\\board-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\notification\\profile-7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\notification\\profile-7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\payment-gateway1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\payment-gateway1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\payment-gateway2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\payment-gateway2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\payment1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\payment1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\payment2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\payment2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\payment3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\payment3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\payment4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\payment4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\payment\\upload-image.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\payment\\upload-image.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\pricing\\price-icon1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\pricing\\price-icon1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\pricing\\price-icon2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\pricing\\price-icon2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\pricing\\price-icon3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\pricing\\price-icon3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\pricing\\price-icon4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\pricing\\price-icon4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\pricing\\price-icon5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\pricing\\price-icon5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\pricing\\pricing-shape.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\pricing\\pricing-shape.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\product\\product-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\product\\product-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\product\\product-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\product\\product-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\product\\product-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\product\\product-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\product\\product-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\product\\product-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\product\\product-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\product\\product-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\tabs\\tabs-image1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\tabs\\tabs-image1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\tabs\\tabs-image2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\tabs\\tabs-image2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\times.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\times.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg10.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg10.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg11.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg11.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg12.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg12.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg8.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg8.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-bg9.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-bg9.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img10.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img10.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img11.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img11.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img12.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img12.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img13.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img13.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img14.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img14.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img8.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img8.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-grid\\user-grid-img9.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-grid\\user-grid-img9.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list10.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list10.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list7.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list7.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list8.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list8.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user-list\\user-list9.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user-list\\user-list9.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\user.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\user.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\users\\user1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\users\\user1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\users\\user2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\users\\user2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\users\\user3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\users\\user3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\users\\user4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\users\\user4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\users\\user5.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\users\\user5.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\users\\user6.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\users\\user6.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\videos\\video-img1.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\videos\\video-img1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\videos\\video-img2.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\videos\\video-img2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\videos\\video-img3.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\videos\\video-img3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\videos\\video-img4.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\videos\\video-img4.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\images\\wow-dash-favicon.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\images\\wow-dash-favicon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\app.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\app.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\columnChartPageChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\columnChartPageChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\editor.highlighted.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\editor.highlighted.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\editor.katex.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\editor.katex.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\editor.quill.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\editor.quill.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\flatpickr.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\flatpickr.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\full-calendar.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\full-calendar.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\homeFiveChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\homeFiveChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\homeFourChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\homeFourChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\homeOneChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\homeOneChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\homeThreeChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\homeThreeChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\homeTwoChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\homeTwoChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\invoice.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\invoice.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\apexcharts.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\apexcharts.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\audioplayer.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\audioplayer.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\dataTables.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\dataTables.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\file-upload.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\file-upload.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\iconify-icon.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\iconify-icon.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\jquery-3.7.1.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\jquery-3.7.1.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\jquery-jvectormap-2.0.5.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\jquery-jvectormap-2.0.5.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\jquery-jvectormap-world-mill-en.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\jquery-jvectormap-world-mill-en.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\jquery-ui.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\magnifc-popup.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\magnifc-popup.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\prism.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\prism.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lib\\slick.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\slick.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\lineChartPageChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lineChartPageChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\admin\\assets\\js\\pieChartPageChart.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\pieChartPageChart.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\animate.css",
+      "PackagePath": "staticwebassets\\assets\\css\\animate.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\cendidate.css",
+      "PackagePath": "staticwebassets\\assets\\css\\cendidate.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\dark.css",
+      "PackagePath": "staticwebassets\\assets\\css\\dark.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\assets\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\meanmenu.css",
+      "PackagePath": "staticwebassets\\assets\\css\\meanmenu.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\owl.video.play.html",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.video.play.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\assets\\css\\responsive.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\Flaticon-2.html",
+      "PackagePath": "staticwebassets\\assets\\font\\Flaticon-2.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\Flaticon.eot",
+      "PackagePath": "staticwebassets\\assets\\font\\Flaticon.eot"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\Flaticon.html",
+      "PackagePath": "staticwebassets\\assets\\font\\Flaticon.html"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\Flaticon.woff",
+      "PackagePath": "staticwebassets\\assets\\font\\Flaticon.woff"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\Flaticon.woff2",
+      "PackagePath": "staticwebassets\\assets\\font\\Flaticon.woff2"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\Flaticond41d.eot",
+      "PackagePath": "staticwebassets\\assets\\font\\Flaticond41d.eot"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\font\\flaticon.css",
+      "PackagePath": "staticwebassets\\assets\\font\\flaticon.css"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\404.png",
+      "PackagePath": "staticwebassets\\assets\\img\\404.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\about\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\about\\1.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\about\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\about\\2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\about\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\about\\4.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\banner\\1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\banner\\2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\1.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\3.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\4.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\5.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\6.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\7.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\8.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\9.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\9.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\author-1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\author-1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\author-2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\author-2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\author-3.png",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\author-3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\blog-details.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog-details.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-1.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-3.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-4.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-5.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-6.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-7.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\photo-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\photo-8.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\recent-1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\recent-1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\recent-2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\recent-2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\blog\\recent-3.png",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\recent-3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\contact.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\contact.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\favicon.png",
+      "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\logo-three.png",
+      "PackagePath": "staticwebassets\\assets\\img\\logo-three.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\logo-two.png",
+      "PackagePath": "staticwebassets\\assets\\img\\logo-two.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\logo.png",
+      "PackagePath": "staticwebassets\\assets\\img\\logo.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\modal\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\modal\\1.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\modal\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\modal\\2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\modal\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\modal\\3.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\modal\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\modal\\4.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\modal\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\modal\\5.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\modal\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\modal\\6.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\night.png",
+      "PackagePath": "staticwebassets\\assets\\img\\night.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\portfolio\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\1.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\portfolio\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\portfolio\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\3.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\portfolio\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\4.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\portfolio\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\5.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\portfolio\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\6.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\progress.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\progress.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\service-details-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\service-details-2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\service-details-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\service-details-3.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\service-details.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\service-details.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\service-img.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\service-img.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\shapes\\1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\shapes\\1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\shapes\\2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\shapes\\2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\signature.png",
+      "PackagePath": "staticwebassets\\assets\\img\\signature.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\sunny.png",
+      "PackagePath": "staticwebassets\\assets\\img\\sunny.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\1.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\2.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\3.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\4.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\5.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\6.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\7.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\7.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\team\\8.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\team\\8.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\testimonial-img.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\testimonial-img.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\testimonial\\1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\testimonial\\1.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\testimonial\\2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\testimonial\\2.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\testimonial\\3.png",
+      "PackagePath": "staticwebassets\\assets\\img\\testimonial\\3.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\theory-img.png",
+      "PackagePath": "staticwebassets\\assets\\img\\theory-img.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\video-bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\video-bg.jpg"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\img\\video-shape.png",
+      "PackagePath": "staticwebassets\\assets\\img\\video-shape.png"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\contact-form-script.js",
+      "PackagePath": "staticwebassets\\assets\\js\\contact-form-script.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\custom.js",
+      "PackagePath": "staticwebassets\\assets\\js\\custom.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\form-validator.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\form-validator.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\jquery.ajaxchimp.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.ajaxchimp.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\jquery.magnific-popup.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.magnific-popup.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\jquery.mixitup.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.mixitup.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\meanmenu.js",
+      "PackagePath": "staticwebassets\\assets\\js\\meanmenu.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\assets\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\C#\\Project_sem_3\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Project_sem_3.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Project_sem_3.props",
+      "PackagePath": "build\\Project_sem_3.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Project_sem_3.props",
+      "PackagePath": "buildMultiTargeting\\Project_sem_3.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Project_sem_3.props",
+      "PackagePath": "buildTransitive\\Project_sem_3.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
