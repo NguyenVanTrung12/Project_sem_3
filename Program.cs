@@ -1,10 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Project_sem_3.Models;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
+builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
