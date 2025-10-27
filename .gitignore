@@ -1,0 +1,36 @@
+# Build files
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.vscode/
+*.ncrunchsolution
+*.ncrunchproject
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+
+# Others
+launchSettings.json
+wwwroot/lib/
+node_modules/
+
+/bin/
+/obj/
+.vs/
+/Migrations/
