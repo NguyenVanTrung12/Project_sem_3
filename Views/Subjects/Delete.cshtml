@@ -1,0 +1,62 @@
+@model Project_sem_3.Models.Subject
+
+@{
+    ViewData["Title"] = "Xóa môn học";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="card-title mb-0">Xóa môn học</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h4 class="alert-heading">Cảnh báo!</h4>
+                        <p>Bạn có chắc chắn muốn xóa môn học này không?</p>
+                    </div>
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th class="bg-light" width="30%">Mã môn học</th>
+                                <td>@Html.DisplayFor(model => model.SubjectCode)</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Tên môn học</th>
+                                <td>@Html.DisplayFor(model => model.SubjectName)</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Thời gian làm bài (phút)</th>
+                                <td>@Html.DisplayFor(model => model.LimitTime)</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Số câu hỏi</th>
+                                <td>@Html.DisplayFor(model => model.QuestionCount)</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Thứ tự hiển thị</th>
+                                <td>@Html.DisplayFor(model => model.OrderIndex)</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Trạng thái</th>
+                                <td>@Html.DisplayFor(model => model.Status)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form asp-action="Delete" class="mt-4 text-center">
+                        <input type="hidden" asp-for="Id" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Xóa
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary ml-2">
+                            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

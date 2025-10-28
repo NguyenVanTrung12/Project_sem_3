@@ -1,0 +1,97 @@
+@model Project_sem_3.Models.Subject
+
+@{
+    ViewData["Title"] = "Chỉnh sửa môn học";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">Chỉnh sửa môn học</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th class="bg-light" width="30%">
+                                        <label asp-for="SubjectCode">Mã môn học</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="SubjectCode" class="form-control" placeholder="Nhập mã môn học"/>
+                                        <span asp-validation-for="SubjectCode" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="SubjectName">Tên môn học</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="SubjectName" class="form-control" placeholder="Nhập tên môn học"/>
+                                        <span asp-validation-for="SubjectName" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="LimitTime">Thời gian làm bài (phút)</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="LimitTime" class="form-control" placeholder="Nhập thời gian làm bài"/>
+                                        <span asp-validation-for="LimitTime" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="QuestionCount">Số câu hỏi</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="QuestionCount" class="form-control" placeholder="Nhập số câu hỏi"/>
+                                        <span asp-validation-for="QuestionCount" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="OrderIndex">Thứ tự hiển thị</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="OrderIndex" class="form-control" placeholder="Nhập thứ tự hiển thị"/>
+                                        <span asp-validation-for="OrderIndex" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="Status">Trạng thái</label>
+                                    </th>
+                                    <td>
+                                        <select asp-for="Status" class="form-control">
+                                            <option value="1">Hoạt động</option>
+                                            <option value="0">Không hoạt động</option>
+                                        </select>
+                                        <span asp-validation-for="Status" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Lưu thay đổi
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary ml-2">
+                                <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

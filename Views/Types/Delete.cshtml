@@ -1,0 +1,59 @@
+@model Project_sem_3.Models.Type
+
+@{
+    ViewData["Title"] = "Xóa loại câu hỏi";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="card-title mb-0">Xóa loại câu hỏi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h4 class="alert-heading">Cảnh báo!</h4>
+                        <p>Bạn có chắc chắn muốn xóa loại câu hỏi này không?</p>
+                    </div>
+
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th class="bg-light" width="30%">Tên loại câu hỏi</th>
+                                <td>@Html.DisplayFor(model => model.TypeName)</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Trạng thái</th>
+                                <td>
+                                    @if (Model.Status == 1)
+                                    {
+                                        <span class="badge bg-success">Hoạt động</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Không hoạt động</span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="bg-light">Thứ tự hiển thị</th>
+                                <td>@Html.DisplayFor(model => model.Ord)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <form asp-action="Delete" class="mt-4 text-center">
+                        <input type="hidden" asp-for="Id" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Xác nhận xóa
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary ml-2">
+                            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

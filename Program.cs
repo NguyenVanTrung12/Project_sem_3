@@ -1,13 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
 using System;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

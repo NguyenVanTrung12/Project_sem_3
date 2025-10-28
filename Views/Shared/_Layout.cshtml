@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <base href="/" />
     <meta charset="UTF-8">
@@ -27,10 +28,11 @@
     <link rel="stylesheet" href="~/assets/css/cendidate.css" />
     <!-- Title CSS -->
     <title>Everb - Business Consulting HTML Template</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <!-- Favicon Link -->
     <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
 </head>
+
 <body>
 
     @await Component.InvokeAsync("Header")
@@ -56,6 +58,12 @@
     <script src="~/assets/js/meanmenu.js"></script>
     <!-- Custom JS -->
     <script src="~/assets/js/custom.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

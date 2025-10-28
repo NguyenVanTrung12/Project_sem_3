@@ -1,0 +1,94 @@
+@model Project_sem_3.Models.SubjectType
+
+@{
+    ViewData["Title"] = "Thêm mới loại câu hỏi";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title mb-0">Thêm mới loại câu hỏi</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th class="bg-light" width="30%">
+                                        <label asp-for="SubjectId" >Môn học</label>
+                                    </th>
+                                    <td>
+                                        <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId">
+                                            <option value="">-- Chọn môn học --</option>
+                                        </select>
+                                        <span asp-validation-for="SubjectId" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="TypeId">Loại câu hỏi</label>
+                                    </th>
+                                    <td>
+                                        <select asp-for="TypeId" class="form-control" asp-items="ViewBag.TypeId">
+                                            <option value="">-- Chọn loại câu hỏi --</option>
+                                        </select>
+                                        <span asp-validation-for="TypeId" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="NumQuestion">Số lượng câu hỏi</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="NumQuestion" class="form-control" placeholder="Nhập số lượng câu hỏi"/>
+                                        <span asp-validation-for="NumQuestion" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light">
+                                        <label asp-for="LimitTime">Thời gian làm bài (phút)</label>
+                                    </th>
+                                    <td>
+                                        <input asp-for="LimitTime" class="form-control" placeholder="Nhập thời gian làm bài"/>
+                                        <span asp-validation-for="LimitTime" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Tạo mới
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary ml-2">
+                                <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function() {
+            // Initialize select2 if available
+            if($.fn.select2) {
+                $('#SubjectId').select2({
+                    placeholder: "Chọn môn học",
+                    width: '100%'
+                });
+                $('#TypeId').select2({
+                    placeholder: "Chọn loại câu hỏi",
+                    width: '100%'
+                });
+            }
+        });
+    </script>
+}
