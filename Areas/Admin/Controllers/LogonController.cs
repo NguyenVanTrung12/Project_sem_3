@@ -95,7 +95,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             }
 
             // 7️⃣ Redirect to Admin dashboard
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index", "Admin");
         }
 
         public IActionResult AccessDenied()
