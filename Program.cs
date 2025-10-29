@@ -20,6 +20,9 @@ builder.Services.AddAuthentication("AdminCookie")
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+var app = builder.Build();
 
 builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
@@ -100,7 +103,6 @@ app.UseEndpoints(endpoints =>
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
 }); ;
-
 
 
 app.Run();
