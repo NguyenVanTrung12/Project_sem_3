@@ -9,7 +9,7 @@ namespace Project_sem_3.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Candidate is required.")]
-        public int CandidateId { get; set; }
+        public int? CandidateId { get; set; }
 
         [Required(ErrorMessage = "Interview date is required.")]
         [DataType(DataType.Date)]

@@ -9,7 +9,7 @@ namespace Project_sem_3.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Blog category is required.")]
-        public int BlogCategoryId { get; set; }
+        public int? BlogCategoryId { get; set; }
 
         [Required(ErrorMessage = "Manager is required.")]
         public int? ManagerId { get; set; }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using X.PagedList.Extensions;
 
@@ -15,14 +16,31 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             _context = context;
         }
-        // GET: BlogCategoriesController
-        public IActionResult Index(int page = 1)
+      
+        [HttpGet]
+        public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 5;
-            var blogcate =  _context.BlogCategories.OrderByDescending(e => e.Id).ToPagedList(page,pageSize);
-            return View(blogcate);
-        }
+            var query = _context.BlogCategories
+                .AsQueryable();
+            if (!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(m => m.CategoryName.Contains(q));
+            }
+            if (status.HasValue)
+            {
+                query = query.Where(m => m.Status == status.Value);
+            }
 
+            var pagedBlogCate = query
+                .OrderByDescending(m => m.Id)
+                .ToPagedList(page, pageSize);
+
+            ViewBag.q = q;
+            ViewBag.Status = status;
+
+            return View(pagedBlogCate);
+        }
         // GET: BlogCategoriesController/Details/5
         public IActionResult Details(int id)
         {
@@ -47,6 +65,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
             }
             try
             {
+                if (!Request.Form.ContainsKey("Status"))
+                {
+                    blogCategory.Status = 0;
+                }
                 _context.BlogCategories.Add(blogCategory);
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "Thêm  mới thành công!";
@@ -83,6 +105,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
             }
             try
             {
+                if (!Request.Form.ContainsKey("Status"))
+                {
+                    blogCategory.Status = 0;
+                }
                 _context.BlogCategories.Update(blogCategory);
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "Update successfuly";

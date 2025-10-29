@@ -22,10 +22,6 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
-var app = builder.Build();
-
-builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
 var app = builder.Build();
 // 🧩 Seed tài khoản Super Manager mặc định
@@ -44,11 +40,11 @@ using (var scope = app.Services.CreateScope())
 
     // Tạo tài khoản Super Manager mặc định nếu chưa có
     var superManager = await context.Managers.FirstOrDefaultAsync(m => m.Username == "canhnt");
+    var password = "Canh19012005@"; // mật khẩu chuẩn
+    var hashed = Project_sem_3.Areas.Admin.Helpers.PasswordHelper.HashPassword(password);
+
     if (superManager == null)
     {
-        var password = "Canh19012005@"; // mật khẩu mặc định
-        var hashed = Project_sem_3.Areas.Admin.Helpers.PasswordHelper.HashPassword(password);
-
         superManager = new Manager
         {
             Username = "canhnt",
@@ -62,9 +58,17 @@ using (var scope = app.Services.CreateScope())
         };
 
         context.Managers.Add(superManager);
-        await context.SaveChangesAsync();
     }
+    else
+    {
+        // Update lại password hash chuẩn
+        superManager.PasswordHash = hashed;
+        context.Managers.Update(superManager);
+    }
+
+    await context.SaveChangesAsync();
 }
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

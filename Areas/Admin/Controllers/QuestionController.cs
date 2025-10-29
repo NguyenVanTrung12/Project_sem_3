@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Areas.Admin.Helpers;
 using Project_sem_3.Models;
+using System.Reflection.Metadata;
 using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
@@ -66,6 +67,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!Request.Form.ContainsKey("Status"))
+                {
+                    model.Status = 0;
+                }
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -103,6 +108,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (!Request.Form.ContainsKey("Status"))
+                    {
+                        model.Status = 0;
+                    }
                     _context.Update(model);
                     await _context.SaveChangesAsync();
                 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
 using System.Threading.Tasks;
 using X.PagedList.Extensions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
@@ -19,18 +20,32 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         // GET: BlogsController
         [HttpGet]
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string? q, int? status,int page = 1)
         {
             int pageSize = 5;
-
-            var blogs = _context.Blogs
+            var query = _context.Blogs
                 .Include(e => e.BlogCategory)
                 .Include(e => e.Manager)
-                .OrderByDescending(e => e.Id)
+                .AsQueryable();
+            if (!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(m => m.Title.Contains(q));
+            }
+            if (status.HasValue)
+            {
+                query = query.Where(m => m.Status == status.Value);
+            }
+
+            var pagedBlog = query
+                .OrderByDescending(m => m.Id)
                 .ToPagedList(page, pageSize);
 
-            return View(blogs);
+            ViewBag.q = q;
+            ViewBag.Status = status;
+
+            return View(pagedBlog);
         }
+
 
         // GET: BlogsController/Details/5
         public ActionResult Details(int id)
@@ -56,32 +71,25 @@ namespace Project_sem_3.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 //xử lý upload ảnh
-                if (uploadfile is { Length: > 0 })
+                if (uploadfile?.Length > 0)
                 {
-                    var ext = Path.GetExtension(uploadfile.FileName).ToLower();
-                    var allowedExts = new[] { ".jpg", ".jpeg", ".png" };
-                    if (!allowedExts.Contains(ext))
-                    {
-                        ModelState.AddModelError("", "Chỉ được upload ảnh JPG/PNG");
-                        return View(blog);
-                    }
-
                     var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/images");
                     Directory.CreateDirectory(uploads);
 
-                    var fileName = $"{Guid.NewGuid()}{ext}";
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(uploadfile.FileName)}";
                     var filePath = Path.Combine(uploads, fileName);
 
-                    await using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await uploadfile.CopyToAsync(stream);
-                    }
+                    await using var stream = new FileStream(filePath, FileMode.Create);
+                    await uploadfile.CopyToAsync(stream);
 
-                    // Lưu đường dẫn tương đối vào DB
                     blog.Image = $"/uploads/images/{fileName}";
                 }
                 try
                 {
+                    if (!Request.Form.ContainsKey("Status"))
+                    {
+                        blog.Status = 0;
+                    }
                     _context.Blogs.Add(blog);
                     await _context.SaveChangesAsync();
                     TempData["Success"] = "Thêm thành công";
@@ -155,7 +163,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     {
                         blog.Image = existingBlog.Image;
                     }
-
+                    if (!Request.Form.ContainsKey("Status"))
+                    {
+                        blog.Status = 0;
+                    }
 
                     _context.Update(blog);
                     await _context.SaveChangesAsync();

@@ -18,17 +18,17 @@ namespace Project_sem_3.Areas.Admin.Helpers
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Online Aptitude Test System", fromEmail));
             message.To.Add(MailboxAddress.Parse(candidateEmail));
-            message.Subject = "Thông tin tài khoản ứng viên";
+            message.Subject = "Candidate Account Information";
             message.Body = new TextPart("html")
             {
                 Text = $@"
-                    Xin chào,<br/><br/>
-                    Hệ thống đã tạo tài khoản cho bạn.<br/>
-                    <b>Tên đăng nhập:</b> {username}<br/>
-                    <b>Mật khẩu:</b> {password}<br/><br/>
-                    Vui lòng đăng nhập và đổi mật khẩu sau khi truy cập lần đầu.<br/><br/>
-                    Trân trọng,<br/>
-                    Bộ phận tuyển dụng."
+                    Hello,<br/><br/>
+                    An account has been created for you in the system.<br/>
+                    <b>Username:</b> {username}<br/>
+                    <b>Password:</b> {password}<br/><br/>
+                    Please log in and change your password after your first access.<br/><br/>
+                    Best regards,<br/>
+                    Recruitment Department."
             };
 
             using var client = new SmtpClient();

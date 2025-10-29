@@ -54,6 +54,34 @@
                         <option value="0">Inactive</option>
                     }
                 </select>
+                <select name="role" class="form-select">
+                    <option value="">All Roles</option>
+
+                    @if (ViewBag.SelectedRole == "Role_Supper_Managers")
+                    {
+                        <option value="Role_Supper_Managers" selected>Super Manager</option>
+                        <option value="Role_Managers">Managers</option>
+                        <option value="Role_HR_Staff">HR Staff</option>
+                    }
+                    else if (ViewBag.SelectedRole == "Role_Managers")
+                    {
+                        <option value="Role_Supper_Managers">Super Manager</option>
+                        <option value="Role_Managers" selected>Managers</option>
+                        <option value="Role_HR_Staff">HR Staff</option>
+                    }
+                    else if (ViewBag.SelectedRole == "Role_HR_Staff")
+                    {
+                        <option value="Role_Supper_Managers">Super Manager</option>
+                        <option value="Role_Managers">Managers</option>
+                        <option value="Role_HR_Staff" selected>HR Staff</option>
+                    }
+                    else
+                    {
+                        <option value="Role_Supper_Managers">Super Manager</option>
+                        <option value="Role_Managers">Managers</option>
+                        <option value="Role_HR_Staff">HR Staff</option>
+                    }
+                </select>
             </form>
         </div>
         <a asp-action="Create" asp-controller="Manager" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
@@ -102,11 +130,22 @@
                             <td>@item.Email</td>
                             <td>@item.Phone</td>
                             <td>@item.CreatedAt?.ToString("dd MMM yyyy")</td>
-                            <td class="text-center">
-                                <span class="@(item.Status == 1 ? "bg-success-focus text-success-600 border border-success-main" : "bg-danger-focus text-danger-600 border border-danger-main") px-24 py-4 radius-4 fw-medium text-sm">
-                                    @item.Status
-                                </span>
-                            </td>
+                            @if (item.Status == 1)
+                            {
+                                <td class="text-center">
+                                    <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">
+                                        Active
+                                    </span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center">
+                                    <span class="bg-neutral-200 text-neutral-600 border border-neutral-400 px-24 py-4 radius-4 fw-medium text-sm">
+                                        InActive
+                                    </span>
+                                </td>
+                            }
                             <td class="text-center">@item.Role.RoleName</td>
                             <td class="text-center">
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
@@ -138,7 +177,7 @@
         </div>
         <!-- Phân trang -->
         <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
-            <span>Trang @Model.PageNumber / @Model.PageCount (Tổng: @Model.TotalItemCount)</span>
+            <span>Page @Model.PageNumber of @Model.PageCount (Total: @Model.TotalItemCount)</span>
             <div>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
                          new PagedListRenderOptions
@@ -151,17 +190,19 @@
             </div>
         </div>
     </div>
-    
+
 
 </div>
 <script>
     const form = document.getElementById("filterForm");
     const searchInput = form.querySelector("input[name='q']");
     const statusSelect = form.querySelector("select[name='status']");
+    const roleSelect = form.querySelector("select[name='role']");
 
     // Khi thay đổi status => submit ngay
     statusSelect.addEventListener("change", () => form.submit());
 
+    roleSelect.addEventListener("change", () => form.submit());
     // Khi gõ vào ô tìm kiếm => đợi 0.5s rồi tự submit
     let timeout;
     searchInput.addEventListener("input", () => {

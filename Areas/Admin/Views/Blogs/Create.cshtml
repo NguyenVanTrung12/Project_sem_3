@@ -6,116 +6,100 @@
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <h6 class="fw-semibold mb-0">Add Blogs</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-action="Index" asp-controller="Blogs"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline"
+                              class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Add Blogs</li>
+    </ul>
 </div>
 
 <div class="card h-100 p-0 radius-12">
     <div class="card-body p-24">
         <div class="row justify-content-center">
-            <div class="col-xxl-6 col-xl-8 col-lg-10">
+            <div class="col-xxl-8 col-xl-10 col-lg-12">
                 <div class="card border">
                     <div class="card-body">
-
                         <form asp-controller="Blogs" asp-action="Create" enctype="multipart/form-data" method="post">
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    BlogCategory
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <select asp-for="BlogCategoryId" asp-items="ViewBag.BlogCategoriList" class="form-control">
-                                    <option value="">--Chọn ứng viên--</option>
-                                </select>
-                                <span asp-validation-for="BlogCategoryId" class="text-danger"></span>
-                            </div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Managers
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <select asp-for="ManagerId" asp-items="ViewBag.ManagerList" class="form-control">
-                                    <option value="">--Chọn ứng viên--</option>
-                                </select>
-                                <span asp-validation-for="ManagerId" class="text-danger"></span>
-                            </div>
-                             <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Title
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <input type="text" asp-for="Title" class="form-control radius-8" />
-                                <span asp-validation-for="Title" class="text-danger"></span>
-                            </div>
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Slug
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <input type="text" asp-for="Slug" class="form-control radius-8" />
-                                <span asp-validation-for="Slug" class="text-danger"></span>
-                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="BlogCategoryId" class="form-label fw-semibold"></label>
+                                    <select asp-for="BlogCategoryId" asp-items="ViewBag.BlogCategoriList" class="form-select">
+                                        <option value="">-- Select category --</option>
+                                    </select>
+                                    <span asp-validation-for="BlogCategoryId" class="text-danger"></span>
+                                </div>
 
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Tags
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <input type="text" asp-for="Tags" class="form-control radius-8" />
-                                <span asp-validation-for="Tags" class="text-danger"></span>
-                            </div>
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Views
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <input type="text" asp-for="Views" class="form-control radius-8" />
-                                <span asp-validation-for="Views" class="text-danger"></span>
-                            </div>
-                            <div class="mb-20">
-                                <label for="desc"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">Content</label>
-                                <textarea class="form-control radius-8" asp-for="Content"></textarea>
-                                <span asp-validation-for="Content" class="text-danger"></span>
-                            </div>
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Image
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <input type="file" name="uploadfile" class="form-control radius-8" />
-                            </div>
-                            <div class="mb-20">
-                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Status <span class="text-danger-600">*</span>
-                                </label>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="ManagerId" class="form-label fw-semibold"></label>
+                                    <select asp-for="ManagerId" asp-items="ViewBag.ManagerList" class="form-select">
+                                        <option value="">-- Choose a manager --</option>
+                                    </select>
+                                    <span asp-validation-for="ManagerId" class="text-danger"></span>
+                                </div>
 
-                                <div class="form-check form-switch">
-                                    <input type="checkbox"
-                                           class="form-check-input"
-                                           id="statusSwitch"
-                                           name="Status"
-                                           value="1"
-                                           @(Model != null && Model.Status == 1 ? "checked" : "") />
-                                    <label class="form-check-label" for="statusSwitch">
-                                        @(Model != null && Model.Status == 1 ? "Active" : "Inactive")
-                                    </label>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Title" class="form-label fw-semibold"></label>
+                                    <input asp-for="Title" class="form-control" placeholder="Enter Title" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Slug" class="form-label fw-semibold"></label>
+                                    <input asp-for="Slug" class="form-control" placeholder="Enter Slug" />
+                                    <span asp-validation-for="Slug" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Tags" class="form-label fw-semibold"></label>
+                                    <input asp-for="Tags" class="form-control" placeholder="Enter Tags" />
+                                    <span asp-validation-for="Tags" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Views" class="form-label fw-semibold"></label>
+                                    <input asp-for="Views" type="number" class="form-control" placeholder="Enter Views" />
+                                    <span asp-validation-for="Views" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Content" class="form-label fw-semibold"></label>
+                                    <textarea asp-for="Content" class="form-control" id="Content" rows="5"></textarea>
+                                    <span asp-validation-for="Content" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-semibold">Image</label>
+                                    <input type="file" name="uploadfile" class="form-control" />
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-semibold">Status</label>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox"
+                                               class="form-check-input"
+                                               id="statusSwitch"
+                                               name="Status"
+                                               value="1"
+                                        @(Model != null && Model.Status == 1 ? "checked" : "") />
+                                        <label class="form-check-label" for="statusSwitch">
+                                            @(Model != null && Model.Status == 1 ? "Active" : "Inactive")
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="d-flex align-items-center justify-content-center gap-3">
-                                <a asp-controller="Blogs" asp-action="Index"
-                                   class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
-                                    Cancel
-                                </a>
-                                <button type="submit"
-                                        class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
-                                    Save
-                                </button>
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
                             </div>
                         </form>
                     </div>
@@ -125,3 +109,61 @@
     </div>
 </div>
 
+<script>
+    function toggleStatusLabel(checkbox) {
+        const label = document.getElementById('statusLabel');
+        if (checkbox.checked) {
+            label.textContent = 'Active';
+        } else {
+            label.textContent = 'Inactive';
+        }
+    }
+</script>
+
+@section Styles {
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="~/elfinder/css/elfinder.full.css" />
+    <link rel="stylesheet" href="~/elfinder/css/theme.min.css" />
+    <link rel="stylesheet" href="~/elfinder-material-theme/Material/css/theme-gray.css" />
+}
+@section Scripts {
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/elfinder/js/elfinder.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#btnBrowse') != undefined) {
+                $('#btnBrowse').click(function () {
+                    var fm = $('<div id="elfinder" />').dialogelfinder({
+                        url: '/quan-ly-tep-tin/connector',
+                        baseUrl: "/elfinder/",
+                        width: 840,
+                        height: 450,
+                        destroyOnClose: true,
+                        title: 'Quản lý tệp tin',
+                        getFileCallback: function (files, fm) {
+                            $('#Image').val('/' + files[0].path);
+                            $('#PictureView').attr('src', '/' + files[0].path);
+                        },
+                        commandsOptions: {
+                            getfile: {
+                                multiple: true,
+                                oncomplete: 'close',
+                                folders: false
+                            }
+                        }
+                    }).dialogelfinder('instance');
+                });
+            }
+        });
+
+        // Kích hoạt CKEditor cho phần Ghi chú
+        CKEDITOR.replace('Content');
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

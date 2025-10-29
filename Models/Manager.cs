@@ -14,11 +14,11 @@ namespace Project_sem_3.Models
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Username is required.")]
+    
         [StringLength(50, ErrorMessage = "Username cannot exceed 50 characters.")]
         public string Username { get; set; } = null!;
 
-        [Required(ErrorMessage = "Password is required.")]
+     
         [StringLength(255, ErrorMessage = "Password cannot exceed 255 characters.")]
         public string? PasswordHash { get; set; }
 
