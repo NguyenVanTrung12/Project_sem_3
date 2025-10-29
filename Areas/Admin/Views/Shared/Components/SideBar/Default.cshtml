@@ -4,13 +4,13 @@
     </button>
     <div>
         <a href="index.html" class="sidebar-logo">
-            <img src="assets/images/logo.png"
+            <img src="~/admin/assets/images/logo.png"
                  alt="site logo"
                  class="light-logo" />
-            <img src="assets/images/logo-light.png"
+            <img src="~/admin/assets/images/logo-light.png"
                  alt="site logo"
                  class="dark-logo" />
-            <img src="assets/images/logo-icon.png"
+            <img src="~/admin/assets/images/logo-icon.png"
                  alt="site logo"
                  class="logo-icon" />
         </a>
@@ -39,19 +39,28 @@
                     <span>Invoice</span>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li>
-                        <a asp-controller="Candidates" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            List
-                        </a>
-                    </li>
+                 
 
                     <li>
                         <a asp-area="Admin" asp-controller="Manager" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            List Managers
+                             Managers
                         </a>
                     </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Candidates" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Candidates
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-area="Admin" asp-controller="Question" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Question
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 
