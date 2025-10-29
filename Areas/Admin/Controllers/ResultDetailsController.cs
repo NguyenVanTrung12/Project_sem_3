@@ -52,13 +52,38 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/ResultDetails/Create
+        // GET: Admin/ResultDetails/Create
         public IActionResult Create()
         {
-            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id");
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle");
-            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "AnswerContent");
+            // Chỉ lấy các trường an toàn, tránh EF đọc toàn bộ entity có cột NULL
+            ViewData["ResultId"] = new SelectList(
+                _context.Results
+                    .Where(r => r.Id != null)
+                    .Select(r => new { r.Id })
+                    .ToList(),
+                "Id", "Id"
+            );
+
+            ViewData["QuestionId"] = new SelectList(
+                _context.Questions
+                    .Where(q => q.QuestionTitle != null)
+                    .Select(q => new { q.Id, q.QuestionTitle })
+                    .ToList(),
+                "Id", "QuestionTitle"
+            );
+
+            ViewData["AnswerId"] = new SelectList(
+                _context.Answers
+                    .Where(a => a.AnswerContent != null)
+                    .Select(a => new { a.Id, a.AnswerContent })
+                    .ToList(),
+                "Id", "AnswerContent"
+            );
+
             return View();
         }
+
+
 
         // POST: Admin/ResultDetails/Create
         [HttpPost]
@@ -88,11 +113,22 @@ namespace Project_sem_3.Areas.Admin.Controllers
             if (detail == null)
                 return NotFound();
 
-            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", detail.ResultId);
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", detail.QuestionId);
-            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "AnswerContent", detail.AnswerId);
+            ViewData["ResultId"] = new SelectList(
+                _context.Results.Where(r => r.Id != null).ToList(),
+                "Id", "Id", detail.ResultId
+            );
+            ViewData["QuestionId"] = new SelectList(
+                _context.Questions.Where(q => q.Id != null && q.QuestionTitle != null).ToList(),
+                "Id", "QuestionTitle", detail.QuestionId
+            );
+            ViewData["AnswerId"] = new SelectList(
+                _context.Answers.Where(a => a.Id != null && a.AnswerContent != null).ToList(),
+                "Id", "AnswerContent", detail.AnswerId
+            );
+
             return View(detail);
         }
+
 
         // POST: Admin/ResultDetails/Edit/5
         [HttpPost]
