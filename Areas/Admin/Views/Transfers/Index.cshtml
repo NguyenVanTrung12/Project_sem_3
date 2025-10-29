@@ -1,54 +1,45 @@
-﻿@model IEnumerable<Project_sem_3.Models.Transfer>
+﻿@using X.PagedList
+@model IPagedList<Project_sem_3.Models.Transfer>
+@using X.PagedList.Mvc.Core;
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+    ViewData["Title"] = "Transfers";
 }
 
-<h1>Index</h1>
+<h2 class="mt-3 mb-4">Transfers</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TransferDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FromStage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToStage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Candidate)
-            </th>
-            <th></th>
+            <th>ID</th>
+            <th>Candidate</th>
+            <th>Transfer Date</th>
+            <th>From Stage</th>
+            <th>To Stage</th>
+            <th class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransferDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FromStage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ToStage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Candidate.Address)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Candidate?.Fullname</td>
+                <td>@item.TransferDate?.ToString("dd/MM/yyyy")</td>
+                <td>@item.FromStage</td>
+                <td>@item.ToStage</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div class="d-flex justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded })
+</div>
+
+<a asp-action="Create" class="btn btn-primary mt-3">+ Create New</a>

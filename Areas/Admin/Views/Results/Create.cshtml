@@ -1,53 +1,45 @@
 ﻿@model Project_sem_3.Models.Result
-
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+    ViewData["Title"] = "Create Result";
 }
 
-<h1>Create</h1>
+<h2 class="mt-3 mb-4">Create New Result</h2>
 
-<h4>Result</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CandidateId" class="control-label"></label>
-                <select asp-for="CandidateId" class ="form-control" asp-items="ViewBag.CandidateId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="SubjectId" class="control-label"></label>
-                <select asp-for="SubjectId" class ="form-control" asp-items="ViewBag.SubjectId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="TypeId" class="control-label"></label>
-                <select asp-for="TypeId" class ="form-control" asp-items="ViewBag.TypeId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalMark" class="control-label"></label>
-                <input asp-for="TotalMark" class="form-control" />
-                <span asp-validation-for="TotalMark" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SubmitDate" class="control-label"></label>
-                <input asp-for="SubmitDate" class="form-control" />
-                <span asp-validation-for="SubmitDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="CandidateId" class="form-label"></label>
+        <select asp-for="CandidateId" asp-items="ViewBag.CandidateId" class="form-select"></select>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="mb-3">
+        <label asp-for="SubjectId" class="form-label"></label>
+        <select asp-for="SubjectId" asp-items="ViewBag.SubjectId" class="form-select"></select>
+    </div>
 
+    <div class="mb-3">
+        <label asp-for="TypeId" class="form-label"></label>
+        <select asp-for="TypeId" asp-items="ViewBag.TypeId" class="form-select"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TotalMark" class="form-label"></label>
+        <input asp-for="TotalMark" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SubmitDate" class="form-label"></label>
+        <input asp-for="SubmitDate" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <select asp-for="Status" class="form-select">
+            <option value="1">Passed</option>
+            <option value="0">Failed</option>
+            <option value="2">Pending</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

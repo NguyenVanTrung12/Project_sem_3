@@ -3,6 +3,7 @@ using Project_sem_3.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Cấu hình Session
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -11,6 +12,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+// Cấu hình Authentication
 builder.Services.AddAuthentication("AdminCookie")
     .AddCookie("AdminCookie", options =>
     {
@@ -18,14 +20,16 @@ builder.Services.AddAuthentication("AdminCookie")
         options.AccessDeniedPath = "/Admin/Logon/AccessDenied";
     });
 
+// Cấu hình HttpContext và MVC
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
-var app = builder.Build();
 
+// ✅ CHỈ GIỮ LẠI DÒNG NÀY
 builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+
+// ✅ SAU KHI THÊM SERVICE MỚI GỌI BUILD
+var app = builder.Build();
 
 // 🧩 Seed tài khoản Super Manager mặc định
 using (var scope = app.Services.CreateScope())
@@ -64,19 +68,19 @@ using (var scope = app.Services.CreateScope())
         await context.SaveChangesAsync();
     }
 }
-// Configure the HTTP request pipeline.
+
+// Cấu hình pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-app.UseSession(); // bắt buộc
+
+app.UseSession(); // Bắt buộc
 app.Use(async (context, next) =>
 {
     if (!context.Session.IsAvailable)
@@ -85,8 +89,10 @@ app.Use(async (context, next) =>
     }
     await next();
 });
-app.UseAuthentication(); // nếu dùng
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
@@ -101,7 +107,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
-}); ;
-
+});
 
 app.Run();

@@ -1,43 +1,22 @@
 ﻿@model Project_sem_3.Models.Transfer
 
-@{
-    ViewData["Title"] = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
-}
+<h2 class="mt-3 mb-4">Transfer Details</h2>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Transfer</h4>
-    <hr />
+<div class="card p-3">
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TransferDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TransferDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromStage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromStage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToStage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToStage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Candidate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Candidate.Address)
-        </dd>
+        <dt class="col-sm-3">Candidate</dt>
+        <dd class="col-sm-9">@Model.Candidate?.Fullname</dd>
+
+        <dt class="col-sm-3">Transfer Date</dt>
+        <dd class="col-sm-9">@Model.TransferDate?.ToString("dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-3">From Stage</dt>
+        <dd class="col-sm-9">@Model.FromStage</dd>
+
+        <dt class="col-sm-3">To Stage</dt>
+        <dd class="col-sm-9">@Model.ToStage</dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

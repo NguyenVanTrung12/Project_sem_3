@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
-using X.PagedList;
-using X.PagedList.Mvc.Core;
-
+using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class ResultDetailsController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -21,164 +19,142 @@ namespace Project_sem_3.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: ResultDetails
-        public async Task<IActionResult> Index()
+        // GET: Admin/ResultDetails
+        public IActionResult Index(int page = 1)
         {
+            int pageSize = 5;
             var resultDetails = _context.ResultDetails
-                .Include(r => r.Answer)
-                .Include(r => r.Question)
                 .Include(r => r.Result)
-                .ToList();
+                .Include(r => r.Question)
+                .Include(r => r.Answer)
+                .OrderByDescending(r => r.Id)
+                .ToPagedList(page, pageSize);
 
             return View(resultDetails);
         }
 
-
-        // GET: ResultDetails/Details/5
+        // GET: Admin/ResultDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var resultDetail = await _context.ResultDetails
-                .Include(r => r.Answer)
-                .Include(r => r.Question)
+            var detail = await _context.ResultDetails
                 .Include(r => r.Result)
+                .Include(r => r.Question)
+                .Include(r => r.Answer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (resultDetail == null)
-            {
-                return NotFound();
-            }
 
-            return View(resultDetail);
+            if (detail == null)
+                return NotFound();
+
+            return View(detail);
         }
 
-        // GET: ResultDetails/Create
+        // GET: Admin/ResultDetails/Create
         public IActionResult Create()
         {
-            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "Id");
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionContent");
             ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id");
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle");
+            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "AnswerContent");
             return View();
         }
 
-        // POST: ResultDetails/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Admin/ResultDetails/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ResultId,QuestionId,AnswerId,Mark")] ResultDetail resultDetail)
+        public async Task<IActionResult> Create([Bind("Id,ResultId,QuestionId,AnswerId,Mark")] ResultDetail detail)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(resultDetail);
+                _context.Add(detail);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "Id", resultDetail.AnswerId);
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionContent", resultDetail.QuestionId);
-            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", resultDetail.ResultId);
-            return View(resultDetail);
+
+            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", detail.ResultId);
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", detail.QuestionId);
+            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "AnswerContent", detail.AnswerId);
+            return View(detail);
         }
 
-        // GET: ResultDetails/Edit/5
+        // GET: Admin/ResultDetails/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var resultDetail = await _context.ResultDetails.FindAsync(id);
-            if (resultDetail == null)
-            {
+            var detail = await _context.ResultDetails.FindAsync(id);
+            if (detail == null)
                 return NotFound();
-            }
-            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "Id", resultDetail.AnswerId);
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionContent", resultDetail.QuestionId);
-            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", resultDetail.ResultId);
-            return View(resultDetail);
+
+            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", detail.ResultId);
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", detail.QuestionId);
+            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "AnswerContent", detail.AnswerId);
+            return View(detail);
         }
 
-        // POST: ResultDetails/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Admin/ResultDetails/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ResultId,QuestionId,AnswerId,Mark")] ResultDetail resultDetail)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ResultId,QuestionId,AnswerId,Mark")] ResultDetail detail)
         {
-            if (id != resultDetail.Id)
-            {
+            if (id != detail.Id)
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(resultDetail);
+                    _context.Update(detail);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ResultDetailExists(resultDetail.Id))
-                    {
+                    if (!_context.ResultDetails.Any(e => e.Id == id))
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "Id", resultDetail.AnswerId);
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionContent", resultDetail.QuestionId);
-            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", resultDetail.ResultId);
-            return View(resultDetail);
+
+            ViewData["ResultId"] = new SelectList(_context.Results, "Id", "Id", detail.ResultId);
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", detail.QuestionId);
+            ViewData["AnswerId"] = new SelectList(_context.Answers, "Id", "AnswerContent", detail.AnswerId);
+            return View(detail);
         }
 
-        // GET: ResultDetails/Delete/5
+        // GET: Admin/ResultDetails/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var resultDetail = await _context.ResultDetails
-                .Include(r => r.Answer)
-                .Include(r => r.Question)
+            var detail = await _context.ResultDetails
                 .Include(r => r.Result)
+                .Include(r => r.Question)
+                .Include(r => r.Answer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (resultDetail == null)
-            {
-                return NotFound();
-            }
 
-            return View(resultDetail);
+            if (detail == null)
+                return NotFound();
+
+            return View(detail);
         }
 
-        // POST: ResultDetails/Delete/5
+        // POST: Admin/ResultDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var resultDetail = await _context.ResultDetails.FindAsync(id);
-            if (resultDetail != null)
+            var detail = await _context.ResultDetails.FindAsync(id);
+            if (detail != null)
             {
-                _context.ResultDetails.Remove(resultDetail);
+                _context.ResultDetails.Remove(detail);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ResultDetailExists(int id)
-        {
-            return _context.ResultDetails.Any(e => e.Id == id);
         }
     }
 }

@@ -1,43 +1,22 @@
 ﻿@model Project_sem_3.Models.ResultDetail
 
-@{
-    ViewData["Title"] = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
-}
+<h2 class="mt-3 mb-4">Detail of Result Detail</h2>
 
-<h1>Details</h1>
-
-<div>
-    <h4>ResultDetail</h4>
-    <hr />
+<div class="card p-3">
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Mark)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Mark)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Answer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Answer.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Question)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Question.QuestionContent)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Result)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Result.Id)
-        </dd>
+        <dt class="col-sm-3">Result</dt>
+        <dd class="col-sm-9">@Model.ResultId</dd>
+
+        <dt class="col-sm-3">Question</dt>
+        <dd class="col-sm-9">@Model.Question?.QuestionTitle</dd>
+
+        <dt class="col-sm-3">Answer</dt>
+        <dd class="col-sm-9">@Model.Answer?.AnswerContent</dd>
+
+        <dt class="col-sm-3">Mark</dt>
+        <dd class="col-sm-9">@Model.Mark</dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>
