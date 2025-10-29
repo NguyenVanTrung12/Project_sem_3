@@ -7,26 +7,24 @@ namespace Project_sem_3.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Tên banner không được để trống.")]
-        [StringLength(200, ErrorMessage = "Tên banner không được vượt quá 200 ký tự.")]
-        [Display(Name = "Tên banner")]
+        [Required(ErrorMessage = "Banner name is required.")]
+        [StringLength(200, ErrorMessage = "Banner name cannot exceed 200 characters.")]
+        [Display(Name = "Banner Name")]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng chọn ảnh banner.")]
-        [StringLength(255, ErrorMessage = "Tên tệp ảnh không được vượt quá 255 ký tự.")]
-        [Display(Name = "Ảnh banner")]
+        [Required(ErrorMessage = "Please select a banner image.")]
+        [StringLength(255, ErrorMessage = "Image file name cannot exceed 255 characters.")]
+        [Display(Name = "Banner Image")]
         public string? Image { get; set; }
 
-        [StringLength(500, ErrorMessage = "Mô tả không được vượt quá 500 ký tự.")]
-        [Display(Name = "Mô tả")]
+        [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters.")]
+        [Display(Name = "Description")]
         public string? Description { get; set; }
 
-        
-        [Display(Name = "Vị trí hiển thị")]
+        [Display(Name = "Display Position")]
         public int? Postion { get; set; }
 
-        
-        [Display(Name = "Kích hoạt")]
+        [Display(Name = "Active")]
         public int? Active { get; set; }
     }
 }

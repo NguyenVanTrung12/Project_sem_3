@@ -1,11 +1,11 @@
 ﻿@model Project_sem_3.Models.Contact
 @{
     Layout = "_Admin";
-    ViewData["Title"] = "Thêm liên hệ mới";
+    ViewData["Title"] = "Add New Contact";
 }
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Thêm liên hệ mới</h6>
+    <h6 class="fw-semibold mb-0">Add New Contact</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a asp-area="Admin" asp-controller="Home" asp-action="Index"
@@ -15,7 +15,7 @@
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Liên hệ</li>
+        <li class="fw-medium">Contacts</li>
     </ul>
 </div>
 
@@ -26,25 +26,23 @@
                 <div class="card border">
                     <div class="card-body">
                         <h6 class="text-md text-primary-light mb-16">
-                            Nhập thông tin liên hệ
+                            Enter contact information
                         </h6>
 
                         <form asp-area="Admin" asp-controller="Contacts" asp-action="Create" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                            <!-- Họ tên -->
                             <div class="mb-20">
                                 <label asp-for="FullName"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Họ và tên <span class="text-danger-600">*</span>
+                                    Full Name <span class="text-danger-600">*</span>
                                 </label>
                                 <input asp-for="FullName"
                                        class="form-control radius-8"
-                                       placeholder="Nhập họ và tên" />
+                                       placeholder="Enter full name" />
                                 <span asp-validation-for="FullName" class="text-danger text-sm"></span>
                             </div>
 
-                            <!-- Email -->
                             <div class="mb-20">
                                 <label asp-for="Email"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">
@@ -52,60 +50,54 @@
                                 </label>
                                 <input asp-for="Email"
                                        class="form-control radius-8"
-                                       placeholder="Nhập địa chỉ email" />
+                                       placeholder="Enter email address" />
                                 <span asp-validation-for="Email" class="text-danger text-sm"></span>
                             </div>
 
-                            <!-- Chủ đề -->
                             <div class="mb-20">
                                 <label asp-for="Subject"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Chủ đề
+                                    Subject
                                 </label>
                                 <input asp-for="Subject"
                                        class="form-control radius-8"
-                                       placeholder="Nhập chủ đề" />
+                                       placeholder="Enter subject" />
                                 <span asp-validation-for="Subject" class="text-danger text-sm"></span>
                             </div>
 
-                            <!-- Nội dung -->
                             <div class="mb-20">
-                                <label class="form-label"><b>Nội dung tin nhắn</b></label>
-                                <textarea asp-for="Message" class="form-control" ></textarea>
-
+                                <label class="form-label"><b>Message Content</b></label>
+                                <textarea asp-for="Message" class="form-control"></textarea>
                             </div>
 
-                            <!-- Trạng thái -->
                             <div class="mb-20">
                                 <label asp-for="Status"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Trạng thái
+                                    Status
                                 </label>
                                 <select asp-for="Status" class="form-select radius-8">
-                                    <option value="0">Đang chờ xử lý</option>
-                                    <option value="1">Đã xử lý</option>
-                                    <option value="2">Đã đóng</option>
+                                    <option value="0">Pending</option>
+                                    <option value="1">Processed</option>
+                                    <option value="2">Closed</option>
                                 </select>
                             </div>
 
-                            <!-- Ngày tạo -->
                             <div class="mb-20">
                                 <label asp-for="CreatedDate"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Ngày tạo
+                                    Created Date
                                 </label>
                                 <input asp-for="CreatedDate" type="datetime-local" class="form-control radius-8" />
                             </div>
 
-                            <!-- Nút hành động -->
                             <div class="d-flex align-items-center justify-content-center gap-3">
                                 <a asp-area="Admin" asp-controller="Contacts" asp-action="Index"
                                    class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
-                                    Hủy
+                                    Cancel
                                 </a>
                                 <button type="submit"
                                         class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
-                                    Lưu
+                                    Save
                                 </button>
                             </div>
                         </form>
@@ -115,6 +107,7 @@
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     <!-- jQuery phải load đầu tiên -->

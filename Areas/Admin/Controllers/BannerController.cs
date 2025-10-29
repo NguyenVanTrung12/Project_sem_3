@@ -10,14 +10,21 @@ namespace Project_sem_3.Areas.Admin.Controllers
         
         private  online_aptitude_testsContext tr = new online_aptitude_testsContext();
 
-        public IActionResult Index(int page = 1, int? postion = null)
+        public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
             int pageSize = 5;
             var LstBanner = tr.Banners.AsQueryable();
 
+            // Lọc theo vị trí (giữ nguyên code của bạn)
             if (postion.HasValue)
             {
                 LstBanner = LstBanner.Where(x => x.Postion == postion.Value);
+            }
+
+            // 👉 Thêm lọc theo trạng thái
+            if (active.HasValue)
+            {
+                LstBanner = LstBanner.Where(x => x.Active == active.Value);
             }
 
             // Phân trang
@@ -27,8 +34,11 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // Gửi dữ liệu xuống View
             ViewBag.Postion = postion;
+            ViewBag.Status = active;
+
             return View(LstBanners);
         }
+
 
 
         public IActionResult Create()

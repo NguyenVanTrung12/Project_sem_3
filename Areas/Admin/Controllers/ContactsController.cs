@@ -21,15 +21,27 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1, int? status = null)
         {
             int pageSize = 10;
-            var contacts = _context.Contacts
+            var contacts = _context.Contacts.AsQueryable();
+
+            // 👉 Lọc theo trạng thái
+            if (status.HasValue)
+            {
+                contacts = contacts.Where(c => c.Status == status.Value);
+            }
+
+            var pagedContacts = contacts
                 .OrderByDescending(c => c.CreatedDate)
                 .ToPagedList(page, pageSize);
 
-            return View(contacts);
+            ViewBag.Status = status;
+
+            return View(pagedContacts);
         }
+
+
 
         // GET: Admin/Contacts/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -1,28 +1,67 @@
-﻿@model IEnumerable<Project_sem_3.Models.Answer>
+﻿@model X.PagedList.IPagedList<Project_sem_3.Models.Answer>
+@using X.PagedList.Mvc.Core
+
 @{
-    ViewData["Title"] = "Danh sách đáp án";
     Layout = "_Admin";
+    ViewData["Title"] = "Answer List";
+
+    // Get current Active status for filtering
+    int? currentActive = null;
+    if (ViewBag.Active != null)
+    {
+        currentActive = (int?)ViewBag.Active;
+    }
 }
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Danh sách đáp án</h6>
-    <a asp-action="Create"
-       class="btn btn-primary d-flex align-items-center gap-2 px-20 py-10 radius-8">
-        <iconify-icon icon="solar:add-circle-bold-duotone" class="text-lg"></iconify-icon>
-        Thêm đáp án mới
-    </a>
+    <h6 class="fw-semibold mb-0">Answer List</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-controller="Home" asp-action="Index"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline"
+                              class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Answers</li>
+    </ul>
 </div>
 
-<div class="card border-0 shadow-sm radius-12">
+<div class="card h-100 p-0 radius-12">
+    <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+        <div class="d-flex align-items-center flex-wrap gap-3">
+            <!-- 👉 Filter by Active status -->
+            <form method="get" class="d-flex align-items-center gap-2">
+                <label class="fw-medium text-secondary-light mb-0">Status:</label>
+                <select name="active" class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
+                        onchange="this.form.submit()">
+                    <option value="">All</option>
+                    <option value="1" selected="@(ViewBag.Active == 1)">Active</option>
+                    <option value="0" selected="@(ViewBag.Active == 0)">Inactive</option>
+                </select>
+            </form>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+            <iconify-icon icon="ic:baseline-plus"
+                          class="icon text-xl line-height-1"></iconify-icon>
+            Add Answer
+        </a>
+    </div>
+
     <div class="card-body p-24">
-        <div class="table-responsive">
-            <table class="table align-middle text-sm mb-0">
-                <thead class="table-light">
+        <div class="table-responsive scroll-sm">
+            <table class="table bordered-table sm-table mb-0">
+                <thead>
                     <tr>
-                        <th>Đúng/Sai</th>
-                        <th>Trạng thái</th>
-                        <th>Mã câu hỏi</th>
-                        <th class="text-center">Hành động</th>
+                        <th>ID</th>
+                        <th>Correct / Incorrect</th>
+                        <th>Status</th>
+                        <th>Question ID</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,42 +70,50 @@
                         foreach (var item in Model)
                         {
                             <tr>
+                                <td>@item.Id</td>
                                 <td>
                                     @if (item.Correctly == true)
                                     {
-                                        <span class="badge bg-success-subtle text-success fw-medium px-12 py-6 radius-4">Đúng</span>
+                                        <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Correct</span>
                                     }
                                     else
                                     {
-                                        <span class="badge bg-danger-subtle text-danger fw-medium px-12 py-6 radius-4">Sai</span>
+                                        <span class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">Incorrect</span>
                                     }
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     @if (item.Status == 1)
                                     {
-                                        <span class="bg-success-focus text-success-600 border border-success-main px-16 py-4 radius-4 fw-medium text-sm">Hiển thị</span>
+                                        <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">Visible</span>
                                     }
                                     else
                                     {
-                                        <span class="bg-warning-focus text-warning-700 border border-warning-main px-16 py-4 radius-4 fw-medium text-sm">Ẩn</span>
+                                        <span class="bg-warning-focus text-warning-700 border border-warning-main px-24 py-4 radius-4 fw-medium text-sm">Hidden</span>
                                     }
                                 </td>
                                 <td>@item.Question?.Id</td>
                                 <td class="text-center">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a asp-action="Edit" asp-route-id="@item.Id"
-                                           class="btn btn-sm btn-outline-primary px-12 py-6 radius-6">
-                                            <iconify-icon icon="solar:pen-bold-duotone" class="text-md"></iconify-icon>
-                                        </a>
+                                    <div class="d-flex align-items-center gap-10 justify-content-center">
                                         <a asp-action="Details" asp-route-id="@item.Id"
-                                           class="btn btn-sm btn-outline-info px-12 py-6 radius-6">
-                                            <iconify-icon icon="solar:eye-bold-duotone" class="text-md"></iconify-icon>
+                                           class="bg-info-focus text-info-600 bg-hover-info-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                                           title="View Details">
+                                            <iconify-icon icon="majesticons:eye-line" class="icon text-xl"></iconify-icon>
                                         </a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id"
-                                           class="btn btn-sm btn-outline-danger px-12 py-6 radius-6"
-                                           onclick="return confirm('Bạn có chắc muốn xóa đáp án này không?');">
-                                            <iconify-icon icon="solar:trash-bin-trash-bold-duotone" class="text-md"></iconify-icon>
+
+                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                           class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                                           title="Edit">
+                                            <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                         </a>
+
+                                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline">
+                                            <button type="submit"
+                                                    class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                                                    onclick="return confirm('Are you sure you want to delete this answer?');"
+                                                    title="Delete">
+                                                <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -75,13 +122,26 @@
                     else
                     {
                         <tr>
-                            <td colspan="5" class="text-center py-4 text-muted">
-                                Không có dữ liệu hiển thị
-                            </td>
+                            <td colspan="5" class="text-center text-muted">No answers found.</td>
                         </tr>
                     }
                 </tbody>
             </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <span>Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount entries</span>
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                         new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "pagination", "d-flex", "flex-wrap", "gap-2" },
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link", "radius-8", "border-0", "bg-neutral-200", "text-secondary-light", "fw-semibold" },
+                    ActiveLiElementClass = "active bg-primary-600 text-white"
+                })
+            </div>
         </div>
     </div>
 </div>

@@ -1,21 +1,21 @@
 ﻿@model Project_sem_3.Models.Answer
 @{
-    ViewData["Title"] = "Thêm đáp án";
+    ViewData["Title"] = "Add Answer";
     Layout = "_Admin";
 }
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Thêm đáp án mới</h6>
+    <h6 class="fw-semibold mb-0">Add New Answer</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
                class="d-flex align-items-center gap-1 hover-text-primary">
                 <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
-                Trang chủ
+                Home
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Thêm đáp án</li>
+        <li class="fw-medium">Add Answer</li>
     </ul>
 </div>
 
@@ -26,47 +26,47 @@
                 <form asp-action="Create" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                    <!-- Câu hỏi -->
+                    <!-- Question -->
                     <div class="mb-20">
                         <label asp-for="QuestionId"
                                class="form-label fw-semibold text-primary-light text-sm mb-8">
-                            Câu hỏi <span class="text-danger">*</span>
+                            Question <span class="text-danger">*</span>
                         </label>
                         <select asp-for="QuestionId" class="form-select radius-8" asp-items="ViewBag.QuestionId">
-                            <option value="">-- Chọn câu hỏi --</option>
+                            <option value="">-- Select a Question --</option>
                         </select>
                         <span asp-validation-for="QuestionId" class="text-danger"></span>
                     </div>
 
-                    <!-- Nội dung đáp án -->
+                    <!-- Answer Content -->
                     <div class="mb-20">
-                        <label class="form-label"><b>Nội dung đáp án</b></label>
+                        <label class="form-label"><b>Answer Content</b></label>
                         <textarea asp-for="AnswerContent" class="form-control"></textarea>
-
+                        <span asp-validation-for="AnswerContent" class="text-danger"></span>
                     </div>
 
-                    <!-- Đúng/Sai -->
+                    <!-- Correct / Incorrect -->
                     <div class="mb-20">
                         <label asp-for="Correctly"
                                class="form-label fw-semibold text-primary-light text-sm mb-8">
-                            Đáp án đúng?
+                            Is Correct Answer?
                         </label>
                         <select asp-for="Correctly" class="form-select radius-8">
-                            <option value="true">Đúng</option>
-                            <option value="false">Sai</option>
+                            <option value="true">Correct</option>
+                            <option value="false">Incorrect</option>
                         </select>
                         <span asp-validation-for="Correctly" class="text-danger"></span>
                     </div>
 
-                    <!-- Trạng thái -->
+                    <!-- Status -->
                     <div class="mb-20">
                         <label asp-for="Status"
                                class="form-label fw-semibold text-primary-light text-sm mb-8">
-                            Trạng thái
+                            Status
                         </label>
                         <select asp-for="Status" class="form-select radius-8">
-                            <option value="1">Hiển thị</option>
-                            <option value="0">Ẩn</option>
+                            <option value="1">Visible</option>
+                            <option value="0">Hidden</option>
                         </select>
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
@@ -74,11 +74,11 @@
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
                         <a asp-action="Index"
                            class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
-                            Hủy
+                            Cancel
                         </a>
                         <button type="submit"
                                 class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
-                            Thêm mới
+                            Add New
                         </button>
                     </div>
                 </form>
@@ -88,30 +88,30 @@
 </div>
 
 @section Scripts {
-    <!-- jQuery phải load đầu tiên -->
+    <!-- jQuery must load first -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-    <!-- Sau đó mới đến các plugin phụ thuộc jQuery -->
+    <!-- Then load jQuery-dependent plugins -->
     <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
     <script src="~/elfinder/js/elfinder.min.js"></script>
 
-    <!-- Cuối cùng là CKEditor -->
+    <!-- Finally load CKEditor -->
     <script src="~/ckeditor/ckeditor.js"></script>
 
     <script>
         $(document).ready(function () {
-            // Mở trình quản lý file elFinder (nếu bạn có nút #btnBrowse)
+            // Open elFinder file manager (if #btnBrowse exists)
             if ($('#btnBrowse').length > 0) {
                 $('#btnBrowse').click(function () {
                     $('<div id="elfinder" />').dialogelfinder({
-                        url: '/quan-ly-tep-tin/connector',
+                        url: '/file-manager/connector',
                         baseUrl: "/elfinder/",
                         width: 840,
                         height: 450,
                         destroyOnClose: true,
-                        title: 'Quản lý tệp tin',
+                        title: 'File Manager',
                         getFileCallback: function (files, fm) {
                             $('#Contact').val('/' + files[0].path);
                             $('#ContactView').attr('src', '/' + files[0].path);
@@ -126,7 +126,7 @@
                 });
             }
 
-            // Khởi tạo CKEditor
+            // Initialize CKEditor
             if (document.getElementById('AnswerContent')) {
                 CKEDITOR.replace('AnswerContent');
             }
@@ -135,4 +135,3 @@
 
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
-

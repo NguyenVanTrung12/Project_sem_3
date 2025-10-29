@@ -1,20 +1,17 @@
 ﻿@model X.PagedList.IPagedList<Project_sem_3.Models.Banner>
 @using X.PagedList.Mvc.Core;
 
-
 @{
     Layout = "_Admin";
 
-    // Lấy giá trị postion từ ViewBag (đã set trong Controller)
     int? currentPostion = null;
     if (ViewBag.Postion != null)
     {
-        // ViewBag.Postion là kiểu dynamic; ép sang int?
         currentPostion = (int?)ViewBag.Postion;
     }
 }
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Danh sách Banner</h6>
+    <h6 class="fw-semibold mb-0">Banner List</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a asp-controller="Home" asp-action="Index"
@@ -33,16 +30,26 @@
     <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
 
         <div class="d-flex align-items-center flex-wrap gap-3">
-            <!-- Lọc theo vị trí -->
             <form method="get" class="d-flex align-items-center gap-2">
-                <label class="fw-medium text-secondary-light mb-0">Vị trí:</label>
+                <label class="fw-medium text-secondary-light mb-0">Position:</label>
                 <select name="postion" class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
                         onchange="this.form.submit()">
-                    <option value="1" selected="@(currentPostion == 1)">1</option>
-                    <option value="2" selected="@(currentPostion == 2)">2</option>
-                    <option value="3" selected="@(currentPostion == 3)">3</option>
-                    <option value="4" selected="@(currentPostion == 4)">4</option>
+                    <option value="">All</option>
+                    <option value="1" selected="@(ViewBag.Postion == 1)">1</option>
+                    <option value="2" selected="@(ViewBag.Postion == 2)">2</option>
+                    <option value="3" selected="@(ViewBag.Postion == 3)">3</option>
+                    <option value="4" selected="@(ViewBag.Postion == 4)">4</option>
+                </select>
+            </form>
 
+            <form method="get" class="d-flex align-items-center gap-2">
+                <input type="hidden" name="postion" value="@ViewBag.Postion" />
+                <label class="fw-medium text-secondary-light mb-0">Status:</label>
+                <select name="active" class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
+                        onchange="this.form.submit()">
+                    <option value="">All</option>
+                    <option value="1" selected="@(ViewBag.Active == 1)">Active</option>
+                    <option value="0" selected="@(ViewBag.Active == 0)">Inactive</option>
                 </select>
             </form>
         </div>
@@ -51,7 +58,7 @@
            class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
             <iconify-icon icon="ic:baseline-plus"
                           class="icon text-xl line-height-1"></iconify-icon>
-            Thêm Banner
+            Add Banner
         </a>
     </div>
 
@@ -61,12 +68,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tên banner</th>
-                        <th>Hình ảnh</th>
-                        <th>Mô tả</th>
-                        <th>Vị trí</th>
-                        <th class="text-center">Trạng thái</th>
-                        <th class="text-center">Hành động</th>
+                        <th>Banner Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Position</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,7 +94,7 @@
                                     }
                                     else
                                     {
-                                        <span class="text-muted">Không có ảnh</span>
+                                        <span class="text-muted">No Image</span>
                                     }
                                 </td>
                                 <td>@item.Description</td>
@@ -117,7 +124,7 @@
                                         <form asp-controller="Banner" asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline">
                                             <button type="submit"
                                                     class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                                    onclick="return confirm('Bạn có chắc muốn xóa banner này không?');">
+                                                    onclick="return confirm('Are you sure you want to delete this banner?');">
                                                 <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                                             </button>
                                         </form>
@@ -129,16 +136,15 @@
                     else
                     {
                         <tr>
-                            <td colspan="7" class="text-center text-muted">Không có banner nào.</td>
+                            <td colspan="7" class="text-center text-muted">No banners found.</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <!-- Phân trang -->
         <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
-            <span>Trang @Model.PageNumber / @Model.PageCount (Tổng: @Model.TotalItemCount)</span>
+            <span>Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount entries</span>
             <div>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
                          new PagedListRenderOptions

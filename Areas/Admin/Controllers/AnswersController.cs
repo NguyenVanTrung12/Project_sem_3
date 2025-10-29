@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
+using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
@@ -20,11 +21,31 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/Answers
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
-            var online_aptitude_testsContext = _context.Answers.Include(a => a.Question);
-            return View(await online_aptitude_testsContext.ToListAsync());
+            int pageSize = 5;
+            var LstBanner = _context.Answers.AsQueryable();
+
+
+
+            // 👉 Thêm lọc theo trạng thái
+            if (active.HasValue)
+            {
+                LstBanner = LstBanner.Where(x => x.Status == active.Value);
+            }
+
+            // Phân trang
+            var LstBanners = LstBanner
+                .OrderByDescending(a => a.Id)
+                .ToPagedList(page, pageSize);
+
+            // Gửi dữ liệu xuống View
+
+            ViewBag.Status = active;
+
+            return View(LstBanners);
         }
+
 
         // GET: Admin/Answers/Details/5
         public async Task<IActionResult> Details(int? id)
