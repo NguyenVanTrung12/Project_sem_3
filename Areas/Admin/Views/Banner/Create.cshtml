@@ -1,0 +1,119 @@
+﻿@model Project_sem_3.Models.Banner
+
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Add New Banner</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline"
+                              class="icon text-lg"></iconify-icon>
+                Admin Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Add New Banner</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+                        <h6 class="text-md text-primary-light mb-16">
+                            Banner Information
+                        </h6>
+
+                        <form asp-action="Create" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <!-- 🏷 Banner Name -->
+                            <div class="mb-20">
+                                <label for="Name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Banner Name <span class="text-danger-600">*</span>
+                                </label>
+                                <input asp-for="Name"
+                                       class="form-control radius-8"
+                                       placeholder="Enter banner name" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <!-- 🖼 Banner Image -->
+                            <div class="mb-20">
+                                <label for="Image"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Banner Image
+                                </label>
+                                <input asp-for="Image" type="file" class="form-control radius-8" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+
+                            <!-- 📝 Description -->
+                            <div class="mb-20">
+                                <label for="Description"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Description
+                                </label>
+                                <textarea asp-for="Description"
+                                          class="form-control radius-8"
+                                          placeholder="Enter description..."></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <!-- 📍 Position -->
+                            <div class="mb-20">
+                                <label for="Postion"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Display Position <span class="text-danger-600">*</span>
+                                </label>
+                                <select asp-for="Postion"
+                                        class="form-control radius-8 form-select">
+                                    <option value="">-- Select Position --</option>
+                                    <option value="1">Top Banner</option>
+                                    <option value="2">Middle Banner</option>
+                                    <option value="3">Bottom Banner</option>
+                                    <option value="4">Right Banner</option>
+                                </select>
+                                <span asp-validation-for="Postion" class="text-danger"></span>
+                            </div>
+
+                            <!-- ✅ Status -->
+                            <div class="mb-20">
+                                <label for="Active"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Status
+                                </label>
+                                <select asp-for="Active"
+                                        class="form-control radius-8 form-select">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                                <span asp-validation-for="Active" class="text-danger"></span>
+                            </div>
+
+                            <!-- 🔘 Buttons -->
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index"
+                                   class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
+                                    Cancel
+                                </a>
+                                <button type="submit"
+                                        class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

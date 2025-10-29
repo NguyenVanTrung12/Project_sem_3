@@ -1,0 +1,158 @@
+﻿@model Project_sem_3.Models.Contact
+@{
+    ViewData["Title"] = "Edit Contact";
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Edit Contact</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline"
+                              class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Edit Contact</li>
+    </ul>
+</div>
+
+<div class="card border-0 shadow-sm radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-20">
+                        <label asp-for="FullName"
+                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                            Full Name <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="FullName"
+                               class="form-control radius-8"
+                               placeholder="Enter full name" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-20">
+                        <label asp-for="Email"
+                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                            Email <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="Email"
+                               class="form-control radius-8"
+                               placeholder="Enter email address" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-20">
+                        <label asp-for="Subject"
+                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                            Subject
+                        </label>
+                        <input asp-for="Subject"
+                               class="form-control radius-8"
+                               placeholder="Enter subject" />
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-20">
+                        <label class="form-label"><b>Message Content</b></label>
+                        <textarea asp-for="Message" class="form-control"></textarea>
+                    </div>
+
+                    <div class="mb-20">
+                        <label asp-for="Status"
+                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                            Status
+                        </label>
+                        <select asp-for="Status" class="form-select radius-8">
+                            <option value="0">Pending</option>
+                            <option value="1">Processed</option>
+                            <option value="2">Closed</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-20">
+                        <label asp-for="CreatedDate"
+                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                            Created Date
+                        </label>
+                        <input asp-for="CreatedDate"
+                               type="datetime-local"
+                               class="form-control radius-8" />
+                        <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
+                        <a asp-action="Index"
+                           class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
+                            Cancel
+                        </a>
+                        <button type="submit"
+                                class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <!-- jQuery phải load đầu tiên -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Sau đó mới đến các plugin phụ thuộc jQuery -->
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/elfinder/js/elfinder.min.js"></script>
+
+    <!-- Cuối cùng là CKEditor -->
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Mở trình quản lý file elFinder (nếu bạn có nút #btnBrowse)
+            if ($('#btnBrowse').length > 0) {
+                $('#btnBrowse').click(function () {
+                    $('<div id="elfinder" />').dialogelfinder({
+                        url: '/quan-ly-tep-tin/connector',
+                        baseUrl: "/elfinder/",
+                        width: 840,
+                        height: 450,
+                        destroyOnClose: true,
+                        title: 'Quản lý tệp tin',
+                        getFileCallback: function (files, fm) {
+                            $('#Contact').val('/' + files[0].path);
+                            $('#ContactView').attr('src', '/' + files[0].path);
+                        },
+                        commandsOptions: {
+                            getfile: {
+                                multiple: false,
+                                oncomplete: 'close'
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Khởi tạo CKEditor
+            if (document.getElementById('Message')) {
+                CKEDITOR.replace('Message');
+            }
+        });
+    </script>
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
