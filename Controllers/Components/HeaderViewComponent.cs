@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Project_sem_3.Areas.Admin.Controllers.Controllers.Components
+namespace Project_sem_3.Controllers.Components
 {
     public class HeaderViewComponent : ViewComponent
     {

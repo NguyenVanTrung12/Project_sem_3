@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
 
-namespace Project_sem_3.Areas.Admin.Controllers.Controllers
+namespace Project_sem_3.Areas.Admin.Controllers
 {
     public class ResultDetailsController : Controller
     {

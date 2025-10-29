@@ -7,25 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
 
-namespace Project_sem_3.Areas.Admin.Controllers.Controllers
+namespace Project_sem_3.Areas.Admin.Controllers
 {
-    public class ResultsController : Controller
+    public class TransfersController : Controller
     {
         private readonly online_aptitude_testsContext _context;
 
-        public ResultsController(online_aptitude_testsContext context)
+        public TransfersController(online_aptitude_testsContext context)
         {
             _context = context;
         }
 
-        // GET: Results
+        // GET: Transfers
         public async Task<IActionResult> Index()
         {
-            var online_aptitude_testsContext = _context.Results.Include(r => r.Candidate).Include(r => r.Subject).Include(r => r.Type);
+            var online_aptitude_testsContext = _context.Transfers.Include(t => t.Candidate);
             return View(await online_aptitude_testsContext.ToListAsync());
         }
 
-        // GET: Results/Details/5
+        // GET: Transfers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,48 +33,42 @@ namespace Project_sem_3.Areas.Admin.Controllers.Controllers
                 return NotFound();
             }
 
-            var result = await _context.Results
-                .Include(r => r.Candidate)
-                .Include(r => r.Subject)
-                .Include(r => r.Type)
+            var transfer = await _context.Transfers
+                .Include(t => t.Candidate)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (result == null)
+            if (transfer == null)
             {
                 return NotFound();
             }
 
-            return View(result);
+            return View(transfer);
         }
 
-        // GET: Results/Create
+        // GET: Transfers/Create
         public IActionResult Create()
         {
             ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address");
-            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "Id");
-            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "Id");
             return View();
         }
 
-        // POST: Results/Create
+        // POST: Transfers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CandidateId,SubjectId,TypeId,TotalMark,SubmitDate,Status")] Result result)
+        public async Task<IActionResult> Create([Bind("Id,CandidateId,TransferDate,FromStage,ToStage")] Transfer transfer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(result);
+                _context.Add(transfer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", result.CandidateId);
-            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "Id", result.SubjectId);
-            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "Id", result.TypeId);
-            return View(result);
+            ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", transfer.CandidateId);
+            return View(transfer);
         }
 
-        // GET: Results/Edit/5
+        // GET: Transfers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,25 +76,23 @@ namespace Project_sem_3.Areas.Admin.Controllers.Controllers
                 return NotFound();
             }
 
-            var result = await _context.Results.FindAsync(id);
-            if (result == null)
+            var transfer = await _context.Transfers.FindAsync(id);
+            if (transfer == null)
             {
                 return NotFound();
             }
-            ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", result.CandidateId);
-            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "Id", result.SubjectId);
-            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "Id", result.TypeId);
-            return View(result);
+            ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", transfer.CandidateId);
+            return View(transfer);
         }
 
-        // POST: Results/Edit/5
+        // POST: Transfers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CandidateId,SubjectId,TypeId,TotalMark,SubmitDate,Status")] Result result)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CandidateId,TransferDate,FromStage,ToStage")] Transfer transfer)
         {
-            if (id != result.Id)
+            if (id != transfer.Id)
             {
                 return NotFound();
             }
@@ -109,12 +101,12 @@ namespace Project_sem_3.Areas.Admin.Controllers.Controllers
             {
                 try
                 {
-                    _context.Update(result);
+                    _context.Update(transfer);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ResultExists(result.Id))
+                    if (!TransferExists(transfer.Id))
                     {
                         return NotFound();
                     }
@@ -125,13 +117,11 @@ namespace Project_sem_3.Areas.Admin.Controllers.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", result.CandidateId);
-            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "Id", result.SubjectId);
-            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "Id", result.TypeId);
-            return View(result);
+            ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", transfer.CandidateId);
+            return View(transfer);
         }
 
-        // GET: Results/Delete/5
+        // GET: Transfers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,37 +129,35 @@ namespace Project_sem_3.Areas.Admin.Controllers.Controllers
                 return NotFound();
             }
 
-            var result = await _context.Results
-                .Include(r => r.Candidate)
-                .Include(r => r.Subject)
-                .Include(r => r.Type)
+            var transfer = await _context.Transfers
+                .Include(t => t.Candidate)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (result == null)
+            if (transfer == null)
             {
                 return NotFound();
             }
 
-            return View(result);
+            return View(transfer);
         }
 
-        // POST: Results/Delete/5
+        // POST: Transfers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var result = await _context.Results.FindAsync(id);
-            if (result != null)
+            var transfer = await _context.Transfers.FindAsync(id);
+            if (transfer != null)
             {
-                _context.Results.Remove(result);
+                _context.Transfers.Remove(transfer);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ResultExists(int id)
+        private bool TransferExists(int id)
         {
-            return _context.Results.Any(e => e.Id == id);
+            return _context.Transfers.Any(e => e.Id == id);
         }
     }
 }
