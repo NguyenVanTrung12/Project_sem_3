@@ -1,0 +1,166 @@
+﻿@model X.PagedList.IPagedList<Project_sem_3.Models.Blog>
+@using X.PagedList.Mvc.Core
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Blogs</h6>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+        <div class="d-flex align-items-center flex-wrap gap-3">
+            <span class="text-md fw-medium text-secondary-light mb-0">Show</span>
+            <select class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px">
+                <option>1</option>
+            </select>
+            <form class="navbar-search">
+                <input type="text"
+                       class="bg-base h-40-px w-auto"
+                       name="search"
+                       placeholder="Search" />
+                <iconify-icon icon="ion:search-outline"
+                              class="icon"></iconify-icon>
+            </form>
+            <select class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px">
+                <option>Status</option>
+                <option>Active</option>
+                <option>Inactive</option>
+            </select>
+        </div>
+        <a asp-controller="Blogs" asp-action="Create"
+           class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+            <iconify-icon icon="ic:baseline-plus"
+                          class="icon text-xl line-height-1"></iconify-icon>
+            Add New Blogs
+        </a>
+    </div>
+
+    <div class="card-body p-24">
+        <div class="table-responsive scroll-sm">
+            <table class="table bordered-table sm-table mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-10">
+                                <div class="form-check style-check d-flex align-items-center">
+                                    <input class="form-check-input radius-4 border input-form-dark"
+                                           type="checkbox"
+                                           name="checkbox"
+                                           id="selectAll" />
+                                </div>
+                                S.L
+                            </div>
+                        </th>
+                        <th scope="col">BlogId</th>
+                        <th scope="col">BlogCategorys</th>
+                        <th scope="col">Managers</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Image</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-10">
+                                    <div class="form-check style-check d-flex align-items-center">
+                                        <input class="form-check-input radius-4 border border-neutral-400"
+                                               type="checkbox"
+                                               name="checkbox" />
+                                    </div>
+                                    10
+                                </div>
+                            </td>
+
+                            <td>@item.Id</td>
+                            <td>@item.BlogCategory.CategoryName</td>
+                            <td>@item.Manager.Fullname</td>
+                            <td>@item.Title</td>
+                            <td>
+                                <img src="@item.Image" alt="Blog Image" style="width: 80px; height: auto;" />
+                            </td>
+
+                            @if (item.Status == 1)
+                            {
+                                <td class="text-center">
+                                    <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">
+                                        Active
+                                    </span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center">
+                                    <span class="bg-neutral-200 text-neutral-600 border border-neutral-400 px-24 py-4 radius-4 fw-medium text-sm">
+                                        InActive
+                                    </span>
+                                </td>
+                            }
+
+                            <td class="text-center">
+                                <div class="d-flex align-items-center gap-10 justify-content-center">
+                                   
+
+                                    <a asp-controller="Blogs" asp-action="Edit" asp-route-id="@item.Id"
+                                       class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                        <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
+                                    </a>
+
+                                    <a asp-controller="Blogs" asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('ban co chac muon xoa khong')"
+                                       class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                        <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+            <span>
+                Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount entries
+            </span>
+
+            <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
+                <!-- Nút Prev -->
+                <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                    <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
+                       asp-action="Index" asp-route-page="@(Model.PageNumber - 1)">
+                        <iconify-icon icon="ep:d-arrow-left"></iconify-icon>
+                    </a>
+                </li>
+
+                <!-- Các số trang -->
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <li class="page-item">
+                        <a class="page-link fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md @(Model.PageNumber == i ? "bg-primary-600 text-white" : "bg-neutral-200 text-secondary-light")"
+                           asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                }
+
+                <!-- Nút Next -->
+                <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                    <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
+                       asp-action="Index" asp-route-page="@(Model.PageNumber + 1)">
+                        <iconify-icon icon="ep:d-arrow-right"></iconify-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

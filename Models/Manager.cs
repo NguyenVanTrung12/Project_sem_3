@@ -13,13 +13,13 @@ namespace Project_sem_3.Models
 
         public int Id { get; set; }
         public string Username { get; set; } = null!;
-        public string PasswordHash { get; set; } = null!;
+        public string? PasswordHash { get; set; }
         public string Fullname { get; set; } = null!;
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public int? RoleId { get; set; }
         public int? Status { get; set; }
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
 
         public virtual Role? Role { get; set; }
         public virtual ICollection<Blog> Blogs { get; set; }

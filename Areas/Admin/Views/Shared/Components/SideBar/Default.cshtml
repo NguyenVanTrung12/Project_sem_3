@@ -3,7 +3,7 @@
         <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
     </button>
     <div>
-        <a href="index.html" class="sidebar-logo">
+        <a href="/admin" class="sidebar-logo">
             <img src="assets/images/logo.png"
                  alt="site logo"
                  class="light-logo" />
@@ -52,49 +52,92 @@
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline"
                                   class="menu-icon"></iconify-icon>
-                    <span>Users</span>
+                    <span>Blogs</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="users-list.html">
+                        <a asp-controller="Blogs" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Users List
+                            Blogs List
                         </a>
                     </li>
 
                     <li>
-                        <a href="add-user.html">
+                        <a asp-controller="Blogs" asp-action="Create">
                             <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Add User
+                            Add Blogs
                         </a>
                     </li>
-                    <li>
-                        <a href="view-profile.html">
-                            <i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                            View Profile
-                        </a>
-                    </li>
+                   
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline"
                                   class="menu-icon"></iconify-icon>
-                    <span>Candidate</span>
+                    <span>BlogCategories</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="/list-candidate.html">
+                        <a asp-controller="BlogCategories" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Candidate List
+                            BlogCategories List
                         </a>
                     </li>
+
                     <li>
-                        <a href="/add-candidate.html">
+                        <a asp-controller="BlogCategories" asp-action="Create">
                             <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Add Candidate
+                            Add BlogCategories
                         </a>
                     </li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline"
+                                  class="menu-icon"></iconify-icon>
+                    <span>Managers</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a asp-controller="Managers" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Managers List
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Managers" asp-action="Create">
+                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
+                            Add Managers
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline"
+                                  class="menu-icon"></iconify-icon>
+                    <span>InterviewSchedules</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a asp-controller="InterviewSchedules" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            InterviewSchedules List
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="InterviewSchedules" asp-action="Create">
+                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
+                            Add InterviewSchedules
+                        </a>
+                    </li>
+
                 </ul>
             </li>
         </ul>

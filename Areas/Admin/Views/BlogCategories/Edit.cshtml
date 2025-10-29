@@ -1,0 +1,69 @@
+﻿@model Project_sem_3.Models.BlogCategory;
+
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Edit BlogCategories</h6>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+
+                        <form asp-controller="BlogCategories" asp-action="Edit" method="post">
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    BlogCategoryName
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="text" asp-for="CategoryName" class="form-control radius-8" placeholder="Enter Full Name" />
+                                <span asp-validation-for="CategoryName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label for="desc"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">Description</label>
+                                <textarea class="form-control radius-8" asp-for="Description"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Status <span class="text-danger-600">*</span>
+                                </label>
+
+                                <div class="form-check form-switch">
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           id="statusSwitch"
+                                           name="Status"
+                                           value="1"
+                                           @(Model != null && Model.Status == 1 ? "checked" : "") />
+                                    <label class="form-check-label" for="statusSwitch">
+                                        @(Model != null && Model.Status == 1 ? "Active" : "Inactive")
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-controller="BlogCategories" asp-action="Index" type="button"
+                                   class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
+                                    Cancel
+                                </a>
+                                <button type="submit"
+                                        class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -582,5 +582,16 @@
     <script src="~/admin/assets/js/app.js"></script>
 
     <script src="~/admin/assets/js/homeOneChart.js"></script>
+
+    <script>
+        function toggleStatusLabel(checkbox) {
+            const label = document.getElementById('statusLabel');
+            if (checkbox.checked) {
+                label.textContent = 'Active';
+            } else {
+                label.textContent = 'Inactive';
+            }
+        }
+    </script>
 </body>
 </html>
