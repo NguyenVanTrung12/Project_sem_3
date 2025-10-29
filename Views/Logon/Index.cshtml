@@ -1,0 +1,50 @@
+﻿
+<div id="candidate-login" class="page" style="font-family: Arial, sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div class="login-container" style="width: 400px;">
+        <div class="login-box" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h2 class="login-title" style="text-align: center; color: #2d3436;">🎓 Đăng nhập hệ thống</h2>
+            <p class="login-subtitle" style="text-align: center; color: #636e72; margin-bottom: 15px;">
+                Chào mừng bạn đến với hệ thống kiểm tra năng lực trực tuyến
+            </p>
+
+            <!-- Thông báo lỗi -->
+            @if (ViewBag.Error != null)
+            {
+                <div class="error-box" style="background-color: #ffecec; border: 1px solid #ff6b6b; color: #c0392b; padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; text-align:center;">
+                    ⚠️ @ViewBag.Error
+                </div>
+            }
+
+            <form asp-action="Index" asp-controller="Logon" method="post">
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Tên đăng nhập</label>
+                    <input type="text" name="username" placeholder="Nhập username hoặc mã ứng viên"
+                           style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px;" />
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Mật khẩu</label>
+                    <input type="password" name="password" placeholder="Nhập mật khẩu"
+                           style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px;" />
+                </div>
+
+                <div class="form-options" style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; margin-bottom: 20px;">
+                    <label class="remember" style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" /> Ghi nhớ đăng nhập
+                    </label>
+                    <a href="#" class="forgot-link" style="color: #0984e3; text-decoration: none;">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit" class="btn-login"
+                        style="width: 100%; background-color: #0984e3; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s;">
+                    Đăng nhập
+                </button>
+
+                <p class="register-text" style="text-align: center; margin-top: 20px; color: #636e72;">
+                    Chưa có tài khoản?
+                    <a href="#" style="color: #0984e3; text-decoration: none;">Đăng ký ngay</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

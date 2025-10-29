@@ -14,10 +14,6 @@ namespace Project_sem_3.Controllers
         {
             return View();
         }
-        [Route("Login")]
-        public IActionResult Login()
-        {
-            return View();
-        }
+      
     }
 }

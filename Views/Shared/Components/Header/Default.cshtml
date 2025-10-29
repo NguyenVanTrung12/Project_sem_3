@@ -1,4 +1,10 @@
-﻿<header class="header-area">
+﻿@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var fullname = HttpContextAccessor.HttpContext.Session.GetString("CandidateName");
+}
+
+<header class="header-area">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-9">
@@ -84,26 +90,56 @@
                     </ul>
 
                     <div class="other-option">
-                        <div class="search-bar">
-                            <i class="flaticon-search search-icon"></i>
-                            <div class="search-form">
-                                <form>
-                                    <input type="text" placeholder="Search" class="search-input">
-                                    <button type="submit">
-                                        <i class="flaticon-search search-btn"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                       
 
-                        <div class="sidebar-toggle">
-                            <a asp-controller="Candidate" asp-action="login">
-                                <button type="button" class="btn btn-demo  navbar-toggle">
-                                    <i class="fa-solid fa-user"></i>
-                                </button>
-                            </a>
-                            
-                        </div>
+                     
+                            @if (string.IsNullOrEmpty(fullname))
+                            {
+                            <div class="search-bar">
+                                <i class="flaticon-search search-icon"></i>
+                                <div class="search-form">
+                                    <form>
+                                        <input type="text" placeholder="Search" class="search-input">
+                                        <button type="submit">
+                                            <i class="flaticon-search search-btn"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="sidebar-toggle">
+                                <a asp-controller="Logon" asp-action="Index">
+                                    <button type="button" class="btn btn-demo navbar-toggle">
+                                        <i class="fa-solid fa-user"></i>
+                                    </button>
+                                </a>
+                                </div>
+                            }
+                            else
+                            {
+                            <span class="navbar-text me-2 text-danger">
+                                Hello, @fullname
+                            </span>
+                            <div class="search-bar">
+                                <i class="flaticon-search search-icon"></i>
+                                <div class="search-form">
+                                    <form>
+                                        <input type="text" placeholder="Search" class="search-input">
+                                        <button type="submit">
+                                            <i class="flaticon-search search-btn"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="sidebar-toggle">
+                             
+                                <a asp-controller="Logon" asp-action="Logout">
+                                    <button type="button" class="btn btn-demo navbar-toggle">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                    </button>
+                                </a>
+                             </div>
+                            }
+                     
                     </div>
                 </div>
             </nav>
