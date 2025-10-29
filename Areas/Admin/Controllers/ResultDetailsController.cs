@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
+using X.PagedList;
+using X.PagedList.Mvc.Core;
+
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
@@ -21,9 +24,15 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // GET: ResultDetails
         public async Task<IActionResult> Index()
         {
-            var online_aptitude_testsContext = _context.ResultDetails.Include(r => r.Answer).Include(r => r.Question).Include(r => r.Result);
-            return View(await online_aptitude_testsContext.ToListAsync());
+            var resultDetails = _context.ResultDetails
+                .Include(r => r.Answer)
+                .Include(r => r.Question)
+                .Include(r => r.Result)
+                .ToList();
+
+            return View(resultDetails);
         }
+
 
         // GET: ResultDetails/Details/5
         public async Task<IActionResult> Details(int? id)

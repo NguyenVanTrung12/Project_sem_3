@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +8,7 @@ using Project_sem_3.Models;
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class TransfersController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -19,23 +19,27 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Transfers
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var online_aptitude_testsContext = _context.Transfers.Include(t => t.Candidate);
-            return View(await online_aptitude_testsContext.ToListAsync());
+            var transfers = _context.Transfers
+                .Include(t => t.Candidate)
+                .ToList();
+
+            return View(transfers);
         }
 
         // GET: Transfers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var transfer = await _context.Transfers
+            var transfer = _context.Transfers
                 .Include(t => t.Candidate)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefault(m => m.Id == id);
+
             if (transfer == null)
             {
                 return NotFound();
@@ -52,45 +56,43 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // POST: Transfers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CandidateId,TransferDate,FromStage,ToStage")] Transfer transfer)
+        public IActionResult Create([Bind("Id,CandidateId,TransferDate,FromStage,ToStage")] Transfer transfer)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(transfer);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", transfer.CandidateId);
             return View(transfer);
         }
 
         // GET: Transfers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var transfer = await _context.Transfers.FindAsync(id);
+            var transfer = _context.Transfers.Find(id);
             if (transfer == null)
             {
                 return NotFound();
             }
+
             ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", transfer.CandidateId);
             return View(transfer);
         }
 
         // POST: Transfers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CandidateId,TransferDate,FromStage,ToStage")] Transfer transfer)
+        public IActionResult Edit(int id, [Bind("Id,CandidateId,TransferDate,FromStage,ToStage")] Transfer transfer)
         {
             if (id != transfer.Id)
             {
@@ -102,7 +104,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(transfer);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,21 +119,23 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CandidateId"] = new SelectList(_context.Candidates, "Id", "Address", transfer.CandidateId);
             return View(transfer);
         }
 
         // GET: Transfers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var transfer = await _context.Transfers
+            var transfer = _context.Transfers
                 .Include(t => t.Candidate)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefault(m => m.Id == id);
+
             if (transfer == null)
             {
                 return NotFound();
@@ -143,15 +147,15 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // POST: Transfers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var transfer = await _context.Transfers.FindAsync(id);
+            var transfer = _context.Transfers.Find(id);
             if (transfer != null)
             {
                 _context.Transfers.Remove(transfer);
+                _context.SaveChanges();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

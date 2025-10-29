@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
@@ -19,11 +21,23 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Results
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index(int? page)
         {
-            var online_aptitude_testsContext = _context.Results.Include(r => r.Candidate).Include(r => r.Subject).Include(r => r.Type);
-            return View(await online_aptitude_testsContext.ToListAsync());
+            int pageNumber = page ?? 1;
+            int pageSize = 10;
+
+            var results = _context.Results
+                .Include(r => r.Candidate)
+                .Include(r => r.Subject)
+                .Include(r => r.Type)
+                .OrderByDescending(r => r.Id)
+                .ToPagedList(pageNumber, pageSize);
+
+            return View(results);
         }
+
+
 
         // GET: Results/Details/5
         public async Task<IActionResult> Details(int? id)
