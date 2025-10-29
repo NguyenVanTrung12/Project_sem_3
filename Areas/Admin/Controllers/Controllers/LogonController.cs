@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Areas.Admin.Helpers;
 using Project_sem_3.Models;
 
-namespace Project_sem_3.Controllers
+namespace Project_sem_3.Areas.Admin.Controllers.Controllers
 {
     public class LogonController : Controller
     {

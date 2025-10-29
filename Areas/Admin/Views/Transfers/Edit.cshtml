@@ -1,0 +1,47 @@
+﻿@model Project_sem_3.Models.Transfer
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Transfer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CandidateId" class="control-label"></label>
+                <select asp-for="CandidateId" class="form-control" asp-items="ViewBag.CandidateId"></select>
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransferDate" class="control-label"></label>
+                <input asp-for="TransferDate" class="form-control" />
+                <span asp-validation-for="TransferDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromStage" class="control-label"></label>
+                <input asp-for="FromStage" class="form-control" />
+                <span asp-validation-for="FromStage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToStage" class="control-label"></label>
+                <input asp-for="ToStage" class="form-control" />
+                <span asp-validation-for="ToStage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -27,7 +27,6 @@ var app = builder.Build();
 builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
-var app = builder.Build();
 // 🧩 Seed tài khoản Super Manager mặc định
 using (var scope = app.Services.CreateScope())
 {
