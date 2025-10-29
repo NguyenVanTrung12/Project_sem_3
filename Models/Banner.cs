@@ -12,8 +12,6 @@ namespace Project_sem_3.Models
         [Display(Name = "Banner Name")]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "Please select a banner image.")]
-        [StringLength(255, ErrorMessage = "Image file name cannot exceed 255 characters.")]
         [Display(Name = "Banner Image")]
         public string? Image { get; set; }
 
