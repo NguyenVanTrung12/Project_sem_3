@@ -1,0 +1,129 @@
+﻿@model X.PagedList.IPagedList<Project_sem_3.Models.Contact>
+@using X.PagedList.Mvc.Core;
+
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Danh sách liên hệ</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-controller="Home" asp-action="Index"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Liên hệ</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center justify-content-between">
+        <h6 class="fw-semibold mb-0">Danh sách liên hệ khách hàng</h6>
+
+        <!-- ✅ Nút thêm mới -->
+        <a asp-area="Admin" asp-controller="Contacts" asp-action="Create"
+           class="btn btn-primary d-flex align-items-center gap-2 radius-8">
+            <iconify-icon icon="solar:add-square-bold-duotone" class="icon text-lg"></iconify-icon>
+            Thêm mới
+        </a>
+    </div>
+
+    <div class="card-body p-24">
+        <div class="table-responsive scroll-sm">
+            <table class="table bordered-table sm-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Chủ đề</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th class="text-center">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FullName</td>
+                                <td>@item.Email</td>
+                                <td>@item.Subject</td>
+                                <td>
+                                    @if (item.Status == 0)
+                                    {
+                                        <span class="bg-warning-focus text-warning-700 border border-warning-main px-16 py-4 radius-4 fw-medium text-sm">
+                                            Đang xử lý
+                                        </span>
+                                    }
+                                    else if (item.Status == 1)
+                                    {
+                                        <span class="bg-success-focus text-success-600 border border-success-main px-16 py-4 radius-4 fw-medium text-sm">
+                                            Đã xử lý
+                                        </span>
+                                    }
+                                    else if (item.Status == 2)
+                                    {
+                                        <span class="bg-secondary-focus text-secondary-700 border border-secondary-main px-16 py-4 radius-4 fw-medium text-sm">
+                                            Đã đóng
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>@item.CreatedDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td class="text-center">
+                                    <div class="d-flex align-items-center gap-10 justify-content-center">
+                                        <a asp-controller="Contacts" asp-action="Details" asp-route-id="@item.Id"
+                                           class="bg-info-focus text-info-600 bg-hover-info-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <iconify-icon icon="majesticons:eye-line" class="icon text-xl"></iconify-icon>
+                                        </a>
+
+                                        <a asp-controller="Contacts" asp-action="Edit" asp-route-id="@item.Id"
+                                           class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
+                                        </a>
+
+                                        <form asp-controller="Contacts" asp-action="Delete" asp-route-id="@item.Id"
+                                              method="post" style="display:inline">
+                                            <button type="submit"
+                                                    class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                                                    onclick="return confirm('Bạn có chắc muốn xóa liên hệ này không?');">
+                                                <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">Không có liên hệ nào.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Phân trang -->
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <span>Trang @Model.PageNumber / @Model.PageCount (Tổng: @Model.TotalItemCount)</span>
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                         new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "pagination", "d-flex", "flex-wrap", "gap-2" },
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link", "radius-8", "border-0", "bg-neutral-200", "text-secondary-light", "fw-semibold" },
+                    ActiveLiElementClass = "active bg-primary-600 text-white"
+                })
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿@model Project_sem_3.Models.Banner
+
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Thêm mới Banner</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline"
+                              class="icon text-lg"></iconify-icon>
+                Trang quản trị
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Thêm mới Banner</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+                        <h6 class="text-md text-primary-light mb-16">
+                            Thông tin Banner
+                        </h6>
+
+                        <form asp-action="Create" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <!-- 🏷 Tên banner -->
+                            <div class="mb-20">
+                                <label for="Name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Tên banner <span class="text-danger-600">*</span>
+                                </label>
+                                <input asp-for="Name"
+                                       class="form-control radius-8"
+                                       placeholder="Nhập tên banner" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <!-- 🖼 Ảnh banner -->
+                            <div class="mb-20">
+                                <label for="Image"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Ảnh banner
+                                </label>
+                                <input asp-for="Image" type="file" class="form-control radius-8" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+
+                            <!-- 📝 Mô tả -->
+                            <div class="mb-20">
+                                <label for="Description"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Mô tả
+                                </label>
+                                <textarea asp-for="Description"
+                                          class="form-control radius-8"
+                                          placeholder="Nhập mô tả..."></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <!-- 📍 Vị trí -->
+                            <div class="mb-20">
+                                <label for="Postion"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Vị trí hiển thị <span class="text-danger-600">*</span>
+                                </label>
+                                <select asp-for="Postion"
+                                        class="form-control radius-8 form-select">
+                                    <option value="">-- Chọn vị trí --</option>
+                                    <option value="1">Banner đầu trang</option>
+                                    <option value="2">Banner giữa trang</option>
+                                    <option value="3">Banner cuối trang</option>
+                                    <option value="4">Banner bên phải</option>
+                                </select>
+                                <span asp-validation-for="Postion" class="text-danger"></span>
+                            </div>
+
+                            <!-- ✅ Trạng thái -->
+                            <div class="mb-20">
+                                <label for="Active"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Trạng thái
+                                </label>
+                                <select asp-for="Active"
+                                        class="form-control radius-8 form-select">
+                                    <option value="1">Hiển thị</option>
+                                    <option value="0">Ẩn</option>
+                                </select>
+                                <span asp-validation-for="Active" class="text-danger"></span>
+                            </div>
+
+                            <!-- 🔘 Nút thao tác -->
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index"
+                                   class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
+                                    Hủy
+                                </a>
+                                <button type="submit"
+                                        class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
+                                    Lưu
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
