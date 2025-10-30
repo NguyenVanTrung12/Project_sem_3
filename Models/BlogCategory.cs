@@ -20,8 +20,8 @@ namespace Project_sem_3.Models
         [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters.")]
         public string? Description { get; set; }
         public int? Status { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public DateTime? UpdatedAt { get; set; } = DateTime.Now;
 
         public virtual ICollection<Blog> Blogs { get; set; }
     }

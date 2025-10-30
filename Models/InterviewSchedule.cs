@@ -11,10 +11,10 @@ namespace Project_sem_3.Models
         [Required(ErrorMessage = "Candidate is required.")]
         public int? CandidateId { get; set; }
 
-        [Required(ErrorMessage = "Interview date is required.")]
+
         [DataType(DataType.Date)]
         [Display(Name = "Interview Date")]
-        public DateTime InterviewDate { get; set; }
+        public DateTime? InterviewDate { get; set; }
 
         [Required(ErrorMessage = "Interviewer name is required.")]
         [StringLength(100, ErrorMessage = "Interviewer name cannot exceed 100 characters.")]
