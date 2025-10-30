@@ -111,12 +111,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 // Gửi email thông tin tài khoản
                 await EmailHelper.SendCandidateAccountEmail(model.Email, username, plainPassword);
 
-                TempData["SuccessMessage"] = $"Đã thêm ứng viên '{model.Fullname}' và gửi tài khoản qua email.";
+                TempData["SuccessMessage"] = $"Candidate added'{model.Fullname}' and send the account via email.";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Lỗi khi tạo ứng viên: " + ex.Message);
+                ModelState.AddModelError("", "Error creating candidate: " + ex.Message);
                 return View(model);
             }
         }
@@ -178,7 +178,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 _context.Update(model);
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = $"Đã cập nhật thông tin ứng viên '{model.Fullname}'.";
+                TempData["SuccessMessage"] = $"Candidate information updated '{model.Fullname}'.";
                 return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateConcurrencyException)

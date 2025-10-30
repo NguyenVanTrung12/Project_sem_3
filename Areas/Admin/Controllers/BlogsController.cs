@@ -95,12 +95,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     }
                     _context.Blogs.Add(blog);
                     await _context.SaveChangesAsync();
-                    TempData["Success"] = "Thêm thành công";
+                    TempData["Success"] = "More success";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Lỗi khi thêm" + ex.Message);
+                    ModelState.AddModelError("", "Error while adding" + ex.Message);
                 }
 
             }
@@ -173,13 +173,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
                     _context.Update(blog);
                     await _context.SaveChangesAsync();
-                    TempData["Success"] = "Cập nhật thành công";
+                    TempData["Success"] = "Updated successfully";
                     return RedirectToAction(nameof(Index));
                 }
                 
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Lỗi khi sửa" + ex.Message);
+                    ModelState.AddModelError("", "Error while editing" + ex.Message);
                 }
             }
             return View(blog);
@@ -192,14 +192,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var blog = await _context.Blogs.FindAsync(id);
             if (blog == null)
             {
-                TempData["Error"] = "Không tìm thấy Blogs để xoá!";
+                TempData["Error"] = "No Blog found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.Blogs.Remove(blog);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Xoá blog thành công!";
+            TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

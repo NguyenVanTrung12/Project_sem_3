@@ -74,12 +74,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 }
                 _context.BlogCategories.Add(blogCategory);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Thêm  mới thành công!";
+                TempData["Success"] = "New addition successful!";
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                ModelState.AddModelError("", "Đã xảy ra lỗi khi thêm danh mục blog.");
+                ModelState.AddModelError("", "An error occurred while adding the blog category.");
                 return View(blogCategory);
             }
         }
@@ -90,7 +90,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var blogcate = await _context.BlogCategories.FirstOrDefaultAsync(e => e.Id == id);
             if (blogcate == null)
             {
-                TempData["Error"] = "Không tìm thấy danh mục cần sửa.";
+                TempData["Error"] = "No category found for editing.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -119,7 +119,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Đã xảy ra lỗi khi cập nhật:" + ex.Message);
+                ModelState.AddModelError("", "An error occurred while updating:" + ex.Message);
                 return View(blogCategory);
             }
         }
@@ -131,13 +131,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var blogCategory = await _context.BlogCategories.FindAsync(id);
             if (blogCategory == null)
             {
-                TempData["Error"] = "Không tìm thấy blogcategories để xoá!";
+                TempData["Error"] = "No blogcategories found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.BlogCategories.Remove(blogCategory);
             await _context.SaveChangesAsync();
-            TempData["Success"] = "Xoá danh mục thành công!";
+            TempData["Success"] = "Category deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

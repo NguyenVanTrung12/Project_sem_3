@@ -100,13 +100,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
                     _context.Update(interviewSchedule);
                     await _context.SaveChangesAsync();
-                    TempData["Success"] = "Cập nhật thành công";
+                    TempData["Success"] = "Updated successfully";
                     return RedirectToAction(nameof(Index));
                 }
 
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Lỗi khi sửa" + ex.Message);
+                    ModelState.AddModelError("", "Error while editing" + ex.Message);
                 }
             }
             return View(interviewSchedule);
@@ -119,14 +119,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var interview = await _context.InterviewSchedules.FindAsync(id);
             if (interview == null)
             {
-                TempData["Error"] = "Không tìm thấy Blogs để xoá!";
+                TempData["Error"] = "No Blogs found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.InterviewSchedules.Remove(interview);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Xoá blog thành công!";
+            TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

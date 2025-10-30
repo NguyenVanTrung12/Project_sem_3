@@ -102,7 +102,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // ✅ Verify if session was stored successfully
             var test = HttpContext.Session.GetInt32("ManagerId");
-            Console.WriteLine($"🟢 Kiểm tra session ManagerId: {test}");
+      
             if (test == null)
             {
                 Console.WriteLine("⚠️ Warning: Session data was not saved correctly!");
