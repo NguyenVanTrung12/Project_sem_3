@@ -47,7 +47,7 @@
 
                             <div class="mb-20">
                                 <label asp-for="QuestionTitle" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
-                                <textarea asp-for="QuestionTitle" class="form-control" id="QuestionTitle"></textarea>
+                                <textarea asp-for="QuestionTitle" class="form-control" ></textarea>
                                 <span asp-validation-for="QuestionTitle" class="text-danger"></span>
                             </div>
 
@@ -59,7 +59,7 @@
 
                             <div class="mb-20">
                                 <label asp-for="Mark" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
-                                <input asp-for="Mark" class="form-control radius-8" placeholder="Enter mark" />
+                                <input type="number" asp-for="Mark" class="form-control radius-8" placeholder="Enter mark" />
                                 <span asp-validation-for="Mark" class="text-danger"></span>
                             </div>
 
@@ -136,8 +136,6 @@
             }
         });
 
-        // Kích hoạt CKEditor cho phần Ghi chú
-        CKEDITOR.replace('QuestionTitle');
         CKEDITOR.replace('QuestionContent');
     </script>
 
