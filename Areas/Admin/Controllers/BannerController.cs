@@ -12,7 +12,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
-            int pageSize = 5;
+            int pageSize = 10;
             var LstBanner = tr.Banners.AsQueryable();
 
             // Lọc theo vị trí (giữ nguyên code của bạn)
