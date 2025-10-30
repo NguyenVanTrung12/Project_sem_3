@@ -47,13 +47,13 @@
 
                             <div class="mb-20">
                                 <label asp-for="NumQuestion" class="form-label fw-semibold text-primary-light text-sm mb-8">Number Of Questions</label>
-                                <input asp-for="NumQuestion" type="number" class="form-control radius-8" placeholder="Enter number of questions" required/>
+                                <input asp-for="NumQuestion" type="number" min="0" class="form-control radius-8" placeholder="Enter number of questions" required />
                                 <span asp-validation-for="NumQuestion" class="text-danger"></span>
                             </div>
 
                             <div class="mb-20">
                                 <label asp-for="LimitTime" class="form-label fw-semibold text-primary-light text-sm mb-8">Time Limit (Min)</label>
-                                <input asp-for="LimitTime" type="number" class="form-control radius-8" placeholder="Enter time limit (minutes)" required/>
+                                <input asp-for="LimitTime" type="number" min="0" class="form-control radius-8" placeholder="Enter time limit (minutes)" required />
                                 <span asp-validation-for="LimitTime" class="text-danger"></span>
                             </div>
 

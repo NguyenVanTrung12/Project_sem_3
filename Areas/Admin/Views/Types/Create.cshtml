@@ -47,7 +47,7 @@
 
                             <div class="mb-20">
                                 <label asp-for="Ord" class="form-label fw-semibold text-primary-light text-sm mb-8">Number Of Order</label>
-                                <input asp-for="Ord" type="number" class="form-control radius-8" placeholder="Enter Of Order"  required/>
+                                <input asp-for="Ord" type="number" min="0" class="form-control radius-8" placeholder="Enter Of Order" required />
                                 <span asp-validation-for="Ord" class="text-danger"></span>
                             </div>
 

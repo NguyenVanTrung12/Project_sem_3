@@ -9,11 +9,13 @@ using Project_sem_3.Models;
 using TypeModel = Project_sem_3.Models.Type;
 using X.PagedList;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class TypesController : Controller
     {
         private readonly online_aptitude_testsContext _context;

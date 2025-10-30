@@ -43,19 +43,19 @@
 
                             <div class="mb-20">
                                 <label asp-for="LimitTime" class="form-label fw-semibold text-primary-light text-sm mb-8">Time Limit (Min)</label>
-                                <input asp-for="LimitTime" type="number" class="form-control radius-8" placeholder="Enter Time Limit" required/>
+                                <input asp-for="LimitTime" type="number" min="0" class="form-control radius-8" placeholder="Enter Time Limit" required />
                                 <span asp-validation-for="LimitTime" class="text-danger"></span>
                             </div>
 
                             <div class="mb-20">
                                 <label asp-for="QuestionCount" class="form-label fw-semibold text-primary-light text-sm mb-8">Number Of Question</label>
-                                <input asp-for="QuestionCount" type="number" class="form-control radius-8" placeholder="Enter Number Of Question" required/>
+                                <input asp-for="QuestionCount" type="number" min="0" class="form-control radius-8" placeholder="Enter Number Of Question" required />
                                 <span asp-validation-for="QuestionCount" class="text-danger"></span>
                             </div>
 
                             <div class="mb-20">
                                 <label asp-for="OrderIndex" class="form-label fw-semibold text-primary-light text-sm mb-8">Order Index</label>
-                                <input asp-for="OrderIndex" type="number" class="form-control radius-8" placeholder="Enter Order Index" required/>
+                                <input asp-for="OrderIndex" type="number" min="0" class="form-control radius-8" placeholder="Enter Order Index" required />
                                 <span asp-validation-for="OrderIndex" class="text-danger"></span>
                             </div>
 
