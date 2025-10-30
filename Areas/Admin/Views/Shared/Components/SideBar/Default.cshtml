@@ -30,6 +30,12 @@
                             AI
                         </a>
                     </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Banner" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Banners
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -54,61 +60,75 @@
                         </a>
                     </li>
 
+              
+
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline"
+                                  class="menu-icon"></iconify-icon>
+                    <span>Blogs</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <a asp-controller="BlogCategories" asp-action="Index">
+                        <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                        BlogCategories List
+                    </a>
+                    <li>
+                        <a asp-controller="Blogs" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Blogs List
+                        </a>
+                    </li>
+
+                  
+                   
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline"
+                                  class="menu-icon"></iconify-icon>
+                    <span>InterviewSchedules</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a asp-controller="InterviewSchedules" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            InterviewSchedules List
+                        </a>
+                    </li>         
+
+                </ul>
+            </li>
+
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline"
+                                  class="menu-icon"></iconify-icon>
+                    <span>Answers</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a asp-area="Admin" asp-controller="Answers" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Answers
+                        </a>
+                    </li>
                     <li>
                         <a asp-area="Admin" asp-controller="Question" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                             Question
                         </a>
                     </li>
-
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>Users</span>
-                </a>
-                <ul class="sidebar-submenu">
                     <li>
-                        <a href="users-list.html">
+                        <a asp-area="Admin" asp-controller="Contacts" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Users List
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="add-user.html">
-                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Add User
-                        </a>
-                    </li>
-                    <li>
-                        <a href="view-profile.html">
-                            <i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
-                            View Profile
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>Candidate</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="/list-candidate.html">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Candidate List
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/add-candidate.html">
-                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Add Candidate
+                            Contacts
                         </a>
                     </li>
                 </ul>

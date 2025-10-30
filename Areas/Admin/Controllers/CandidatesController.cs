@@ -53,21 +53,33 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Candidate model)
         {
-            int? managerId = HttpContext.Session.GetInt32("ManagerId");
-            Console.WriteLine($"🟢 ManagerId từ Session: {managerId}");
-            if (managerId == null || managerId == 0)
+            int managerId = HttpContext.Session.GetInt32("ManagerId") ?? 0;
+            if (managerId <= 0)
             {
-                TempData["ErrorMessage"] = "Phiên làm việc hết hạn, vui lòng đăng nhập lại.";
+                TempData["ErrorMessage"] = "Session expired, please log in again.";
                 return RedirectToAction("Index", "Logon", new { area = "" });
             }
-
-            model.ManagerId = managerId.Value;
+            model.ManagerId = managerId;
 
             // ❌ Loại bỏ validate cho navigation property
             ModelState.Remove("Manager");
-
+            ModelState.Remove("Pass");
+            var emailExists = await _context.Candidates.AnyAsync(c => c.Email == model.Email);
+            if (emailExists)
+            {
+                ModelState.AddModelError("Email", "This email is already used by another candidate.");
+            }
+            var phoneExists = await _context.Candidates.AnyAsync(c => c.Phone == model.Phone);
+            if (phoneExists)
+            {
+                ModelState.AddModelError("Phone", "This email is already used by another candidate.");
+            }
             if (!ModelState.IsValid)
             {
+                foreach (var state in ModelState)
+                {
+                    Console.WriteLine($"{state.Key}: {string.Join(", ", state.Value.Errors.Select(e => e.ErrorMessage))}");
+                }
                 return View(model);
             }
 
@@ -141,7 +153,17 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // ❌ Loại bỏ validate navigation property nếu có
             ModelState.Remove("Manager");
+            var emailExists = await _context.Candidates.AnyAsync(c => c.Email == model.Email);
+            if (emailExists)
+            {
+                ModelState.AddModelError("Email", "This email is already used by another candidate.");
+            }
 
+            var phoneExists = await _context.Candidates.AnyAsync(c => c.Phone == model.Phone);
+            if (phoneExists)
+            {
+                ModelState.AddModelError("Phone", "This email is already used by another candidate.");
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);

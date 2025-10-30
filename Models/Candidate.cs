@@ -20,9 +20,6 @@ namespace Project_sem_3.Models
 
         [StringLength(50, ErrorMessage = "Candidate code cannot exceed 50 characters.")]
         public string? CandidateCode { get; set; }
-
-        [Required(ErrorMessage = "Password is required.")]
-        [StringLength(255, ErrorMessage = "Password cannot exceed 255 characters.")]
         public string? Pass { get; set; }
 
         [Required(ErrorMessage = "First name is required.")]

@@ -32,7 +32,7 @@
                             <div class="mb-20">
                                 <label asp-for="TypeId" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
                                 <select asp-for="TypeId" asp-items="ViewBag.TypeId" class="form-control radius-8 form-select">
-                                    <option value="">-- Chọn loại câu hỏi --</option>
+                                    <option value="">-- Select question type --</option>
                                 </select>
                                 <span asp-validation-for="TypeId" class="text-danger"></span>
                             </div>
@@ -40,7 +40,7 @@
                             <div class="mb-20">
                                 <label asp-for="SubjectId" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
                                 <select asp-for="SubjectId" asp-items="ViewBag.SubjectId" class="form-control radius-8 form-select">
-                                    <option value="">-- Chọn môn học --</option>
+                                    <option value="">-- Select a subject --</option>
                                 </select>
                                 <span asp-validation-for="SubjectId" class="text-danger"></span>
                             </div>
@@ -63,10 +63,16 @@
                                 <span asp-validation-for="Mark" class="text-danger"></span>
                             </div>
 
-                            <div class="mb-20">
-                                <label asp-for="Status" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
-                                <input asp-for="Status" class="form-control radius-8" placeholder="Enter status" />
-                                <span asp-validation-for="Status" class="text-danger"></span>
+                            <div class="form-check form-switch">
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       id="statusSwitch"
+                                       name="Status"
+                                       value="1"
+                                @(Model != null && Model.Status == 1 ? "checked" : "") />
+                                <label class="form-check-label" for="statusSwitch">
+                                    @(Model != null && Model.Status == 1 ? "Active" : "Inactive")
+                                </label>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center gap-3">
@@ -80,6 +86,16 @@
         </div>
     </div>
 </div>
+<script>
+    function toggleStatusLabel(checkbox) {
+        const label = document.getElementById('statusLabel');
+        if (checkbox.checked) {
+            label.textContent = 'Active';
+        } else {
+            label.textContent = 'Inactive';
+        }
+    }
+</script>
 @section Styles {
     <link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
     <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />

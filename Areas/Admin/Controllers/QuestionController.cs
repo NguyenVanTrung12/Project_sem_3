@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Areas.Admin.Helpers;
 using Project_sem_3.Models;
+using System.Reflection.Metadata;
 using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
@@ -26,7 +27,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             var query = _context.Questions
                 .Include(q => q.Subject) // nếu có quan hệ
-                .Include(q => q.Type)    // nếu có quan hệ
+                .Include(q => q.@Type)    // nếu có quan hệ
                 
                                 .AsQueryable();
 
@@ -55,8 +56,8 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
         public IActionResult Create()
         {
-            ViewData["SubjectId"] = new SelectList(_context.Subjects, "SubjectId", "SubjectName");
-            ViewData["TypeId"] = new SelectList(_context.Types, "TypeId", "TypeName");
+            ViewBag.TypeId = new SelectList(_context.Types, "Id", "TypeName");
+            ViewBag.SubjectId = new SelectList(_context.Subjects, "Id", "SubjectName");
             return View();
         }
 
@@ -66,14 +67,24 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+            if (!ModelState.IsValid)
+            {
+                foreach (var item in ModelState)
+                {
+                    if (item.Value.Errors.Count > 0)
+                    {
+                        Console.WriteLine($"{item.Key}: {item.Value.Errors[0].ErrorMessage}");
+                    }
+                }
+            }
             // Nếu validation lỗi, load lại dropdown
-            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "SubjectName", model.SubjectId);
-            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName", model.TypeId);
+            ViewBag.TypeId = new SelectList(_context.Types, "Id", "TypeName", model.TypeId);
+            ViewBag.SubjectId = new SelectList(_context.Subjects, "Id", "SubjectName", model.SubjectId);
             return View(model);
         }
 
@@ -103,6 +114,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (!Request.Form.ContainsKey("Status"))
+                    {
+                        model.Status = 0;
+                    }
                     _context.Update(model);
                     await _context.SaveChangesAsync();
                 }

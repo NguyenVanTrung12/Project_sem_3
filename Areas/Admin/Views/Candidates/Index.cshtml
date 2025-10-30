@@ -54,16 +54,15 @@
                                 #
                             </div>
                         </th>
-                        <th scope="col">Candidate Code</th>
+
                         <th scope="col">Fullname</th>
                         <th scope="col">Gender</th>
-                        <th scope="col">Birth Date</th>
                         <th scope="col">University</th>
                         <th scope="col">Expected Position</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>
                         <th scope="col">Manager</th>
-                        <th scope="col">Created At</th>
+   
                         <th scope="col" class="text-center">Status</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
@@ -80,10 +79,8 @@
                                     @item.Id
                                 </div>
                             </td>
-                            <td>@item.CandidateCode</td>
                             <td>@item.Fullname</td>
                             <td>@item.Gender</td>
-                            <td>@item.BirthDate?.ToString("dd/MM/yyyy")</td>
                             <td>@item.University</td>
                             <td>@item.ExpectedPosition</td>
                             <td>@item.Phone</td>
@@ -98,7 +95,7 @@
                                     <span class="text-muted">—</span>
                                 }
                             </td>
-                            <td>@item.CreatedAt?.ToString("dd MMM yyyy HH:mm")</td>
+                        
                             <td class="text-center">
                                 <span class="@(item.Status == 1 ? "bg-success-focus text-success-600 border border-success-main" : "bg-danger-focus text-danger-600 border border-danger-main") px-24 py-4 radius-4 fw-medium text-sm">
                                     @(item.Status == 1 ? "Active" : "Inactive")
@@ -131,7 +128,8 @@
         </div>
         <!-- Phân trang -->
         <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
-            <span>Trang @Model.PageNumber / @Model.PageCount (Tổng: @Model.TotalItemCount)</span>
+
+            <span>Page @Model.PageNumber of @Model.PageCount (Total: @Model.TotalItemCount)</span>
             <div>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
                          new PagedListRenderOptions

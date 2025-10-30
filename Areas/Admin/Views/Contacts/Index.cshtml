@@ -1,0 +1,141 @@
+﻿@model X.PagedList.IPagedList<Project_sem_3.Models.Contact>
+@using X.PagedList.Mvc.Core;
+
+@{
+    Layout = "_Admin";
+    ViewData["Title"] = "Contact List";
+
+    int? currentStatus = ViewBag.Status != null ? (int?)ViewBag.Status : null;
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Contact List</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-controller="Home" asp-action="Index"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Contacts</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+        <div class="d-flex align-items-center flex-wrap gap-3">
+            <form method="get" class="d-flex align-items-center gap-2">
+                <label class="fw-medium text-secondary-light mb-0">Status:</label>
+                <select name="status" class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
+                        onchange="this.form.submit()">
+                    <option value="">All</option>
+                    <option value="0" selected="@(currentStatus == 0)">Processing</option>
+                    <option value="1" selected="@(currentStatus == 1)">Processed</option>
+                    <option value="2" selected="@(currentStatus == 2)">Closed</option>
+                </select>
+            </form>
+        </div>
+
+        <a asp-controller="Contacts" asp-action="Create"
+           class="btn btn-primary d-flex align-items-center gap-2 radius-8">
+            <iconify-icon icon="solar:add-square-bold-duotone" class="icon text-lg"></iconify-icon>
+            Add New
+        </a>
+    </div>
+
+    <div class="card-body p-24">
+        <div class="table-responsive scroll-sm">
+            <table class="table bordered-table sm-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FullName</td>
+                                <td>@item.Email</td>
+                                <td>@item.Subject</td>
+                                <td>
+                                    @if (item.Status == 0)
+                                    {
+                                        <span class="bg-warning-focus text-warning-700 border border-warning-main px-16 py-4 radius-4 fw-medium text-sm">
+                                            Processing
+                                        </span>
+                                    }
+                                    else if (item.Status == 1)
+                                    {
+                                        <span class="bg-success-focus text-success-600 border border-success-main px-16 py-4 radius-4 fw-medium text-sm">
+                                            Processed
+                                        </span>
+                                    }
+                                    else if (item.Status == 2)
+                                    {
+                                        <span class="bg-secondary-focus text-secondary-700 border border-secondary-main px-16 py-4 radius-4 fw-medium text-sm">
+                                            Closed
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>@item.CreatedDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td class="text-center">
+                                    <div class="d-flex align-items-center gap-10 justify-content-center">
+                                        <a asp-controller="Contacts" asp-action="Details" asp-route-id="@item.Id"
+                                           class="bg-info-focus text-info-600 bg-hover-info-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <iconify-icon icon="majesticons:eye-line" class="icon text-xl"></iconify-icon>
+                                        </a>
+
+                                        <a asp-controller="Contacts" asp-action="Edit" asp-route-id="@item.Id"
+                                           class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                            <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
+                                        </a>
+
+                                        <form asp-controller="Contacts" asp-action="Delete" asp-route-id="@item.Id"
+                                              method="post" style="display:inline">
+                                            <button type="submit"
+                                                    class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                                                    onclick="return confirm('Are you sure you want to delete this contact?');">
+                                                <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">No contacts found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+            <span>Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount entries</span>
+            <div>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, status = currentStatus }),
+                         new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "pagination", "d-flex", "flex-wrap", "gap-2" },
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link", "radius-8", "border-0", "bg-neutral-200", "text-secondary-light", "fw-semibold" },
+                    ActiveLiElementClass = "active bg-primary-600 text-white"
+                })
+            </div>
+        </div>
+    </div>
+</div>

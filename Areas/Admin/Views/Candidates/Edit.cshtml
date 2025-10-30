@@ -32,22 +32,23 @@
                               onsubmit="return confirm('Bạn có chắc muốn lưu thay đổi cho ứng viên này không?');">
                             <input type="hidden" asp-for="Id" />
 
+
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Firstname" class="form-label fw-semibold"></label>
-                                    <input asp-for="Firstname" class="form-control" placeholder="Nhập tên" />
+                                    <input asp-for="Firstname" class="form-control" placeholder="Firstname" />
                                     <span asp-validation-for="Firstname" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Lastname" class="form-label fw-semibold"></label>
-                                    <input asp-for="Lastname" class="form-control" placeholder="Nhập họ" />
+                                    <input asp-for="Lastname" class="form-control" placeholder="Lastname" />
                                     <span asp-validation-for="Lastname" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Fullname" class="form-label fw-semibold"></label>
-                                    <input asp-for="Fullname" class="form-control" placeholder="Họ và tên đầy đủ" />
+                                    <input asp-for="Fullname" class="form-control" placeholder="Fullname" />
                                     <span asp-validation-for="Fullname" class="text-danger"></span>
                                 </div>
 
@@ -56,9 +57,9 @@
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Gender" class="form-label fw-semibold"></label>
                                     <select asp-for="Gender" class="form-select">
-                                        <option value="">-- Chọn giới tính --</option>
-                                        <option value="true">Nam</option>
-                                        <option value="false">Nữ</option>
+                                        <option value="">-- Choose gender --</option>
+                                        <option value="true">Male</option>
+                                        <option value="false">Female</option>
                                     </select>
                                     <span asp-validation-for="Gender" class="text-danger"></span>
                                 </div>
@@ -71,49 +72,49 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Phone" class="form-label fw-semibold"></label>
-                                    <input asp-for="Phone" class="form-control" placeholder="Số điện thoại" />
+                                    <input asp-for="Phone" class="form-control" placeholder="Phone Number" />
                                     <span asp-validation-for="Phone" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Email" class="form-label fw-semibold"></label>
-                                    <input asp-for="Email" type="email" class="form-control" placeholder="Email" />
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter Email" />
                                     <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label asp-for="Address" class="form-label fw-semibold"></label>
-                                    <input asp-for="Address" class="form-control" placeholder="Địa chỉ" />
+                                    <input asp-for="Address" class="form-control" placeholder="Enter Address" />
                                     <span asp-validation-for="Address" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Hometown" class="form-label fw-semibold"></label>
-                                    <input asp-for="Hometown" class="form-control" placeholder="Quê quán" />
+                                    <input asp-for="Hometown" class="form-control" placeholder="Hometown" />
                                     <span asp-validation-for="Hometown" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="University" class="form-label fw-semibold"></label>
-                                    <input asp-for="University" class="form-control" placeholder="Trường đại học" />
+                                    <input asp-for="University" class="form-control" placeholder="University" />
                                     <span asp-validation-for="University" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Faculty" class="form-label fw-semibold"></label>
-                                    <input asp-for="Faculty" class="form-control" placeholder="Khoa" />
+                                    <input asp-for="Faculty" class="form-control" placeholder="Faculty" />
                                     <span asp-validation-for="Faculty" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Semester" class="form-label fw-semibold"></label>
-                                    <input asp-for="Semester" class="form-control" placeholder="Học kỳ" />
+                                    <input asp-for="Semester" class="form-control" placeholder="Semester" />
                                     <span asp-validation-for="Semester" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="Education" class="form-label fw-semibold"></label>
-                                    <input asp-for="Education" class="form-control" placeholder="Trình độ học vấn" />
+                                    <input asp-for="Education" class="form-control" placeholder="Education" />
                                     <span asp-validation-for="Education" class="text-danger"></span>
                                 </div>
 
@@ -126,23 +127,23 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label asp-for="Skills" class="form-label fw-semibold"></label>
-                                    <textarea asp-for="Skills" class="form-control" rows="3" placeholder="Kỹ năng"></textarea>
+                                    <textarea asp-for="Skills" class="form-control" rows="3" placeholder="Skills"></textarea>
                                     <span asp-validation-for="Skills" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label asp-for="ExpectedPosition" class="form-label fw-semibold"></label>
-                                    <input asp-for="ExpectedPosition" class="form-control" placeholder="Vị trí mong muốn" />
+                                    <input asp-for="ExpectedPosition" class="form-control" placeholder="ExpectedPosition" />
                                     <span asp-validation-for="ExpectedPosition" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label asp-for="Status" class="form-label fw-semibold"></label>
                                     <select asp-for="Status" class="form-select">
-                                        <option value="0">Chưa phỏng vấn</option>
-                                        <option value="1">Đang phỏng vấn</option>
-                                        <option value="2">Đậu</option>
-                                        <option value="3">Rớt</option>
+                                        <option value="0">Not Interviewed Yet</option>
+                                        <option value="1">Interview Scheduled</option>
+                                        <option value="2">Passed</option>
+                                        <option value="3">Failed</option>
                                     </select>
                                     <span asp-validation-for="Status" class="text-danger"></span>
                                 </div>
@@ -150,9 +151,9 @@
 
                             </div>
 
-                            <div class="d-flex justify-content-center mt-4">
-                                <a asp-action="Index" class="btn btn-outline-danger px-5 me-3">Hủy</a>
-                                <button type="submit" class="btn btn-primary px-5">Lưu</button>
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
                             </div>
                         </form>
 

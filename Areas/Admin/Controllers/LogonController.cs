@@ -55,9 +55,11 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return View();
             }
 
-            // 3️⃣ Compare hashed passwords
             var hashedInput = PasswordHelper.HashPassword(password);
-            if (!string.Equals(hashedInput, manager.PasswordHash, StringComparison.OrdinalIgnoreCase))
+            var storedHash = manager.PasswordHash;
+
+            if (string.IsNullOrEmpty(storedHash) ||
+                !string.Equals(hashedInput, storedHash, StringComparison.OrdinalIgnoreCase))
             {
                 ViewBag.Error = "Incorrect password.";
                 return View();
@@ -84,11 +86,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
             if (manager.Id > 0)
             {
                 HttpContext.Session.SetInt32("ManagerId", manager.Id);
+                Console.WriteLine($"🟢 ManagerId được lưu vào session: {manager.Id}");
             }
             HttpContext.Session.SetString("ManagerName", manager.Fullname ?? "Admin");
 
             // ✅ Verify if session was stored successfully
             var test = HttpContext.Session.GetInt32("ManagerId");
+            Console.WriteLine($"🟢 Kiểm tra session ManagerId: {test}");
             if (test == null)
             {
                 Console.WriteLine("⚠️ Warning: Session data was not saved correctly!");

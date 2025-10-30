@@ -29,6 +29,7 @@
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
 </Project>
