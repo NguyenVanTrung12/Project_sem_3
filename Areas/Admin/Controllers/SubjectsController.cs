@@ -15,17 +15,17 @@ namespace Project_sem_3.Areas.Admin.Controllers
     [Area("Admin")]
     public class SubjectsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly online_aptitude_testsContext _context;
 
-        public SubjectsController(ApplicationDbContext context)
+        public SubjectsController(online_aptitude_testsContext context)
         {
             _context = context;
         }
 
         // GET: Subjects
-        public IActionResult Index(string searchString, int? status, int? page)
+        public IActionResult Index(string? searchString, int? status, int? page)
         {
-            var query = _context.Subject.AsQueryable();
+            var query = _context.Subjects.AsQueryable();
 
             // Tìm kiếm theo tên môn học hoặc mã môn học
             if (!string.IsNullOrEmpty(searchString))
@@ -64,7 +64,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var subject = await _context.Subject
+            var subject = await _context.Subjects
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (subject == null)
             {
@@ -104,7 +104,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var subject = await _context.Subject.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return NotFound();
@@ -155,7 +155,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var subject = await _context.Subject
+            var subject = await _context.Subjects
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (subject == null)
             {
@@ -170,14 +170,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var subject = await _context.Subject.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return NotFound();
             }
 
             // Kiểm tra xem subject có đang được sử dụng ở bảng khác không
-            bool hasRelations = await _context.SubjectType.AnyAsync(st => st.SubjectId == id);
+            bool hasRelations = await _context.SubjectTypes.AnyAsync(st => st.SubjectId == id);
 
             if (hasRelations)
             {
@@ -187,7 +187,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             try
             {
-                _context.Subject.Remove(subject);
+                _context.Subjects.Remove(subject);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "✅ Successfully deleted subject!";
             }
@@ -201,7 +201,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         private bool SubjectExists(int id)
         {
-            return _context.Subject.Any(e => e.Id == id);
+            return _context.Subjects.Any(e => e.Id == id);
         }
     }
 }

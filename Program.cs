@@ -4,8 +4,9 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContext' not found.")));
+builder.Services.AddDbContext<online_aptitude_testsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

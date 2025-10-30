@@ -33,13 +33,13 @@ namespace Project_sem_3.Models
         public virtual DbSet<Transfer> Transfers { get; set; } = null!;
         public virtual DbSet<Type> Types { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=LAPTOP-MC0HPVFT;Database=online_aptitude_tests;uid=sa;pwd=1234#;MultipleActiveResultSets=True;");
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("Server=LAPTOP-MC0HPVFT;Database=online_aptitude_tests;uid=sa;pwd=1234#;MultipleActiveResultSets=True;");
+        //    }
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

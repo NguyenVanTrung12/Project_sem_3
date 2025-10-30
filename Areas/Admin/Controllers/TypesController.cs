@@ -16,9 +16,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
     [Area("Admin")]
     public class TypesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly online_aptitude_testsContext _context;
 
-        public TypesController(ApplicationDbContext context)
+        public TypesController(online_aptitude_testsContext context)
         {
             _context = context;
         }
@@ -27,7 +27,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public async Task<IActionResult> Index(string searchString, int? page, int? status)
         {
 
-            var query = _context.Type
+            var query = _context.Types
                 .Include(s => s.SubjectTypes)
                 .AsQueryable();
 
@@ -64,7 +64,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var @type = await _context.Type
+            var @type = await _context.Types
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (@type == null)
             {
@@ -104,7 +104,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var @type = await _context.Type.FindAsync(id);
+            var @type = await _context.Types.FindAsync(id);
             if (@type == null)
             {
                 return NotFound();
@@ -155,7 +155,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var @type = await _context.Type
+            var @type = await _context.Types
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (@type == null)
             {
@@ -170,14 +170,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var type = await _context.Type.FindAsync(id);
+            var type = await _context.Types.FindAsync(id);
             if (type == null)
             {
                 return NotFound();
             }
 
             // Kiểm tra xem subject có đang được sử dụng ở bảng khác không
-            bool hasRelations = await _context.SubjectType.AnyAsync(st => st.TypeId == id);
+            bool hasRelations = await _context.SubjectTypes.AnyAsync(st => st.TypeId == id);
                                 
 
             if (hasRelations)
@@ -188,7 +188,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             try
             {
-                _context.Type.Remove(type);
+                _context.Types.Remove(type);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "✅ Successfully deleted type!";
             }
@@ -202,7 +202,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         private bool TypeExists(int id)
         {
-            return _context.Type.Any(e => e.Id == id);
+            return _context.Types.Any(e => e.Id == id);
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
     [Area("Admin")] 
     public class SubjectTypesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly online_aptitude_testsContext _context;
 
-        public SubjectTypesController(ApplicationDbContext context)
+        public SubjectTypesController(online_aptitude_testsContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
     // GET: SubjectTypes
     public IActionResult Index(string searchString, int? page)
         {
-            var query = _context.SubjectType
+            var query = _context.SubjectTypes
                 .Include(s => s.Subject)
                 .Include(s => s.Type)
                 .AsQueryable();
@@ -54,7 +54,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var subjectType = await _context.SubjectType
+            var subjectType = await _context.SubjectTypes
                 .Include(s => s.Subject)
                 .Include(s => s.Type)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -70,12 +70,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["SubjectId"] = new SelectList(
-                _context.Subject.Select(s => new { s.Id, DisplayName = s.Id + " - " + s.SubjectName }),
+                _context.Subjects.Select(s => new { s.Id, DisplayName = s.Id + " - " + s.SubjectName }),
                 "Id",
                 "DisplayName"
             );
             ViewData["TypeId"] = new SelectList(
-                _context.Type.Select(t => new { t.Id, DisplayName = t.Id + " - " + t.TypeName }),
+                _context.Types.Select(t => new { t.Id, DisplayName = t.Id + " - " + t.TypeName }),
                 "Id",
                 "DisplayName"
             );
@@ -95,7 +95,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", subjectType.SubjectId);
+            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "Id", subjectType.SubjectId);
             ViewData["TypeId"] = new SelectList(_context.Set<TypeModel>(), "Id", "Id", subjectType.TypeId);
             return View(subjectType);
         }
@@ -108,18 +108,18 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var subjectType = await _context.SubjectType.FindAsync(id);
+            var subjectType = await _context.SubjectTypes.FindAsync(id);
             if (subjectType == null)
             {
                 return NotFound();
             }
             ViewData["SubjectId"] = new SelectList(
-                _context.Subject.Select(s => new { s.Id, DisplayName = s.Id + " - " + s.SubjectName }),
+                _context.Subjects.Select(s => new { s.Id, DisplayName = s.Id + " - " + s.SubjectName }),
                 "Id",
                 "DisplayName"
             );
             ViewData["TypeId"] = new SelectList(
-                _context.Type.Select(t => new { t.Id, DisplayName = t.Id + " - " + t.TypeName }),
+                _context.Types.Select(t => new { t.Id, DisplayName = t.Id + " - " + t.TypeName }),
                 "Id",
                 "DisplayName"
             );
@@ -158,7 +158,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubjectId"] = new SelectList(_context.Subject, "Id", "Id", subjectType.SubjectId);
+            ViewData["SubjectId"] = new SelectList(_context.Subjects, "Id", "Id", subjectType.SubjectId);
             ViewData["TypeId"] = new SelectList(_context.Set<TypeModel>(), "Id", "Id", subjectType.TypeId);
             return View(subjectType);
         }
@@ -171,7 +171,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var subjectType = await _context.SubjectType
+            var subjectType = await _context.SubjectTypes
                 .Include(s => s.Subject)
                 .Include(s => s.Type)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -188,10 +188,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var subjectType = await _context.SubjectType.FindAsync(id);
+            var subjectType = await _context.SubjectTypes.FindAsync(id);
             if (subjectType != null)
             {
-                _context.SubjectType.Remove(subjectType);
+                _context.SubjectTypes.Remove(subjectType);
             }
 
             await _context.SaveChangesAsync();
@@ -200,7 +200,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         private bool SubjectTypeExists(int id)
         {
-            return _context.SubjectType.Any(e => e.Id == id);
+            return _context.SubjectTypes.Any(e => e.Id == id);
         }
     }
 }
