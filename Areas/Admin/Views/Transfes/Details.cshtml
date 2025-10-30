@@ -1,0 +1,31 @@
+﻿@model Project_sem_3.Models.Transfer
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Transfer Details</h6>
+    <a asp-action="Index" class="btn btn-secondary">← Back to List</a>
+</div>
+
+<div class="card p-24 radius-12 mb-4">
+    <h5 class="mb-3">General Information</h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>Candidate</th>
+            <td>@(Model.Candidate?.Fullname ?? "N/A")</td>
+        </tr>
+        <tr>
+            <th>Transfer Date</th>
+            <td>@Model.TransferDate?.ToString("dd/MM/yyyy HH:mm")</td>
+        </tr>
+        <tr>
+            <th>From Stage</th>
+            <td>@(Model.FromStage ?? "N/A")</td>
+        </tr>
+        <tr>
+            <th>To Stage</th>
+            <td>@(Model.ToStage ?? "N/A")</td>
+        </tr>
+    </table>
+</div>

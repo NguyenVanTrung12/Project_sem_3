@@ -1,0 +1,128 @@
+﻿@model X.PagedList.IPagedList<Project_sem_3.Models.Transfer>
+@using X.PagedList.Mvc.Core
+@{
+    Layout = "_Admin";
+}
+
+
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Transfes List</h6>
+
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+       
+        <a asp-controller="Transfes" asp-action="Create"
+           class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+            <iconify-icon icon="ic:baseline-plus"
+                          class="icon text-xl line-height-1"></iconify-icon>
+            Add New Blogs
+        </a>
+    </div>
+
+    <div class="card-body p-24">
+        <div class="table-responsive scroll-sm">
+            <table class="table bordered-table sm-table mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-10">
+                                <div class="form-check style-check d-flex align-items-center">
+                                    <input class="form-check-input radius-4 border input-form-dark"
+                                           type="checkbox"
+                                           name="checkbox"
+                                           id="selectAll" />
+                                </div>
+                                S.L
+                            </div>
+                        </th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Candidates</th>
+                        <th scope="col">TransferDate</th>
+                        <th scope="col">FromStage</th>
+                        <th scope="col">ToStage</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-10">
+                                    <div class="form-check style-check d-flex align-items-center">
+                                        <input class="form-check-input radius-4 border border-neutral-400"
+                                               type="checkbox"
+                                               name="checkbox" />
+                                    </div>
+                                    10
+                                </div>
+                            </td>
+
+                            <td>@item.Id</td>
+                            <td>@item.Candidate.Fullname</td>
+                            <td>@item.TransferDate</td>
+                            <td>@item.FromStage</td>
+                            <td>@item.ToStage</td>
+
+                            
+
+                            <td class="text-center">
+                                <div class="d-flex align-items-center gap-10 justify-content-center">
+                                    <a asp-controller="Transfes" asp-action="Details" asp-route-id="@item.Id"
+                                       class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                        <iconify-icon icon="majesticons:eye-line"
+                                                      class="icon text-xl"></iconify-icon>
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
+            <span>
+                Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount entries
+            </span>
+
+            <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
+                <!-- Nút Prev -->
+                <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                    <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
+                       asp-action="Index" asp-route-page="@(Model.PageNumber - 1)">
+                        <iconify-icon icon="ep:d-arrow-left"></iconify-icon>
+                    </a>
+                </li>
+
+                <!-- Các số trang -->
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <li class="page-item">
+                        <a class="page-link fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md @(Model.PageNumber == i ? "bg-primary-600 text-white" : "bg-neutral-200 text-secondary-light")"
+                           asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                }
+
+                <!-- Nút Next -->
+                <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                    <a class="page-link bg-neutral-200 text-secondary-light fw-semibold radius-8 border-0 d-flex align-items-center justify-content-center h-32-px w-32-px text-md"
+                       asp-action="Index" asp-route-page="@(Model.PageNumber + 1)">
+                        <iconify-icon icon="ep:d-arrow-right"></iconify-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

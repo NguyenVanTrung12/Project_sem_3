@@ -18,9 +18,9 @@ namespace Project_sem_3.Models
         public DateTime? SubmitDate { get; set; }
         public int? Status { get; set; }
 
-        public virtual Candidate Candidate { get; set; } = null!;
-        public virtual Subject Subject { get; set; } = null!;
-        public virtual Type Type { get; set; } = null!;
+        public virtual Candidate? Candidate { get; set; }
+        public virtual Subject? Subject { get; set; }
+        public virtual Type? Type { get; set; } 
         public virtual ICollection<ResultDetail> ResultDetails { get; set; }
     }
 }
