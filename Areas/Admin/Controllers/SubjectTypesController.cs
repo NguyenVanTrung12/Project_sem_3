@@ -15,7 +15,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class SubjectTypesController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -25,7 +25,8 @@ namespace Project_sem_3.Areas.Admin.Controllers
             _context = context;
         }
 
-    // GET: SubjectTypes
+        // GET: SubjectTypes
+        [AllowAnonymous]
     public IActionResult Index(string searchString, int? page)
         {
             var query = _context.SubjectTypes

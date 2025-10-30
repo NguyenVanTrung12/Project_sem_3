@@ -6,7 +6,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class BannerController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -15,6 +15,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             _context = context;
         }
+        [AllowAnonymous]
         public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
             int pageSize = 5;

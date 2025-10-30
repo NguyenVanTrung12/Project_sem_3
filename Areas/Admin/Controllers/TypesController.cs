@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class TypesController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -26,6 +26,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Types
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString, int? page, int? status)
         {
 

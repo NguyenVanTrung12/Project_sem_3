@@ -14,7 +14,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class SubjectsController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -25,6 +25,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Subjects
+        [AllowAnonymous]
         public IActionResult Index(string? searchString, int? status, int? page)
         {
             var query = _context.Subjects.AsQueryable();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
@@ -8,6 +9,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class TransfesController : Controller
     {
         private readonly online_aptitude_testsContext _context;

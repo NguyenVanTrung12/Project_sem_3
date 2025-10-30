@@ -39,17 +39,17 @@ using (var scope = app.Services.CreateScope())
     }
 
     // Tạo tài khoản Super Manager mặc định nếu chưa có
-    var superManager = await context.Managers.FirstOrDefaultAsync(m => m.Username == "canhnt");
-    var password = "Canh19012005@"; // mật khẩu chuẩn
+    var superManager = await context.Managers.FirstOrDefaultAsync(m => m.Username == "Webster");
+    var password = "123456"; // mật khẩu chuẩn
     var hashed = Project_sem_3.Areas.Admin.Helpers.PasswordHelper.HashPassword(password);
 
     if (superManager == null)
     {
         superManager = new Manager
         {
-            Username = "canhnt",
-            Fullname = "Nguyễn Tuyển Cảnh",
-            Email = "canh19012k5@gmail.com",
+            Username = "Webster",
+            Fullname = "Webster Organization",
+            Email = "organizationwebster@gmail.com",
             Phone = "0379255680",
             PasswordHash = hashed,
             RoleId = superRole.Id,
