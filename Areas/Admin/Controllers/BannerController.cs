@@ -7,13 +7,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
     [Area("Admin")]
     public class BannerController : Controller
     {
-        
-        private  online_aptitude_testsContext tr = new online_aptitude_testsContext();
+        private readonly online_aptitude_testsContext _context;
 
+        public BannerController(online_aptitude_testsContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
             int pageSize = 5;
-            var LstBanner = tr.Banners.AsQueryable();
+            var LstBanner = _context.Banners.AsQueryable();
 
             // Lọc theo vị trí (giữ nguyên code của bạn)
             if (postion.HasValue)
@@ -74,8 +77,8 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     obj.Image = "/uploads/banner/" + fileName;
                 }
 
-                tr.Banners.Add(obj);
-                tr.SaveChanges();
+                _context.Banners.Add(obj);
+                _context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -86,14 +89,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             
-            Banner obj = tr.Banners.FirstOrDefault(c => c.Id == id);
+            Banner obj = _context.Banners.FirstOrDefault(c => c.Id == id);
             return View(obj);
         }
         [HttpPost]
-        [HttpPost]
         public IActionResult Edit(Banner obj, IFormFile? NewImage)
         {
-            var banner = tr.Banners.FirstOrDefault(b => b.Id == obj.Id);
+            var banner = _context.Banners.FirstOrDefault(b => b.Id == obj.Id);
             if (banner == null)
             {
                 return NotFound();
@@ -133,17 +135,28 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 banner.Image = "/uploads/banner/" + fileName;
             }
 
-            tr.Banners.Update(banner);
-            tr.SaveChanges();
+            _context.Banners.Update(banner);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            Banner obj = tr.Banners.FirstOrDefault(x => x.Id == id);
-            tr.Banners.Remove(obj);
-            tr.SaveChanges();
+            var obj = _context.Banners.FirstOrDefault(x => x.Id == id);
+            if (obj == null)
+                return NotFound();
+
+            // Xóa file ảnh nếu có
+            if (!string.IsNullOrEmpty(obj.Image))
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", obj.Image.TrimStart('/'));
+                if (System.IO.File.Exists(filePath))
+                    System.IO.File.Delete(filePath);
+            }
+
+            _context.Banners.Remove(obj);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
