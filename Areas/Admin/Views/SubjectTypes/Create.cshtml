@@ -1,0 +1,75 @@
+@model Project_sem_3.Models.SubjectType
+
+@{
+    ViewData["Title"] = "Add Subject Type";
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Add Subject Type</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-action="Index" asp-controller="SubjectTypes"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Subject Types
+            </a>
+        </li>
+        <li>-</li>
+    <li class="fw-medium">Add New</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-20"></div>
+
+                            <div class="mb-20">
+                                <label asp-for="SubjectId" class="form-label fw-semibold text-primary-light text-sm mb-8">Subject</label>
+                                <select asp-for="SubjectId" asp-items="ViewBag.SubjectId" class="form-control radius-8 form-select" required>
+                                    <option value="">-- Select Subject --</option>
+                                </select>
+                                <span asp-validation-for="SubjectId" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="TypeId" class="form-label fw-semibold text-primary-light text-sm mb-8">Type</label>
+                                <select asp-for="TypeId" asp-items="ViewBag.TypeId" class="form-control radius-8 form-select" required>
+                                    <option value="">-- Select Type --</option>
+                                </select>
+                                <span asp-validation-for="TypeId" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="NumQuestion" class="form-label fw-semibold text-primary-light text-sm mb-8">Number Of Questions</label>
+                                <input asp-for="NumQuestion" type="number" class="form-control radius-8" placeholder="Enter number of questions" required/>
+                                <span asp-validation-for="NumQuestion" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="LimitTime" class="form-label fw-semibold text-primary-light text-sm mb-8">Time Limit (Min)</label>
+                                <input asp-for="LimitTime" type="number" class="form-control radius-8" placeholder="Enter time limit (minutes)" required/>
+                                <span asp-validation-for="LimitTime" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,88 @@
+@model Project_sem_3.Models.Subject
+
+@{
+    ViewData["Title"] = "Edit Subject";
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Edit Subject</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-action="Index" asp-controller="Question"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+    <li class="fw-medium">Edit</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-20"></div>
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="mb-20">
+                                <label asp-for="SubjectCode" class="form-label fw-semibold text-primary-light text-sm mb-8" >Subject Code</label>
+                                <input asp-for="SubjectCode" class="form-control radius-8" placeholder="Enter Subject Code"  required/>
+                                <span asp-validation-for="SubjectCode" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="SubjectName" class="form-label fw-semibold text-primary-light text-sm mb-8">Subject Name</label>
+                                <input asp-for="SubjectName" class="form-control radius-8" placeholder="Enter Subject Name"  required/>
+                                <span asp-validation-for="SubjectName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="LimitTime" class="form-label fw-semibold text-primary-light text-sm mb-8">Time Limit (Min)</label>
+                                <input asp-for="LimitTime" type="number" class="form-control radius-8" placeholder="Enter Time Limit"  required/>
+                                <span asp-validation-for="LimitTime" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="QuestionCount" class="form-label fw-semibold text-primary-light text-sm mb-8">Number Of Question</label>
+                                <input asp-for="QuestionCount" type="number" class="form-control radius-8" placeholder="Enter Number Of Question"  required/>
+                                <span asp-validation-for="QuestionCount" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="OrderIndex" class="form-label fw-semibold text-primary-light text-sm mb-8">Order Index</label>
+                                <input asp-for="OrderIndex" type="number" class="form-control radius-8" placeholder="Enter Order Index"  required/>
+                                <span asp-validation-for="OrderIndex" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="Status" class="form-label fw-semibold text-primary-light text-sm mb-8">Status</label>
+                                <select asp-for="Status" class="form-control radius-8 form-select" required>
+                                    <option value="">-- Select status --</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
