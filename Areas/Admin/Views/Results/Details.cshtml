@@ -1,0 +1,81 @@
+﻿@model Project_sem_3.Models.Result
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Result Details</h6>
+    <a asp-action="Index" class="btn btn-secondary">← Back to List</a>
+</div>
+
+<div class="card p-24 radius-12 mb-4">
+    <h5 class="mb-3">General Information</h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>Candidate</th>
+            <td>@Model.Candidate.Fullname</td>
+        </tr>
+        <tr>
+            <th>Subject</th>
+            <td>@Model.Subject.SubjectName</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>@Model.Type.TypeName</td>
+        </tr>
+        <tr>
+            <th>Total Mark</th>
+            <td>@Model.TotalMark</td>
+        </tr>
+        <tr>
+            <th>Submit Date</th>
+            <td>@Model.SubmitDate?.ToString("dd/MM/yyyy HH:mm")</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+                @if (Model.Status == 1)
+                {
+                    <span class="badge bg-success">Active</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Inactive</span>
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="card p-24 radius-12">
+    <h5 class="mb-3">Detailed Results</h5>
+
+    @if (Model.ResultDetails != null && Model.ResultDetails.Any())
+    {
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Mark</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in Model.ResultDetails)
+                {
+                    <tr>
+                        <td>@detail.Id</td>
+                        <td>@detail.Question.QuestionContent</td>
+                        <td>@detail.Answer.AnswerContent</td>
+                        <td>@detail.Mark</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No result details available.</p>
+    }
+</div>
