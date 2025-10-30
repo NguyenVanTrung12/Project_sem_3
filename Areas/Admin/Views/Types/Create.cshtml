@@ -1,0 +1,69 @@
+@model Project_sem_3.Models.Type
+
+@{
+    ViewData["Title"] = "Add Subject Type";
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Add Type</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-action="Index" asp-controller="SubjectTypes"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                 Types
+            </a>
+        </li>
+        <li>-</li>
+    <li class="fw-medium">Add New</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-20"></div>
+
+                            <div class="mb-20">
+                                <label asp-for="TypeName" class="form-label fw-semibold text-primary-light text-sm mb-8">Type Name</label>
+                                <input asp-for="TypeName" class="form-control radius-8" placeholder="Enter Type Name"  required/>
+                                <span asp-validation-for="TypeName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="Status" class="form-label fw-semibold text-primary-light text-sm mb-8">Status</label>
+                                <select asp-for="Status" class="form-control radius-8 form-select" required>
+                                    <option value="">-- Select status --</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="Ord" class="form-label fw-semibold text-primary-light text-sm mb-8">Number Of Order</label>
+                                <input asp-for="Ord" type="number" class="form-control radius-8" placeholder="Enter Of Order"  required/>
+                                <span asp-validation-for="Ord" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

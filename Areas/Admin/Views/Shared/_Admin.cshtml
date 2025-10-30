@@ -11,6 +11,8 @@
           sizes="16x16" />
     <!-- remix icon font css  -->
     <link rel="stylesheet" href="~/admin/assets/css/remixicon.css" />
+    <!-- Font Awesome (for views using fa icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- BootStrap css -->
     <link rel="stylesheet" href="~/admin/assets/css/lib/bootstrap.min.css" />
     <!-- Apex Chart css -->
@@ -40,6 +42,7 @@
     <!-- main css -->
     <link rel="stylesheet" href="~/admin/assets/css/style.css" />
 
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <div>
@@ -582,5 +585,7 @@
     <script src="~/admin/assets/js/app.js"></script>
 
     <script src="~/admin/assets/js/homeOneChart.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
