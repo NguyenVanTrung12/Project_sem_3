@@ -58,28 +58,51 @@
                                     <span asp-validation-for="Slug" class="text-danger"></span>
                                 </div>
 
-                                <div class="col-md-6 mb-3">
-                                    <label asp-for="Tags" class="form-label fw-semibold"></label>
-                                    <input asp-for="Tags" class="form-control" placeholder="Enter Tags" />
-                                    <span asp-validation-for="Tags" class="text-danger"></span>
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label asp-for="Views" class="form-label fw-semibold"></label>
-                                    <input asp-for="Views" type="number" class="form-control" placeholder="Enter Views" />
-                                    <span asp-validation-for="Views" class="text-danger"></span>
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label asp-for="Content" class="form-label fw-semibold"></label>
-                                    <textarea asp-for="Content" class="form-control" id="Content" rows="5"></textarea>
-                                    <span asp-validation-for="Content" class="text-danger"></span>
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label fw-semibold">Image</label>
-                                    <input type="file" name="uploadfile" class="form-control" />
-                                </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Tags
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="text" asp-for="Tags" class="form-control radius-8" />
+                                <span asp-validation-for="Tags" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Views
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="text" asp-for="Views" class="form-control radius-8" />
+                                <span asp-validation-for="Views" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label for="desc"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">Content</label>
+                                <textarea class="form-control radius-8" asp-for="Content"></textarea>
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Image
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="file" name="uploadfile" class="form-control radius-8" />
+                            </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    CreatedAt
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="date" asp-for="CreatedAt" class="form-control radius-8" />
+                                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Status <span class="text-danger-600">*</span>
+                                </label>
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">Status</label>

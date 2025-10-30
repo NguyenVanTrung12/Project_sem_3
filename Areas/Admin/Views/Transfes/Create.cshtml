@@ -1,0 +1,76 @@
+﻿@model Project_sem_3.Models.Transfer;
+
+@{
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Add Transfes</h6>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+
+                        <form asp-controller="Transfes" asp-action="Create" method="post">
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    Candidates
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <select asp-for="CandidateId" asp-items="ViewBag.CandidateList" class="form-control radius-8">
+                                    <option value="">---- Choose Candidates ----</option>
+                                </select>
+                                <span asp-validation-for="CandidateId" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    TransferDate
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="date" asp-for="TransferDate" class="form-control radius-8" />
+                                <span asp-validation-for="TransferDate" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    FromStage
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="text" asp-for="FromStage" class="form-control radius-8" placeholder="Enter FromStage" />
+                                <span asp-validation-for="FromStage" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
+                                <label for="name"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    ToStage
+                                    <span class="text-danger-600">*</span>
+                                </label>
+                                <input type="text" asp-for="ToStage" class="form-control radius-8" placeholder="Enter ToStage" />
+                                <span asp-validation-for="ToStage" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-controller="Transfes" asp-action="Index"
+                                   class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
+                                    Cancel
+                                </a>
+                                <button type="submit"
+                                        class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

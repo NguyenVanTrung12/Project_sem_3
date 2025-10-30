@@ -1,54 +1,53 @@
 ﻿@model Project_sem_3.Models.Contact
-
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_Admin";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Contact</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subject)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subject)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Message)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Message)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-    </dl>
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Contact Details</h6>
+    <a asp-action="Index" class="btn btn-secondary">← Back to List</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="card p-24 radius-12 mb-4">
+    <h5 class="mb-3">General Information</h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>Full Name</th>
+            <td>@Model.FullName</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Subject</th>
+            <td>@Model.Subject</td>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <td>@Html.Raw(Model.Message)</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+                @if (Model.Status == 1)
+                {
+                    <span class="badge bg-success">Processed</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning text-dark">Pending</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>Created Date</th>
+            <td>@Model.CreatedDate?.ToString("dd/MM/yyyy HH:mm")</td>
+        </tr>
+    </table>
+</div>
+
+<div class="mt-3">
+
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>

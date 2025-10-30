@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class InterviewSchedulesController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -18,6 +20,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         // GET: BlogsController
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index(int page = 1)
         {
             int pageSize = 5;
@@ -38,6 +41,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "Fullname");
+
             return View();
         }
 
@@ -48,23 +52,19 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "FullName");
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(interview);
-            }
+                // Nếu người dùng không chọn ngày => tự gán ngày hiện tại
+                if (!interview.InterviewDate.HasValue)
+                {
+                    interview.InterviewDate = DateTime.Now;
+                }
 
-            try
-            {
-                _context.InterviewSchedules.Add(interview);
+                _context.Add(interview);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Thêm thành công";
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Lỗi khi thêm: " + ex.Message);
-                return View(interview);
-            }
+            return View(interview);
         }
 
 
@@ -100,13 +100,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
                     _context.Update(interviewSchedule);
                     await _context.SaveChangesAsync();
-                    TempData["Success"] = "Cập nhật thành công";
+                    TempData["Success"] = "Updated successfully";
                     return RedirectToAction(nameof(Index));
                 }
 
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Lỗi khi sửa" + ex.Message);
+                    ModelState.AddModelError("", "Error while editing" + ex.Message);
                 }
             }
             return View(interviewSchedule);
@@ -119,14 +119,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var interview = await _context.InterviewSchedules.FindAsync(id);
             if (interview == null)
             {
-                TempData["Error"] = "Không tìm thấy Blogs để xoá!";
+                TempData["Error"] = "No Blogs found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.InterviewSchedules.Remove(interview);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Xoá blog thành công!";
+            TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

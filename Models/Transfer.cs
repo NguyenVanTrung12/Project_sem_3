@@ -11,6 +11,6 @@ namespace Project_sem_3.Models
         public string? FromStage { get; set; }
         public string? ToStage { get; set; }
 
-        public virtual Candidate Candidate { get; set; } = null!;
+        public virtual Candidate? Candidate { get; set; }
     }
 }

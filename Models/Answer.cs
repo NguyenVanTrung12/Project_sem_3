@@ -28,7 +28,7 @@ namespace Project_sem_3.Models
         [Range(0, 1, ErrorMessage = "Status can only be 0 (hidden) or 1 (visible).")]
         public int? Status { get; set; }
 
-        public virtual Question Question { get; set; } = null!;
+        public virtual Question? Question { get; set; }
         public virtual ICollection<ResultDetail> ResultDetails { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class BlogsController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -20,6 +22,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         // GET: BlogsController
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index(string? q, int? status,int page = 1)
         {
             int pageSize = 5;
@@ -92,12 +95,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     }
                     _context.Blogs.Add(blog);
                     await _context.SaveChangesAsync();
-                    TempData["Success"] = "Thêm thành công";
+                    TempData["Success"] = "More success";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Lỗi khi thêm" + ex.Message);
+                    ModelState.AddModelError("", "Error while adding" + ex.Message);
                 }
 
             }
@@ -170,13 +173,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
                     _context.Update(blog);
                     await _context.SaveChangesAsync();
-                    TempData["Success"] = "Cập nhật thành công";
+                    TempData["Success"] = "Updated successfully";
                     return RedirectToAction(nameof(Index));
                 }
                 
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Lỗi khi sửa" + ex.Message);
+                    ModelState.AddModelError("", "Error while editing" + ex.Message);
                 }
             }
             return View(blog);
@@ -189,14 +192,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var blog = await _context.Blogs.FindAsync(id);
             if (blog == null)
             {
-                TempData["Error"] = "Không tìm thấy Blogs để xoá!";
+                TempData["Error"] = "No Blog found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
             _context.Blogs.Remove(blog);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Xoá blog thành công!";
+            TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 

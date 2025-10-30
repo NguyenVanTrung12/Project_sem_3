@@ -10,7 +10,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class QuestionController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -21,6 +21,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Question
+        [AllowAnonymous]
         public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 10;

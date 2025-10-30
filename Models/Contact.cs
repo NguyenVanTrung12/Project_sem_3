@@ -23,7 +23,6 @@ namespace Project_sem_3.Models
         public string? Subject { get; set; }
 
         [Required(ErrorMessage = "Message content cannot be empty.")]
-        [StringLength(1000, ErrorMessage = "Message cannot exceed 1000 characters.")]
         [Display(Name = "Message")]
         public string? Message { get; set; }
 

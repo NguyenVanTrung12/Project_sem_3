@@ -10,7 +10,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Role_Supper_Managers")]
     public class ManagerController : Controller
     {
         private readonly online_aptitude_testsContext _context;

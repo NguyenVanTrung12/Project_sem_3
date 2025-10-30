@@ -45,7 +45,7 @@ namespace Project_sem_3.Controllers
             }
 
             // ✅ Check if account is active
-            if (candidate.Status == 0)
+            if (candidate.Status != 1)
             {
                 ViewBag.Error = "Your account is inactive. Please contact the administrator.";
                 return View();

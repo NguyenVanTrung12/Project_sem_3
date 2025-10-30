@@ -59,7 +59,7 @@
 
                             <div class="mb-20">
                                 <label asp-for="Mark" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
-                                <input type="number" asp-for="Mark" class="form-control radius-8" placeholder="Enter mark" />
+                                <input type="number" asp-for="Mark" class="form-control radius-8" min="0"  placeholder="Enter mark" />
                                 <span asp-validation-for="Mark" class="text-danger"></span>
                             </div>
 

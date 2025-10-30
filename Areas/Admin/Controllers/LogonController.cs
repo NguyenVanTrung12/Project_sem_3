@@ -41,10 +41,19 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return View();
             }
             // 1️⃣ Check if username exists
-            var manager = await _context.Managers.FirstOrDefaultAsync(m => m.Username == username);
+            var manager = await _context.Managers
+        .Include(m => m.Role)
+        .FirstOrDefaultAsync(m => m.Username == username);
+
             if (manager == null)
             {
                 ViewBag.Error = "Username does not exist.";
+                return View();
+            }
+
+            if (manager.Status != 1)
+            {
+                ViewBag.Error = "Your account is inactive. Please contact the administrator.";
                 return View();
             }
 
@@ -65,13 +74,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return View();
             }
 
-            // 4️⃣ Create claims for authentication
+
             var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.Name, manager.Username ?? "Unknown"),
-        new Claim("Fullname", manager.Fullname ?? "Administrator"),
-        new Claim(ClaimTypes.Role, "Admin")
-    };
+{
+    new Claim(ClaimTypes.Name, manager.Username ?? "Unknown"),
+    new Claim("Fullname", manager.Fullname ?? "Administrator"),
+    new Claim(ClaimTypes.Role, manager.Role?.RoleName ?? "Role_Managers")
+
+};
 
             var claimsIdentity = new ClaimsIdentity(claims, "AdminCookie");
             var authProperties = new AuthenticationProperties
@@ -92,7 +102,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // ✅ Verify if session was stored successfully
             var test = HttpContext.Session.GetInt32("ManagerId");
-            Console.WriteLine($"🟢 Kiểm tra session ManagerId: {test}");
+      
             if (test == null)
             {
                 Console.WriteLine("⚠️ Warning: Session data was not saved correctly!");

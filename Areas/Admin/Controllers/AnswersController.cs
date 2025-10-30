@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class AnswersController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -21,6 +23,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/Answers
+        [AllowAnonymous]
         public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
             int pageSize = 5;
@@ -69,7 +72,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // GET: Admin/Answers/Create
         public IActionResult Create()
         {
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "Id");
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle");
             return View();
         }
 
@@ -78,7 +81,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,QuestionId,AnswerContent,Correctly,Status")] Answer answer)
+        public async Task<IActionResult> Create(Answer answer)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +89,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "Id", answer.QuestionId);
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", answer.QuestionId);
             return View(answer);
         }
 
@@ -103,7 +106,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "Id", answer.QuestionId);
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", answer.QuestionId);
             return View(answer);
         }
 
@@ -112,7 +115,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,QuestionId,AnswerContent,Correctly,Status")] Answer answer)
+        public async Task<IActionResult> Edit(int id, Answer answer)
         {
             if (id != answer.Id)
             {
@@ -139,7 +142,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "Id", answer.QuestionId);
+            ViewData["QuestionId"] = new SelectList(_context.Questions, "Id", "QuestionTitle", answer.QuestionId);
             return View(answer);
         }
 
