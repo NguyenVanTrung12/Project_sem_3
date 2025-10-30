@@ -15,12 +15,31 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             _context = context;
         }
-       
-        public IActionResult Index(int page = 1)
+
+        public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 5;
-            var transfe = _context.Transfers.Include(e => e.Candidate).OrderByDescending(e => e.Id).ToPagedList(page, pageSize);
-            return View(transfe);
+
+            // Gọi dữ liệu + include Candidate
+            var query = _context.Transfers.Include(t => t.Candidate).AsQueryable();
+
+            // Tìm kiếm theo tên ứng viên
+            if (!string.IsNullOrEmpty(q))
+            {
+                query = query.Where(t => t.Candidate.Fullname.Contains(q));
+            }
+
+
+            // Sắp xếp và phân trang
+            var pagedTransfer = query
+                .OrderByDescending(t => t.Id)
+                .ToPagedList(page, pageSize);
+
+            // Gửi dữ liệu xuống View
+            ViewBag.q = q;
+            ViewBag.Status = status;
+
+            return View(pagedTransfer);
         }
 
 
