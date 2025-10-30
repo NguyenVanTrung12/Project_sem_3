@@ -30,8 +30,8 @@ namespace Project_sem_3.Models
         [Range(0, int.MaxValue, ErrorMessage = "Invalid number of views.")]
         public int? Views { get; set; }
         public int? Status { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public DateTime? UpdatedAt { get; set; }= DateTime.Now;
 
         public virtual BlogCategory? BlogCategory { get; set; }
         public virtual Manager? Manager { get; set; }

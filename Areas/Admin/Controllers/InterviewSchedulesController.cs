@@ -38,6 +38,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "Fullname");
+
             return View();
         }
 
@@ -48,23 +49,19 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "FullName");
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(interview);
-            }
+                // Nếu người dùng không chọn ngày => tự gán ngày hiện tại
+                if (!interview.InterviewDate.HasValue)
+                {
+                    interview.InterviewDate = DateTime.Now;
+                }
 
-            try
-            {
-                _context.InterviewSchedules.Add(interview);
+                _context.Add(interview);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Thêm thành công";
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Lỗi khi thêm: " + ex.Message);
-                return View(interview);
-            }
+            return View(interview);
         }
 
 

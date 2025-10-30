@@ -92,6 +92,27 @@
                                 <input type="file" name="uploadfile" class="form-control radius-8" />
                             </div>
                             <div class="mb-20">
+                                <label asp-for="CreatedAt"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    CreatedAt
+                                </label>
+                                <input asp-for="CreatedAt"
+                                       type="datetime-local"
+                                       class="form-control radius-8" />
+                                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="UpdatedAt"
+                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                    UpdatedAt
+                                </label>
+                                <input asp-for="UpdatedAt"
+                                       type="date"
+                                       class="form-control radius-8" />
+                                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                            </div>
+                            <div class="mb-20">
                                 <label class="form-label fw-semibold text-primary-light text-sm mb-8">
                                     Status <span class="text-danger-600">*</span>
                                 </label>
