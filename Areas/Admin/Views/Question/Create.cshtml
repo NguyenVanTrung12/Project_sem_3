@@ -1,0 +1,145 @@
+﻿@model Project_sem_3.Models.Question
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Add Question</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-action="Index" asp-controller="Question"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Add Question</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-6 col-xl-8 col-lg-10">
+                <div class="card border">
+                    <div class="card-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-20"></div>
+
+                            <div class="mb-20">
+                                <label asp-for="TypeId" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
+                                <select asp-for="TypeId" asp-items="ViewBag.TypeId" class="form-control radius-8 form-select">
+                                    <option value="">-- Select question type --</option>
+                                </select>
+                                <span asp-validation-for="TypeId" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="SubjectId" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
+                                <select asp-for="SubjectId" asp-items="ViewBag.SubjectId" class="form-control radius-8 form-select">
+                                    <option value="">-- Select a subject --</option>
+                                </select>
+                                <span asp-validation-for="SubjectId" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="QuestionTitle" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
+                                <textarea asp-for="QuestionTitle" class="form-control" ></textarea>
+                                <span asp-validation-for="QuestionTitle" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="QuestionContent" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
+                                <textarea asp-for="QuestionContent" id="QuestionContent" class="form-control radius-8" rows="4" placeholder="Enter question content"></textarea>
+                                <span asp-validation-for="QuestionContent" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-20">
+                                <label asp-for="Mark" class="form-label fw-semibold text-primary-light text-sm mb-8"></label>
+                                <input type="number" asp-for="Mark" class="form-control radius-8" min="0"  placeholder="Enter mark" />
+                                <span asp-validation-for="Mark" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       id="statusSwitch"
+                                       name="Status"
+                                       value="1"
+                                @(Model != null && Model.Status == 1 ? "checked" : "") />
+                                <label class="form-check-label" for="statusSwitch">
+                                    @(Model != null && Model.Status == 1 ? "Active" : "Inactive")
+                                </label>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function toggleStatusLabel(checkbox) {
+        const label = document.getElementById('statusLabel');
+        if (checkbox.checked) {
+            label.textContent = 'Active';
+        } else {
+            label.textContent = 'Inactive';
+        }
+    }
+</script>
+@section Styles {
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="~/elfinder/css/elfinder.full.css" />
+    <link rel="stylesheet" href="~/elfinder/css/theme.min.css" />
+    <link rel="stylesheet" href="~/elfinder-material-theme/Material/css/theme-gray.css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/elfinder/js/elfinder.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#btnBrowse') != undefined) {
+                $('#btnBrowse').click(function () {
+                    var fm = $('<div id="elfinder" />').dialogelfinder({
+                        url: '/quan-ly-tep-tin/connector',
+                        baseUrl: "/elfinder/",
+                        width: 840,
+                        height: 450,
+                        destroyOnClose: true,
+                        title: 'Quản lý tệp tin',
+                        getFileCallback: function (files, fm) {
+                            $('#Image').val('/' + files[0].path);
+                            $('#PictureView').attr('src', '/' + files[0].path);
+                        },
+                        commandsOptions: {
+                            getfile: {
+                                multiple: true,
+                                oncomplete: 'close',
+                                folders: false
+                            }
+                        }
+                    }).dialogelfinder('instance');
+                });
+            }
+        });
+
+        CKEDITOR.replace('QuestionContent');
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,207 @@
+﻿@model Project_sem_3.Models.Candidate
+
+@{
+    ViewData["Title"] = "Thêm ứng viên";
+    Layout = "_Admin";
+}
+
+<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+    <h6 class="fw-semibold mb-0">Add Candidates</h6>
+    <ul class="d-flex align-items-center gap-2">
+        <li class="fw-medium">
+            <a asp-action="Index" asp-controller="Candidates"
+               class="d-flex align-items-center gap-1 hover-text-primary">
+                <iconify-icon icon="solar:home-smile-angle-outline"
+                              class="icon text-lg"></iconify-icon>
+                Dashboard
+            </a>
+        </li>
+        <li>-</li>
+        <li class="fw-medium">Add Candidates</li>
+    </ul>
+</div>
+
+<div class="card h-100 p-0 radius-12">
+    <div class="card-body p-24">
+        <div class="row justify-content-center">
+            <div class="col-xxl-8 col-xl-10 col-lg-12">
+                <div class="card border">
+                    <div class="card-body">
+                        <form asp-action="Create" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Firstname" class="form-label fw-semibold"></label>
+                                    <input asp-for="Firstname" class="form-control" placeholder="Enter Name" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Lastname" class="form-label fw-semibold"></label>
+                                    <input asp-for="Lastname" class="form-control" placeholder="Enter Lastname" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Fullname" class="form-label fw-semibold"></label>
+                                    <input asp-for="Fullname" class="form-control" placeholder="Fullname" />
+                                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Gender" class="form-label fw-semibold"></label>
+                                    <select asp-for="Gender" class="form-select">
+                                        <option value="">-- Choose gender --</option>
+                                        <option value="true">Male</option>
+                                        <option value="false">Female</option>
+                                    </select>
+                                    <span asp-validation-for="Gender" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="BirthDate" class="form-label fw-semibold"></label>
+                                    <input asp-for="BirthDate" type="date" class="form-control" />
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Phone" class="form-label fw-semibold"></label>
+                                    <input asp-for="Phone" class="form-control" placeholder="Phone Number" />
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Email" class="form-label fw-semibold"></label>
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Address" class="form-label fw-semibold"></label>
+                                    <input asp-for="Address" class="form-control" placeholder="Enter Address" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Hometown" class="form-label fw-semibold"></label>
+                                    <input asp-for="Hometown" class="form-control" placeholder="Hometown" />
+                                    <span asp-validation-for="Hometown" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="University" class="form-label fw-semibold"></label>
+                                    <input asp-for="University" class="form-control" placeholder="University" />
+                                    <span asp-validation-for="University" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Faculty" class="form-label fw-semibold"></label>
+                                    <input asp-for="Faculty" class="form-control" placeholder="Faculty" />
+                                    <span asp-validation-for="Faculty" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Semester" class="form-label fw-semibold"></label>
+                                    <input asp-for="Semester" class="form-control" placeholder="Semester" />
+                                    <span asp-validation-for="Semester" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Education" class="form-label fw-semibold"></label>
+                                    <input asp-for="Education" class="form-control" placeholder="Education" />
+                                    <span asp-validation-for="Education" class="text-danger"></span>
+                                </div>
+
+                                <div>
+                                    <label asp-for="Experience" class="form-label fw-semibold"></label>
+                                    <textarea asp-for="Experience" class="form-control" id="Experience"></textarea>
+                                    <span asp-validation-for="Experience" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Skills" class="form-label fw-semibold"></label>
+                                    <textarea asp-for="Skills" class="form-control" rows="3" placeholder="Skills"></textarea>
+                                    <span asp-validation-for="Skills" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="ExpectedPosition" class="form-label fw-semibold"></label>
+                                    <input asp-for="ExpectedPosition" class="form-control" placeholder="ExpectedPosition" />
+                                    <span asp-validation-for="ExpectedPosition" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Status" class="form-label fw-semibold"></label>
+                                    <select asp-for="Status" class="form-select">
+                                        <option value="0">Not Interviewed Yet</option>
+                                        <option value="1">Interview Scheduled</option>
+                                        <option value="2">Passed</option>
+                                        <option value="3">Failed</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+
+
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center gap-3">
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles {
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="~/elfinder/css/elfinder.full.css" />
+    <link rel="stylesheet" href="~/elfinder/css/theme.min.css" />
+    <link rel="stylesheet" href="~/elfinder-material-theme/Material/css/theme-gray.css" />
+}
+@section Scripts {
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/elfinder/js/elfinder.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#btnBrowse') != undefined) {
+                $('#btnBrowse').click(function () {
+                    var fm = $('<div id="elfinder" />').dialogelfinder({
+                        url: '/quan-ly-tep-tin/connector',
+                        baseUrl: "/elfinder/",
+                        width: 840,
+                        height: 450,
+                        destroyOnClose: true,
+                        title: 'Quản lý tệp tin',
+                        getFileCallback: function (files, fm) {
+                            $('#Image').val('/' + files[0].path);
+                            $('#PictureView').attr('src', '/' + files[0].path);
+                        },
+                        commandsOptions: {
+                            getfile: {
+                                multiple: true,
+                                oncomplete: 'close',
+                                folders: false
+                            }
+                        }
+                    }).dialogelfinder('instance');
+                });
+            }
+        });
+
+        // Kích hoạt CKEditor cho phần Ghi chú
+        CKEDITOR.replace('Experience');
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

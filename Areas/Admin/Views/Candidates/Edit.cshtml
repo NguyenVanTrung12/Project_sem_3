@@ -1,20 +1,23 @@
-﻿@{
+﻿
+@model Project_sem_3.Models.Candidate
+
+@{
     Layout = "_Admin";
+    ViewData["Title"] = "Edit Candidate";
 }
 
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-    <h6 class="fw-semibold mb-0">Add User</h6>
+    <h6 class="fw-semibold mb-0">Edit Candidate</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
-            <a href="index.html"
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
                class="d-flex align-items-center gap-1 hover-text-primary">
-                <iconify-icon icon="solar:home-smile-angle-outline"
-                              class="icon text-lg"></iconify-icon>
+                <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
                 Dashboard
             </a>
         </li>
         <li>-</li>
-        <li class="fw-medium">Add User</li>
+        <li class="fw-medium">Edit Candidate</li>
     </ul>
 </div>
 
@@ -24,85 +27,186 @@
             <div class="col-xxl-6 col-xl-8 col-lg-10">
                 <div class="card border">
                     <div class="card-body">
-                        <h6 class="text-md text-primary-light mb-16">
-                            Profile Image
-                        </h6>
 
-                        <form action="#">
-                            <div class="mb-20">
-                                <label for="name"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Full Name
-                                    <span class="text-danger-600">*</span>
-                                </label>
-                                <input type="text"
-                                       class="form-control radius-8"
-                                       id="name"
-                                       placeholder="Enter Full Name" />
+                        <form asp-action="Edit" method="post"
+                              onsubmit="return confirm('Bạn có chắc muốn lưu thay đổi cho ứng viên này không?');">
+                            <input type="hidden" asp-for="Id" />
+
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Firstname" class="form-label fw-semibold"></label>
+                                    <input asp-for="Firstname" class="form-control" placeholder="Firstname" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Lastname" class="form-label fw-semibold"></label>
+                                    <input asp-for="Lastname" class="form-control" placeholder="Lastname" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Fullname" class="form-label fw-semibold"></label>
+                                    <input asp-for="Fullname" class="form-control" placeholder="Fullname" />
+                                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Gender" class="form-label fw-semibold"></label>
+                                    <select asp-for="Gender" class="form-select">
+                                        <option value="">-- Choose gender --</option>
+                                        <option value="true">Male</option>
+                                        <option value="false">Female</option>
+                                    </select>
+                                    <span asp-validation-for="Gender" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="BirthDate" class="form-label fw-semibold"></label>
+                                    <input asp-for="BirthDate" type="date" class="form-control" />
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Phone" class="form-label fw-semibold"></label>
+                                    <input asp-for="Phone" class="form-control" placeholder="Phone Number" />
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Email" class="form-label fw-semibold"></label>
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Address" class="form-label fw-semibold"></label>
+                                    <input asp-for="Address" class="form-control" placeholder="Enter Address" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Hometown" class="form-label fw-semibold"></label>
+                                    <input asp-for="Hometown" class="form-control" placeholder="Hometown" />
+                                    <span asp-validation-for="Hometown" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="University" class="form-label fw-semibold"></label>
+                                    <input asp-for="University" class="form-control" placeholder="University" />
+                                    <span asp-validation-for="University" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Faculty" class="form-label fw-semibold"></label>
+                                    <input asp-for="Faculty" class="form-control" placeholder="Faculty" />
+                                    <span asp-validation-for="Faculty" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Semester" class="form-label fw-semibold"></label>
+                                    <input asp-for="Semester" class="form-control" placeholder="Semester" />
+                                    <span asp-validation-for="Semester" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Education" class="form-label fw-semibold"></label>
+                                    <input asp-for="Education" class="form-control" placeholder="Education" />
+                                    <span asp-validation-for="Education" class="text-danger"></span>
+                                </div>
+
+                                <div>
+                                    <label asp-for="Experience" class="form-label fw-semibold"></label>
+                                    <textarea asp-for="Experience" class="form-control" id="Experience"></textarea>
+                                    <span asp-validation-for="Experience" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Skills" class="form-label fw-semibold"></label>
+                                    <textarea asp-for="Skills" class="form-control" rows="3" placeholder="Skills"></textarea>
+                                    <span asp-validation-for="Skills" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="ExpectedPosition" class="form-label fw-semibold"></label>
+                                    <input asp-for="ExpectedPosition" class="form-control" placeholder="ExpectedPosition" />
+                                    <span asp-validation-for="ExpectedPosition" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label asp-for="Status" class="form-label fw-semibold"></label>
+                                    <select asp-for="Status" class="form-select">
+                                        <option value="0">Not Interviewed Yet</option>
+                                        <option value="1">Interview Scheduled</option>
+                                        <option value="2">Passed</option>
+                                        <option value="3">Failed</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+
+
                             </div>
-                            <div class="mb-20">
-                                <label for="email"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">Email <span class="text-danger-600">*</span></label>
-                                <input type="email"
-                                       class="form-control radius-8"
-                                       id="email"
-                                       placeholder="Enter email address" />
-                            </div>
-                            <div class="mb-20">
-                                <label for="number"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">Phone</label>
-                                <input type="email"
-                                       class="form-control radius-8"
-                                       id="number"
-                                       placeholder="Enter phone number" />
-                            </div>
-                            <div class="mb-20">
-                                <label for="depart"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Department <span class="text-danger-600">*</span>
-                                </label>
-                                <select class="form-control radius-8 form-select"
-                                        id="depart">
-                                    <option>Enter Event Title</option>
-                                    <option>Enter Event Title One</option>
-                                    <option>Enter Event Title Two</option>
-                                </select>
-                            </div>
-                            <div class="mb-20">
-                                <label for="desig"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Designation <span class="text-danger-600">*</span>
-                                </label>
-                                <select class="form-control radius-8 form-select"
-                                        id="desig">
-                                    <option>Enter Designation Title</option>
-                                    <option>Enter Designation Title One</option>
-                                    <option>Enter Designation Title Two</option>
-                                </select>
-                            </div>
-                            <div class="mb-20">
-                                <label for="desc"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">Description</label>
-                                <textarea name="#0"
-                                          class="form-control radius-8"
-                                          id="desc"
-                                          placeholder="Write description..."></textarea>
-                            </div>
+
                             <div class="d-flex align-items-center justify-content-center gap-3">
-                                <button type="button"
-                                        class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
-                                    Cancel
-                                </button>
-                                <button type="submit"
-                                        class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
-                                    Save
-                                </button>
+                                <a asp-action="Index" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">Cancel</a>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">Save</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section Styles {
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="~/elfinder/css/elfinder.full.css" />
+    <link rel="stylesheet" href="~/elfinder/css/theme.min.css" />
+    <link rel="stylesheet" href="~/elfinder-material-theme/Material/css/theme-gray.css" />
+}
+@section Scripts {
+    <script type="text/javascript" src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/elfinder/js/elfinder.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#btnBrowse') != undefined) {
+                $('#btnBrowse').click(function () {
+                    var fm = $('<div id="elfinder" />').dialogelfinder({
+                        url: '/quan-ly-tep-tin/connector',
+                        baseUrl: "/elfinder/",
+                        width: 840,
+                        height: 450,
+                        destroyOnClose: true,
+                        title: 'Quản lý tệp tin',
+                        getFileCallback: function (files, fm) {
+                            $('#Image').val('/' + files[0].path);
+                            $('#PictureView').attr('src', '/' + files[0].path);
+                        },
+                        commandsOptions: {
+                            getfile: {
+                                multiple: true,
+                                oncomplete: 'close',
+                                folders: false
+                            }
+                        }
+                    }).dialogelfinder('instance');
+                });
+            }
+        });
+
+        // Kích hoạt CKEditor cho phần Ghi chú
+        CKEDITOR.replace('Experience');
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

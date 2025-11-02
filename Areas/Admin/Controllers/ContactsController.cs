@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
     public class ContactsController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -21,6 +23,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts
+        [AllowAnonymous]
         public IActionResult Index(int page = 1, int? status = null)
         {
             int pageSize = 10;

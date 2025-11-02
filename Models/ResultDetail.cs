@@ -11,8 +11,8 @@ namespace Project_sem_3.Models
         public int AnswerId { get; set; }
         public double? Mark { get; set; }
 
-        public virtual Answer Answer { get; set; } = null!;
-        public virtual Question Question { get; set; } = null!;
-        public virtual Result Result { get; set; } = null!;
+        public virtual Answer? Answer { get; set; }
+        public virtual Question? Question { get; set; }
+        public virtual Result? Result { get; set; }
     }
 }
