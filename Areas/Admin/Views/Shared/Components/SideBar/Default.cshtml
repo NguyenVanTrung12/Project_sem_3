@@ -29,12 +29,6 @@
                             AI
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="Admin" asp-controller="Banner" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Banners
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -140,15 +134,9 @@
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline"
                                   class="menu-icon"></iconify-icon>
-                    <span>Answers</span>
+                    <span>Question</span>
                 </a>
                 <ul class="sidebar-submenu">
-                    <li>
-                        <a asp-area="Admin" asp-controller="Answers" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Answers
-                        </a>
-                    </li>
                     <li>
                         <a asp-area="Admin" asp-controller="Question" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
@@ -186,6 +174,21 @@
                         <a href="/Admin/Types/Index">
                             <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
                             Types
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>Banner</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="/Admin/Banner/Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Banner
                         </a>
                     </li>
                 </ul>
