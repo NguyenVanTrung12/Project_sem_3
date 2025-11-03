@@ -26,7 +26,7 @@
                 <div class="card border">
                     <div class="card-body">
 
-                        <form asp-action="Edit" method="post"
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data"
                               onsubmit="return confirm('Bạn có chắc muốn lưu thay đổi cho người quản lý này không?');">
                             <input type="hidden" asp-for="Id" />
 
@@ -76,7 +76,26 @@
                                     <span asp-validation-for="RoleId" class="text-danger"></span>
                                 </div>
 
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Avatar (Image)</label>
+                                    <input type="file" name="uploadfile" class="form-control radius-8" accept="image/*" />
+                                    <span class="text-secondary text-sm">Select a representative image for the manager</span>
+                                </div>
 
+                                <!-- ✅ Hiển thị ảnh hiện tại -->
+                                <div class="col-md-6 mb-3 text-center">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Current Avatar</label>
+                                    @if (!string.IsNullOrEmpty(Model.Image))
+                                    {
+                                        <div>
+                                            <img src="@Model.Image" alt="Avatar" class="img-thumbnail radius-12" style="max-width:150px; height:auto;" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted fst-italic">No avatar uploaded.</p>
+                                    }
+                                </div>
 
                                 <!-- CreatedAt -->
                                 <div class="col-md-6 mb-3">

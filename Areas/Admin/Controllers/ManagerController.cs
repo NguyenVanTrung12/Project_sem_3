@@ -54,13 +54,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName");
+            ViewData["RoleId"] = new SelectList(_context.Roles.Where(r => r.RoleName != "Role_Supper_Managers"), "Id", "RoleName");
             return View("Create");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Manager model)
+        public async Task<IActionResult> Create(Manager model, IFormFile? uploadfile)
         {
             if (ModelState.IsValid)
             {
@@ -86,15 +86,38 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
                 var phoneExists = await _context.Managers
                   .AnyAsync(m => m.Phone == model.Phone);
-                if (emailExists)
+                if (phoneExists)
                 {
                     ModelState.AddModelError("Phone", "Phone already exists.");
                     ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", model.RoleId);
                     return View(model);
                 }
 
-                // 3️⃣ Hash password
-                model.PasswordHash = PasswordHelper.HashPassword(model.PasswordHash);
+                if (uploadfile != null && uploadfile.Length > 0)
+                {
+                    var uploadsDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/managers");
+                    Directory.CreateDirectory(uploadsDir);
+
+                    var ext = Path.GetExtension(uploadfile.FileName);
+                    var fileName = $"{Guid.NewGuid()}{ext}";
+                    var filePath = Path.Combine(uploadsDir, fileName);
+
+                    await using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await uploadfile.CopyToAsync(stream);
+                    }
+
+                    model.Image = $"/uploads/managers/{fileName}";
+                }
+                if (!string.IsNullOrWhiteSpace(model.PasswordHash))
+                {
+                    model.PasswordHash = PasswordHelper.HashPassword(model.PasswordHash);
+                }
+                else
+                {
+                    ModelState.AddModelError("PasswordHash", "Password cannot be blank");
+                    return View(model);
+                }
 
                 // 4️⃣ Status mặc định nếu không chọn
                 if (!Request.Form.ContainsKey("Status"))
@@ -108,7 +131,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", model.RoleId);
+            ViewData["RoleId"] = new SelectList(
+                _context.Roles
+                    .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+                "Id",
+                "RoleName",
+                model.RoleId
+            );
             return View(model);
         }
 
@@ -121,21 +150,33 @@ namespace Project_sem_3.Areas.Admin.Controllers
             if (manager == null)
                 return NotFound();
 
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", manager.RoleId);
+            ViewData["RoleId"] = new SelectList(
+              _context.Roles
+                  .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+              "Id",
+              "RoleName",
+              manager.RoleId
+          );
             return View(manager);
         }
 
         // Cập nhật (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Manager model)
+        public async Task<IActionResult> Edit(int id, Manager model, IFormFile? uploadfile)
         {
             if (id != model.Id)
                 return NotFound();
 
             if (!ModelState.IsValid)
             {
-                ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", model.RoleId);
+                ViewData["RoleId"] = new SelectList(
+      _context.Roles
+          .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+      "Id",
+      "RoleName",
+      model.RoleId
+  );
                 return PartialView("Edit", model);
             }
 
@@ -152,7 +193,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 if (usernameExists)
                 {
                     ModelState.AddModelError("Username", "Username already exists.");
-                    ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", model.RoleId);
+                    ViewData["RoleId"] = new SelectList(
+         _context.Roles
+             .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+         "Id",
+         "RoleName",
+         model.RoleId
+     );
                     return PartialView("Edit", model);
                 }
 
@@ -162,7 +209,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 if (emailExists)
                 {
                     ModelState.AddModelError("Email", "Email already exists.");
-                    ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", model.RoleId);
+                    ViewData["RoleId"] = new SelectList(
+      _context.Roles
+          .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+      "Id",
+      "RoleName",
+      model.RoleId
+  );
                     return PartialView("Edit", model);
                 }
 
@@ -171,7 +224,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 if (emailExists)
                 {
                     ModelState.AddModelError("Phone", "Phone already exists.");
-                    ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "RoleName", model.RoleId);
+                    ViewData["RoleId"] = new SelectList(
+            _context.Roles
+                .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+            "Id",
+            "RoleName",
+            model.RoleId
+        );
                     return PartialView("Edit", model);
                 }
 
@@ -180,6 +239,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 manager.Fullname = model.Fullname;
                 manager.Email = model.Email;
                 manager.Phone = model.Phone;
+                manager.Image = model.Image;
                 manager.RoleId = model.RoleId;
                 manager.Status = model.Status ?? 0;
                 manager.CreatedAt = model.CreatedAt;
@@ -189,7 +249,27 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 {
                     manager.PasswordHash = PasswordHelper.HashPassword(model.PasswordHash);
                 }
+                if (uploadfile != null && uploadfile.Length > 0)
+                {
+                    var uploadsDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/managers");
+                    Directory.CreateDirectory(uploadsDir);
 
+                    var ext = Path.GetExtension(uploadfile.FileName);
+                    var fileName = $"{Guid.NewGuid()}{ext}";
+                    var filePath = Path.Combine(uploadsDir, fileName);
+
+                    await using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await uploadfile.CopyToAsync(stream);
+                    }
+
+                    manager.Image = $"/uploads/managers/{fileName}";
+                }
+                else
+                {
+                    // Giữ nguyên ảnh cũ
+                    manager.Image = model.Image ?? manager.Image;
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
