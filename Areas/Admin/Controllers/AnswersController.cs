@@ -23,7 +23,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/Answers
-        [AllowAnonymous]
+      
         public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
             int pageSize = 5;

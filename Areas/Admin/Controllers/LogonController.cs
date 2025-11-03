@@ -20,7 +20,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Logon
-        [AllowAnonymous]
         public IActionResult Index()
         {
             if (HttpContext.Session.GetInt32("ManagerId") != null)

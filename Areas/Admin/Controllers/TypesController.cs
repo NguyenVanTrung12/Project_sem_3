@@ -26,7 +26,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Types
-        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString, int? page, int? status)
         {
 
