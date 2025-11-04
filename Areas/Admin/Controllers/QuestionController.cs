@@ -21,7 +21,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Question
-        [AllowAnonymous]
         public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 10;
@@ -29,7 +28,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             var query = _context.Questions
                 .Include(q => q.Subject) // nếu có quan hệ
                 .Include(q => q.@Type)    // nếu có quan hệ
-                
+
                                 .AsQueryable();
 
             // Tìm kiếm theo tên
@@ -68,7 +67,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-               
+
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");

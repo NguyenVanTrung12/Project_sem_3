@@ -1,4 +1,6 @@
-﻿@model Project_sem_3.Models.Answer
+﻿@using Microsoft.AspNetCore.Razor.Language
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model Project_sem_3.Models.Answer
 @{
     ViewData["Title"] = "Add Answer";
     Layout = "_Admin";
@@ -9,7 +11,7 @@
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
             <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
-               class="d-flex align-items-center gap-1 hover-text-primary">
+                class="d-flex align-items-center gap-1 hover-text-primary">
                 <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
                 Home
             </a>
@@ -23,35 +25,32 @@
     <div class="card-body p-24">
         <div class="row justify-content-center">
             <div class="col-xxl-6 col-xl-8 col-lg-10">
-                <form asp-action="Create" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <form asp-area="Admin" asp-controller="Answers" asp-action="Create" method="post">
+                    <input type="hidden" name="questionId" value="@ViewBag.QuestionId" />
 
-                    <!-- Question -->
                     <div class="mb-20">
-                        <label asp-for="QuestionId"
-                               class="form-label fw-semibold text-primary-light text-sm mb-8">
-                            Question <span class="text-danger">*</span>
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                            Question:
                         </label>
-                        <select asp-for="QuestionId" class="form-select radius-8" asp-items="ViewBag.QuestionId">
-                            <option value="">-- Select a Question --</option>
-                        </select>
-                        <span asp-validation-for="QuestionId" class="text-danger"></span>
+                        <div class="form-control bg-light">
+                            @Html.Raw(ViewBag.QuestionTitle)
+                        </div>
                     </div>
 
                     <!-- Answer Content -->
                     <div class="mb-20">
-                        <label class="form-label"><b>Answer Content</b></label>
+                        <label class="form-label"><b>Answer Content</b> <span class="text-danger">*</span></label>
                         <textarea asp-for="AnswerContent" class="form-control"></textarea>
                         <span asp-validation-for="AnswerContent" class="text-danger"></span>
                     </div>
 
                     <!-- Correct / Incorrect -->
                     <div class="mb-20">
-                        <label asp-for="Correctly"
-                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                        <label asp-for="Correctly" class="form-label fw-semibold text-primary-light text-sm mb-8">
                             Is Correct Answer?
                         </label>
-                        <select asp-for="Correctly" class="form-select radius-8">
+                        <select asp-for="Correctly" class="form-select radius-8" required>
+                            <option value="">-- Select --</option>
                             <option value="true">Correct</option>
                             <option value="false">Incorrect</option>
                         </select>
@@ -60,11 +59,11 @@
 
                     <!-- Status -->
                     <div class="mb-20">
-                        <label asp-for="Status"
-                               class="form-label fw-semibold text-primary-light text-sm mb-8">
+                        <label asp-for="Status" class="form-label fw-semibold text-primary-light text-sm mb-8">
                             Status
                         </label>
-                        <select asp-for="Status" class="form-select radius-8">
+                        <select asp-for="Status" class="form-select radius-8" required>
+                            <option value="">-- Select --</option>
                             <option value="1">Visible</option>
                             <option value="0">Hidden</option>
                         </select>
@@ -72,14 +71,16 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
-                        <a asp-action="Index"
-                           class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
+                        <a asp-action="Answers" asp-controller="Question" asp-route-questionId="@ViewBag.QuestionId"
+                            class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
                             Cancel
                         </a>
+
                         <button type="submit"
-                                class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
+                            class="btn btn-primary border border-primary-600 text-md px-56 py-12 radius-8">
                             Add New
                         </button>
+
                     </div>
                 </form>
             </div>
@@ -129,6 +130,12 @@
             // Initialize CKEditor
             if (document.getElementById('AnswerContent')) {
                 CKEDITOR.replace('AnswerContent');
+                $('form').on('submit', function () {
+                    for (instance in CKEDITOR.instances) {
+                        CKEDITOR.instances[instance].updateElement();
+                    }
+                });
+
             }
         });
     </script>

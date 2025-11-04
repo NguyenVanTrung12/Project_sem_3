@@ -25,7 +25,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Subjects
-        [AllowAnonymous]
         public IActionResult Index(string? searchString, int? status, int? page)
         {
             var query = _context.Subjects.AsQueryable();

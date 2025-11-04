@@ -23,7 +23,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Admin/Contacts
-        [AllowAnonymous]
         public IActionResult Index(int page = 1, int? status = null)
         {
             int pageSize = 10;

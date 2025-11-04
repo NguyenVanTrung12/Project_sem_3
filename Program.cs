@@ -49,6 +49,7 @@ using (var scope = app.Services.CreateScope())
         {
             Username = "Webster",
             Fullname = "Webster Organization",
+            Image = "https://i.pinimg.com/736x/bc/43/98/bc439871417621836a0eeea768d60944.jpg",
             Email = "organizationwebster@gmail.com",
             Phone = "0379255680",
             PasswordHash = hashed,

@@ -1,6 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Areas.Admin.Helpers;
@@ -20,7 +18,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Logon
-        [AllowAnonymous]
         public IActionResult Index()
         {
             if (HttpContext.Session.GetInt32("ManagerId") != null)
@@ -122,7 +119,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             await HttpContext.SignOutAsync("AdminCookie");
             HttpContext.Session.Clear();
-            return Redirect("https://localhost:7105/");
+            return RedirectToAction("Index");
         }
     }
 }

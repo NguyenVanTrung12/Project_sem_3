@@ -26,7 +26,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: SubjectTypes
-        [AllowAnonymous]
     public IActionResult Index(string searchString, int? page)
         {
             var query = _context.SubjectTypes

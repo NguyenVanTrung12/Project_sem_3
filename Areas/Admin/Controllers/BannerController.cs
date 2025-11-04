@@ -15,7 +15,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
+
         public IActionResult Index(int page = 1, int? postion = null, int? active = null)
         {
             int pageSize = 5;

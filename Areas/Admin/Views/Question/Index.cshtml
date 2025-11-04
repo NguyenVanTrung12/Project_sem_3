@@ -19,16 +19,14 @@
 </div>
 
 <div class="card h-100 p-0 radius-12">
-    <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
+    <div
+        class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
         <div class="d-flex align-items-center flex-wrap gap-3">
             <form id="filterForm" method="get" class="d-flex align-items-center gap-2 navbar-search">
                 <!-- Ô tìm kiếm -->
                 <div class="position-relative">
-                    <input type="text"
-                           name="q"
-                           value="@ViewBag.q"
-                           class="bg-base h-40-px w-auto ps-10 pe-10 radius-12"
-                           placeholder="Search by name..." />
+                    <input type="text" name="q" value="@ViewBag.q" class="bg-base h-40-px w-auto ps-10 pe-10 radius-12"
+                        placeholder="Search by name..." />
 
                 </div>
 
@@ -54,7 +52,8 @@
                 </select>
             </form>
         </div>
-        <a asp-action="Create" asp-controller="Question" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+        <a asp-action="Create" asp-controller="Question"
+            class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
             <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
             Add New Question
         </a>
@@ -68,7 +67,8 @@
                         <th scope="col">
                             <div class="d-flex align-items-center gap-10">
                                 <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox" id="selectAll" />
+                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox"
+                                        id="selectAll" />
                                 </div>
                                 S.L
                             </div>
@@ -88,16 +88,18 @@
                             <td>
                                 <div class="d-flex align-items-center gap-10">
                                     <div class="form-check style-check d-flex align-items-center">
-                                        <input class="form-check-input radius-4 border border-neutral-400" type="checkbox" />
+                                        <input class="form-check-input radius-4 border border-neutral-400"
+                                            type="checkbox" />
                                     </div>
                                     @item.Id
                                 </div>
                             </td>
                             <td>@item.QuestionTitle</td>
-                          
+
                             <td>@item.Mark</td>
                             <td class="text-center">
-                                <span class="@(item.Status == 1 ? "bg-success-focus text-success-600 border border-success-main" : "bg-danger-focus text-danger-600 border border-danger-main") px-24 py-4 radius-4 fw-medium text-sm">
+                                <span
+                                    class="@(item.Status == 1 ? "bg-success-focus text-success-600 border border-success-main" : "bg-danger-focus text-danger-600 border border-danger-main") px-24 py-4 radius-4 fw-medium text-sm">
                                     @(item.Status == 1 ? "Active" : "Inactive")
                                 </span>
                             </td>
@@ -105,19 +107,23 @@
                             <td class="text-center">@item.Type?.TypeName</td>
                             <td class="text-center">
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="majesticons:eye-line" class="icon text-xl"></iconify-icon>
+
+                                    <a asp-area="Admin" asp-controller="Answers" asp-action="Index" asp-route-questionId="@item.Id"
+                                        class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                        <iconify-icon icon="mdi:plus-box-outline" class="menu-icon"></iconify-icon>
                                     </a>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+
+                                    <a asp-action="Edit" asp-route-id="@item.Id"
+                                        class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                         <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                     </a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" method="post"
-                                          onsubmit="return confirm('⚠️ Bạn có chắc chắn muốn xóa câu hỏi này không?');"
-                                          style="display:inline;">
+                                        onsubmit="return confirm('⚠️ Bạn có chắc chắn muốn xóa câu hỏi này không?');"
+                                        style="display:inline;">
                                         @Html.AntiForgeryToken()
                                         <button type="submit"
-                                                class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                                title="Xóa">
+                                            class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                                            title="Xóa">
                                             <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                                         </button>
                                     </form>
@@ -133,11 +139,12 @@
             <span>Page @Model.PageNumber of @Model.PageCount (Total: @Model.TotalItemCount)</span>
             <div>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
-                         new PagedListRenderOptions
+                new PagedListRenderOptions
                 {
                     UlElementClasses = new[] { "pagination", "d-flex", "flex-wrap", "gap-2" },
                     LiElementClasses = new[] { "page-item" },
-                    PageClasses = new[] { "page-link", "radius-8", "border-0", "bg-neutral-200", "text-secondary-light", "fw-semibold" },
+                    PageClasses = new[] { "page-link", "radius-8", "border-0", "bg-neutral-200", "text-secondary-light",
+                                "fw-semibold" },
                     ActiveLiElementClass = "active bg-primary-600 text-white"
                 })
             </div>
