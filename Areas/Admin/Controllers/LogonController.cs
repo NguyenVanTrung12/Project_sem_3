@@ -119,7 +119,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             await HttpContext.SignOutAsync("AdminCookie");
             HttpContext.Session.Clear();
-            return Redirect("https://localhost:7105/");
+            return RedirectToAction("Index");
         }
     }
 }
