@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Project_sem_3.Models.Subject>
+
+@{
+    ViewData["Title"] = "Chọn môn thi";
+    var error = TempData["Error"] as string;
+}
+
+<h2>Chọn môn thi</h2>
+
+@if (!string.IsNullOrEmpty(error))
+{
+    <div class="alert alert-danger">@error</div>
+}
+
+<ul>
+    @foreach (var s in Model)
+    {
+        <li>
+            <a asp-action="Start" asp-route-subjectId="@s.Id">@s.SubjectName</a>
+        </li>
+    }
+</ul>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,7 +26,6 @@ namespace Project_sem_3.Models
         public string? QuestionTitle { get; set; }
 
         [Required(ErrorMessage = "Question content is required.")]
-
         public string? QuestionContent { get; set; }
 
         [Required(ErrorMessage = "Mark is required.")]
@@ -35,9 +35,15 @@ namespace Project_sem_3.Models
         [Range(0, 1, ErrorMessage = "Status must be 0 (inactive) or 1 (active).")]
         public int? Status { get; set; }
 
-        public virtual Subject? Subject { get; set; } 
-        public virtual Type? Type { get; set; } 
+        [JsonIgnore]
+        public virtual Subject? Subject { get; set; }
+
+        [JsonIgnore]
+        public virtual Type? Type { get; set; }
+
         public virtual ICollection<Answer> Answers { get; set; }
+
+        [JsonIgnore]
         public virtual ICollection<ResultDetail> ResultDetails { get; set; }
     }
 }
