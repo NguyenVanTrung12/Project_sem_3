@@ -42,7 +42,7 @@
                                             <a href="service.html">
                                                 <img src="assets/img/modal/4.jpg" alt="service">
                                             </a>
-                                            <h3><a href="service.html">Service</a></h3>
+                                            <h3><a href="service.html">Test Categories</a></h3>
                                         </div>
                                     </div>
 
@@ -51,7 +51,7 @@
                                             <a href="portfolio.html">
                                                 <img src="assets/img/modal/5.jpg" alt="portfolio">
                                             </a>
-                                            <h3><a href="portfolio.html">Portfolio</a></h3>
+                                            <h3><a href="portfolio.html">Practice Tests</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +104,57 @@
 
     <div id="particles-js"></div>
 </div>
-<!-- Banner Section End -->
+
+
+
+<section class="features-section pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <span>Our Features</span>
+            <h2>Choose Your Test Topic</h2>
+            <p>Select which part of the aptitude test you want to begin with. Follow the sequence to complete all rounds.</p>
+        </div>
+
+        <div class="row">
+
+            <!-- General Knowledge -->
+            <div class="col-lg-4 col-sm-6">
+                <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="text-decoration-none">
+                    <div class="features-card feature-one">
+                        <i class="flaticon-technical-support"></i>
+                        <h3>General Knowledge</h3>
+                        <p>Test your awareness of the world, history, science, and current affairs.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mathematics -->
+            <div class="col-lg-4 col-sm-6">
+                <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="text-decoration-none">
+                    <div class="features-card feature-two">
+                        <i class="flaticon-megaphone"></i>
+                        <h3>Mathematics</h3>
+                        <p>Challenge your problem-solving and quantitative reasoning abilities.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Computer Technology -->
+            <div class="col-lg-4 col-sm-6">
+                <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="text-decoration-none">
+                    <div class="features-card feature-three">
+                        <i class="flaticon-settings"></i>
+                        <h3>Computer Technology</h3>
+                        <p>Assess your understanding of computers, programming, and IT fundamentals.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 <!-- Video Section Start -->
 <div class="video-section pt-100">
     <div class="container">
@@ -220,7 +270,7 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="about-us">
                                 <i class="flaticon-customer-service icon-two"></i>
-                                <p>24/7 Support</p>
+                                <p>Expert Support</p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
@@ -513,9 +563,9 @@
 <section class="portfolio-section pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">
-            <span>Our Portfolio</span>
-            <h2>Latest Works For Clients</h2>
-            <p>This feature is essential for any mobile app, so make sure you have it! These types of notifications can directly alert your user.</p>
+            <span>Test Categories</span>
+            <h2>Explore Our Practice Tests</h2>
+            <p>Choose from a wide range of aptitude test categories designed to match industry standards and academic requirements.</p>
         </div>
 
         <div class="row">
@@ -524,9 +574,9 @@
                     <div class="portfolio-img">
                         <img src="assets/img/portfolio/1.jpg" alt="portfolio image">
                         <div class="portfolio-text">
-                            <h3>Online Business</h3>
+                            <h3>Logical Reasoning</h3>
                             <a href="#" class="portfolio-btn">
-                                Read More
+                                Start Test
                                 <i class="flaticon-right-chevron"></i>
                             </a>
                         </div>
@@ -539,12 +589,9 @@
                     <div class="portfolio-img">
                         <img src="assets/img/portfolio/2.jpg" alt="portfolio image">
                         <div class="portfolio-text">
-                            <h3>Digital Marketing</h3>
-
-
-
+                            <h3>Numerical Reasoning</h3>
                             <a href="#" class="portfolio-btn">
-                                Read More
+                                Start Test
                                 <i class="flaticon-right-chevron"></i>
                             </a>
                         </div>
@@ -557,9 +604,9 @@
                     <div class="portfolio-img">
                         <img src="assets/img/portfolio/3.jpg" alt="portfolio image">
                         <div class="portfolio-text">
-                            <h3>Business Research</h3>
+                            <h3>Verbal Reasoning</h3>
                             <a href="#" class="portfolio-btn">
-                                Read More
+                                Start Test
                                 <i class="flaticon-right-chevron"></i>
                             </a>
                         </div>
@@ -567,107 +614,26 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-sm-4">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/4.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Content Writing</h3>
-                            <a href="#" class="portfolio-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-sm-8">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/5.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Virtual Assistant Service</h3>
-                            <a href="#" class="portfolio-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-4">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/6.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>SEO Service</h3>
-                            <a href="#" class="portfolio-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
 
         <div class="theme-button text-center">
             <a href="portfolio.html" class="default-btn">
-                Load More
+                View All Tests
             </a>
         </div>
     </div>
 </section>
 <!-- Portfolio Section End -->
-<!-- Progress Section Start -->
-<div class="progress-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-7 progress-image">
-            </div>
 
-            <div class="col-md-6 offset-md-6 p-0">
-                <div class="progress-text">
-                    <h2>We Always Try to be the Best Support to Our Clients as Possible</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
 
-                    <div class="progress-inner">
-                        <p>Software Development</p>
-                        <span>70%</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
 
-                    <div class="progress-inner">
-                        <p>Digital Marketing</p>
-                        <span>85%</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-                    <div class="progress-inner">
-                        <p>Business Management</p>
-                        <span>95%</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Progress Section End -->
 <!-- Blog Section Start -->
 <section class="blog-section pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">
             <span>Our Blog</span>
-            <h2>Our Latest Blogs</h2>
+            <h2>Latest Tips & Guides</h2>
         </div>
 
         <div class="row">
@@ -681,7 +647,7 @@
                     </div>
                     <div class="blog-text">
 
-                        <h3><a href="blog-details.html">The next genaration IT will change the world</a></h3>
+                        <h3><a href="blog-details.html">10 Essential Tips to Ace Your Aptitude Test</a></h3>
 
                         <div class="post-info">
                             <img src="assets/img/blog/author-1.png" alt="blog author">
@@ -705,7 +671,7 @@
                     </div>
                     <div class="blog-text">
 
-                        <h3><a href="blog-details.html">Content writing demand day by day increasing</a></h3>
+                        <h3><a href="blog-details.html">Understanding Logical Reasoning: A Complete Guide</a></h3>
 
                         <div class="post-info">
                             <img src="assets/img/blog/author-2.png" alt="blog author">
@@ -729,7 +695,7 @@
                     </div>
                     <div class="blog-text">
 
-                        <h3><a href="blog-details.html">Don't buy a tech gift until you read these rules image</a></h3>
+                        <h3><a href="blog-details.html">How to Improve Your Numerical Reasoning Skills Fast</a></h3>
 
                         <div class="post-info">
                             <img src="assets/img/blog/author-3.png" alt="blog author">
@@ -758,7 +724,7 @@
                 <div class="contact-form">
                     <div class="contact-text">
                         <h3>We Love to Hear From You</h3>
-                        <p>Feel free and share with us. We will get you</p>
+                        <p>Have questions about our tests? Need help getting started? Contact us anytime.</p>
                     </div>
 
                     <form id="contactForm">

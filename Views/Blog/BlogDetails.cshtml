@@ -1,0 +1,112 @@
+﻿
+
+<div class="blog-title">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="title-text text-center">
+                <h2>Blog Details</h2>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li>
+                        Blog Details
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Title Section End -->
+<!-- Blog Destails Area Start -->
+<div class="blog-details-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-description">
+                    <div class="article-image">
+                        <img src="@Model.Image" width="100%" style="object-fit:cover" alt="blog image" />
+
+                        <div class="blog-date">
+                            <span>@Model.CreatedAt.ToString("dd MMM")</span>
+                        </div>
+                    </div>
+
+                    <div class="article-info">
+                        <ul>
+                            <li>
+                                <i class="icofont-user-alt-2"></i>
+                                Admin
+                            </li>
+                            <li>
+                                <i class="icofont-clock-time"></i>
+                                @Model.CreatedAt.ToString("dd/MM/yyyy")
+                            </li>
+                            <li>
+                                <i class="icofont-tag"></i>
+                                Blog
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3 class="article-title">@Model.Title</h3>
+
+                    <div class="article-content">
+                        @Html.Raw(Model.Content)
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                @* 
+                <div class="blog-search">
+                    <form method="get" action="/blogs">
+                        <input type="text" name="q" placeholder="Search" value="@ViewBag.SearchQuery">
+                        <button type="submit"><i class="flaticon-search"></i></button>
+                    </form>
+                </div> *@
+
+                
+                <div class="recent-blog">
+                    <h3>Recent Blogs</h3>
+
+                    @foreach (var recent in ViewBag.RecentBlogs)
+                    {
+                        <article class="recent-post">
+                            <a href="/blog-detail/@recent.Id">
+                                <img src="@recent.Image" alt="@recent.Title" style="width: 100px; height: 70px; object-fit: cover;" />
+                            </a>
+                            <h3>
+                                <a href="/blog-detail/@recent.Id">@recent.Title</a>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <i class="icofont-user-alt-3"></i> Admin
+                                </li>
+                                <li>
+                                    <i class="icofont-clock-time"></i>
+                                    @recent.CreatedAt.ToString("MMM dd, yyyy")
+                                </li>
+                            </ul>
+                        </article>
+                    }
+                </div>
+
+              @*   <!-- 🏷️ Danh mục -->
+                <div class="blog-category">
+                    <h3>Category</h3>
+                    <ul>
+                        @foreach (var cat in ViewBag.Categories)
+                        {
+                            <li>
+                                <a href="/blogs?categoryId=@cat.Id">
+                                    @cat.CategoryName
+                                    <i class="icofont-arrow-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div> *@
+            </div>
+        </div>
+    </div>
+</div>
+
