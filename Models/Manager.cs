@@ -31,6 +31,8 @@ namespace Project_sem_3.Models
         [StringLength(100, ErrorMessage = "Email cannot exceed 100 characters.")]
         public string? Email { get; set; }
 
+        public string? Image { get; set; }
+
         [Required(ErrorMessage = "Phone is required.")]
         [Phone(ErrorMessage = "Please enter a valid phone number.")]
         [StringLength(15, ErrorMessage = "Phone number cannot exceed 15 characters.")]

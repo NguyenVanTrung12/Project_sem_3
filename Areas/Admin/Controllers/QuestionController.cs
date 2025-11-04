@@ -21,7 +21,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Question
-        [AllowAnonymous]
         public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 10;

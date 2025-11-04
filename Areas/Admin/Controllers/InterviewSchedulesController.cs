@@ -20,7 +20,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
         // GET: BlogsController
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Index(int page = 1)
         {
             int pageSize = 5;

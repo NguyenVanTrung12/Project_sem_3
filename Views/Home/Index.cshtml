@@ -103,7 +103,56 @@
     <div id="particles-js"></div>
 </div>
 
-<!-- Banner Section End -->
+
+
+<section class="features-section pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <span>Our Features</span>
+            <h2>Choose Your Test Topic</h2>
+            <p>Select which part of the aptitude test you want to begin with. Follow the sequence to complete all rounds.</p>
+        </div>
+
+        <div class="row">
+
+            <!-- General Knowledge -->
+            <div class="col-lg-4 col-sm-6">
+                <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="text-decoration-none">
+                    <div class="features-card feature-one">
+                        <i class="flaticon-technical-support"></i>
+                        <h3>General Knowledge</h3>
+                        <p>Test your awareness of the world, history, science, and current affairs.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mathematics -->
+            <div class="col-lg-4 col-sm-6">
+                <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="text-decoration-none">
+                    <div class="features-card feature-two">
+                        <i class="flaticon-megaphone"></i>
+                        <h3>Mathematics</h3>
+                        <p>Challenge your problem-solving and quantitative reasoning abilities.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Computer Technology -->
+            <div class="col-lg-4 col-sm-6">
+                <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="text-decoration-none">
+                    <div class="features-card feature-three">
+                        <i class="flaticon-settings"></i>
+                        <h3>Computer Technology</h3>
+                        <p>Assess your understanding of computers, programming, and IT fundamentals.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 <!-- Video Section Start -->
 <div class="video-section pt-100">
     <div class="container">
@@ -199,265 +248,8 @@
     </div>
 </section>
 <!-- About Section End -->
-<!-- Feature Section Start -->
-<section class="features-section pb-70">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Our Features</span>
-            <h2>Why Choose Our Platform</h2>
-            <p>Comprehensive tools and features designed to help you prepare effectively for any aptitude test with confidence and precision.</p>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-one">
-                    <i class="flaticon-technical-support"></i>
-                    <h3>Diverse Question Bank</h3>
-                    <p>Access thousands of carefully curated aptitude questions covering logical, numerical, verbal, and abstract reasoning to match real test scenarios.</p>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-two">
-                    <i class="flaticon-megaphone"></i>
-                    <h3>Instant Results</h3>
-                    <p>Get immediate scoring and detailed performance analytics after each test. Track your progress over time and identify improvement areas.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-three">
-                    <i class="flaticon-settings"></i>
-                    <h3>Timed Simulations</h3>
-                    <p>Experience realistic test conditions with our timed practice tests. Build your speed and accuracy under pressure, just like the real exam.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-four">
-                    <i class="flaticon-shield"></i>
-                    <h3>Detailed Explanations</h3>
-                    <p>Learn from every question with comprehensive step-by-step solutions. Understand the logic behind each answer to improve your skills.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-five">
-                    <i class="flaticon-back-in-time"></i>
-                    <h3>Performance Tracking</h3>
-                    <p>Monitor your strengths and weaknesses with detailed analytics dashboards. See your improvement trends and focus on areas that need work.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-six">
-                    <i class="flaticon-newsletter"></i>
-                    <h3>Mobile Friendly</h3>
-                    <p>Practice anytime, anywhere on any device. Our responsive platform works seamlessly on desktop, tablet, and mobile phones.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Feature Section End -->
-<!-- Service Section Start -->
-<div class="service-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-7 service-img">
-            </div>
-            <div class="col-md-7 offset-md-5 p-0">
-                <div class="service-text">
-                    <h2>Comprehensive Test Categories to Master Every Skill</h2>
-                    <ul>
-                        <li>
-                            <i class="flaticon-checked"></i>
-                            Logical Reasoning Tests
-                        </li>
-                        <li>
-                            <i class="flaticon-checked"></i>
-                            Numerical Reasoning Tests
-                        </li>
-                        <li>
-                            <i class="flaticon-checked"></i>
-                            Verbal Reasoning Tests
-                        </li>
-                        <li>
-                            <i class="flaticon-checked"></i>
-                            Abstract Reasoning Tests
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Service Section End -->
-<!-- Team Section Start -->
-<section class="team-section pt-100 pb-70">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Our Team</span>
-            <h2>Meet Our Expert Team</h2>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/1.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Jerry Hudson</h3>
-                            <p>Educational Psychologist</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/2.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Juho Hudson</h3>
-                            <p>Test Development Lead</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/3.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Sarah Tylor</h3>
-                            <p>Data Analytics Expert</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/4.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Aikin Ward</h3>
-                            <p>Content Specialist</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Team Section End -->
-<!-- Testimonial Section Start -->
-<div class="testimonial-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-1 pt-100 pb-100">
-                <div class="testimonial-slider owl-carousel owl-theme">
-                    <div class="slider-items">
-                        <img src="assets/img/testimonial/1.png" alt="testimonial image">
-                        <h3>Adision Smith</h3>
-                        <span>University Student</span>
-                        <p>This platform helped me prepare for my university entrance exam. The practice tests were incredibly similar to the real thing, and the detailed explanations helped me understand my mistakes. I improved my score by 30%!</p>
-                    </div>
-
-                    <div class="slider-items">
-                        <img src="assets/img/testimonial/2.png" alt="testimonial image">
-                        <h3>John Smith</h3>
-                        <span>Job Applicant</span>
-                        <p>I was nervous about the aptitude test for my dream job, but after practicing here for two weeks, I felt confident. The timed tests really helped me manage my pace. I passed with flying colors and got the job!</p>
-                    </div>
-
-                    <div class="slider-items">
-                        <img src="assets/img/testimonial/3.png" alt="testimonial image">
-                        <h3>Anderson</h3>
-                        <span>Graduate Student</span>
-                        <p>The performance tracking feature is amazing. I could see exactly which areas I needed to work on. The variety of questions and instant feedback made my preparation so much more effective. Highly recommended!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-5 p-0">
-                <div class="testimonial-image">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial Section End -->
 <!-- Portfolio Section Start -->
 <section class="portfolio-section pt-100 pb-70">
     <div class="container">
@@ -513,50 +305,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-sm-4">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/4.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Abstract Reasoning</h3>
-                            <a href="#" class="portfolio-btn">
-                                Start Test
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-sm-8">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/5.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Mixed Aptitude Test</h3>
-                            <a href="#" class="portfolio-btn">
-                                Start Test
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-4">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/6.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Speed Tests</h3>
-                            <a href="#" class="portfolio-btn">
-                                Start Test
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
 
         <div class="theme-button text-center">
@@ -567,47 +316,9 @@
     </div>
 </section>
 <!-- Portfolio Section End -->
-<!-- Progress Section Start -->
-<div class="progress-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-7 progress-image">
-            </div>
 
-            <div class="col-md-6 offset-md-6 p-0">
-                <div class="progress-text">
-                    <h2>Our Platform Delivers Measurable Results</h2>
-                    <p>Join thousands of successful test-takers who have improved their scores and achieved their goals through consistent practice on our platform.</p>
 
-                    <div class="progress-inner">
-                        <p>User Satisfaction Rate</p>
-                        <span>95%</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
 
-                    <div class="progress-inner">
-                        <p>Average Score Improvement</p>
-                        <span>85%</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-
-                    <div class="progress-inner">
-                        <p>Test Completion Rate</p>
-                        <span>92%</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Progress Section End -->
 <!-- Blog Section Start -->
 <section class="blog-section pt-100 pb-70">
     <div class="container">

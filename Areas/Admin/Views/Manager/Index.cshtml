@@ -105,6 +105,7 @@
                         </th>
                         <th scope="col">Username</th>
                         <th scope="col">Fullname</th>
+                        <th scope="col">Avatar</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Created At</th>
@@ -127,6 +128,13 @@
                             </td>
                             <td>@item.Username</td>
                             <td>@item.Fullname</td>
+                            <td>
+                                <img src="@(string.IsNullOrEmpty(item.Image)
+        ? "https://i.pinimg.com/736x/bc/43/98/bc439871417621836a0eeea768d60944.jpg"
+        : item.Image)"
+                                     alt="manager Image"
+                                     style="width: 80px; height: auto;" />
+                            </td>
                             <td>@item.Email</td>
                             <td>@item.Phone</td>
                             <td>@item.CreatedAt?.ToString("dd MMM yyyy")</td>
@@ -149,9 +157,7 @@
                             <td class="text-center">@item.Role.RoleName</td>
                             <td class="text-center">
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
-                                        <iconify-icon icon="majesticons:eye-line" class="icon text-xl"></iconify-icon>
-                                    </a>
+                             
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
                                         <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                     </a>

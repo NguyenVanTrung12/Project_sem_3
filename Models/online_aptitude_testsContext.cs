@@ -242,6 +242,7 @@ namespace Project_sem_3.Models
                 entity.Property(e => e.Username)
                     .HasMaxLength(255)
                     .IsUnicode(false);
+                entity.Property(e => e.Image).IsUnicode(false);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Managers)
