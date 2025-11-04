@@ -1,68 +1,7 @@
 ﻿@{
     Layout = "_Layout";
 }
-<div class="right-modal">
-    <div class="modal fade right" id="sidebar-right" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="index.html">
-                        <img src="assets/img/logo.png" alt="logo">
-                    </a>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
 
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 p-0">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="modal-link">
-                                            <a href="index-two.html">
-                                                <img src="assets/img/modal/2.jpg" alt="home two">
-                                            </a>
-                                            <h3><a href="index-two.html">Home Two</a></h3>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="modal-link">
-                                            <a href="about.html">
-                                                <img src="assets/img/modal/3.jpg" alt="about">
-                                            </a>
-                                            <h3><a href="about.html">About</a></h3>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="modal-link">
-                                            <a href="service.html">
-                                                <img src="assets/img/modal/4.jpg" alt="service">
-                                            </a>
-                                            <h3><a href="service.html">Test Categories</a></h3>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="modal-link">
-                                            <a href="portfolio.html">
-                                                <img src="assets/img/modal/5.jpg" alt="portfolio">
-                                            </a>
-                                            <h3><a href="portfolio.html">Practice Tests</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Banner Section Start -->
 <div class="main-banner">
@@ -119,35 +58,46 @@
 
             <!-- General Knowledge -->
             <div class="col-lg-4 col-sm-6">
-                <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="text-decoration-none">
+          
                     <div class="features-card feature-one">
                         <i class="flaticon-technical-support"></i>
                         <h3>General Knowledge</h3>
                         <p>Test your awareness of the world, history, science, and current affairs.</p>
+                        <div class="theme-button mt-4">
+                            <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="default-btn">Take the Test</a>
+                        </div>
                     </div>
-                </a>
+              
             </div>
 
             <!-- Mathematics -->
             <div class="col-lg-4 col-sm-6">
-                <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="text-decoration-none">
+             
                     <div class="features-card feature-two">
                         <i class="flaticon-megaphone"></i>
                         <h3>Mathematics</h3>
                         <p>Challenge your problem-solving and quantitative reasoning abilities.</p>
+                        <div class="theme-button mt-4">
+                            <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="default-btn">Take the Test</a>
+                        </div>
                     </div>
-                </a>
+              
             </div>
 
             <!-- Computer Technology -->
             <div class="col-lg-4 col-sm-6">
-                <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="text-decoration-none">
+               
                     <div class="features-card feature-three">
                         <i class="flaticon-settings"></i>
                         <h3>Computer Technology</h3>
                         <p>Assess your understanding of computers, programming, and IT fundamentals.</p>
+                        <div class="theme-button mt-4">
+                            <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="default-btn">Take the Test</a>
+                        </div>
                     </div>
-                </a>
+                 
+               
+             
             </div>
 
         </div>
@@ -155,211 +105,7 @@
 </section>
 
 
-<!-- Video Section Start -->
-<div class="video-section pt-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="video-text">
-                    <a href="https://www.youtube.com/watch?v=Fbps7_mkIT0" class="popup-vimeo">
-                        <i class="flaticon-play"></i>
-                    </a>
-                    <p>Watch our video and learn more about us</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Video Section End -->
-<!-- Theory Section Start -->
-<!-- TEST 1: Basic Knowledge of Petroleum -->
-<div class="theory-section py-5 reveal">
-    <div class="container">
-        <div class="theory-area align-items-center">
-            <div class="col-lg-7">
-                <div class="theory-text">
-                    <h2>Basic Knowledge of Petroleum</h2>
-                    <p>
-                        Learn about the origin, composition, extraction process, and applications of petroleum — a vital foundation of the global energy industry.
-                    </p>
-                    <div class="theme-button mt-4">
-                        <a href="/Test/OilBasic" class="default-btn">Take the Test</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 text-center">
-                <img src="assets/img/oil-Photoroom.png" alt="Petroleum knowledge" class="theory-img img-fluid">
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- TEST 2: Basic Mathematics -->
-<div class="theory-section py-5 alt-bg reveal">
-    <div class="container">
-        <div class="theory-area align-items-center">
-            <!-- Image First -->
-            <div class="col-lg-5 text-center">
-                <img src="assets/img/math-Photoroom.png" alt="Basic mathematics" class="theory-img img-fluid">
-            </div>
-
-            <!-- Text After -->
-            <div class="col-lg-7">
-                <div class="theory-text">
-                    <h2>Basic Mathematics</h2>
-                    <p>
-                        Review algebra, geometry, and logical reasoning — the foundation for science, engineering, and technology fields.
-                    </p>
-                    <div class="theme-button mt-4">
-                        <a href="/Test/MathBasic" class="default-btn">Take the Test</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- TEST 3: Computer Basics -->
-<div class="theory-section py-5 reveal">
-    <div class="container">
-        <div class="theory-area align-items-center">
-            <div class="col-lg-7">
-                <div class="theory-text">
-                    <h2>Computer Basics</h2>
-                    <p>
-                        Get familiar with hardware, software, operating systems, and the Internet — essential knowledge for today’s digital world.
-                    </p>
-                    <div class="theme-button mt-4">
-                        <a href="/Test/ComputerBasic" class="default-btn">Take the Test</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 text-center">
-                <img src="assets/img/computer-Photoroom.png" alt="Computer basics" class="theory-img img-fluid">
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Theory Section End -->
-<!-- About Section Start -->
-<section class="about-section pb-100">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Image -->
-            <div class="col-lg-5">
-                <div class="about-image">
-                    <img src="assets/img/about/2.jpg" alt="Oil and gas recruitment">
-                </div>
-            </div>
-
-            <!-- Text -->
-            <div class="col-lg-6 offset-lg-1">
-                <div class="about-text">
-                    <div class="section-title">
-                        <span>About Us</span>
-                        <h2>Oil & Gas Recruitment and Competency Assessment Solutions</h2>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4">
-                            <div class="about-us">
-                                <i class="flaticon-podium icon-one"></i>
-                                <p>Accurate Evaluation</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="about-us">
-                                <i class="flaticon-customer-service icon-two"></i>
-                                <p>Expert Support</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="about-us">
-                                <i class="flaticon-handshake icon-three"></i>
-                                <p>Transparent Recruitment</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p>
-                        We provide an online testing platform that helps oil and gas companies recruit efficiently, transparently, and quickly.
-                        Candidates can take real skill assessments anytime, anywhere — ensuring a fair, professional, and accurate recruitment process.
-                    </p>
-
-                    <div class="theme-button">
-                        <a href="/about.html" class="default-btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- About Section End -->
-<!-- Feature Section Start -->
-<section class="features-section pb-70">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Key Features</span>
-            <h2>Modern Oil & Gas Competency Testing System</h2>
-            <p>
-                Designed specifically for recruiting engineers and operators in the oil and gas industry,
-                this system delivers a fast, transparent, and accurate online testing experience.
-            </p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-one">
-                    <i class="flaticon-technical-support"></i>
-                    <h3>24/7 Support</h3>
-                    <p>Our technical and consulting team is ready to assist candidates and employers anytime during the testing process.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-two">
-                    <i class="flaticon-megaphone"></i>
-                    <h3>Instant Results</h3>
-                    <p>The system automatically scores and sends results immediately after the test — saving waiting time.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-three">
-                    <i class="flaticon-settings"></i>
-                    <h3>Customizable Tests</h3>
-                    <p>Employers can create, edit, and categorize exams by specialty: operations, mechanics, electrical, safety, etc.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-four">
-                    <i class="flaticon-shield"></i>
-                    <h3>Data Security</h3>
-                    <p>All candidate information and results are securely encrypted to ensure transparency and absolute confidentiality.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-five">
-                    <i class="flaticon-back-in-time"></i>
-                    <h3>Time Efficiency</h3>
-                    <p>Applicants can take exams anytime, anywhere using a computer or smartphone with Internet access, minimizing costs.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="features-card feature-six">
-                    <i class="flaticon-newsletter"></i>
-                    <h3>Reports & Analytics</h3>
-                    <p>Employers can easily view statistics, filter qualified candidates, and download detailed reports with just a few clicks.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Feature Section End -->
-<!-- (The rest: Service, Team, Testimonial, Portfolio, Blog, Contact, Newsletter...) -->
 <!-- Service Section Start -->
 <div class="service-section">
     <div class="container-fluid">
@@ -522,109 +268,6 @@
     </div>
 </section>
 <!-- Team Section End -->
-<!-- Testimonial Section Start -->
-<div class="testimonial-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-1 pt-100 pb-100">
-                <div class="testimonial-slider owl-carousel owl-theme">
-                    <div class="slider-items">
-                        <img src="assets/img/testimonial/1.png" alt="testimonial image">
-                        <h3>Adision Smith</h3>
-                        <span>Designer</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra</p>
-                    </div>
-
-                    <div class="slider-items">
-                        <img src="assets/img/testimonial/2.png" alt="testimonial image">
-                        <h3>John Smith</h3>
-                        <span>Digital Marketer</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra</p>
-                    </div>
-
-                    <div class="slider-items">
-                        <img src="assets/img/testimonial/3.png" alt="testimonial image">
-                        <h3>Anderson</h3>
-                        <span>Designer</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-5 p-0">
-                <div class="testimonial-image">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial Section End -->
-<!-- Portfolio Section Start -->
-<section class="portfolio-section pt-100 pb-70">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Test Categories</span>
-            <h2>Explore Our Practice Tests</h2>
-            <p>Choose from a wide range of aptitude test categories designed to match industry standards and academic requirements.</p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/1.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Logical Reasoning</h3>
-                            <a href="#" class="portfolio-btn">
-                                Start Test
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/2.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Numerical Reasoning</h3>
-                            <a href="#" class="portfolio-btn">
-                                Start Test
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-sm-8">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/portfolio/3.jpg" alt="portfolio image">
-                        <div class="portfolio-text">
-                            <h3>Verbal Reasoning</h3>
-                            <a href="#" class="portfolio-btn">
-                                Start Test
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-           
-        </div>
-
-        <div class="theme-button text-center">
-            <a href="portfolio.html" class="default-btn">
-                View All Tests
-            </a>
-        </div>
-    </div>
-</section>
-<!-- Portfolio Section End -->
 
 
 
@@ -774,26 +417,6 @@
     </div>
 </div>
 <!-- Contact Section End -->
-<!-- Newsletter Section Start -->
-<div class="newsletter-section">
-    <div class="container">
-        <div class="newsletter-area">
-            <h2>Subscribe Our Newsletter</h2>
-            <div class="col-lg-6 offset-lg-3 p-0">
-                <form class="newsletter-form" data-bs-toggle="validator">
-                    <input type="email" class="form-control" placeholder="Enter Your Email" name="EMAIL" required autocomplete="off">
-
-                    <button class="default-btn electronics-btn" type="submit">
-                        Subscribe
-                    </button>
-
-                    <div id="validator-newsletter" class="form-result"></div>
-                </form>
-            </div>
-            <img src="assets/img/shapes/2.png" class="subscribe-shape" alt="shape">
-        </div>
-    </div>
-</div>
 
 <script>
     function revealOnScroll() {
