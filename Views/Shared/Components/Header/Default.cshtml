@@ -19,12 +19,16 @@
                         <li>
                             <a href="">
                                 <i class="flaticon-envelope"></i>
-                                <span class="__cf_email__" >organizationwebster@gmail.com</span>
+                         
+                                    organizationwebster@gmail.com
+                          
                             </a>
                         </li>
                         <li>
-                            <i class="flaticon-pin"></i>
-                            238 Hoàng Quốc Việt, Hà Nội, Việt Nam
+                            <a href="">
+                                <i class="flaticon-pin"></i>
+                                238 Hoàng Quốc Việt, Hà Nội, Việt Nam
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -90,11 +94,11 @@
                     </ul>
 
                     <div class="other-option">
-                       
 
-                     
-                            @if (string.IsNullOrEmpty(fullname))
-                            {
+
+
+                        @if (string.IsNullOrEmpty(fullname))
+                        {
                             <div class="search-bar">
                                 <i class="flaticon-search search-icon"></i>
                                 <div class="search-form">
@@ -112,10 +116,10 @@
                                         <i class="fa-solid fa-user"></i>
                                     </button>
                                 </a>
-                                </div>
-                            }
-                            else
-                            {
+                            </div>
+                        }
+                        else
+                        {
                             <span class="navbar-text me-2 text-danger">
                                 Hello, @fullname
                             </span>
@@ -131,15 +135,15 @@
                                 </div>
                             </div>
                             <div class="sidebar-toggle">
-                             
+
                                 <a asp-controller="Logon" asp-action="Logout">
                                     <button type="button" class="btn btn-demo navbar-toggle">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                     </button>
                                 </a>
-                             </div>
-                            }
-                     
+                            </div>
+                        }
+
                     </div>
                 </div>
             </nav>
