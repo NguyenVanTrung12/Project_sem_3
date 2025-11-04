@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
-                        <a asp-action="Index"
+                        <a asp-action="Index" asp-controller="Answers" asp-route-questionId="@ViewBag.CurrentQuestionId"
                            class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8 text-decoration-none">
                             Cancel
                         </a>
