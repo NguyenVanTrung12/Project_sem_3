@@ -735,35 +735,31 @@ h3 {
 /* Video CSS End */
 /* Theory CSS Start */
 .theory-section {
-    margin-top: 5px !important;
+    margin-top: 5px
+    !important;
     margin-bottom: 5px !important;
 }
-
-    .theory-section .theory-area {
-        position: relative;
-        background: #FFFFFF;
-        box-shadow: 0px 2px 20px 0px rgba(12, 0, 46, 0.04);
-    }
-
-        .theory-section .theory-area .theory-text {
-            padding: 5px;
-        }
-
-            .theory-section .theory-area .theory-text h2 {
-                font-size: 35px;
-                font-weight: 700;
-                text-transform: capitalize;
-                margin-bottom: 25px;
-                line-height: 1.4;
-            }
-
-.theory-area .theory-text p {
-    color: #333333;
-    margin-bottom: 30px;
+.theory-section .theory-area {
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 20px 0px rgba(12, 0, 46, 0.04);
 }
-
-.theory-area .theory-text .signature-box img {
-    margin-bottom: 10px;
+.theory-section .theory-area .theory-text {
+  padding: 5px;
+}
+.theory-section .theory-area .theory-text h2 {
+  font-size: 35px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+ .theory-area .theory-text p {
+  color: #333333;
+  margin-bottom: 30px;
+}
+ .theory-area .theory-text .signature-box img {
+  margin-bottom: 10px;
 }
 
 .theory-section .theory-area .theory-text .signature-box p {
@@ -3655,17 +3651,15 @@ h3 {
 }
 /* play button animation */
 @keyframes pulse {
-    from {
-        transform: scale(1);
-        filter: opacity(0.9);
-    }
-
-    to {
-        transform: scale(2);
-        filter: opacity(0);
-    }
-}
-/*# sourceMappingURL=style.css.map */
+  from {
+    transform: scale(1);
+    filter: opacity(0.9);
+  }
+  to {
+    transform: scale(2);
+    filter: opacity(0);
+  }
+}/*# sourceMappingURL=style.css.map */
 
 /* --- Ép riêng khối Toán học cơ bản hiển thị ảnh bên trái --- */
 .theory-left .theory-area {
@@ -3695,65 +3689,65 @@ h3 {
 
 /* === Fix riêng cho Đề 2 (Toán học cơ bản): ép ảnh sang trái === */
 .theory-section.bg-light .theory-area .theory-img {
-    position: static !important;
-    right: auto !important;
-    left: 0 !important;
-    bottom: auto !important;
-    max-width: 100% !important;
-    margin: 0 !important;
+  position: static !important;
+  right: auto !important;
+  left: 0 !important;
+  bottom: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
 /* ====== THEORY SECTION ====== */
 
 
 .theory-section .container {
-    max-width: 1140px;
+  max-width: 1140px;
 }
 
 .theory-text h2 {
-    font-size: 34px;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 20px;
+  font-size: 34px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
 }
 
 .theory-text p {
-    font-size: 1.05rem;
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 30px;
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 30px;
 }
 
 
 /* ẢNH */
 .theory-img {
-    max-width: 420px;
-    transition: transform 0.4s ease, box-shadow 0.3s ease;
+  max-width: 420px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
 }
 
-    .theory-img:hover {
-        transform: translateY(-5px);
-    }
+.theory-img:hover {
+  transform: translateY(-5px);
+}
 
 /* GIÃN CÁCH GIỮA CÁC KHỐI */
 .theory-section + .theory-section {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 991.98px) {
-    .theory-section {
-        padding: 10px 0;
-    }
+  .theory-section {
+    padding: 10px 0;
+  }
 
-    .theory-img {
-        max-width: 100%;
-        margin-bottom: 30px;
-    }
+  .theory-img {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
 
-    .theory-text h2 {
-        font-size: 28px;
-    }
+  .theory-text h2 {
+    font-size: 28px;
+  }
 }
 
 /* Đảo layout cho đề 2 (ảnh trái, chữ phải) */
