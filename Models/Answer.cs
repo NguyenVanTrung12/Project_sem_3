@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using Newtonsoft.Json;
 namespace Project_sem_3.Models
 {
     public partial class Answer
@@ -28,6 +28,7 @@ namespace Project_sem_3.Models
         [Range(0, 1, ErrorMessage = "Status can only be 0 (hidden) or 1 (visible).")]
         public int? Status { get; set; }
 
+        [JsonIgnore] // ❌ Ngăn serialize vòng lặp
         public virtual Question? Question { get; set; }
         public virtual ICollection<ResultDetail> ResultDetails { get; set; }
     }
