@@ -80,7 +80,7 @@
                                 </div>
                             </td>
                             <td>@item.Fullname</td>
-                            <td>@item.Gender</td>
+                            <td>@(item.Gender == true ? "Male" : item.Gender == false ? "Female" : "Unknown")</td>
                             <td>@item.University</td>
                             <td>@item.ExpectedPosition</td>
                             <td>@item.Phone</td>

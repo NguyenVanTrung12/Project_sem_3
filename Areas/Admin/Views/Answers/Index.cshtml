@@ -25,22 +25,19 @@
     <div
         class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
         <div class="d-flex align-items-center flex-wrap gap-3">
-            <form method="get" class="d-flex align-items-center gap-2">
-                <label class="fw-medium text-secondary-light mb-0">Status:</label>
-                <select name="active" class="form-select form-select-sm w-auto ps-12 py-6 radius-12 h-40-px"
-                    onchange="this.form.submit()">
-                    <option value="">All</option>
-                    <option value="1" selected="@(ViewBag.Active == 1)">Visible</option>
-                    <option value="0" selected="@(ViewBag.Active == 0)">Hidden</option>
-                </select>
-            </form>
+            <a asp-action="Index" asp-controller="Question"
+               class="btn btn-danger text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
+            
+                Back to List
+            </a>
         </div>
-
+    
         <a asp-action="Create" asp-controller="Answers" asp-route-questionId="@ViewBag.QuestionId"
             class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
             <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
             Add Answer
         </a>
+   
     </div>
 
     <!-- Table -->
@@ -53,7 +50,6 @@
                         <th class="text-center">Answer Content</th>
                         <th class="text-center">Correct / Incorrect</th>
                         <th class="text-center">Status</th>
-                        <th class="text-center">Question ID</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -85,7 +81,6 @@
                                         <span class="bg-danger-focus text-danger-600 border border-danger-main px-24 py-4 radius-4 fw-medium text-sm">Hidden</span>
                                     }
                                 </td>
-                                <td class="text-center">@item.QuestionId</td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
 
@@ -114,7 +109,9 @@
                             <td colspan="6" class="text-center text-muted">No answers found.</td>
                         </tr>
                     }
+                
                 </tbody>
+             
             </table>
         </div>
 
@@ -143,5 +140,6 @@
                     })
             </div>
         </div>
+       
     </div>
 </div>
