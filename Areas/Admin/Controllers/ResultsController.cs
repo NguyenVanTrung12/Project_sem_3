@@ -171,5 +171,33 @@ namespace Project_sem_3.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var result = await _context.Results.FindAsync(id);
+            if (result == null)
+            {
+                TempData["Error"] = "Result not found.";
+                return NotFound();
+            }
+
+            bool hasRelations = await _context.ResultDetails.AnyAsync(r => r.ResultId == id);
+            if (hasRelations)
+            {
+                TempData["Error"] = "Cannot delete this Result because it is associated with existing Result Details.";
+                return RedirectToAction("Index");
+            }
+            try
+            {
+                _context.Results.Remove(result);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Result deleted successfully.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"An error occurred while deleting the Result: {ex.Message}";
+            }
+            
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
