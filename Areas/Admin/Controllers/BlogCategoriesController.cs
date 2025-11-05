@@ -124,19 +124,34 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: BlogCategoriesController/Delete/5
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var blogCategory = await _context.BlogCategories.FindAsync(id);
             if (blogCategory == null)
             {
-                TempData["Error"] = "No blogcategories found to delete!";
+                TempData["Error"] = "No blog category found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
-            _context.BlogCategories.Remove(blogCategory);
-            await _context.SaveChangesAsync();
-            TempData["Success"] = "Category deleted successfully!";
+            try
+            {
+                _context.BlogCategories.Remove(blogCategory);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Category deleted successfully!";
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "Cannot delete this category because there are blogs linked to it.";
+                }
+                else
+                {
+                    TempData["Error"] = "An unexpected error occurred while deleting the category.";
+                }
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

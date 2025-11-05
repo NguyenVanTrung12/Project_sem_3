@@ -314,23 +314,41 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var manager = await _context.Managers
-      .Include(m => m.Role)
-      .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(m => m.Role)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (manager == null)
             {
                 return NotFound();
             }
+
             if (manager.Role.RoleName == "Role_Supper_Managers")
             {
                 TempData["Error"] = "Super Manager account cannot be deleted.";
                 return RedirectToAction(nameof(Index));
             }
-            _context.Managers.Remove(manager);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                _context.Managers.Remove(manager);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Manager deleted successfully.";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Nếu lỗi do ràng buộc khóa ngoại
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "Cannot delete this manager because it is linked to existing candidates.";
+                }
+                else
+                {
+                    TempData["Error"] = "An error occurred while deleting the manager.";
+                }
+            }
 
             return RedirectToAction(nameof(Index));
         }
-
         private bool ManagerExists(int id)
         {
             return _context.Managers.Any(e => e.Id == id);

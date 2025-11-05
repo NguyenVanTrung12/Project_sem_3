@@ -134,39 +134,33 @@ namespace Project_sem_3.Areas.Admin.Controllers
             ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName", model.TypeId);
             return View(model);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var question = await _context.Questions.FindAsync(id);
-            if (question == null)
-            {
-                return NotFound();
-            }
-
-            _context.Questions.Remove(question);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDelete(int id)
-        {
-            // Tìm câu hỏi cần xóa
+            // Tìm câu hỏi theo ID và load các bảng liên quan
             var question = await _context.Questions
-                .Include(q => q.Answers) // Load luôn danh sách Answer để kiểm tra
+                .Include(q => q.Answers)
+                .Include(q => q.ResultDetails)
                 .FirstOrDefaultAsync(q => q.Id == id);
 
             if (question == null)
             {
-                TempData["ErrorMessage"] = "❌ Question not found!";
+                TempData["Error"] = "❌ Question not found!";
                 return RedirectToAction(nameof(Index));
             }
 
-            // Kiểm tra xem có liên kết Answer nào không
-            if (question.Answers != null && question.Answers.Any())
+            // Kiểm tra nếu câu hỏi có câu trả lời liên kết
+            if (question.Answers.Any())
             {
-                TempData["ErrorMessage"] = "⚠️ Cannot delete this question because it already has answers linked to it.";
+                TempData["Error"] = "⚠️ Cannot delete this question because it already has linked answers.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Kiểm tra nếu câu hỏi xuất hiện trong kết quả thi
+            if (question.ResultDetails.Any())
+            {
+                TempData["Error"] = "⚠️ Cannot delete this question because it is linked to test results.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -174,11 +168,19 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 _context.Questions.Remove(question);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "✅ Question deleted successfully!";
+                TempData["Success"] = "✅ Question deleted successfully!";
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                TempData["ErrorMessage"] = $"❌ Error occurred while deleting question: {ex.Message}";
+                // Bắt lỗi xóa có ràng buộc khóa ngoại
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "⚠️ Cannot delete this question because it is referenced by other data.";
+                }
+                else
+                {
+                    TempData["Error"] = $"❌ Unexpected error: {ex.Message}";
+                }
             }
 
             return RedirectToAction(nameof(Index));
