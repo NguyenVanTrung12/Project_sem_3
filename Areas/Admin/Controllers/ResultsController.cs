@@ -164,13 +164,13 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             if (result == null)
             {
-                TempData["Error"] = "Không tìm thấy kết quả cần xóa!";
+                TempData["Error"] = "No results found, please delete";
                 return RedirectToAction(nameof(Index));
             }
 
             if (result.ResultDetails != null && result.ResultDetails.Any())
             {
-                TempData["Error"] = "Không thể xóa vì đang có ResultDetails";
+                TempData["Error"] = "Cannot delete because ResultDetails already exists.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -178,11 +178,11 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 _context.Results.Remove(result);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Xóa thành công!";
+                TempData["Success"] = "Deleted successfully!";
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"Lỗi khi xóa: {ex.Message}";
+                TempData["Error"] = $"Error while deleting: {ex.Message}";
             }
 
             return RedirectToAction(nameof(Index));

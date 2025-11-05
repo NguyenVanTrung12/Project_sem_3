@@ -11,18 +11,7 @@
 
 </div>
 
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success mt-3">
-        @TempData["Success"]
-    </div>
-}
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger mt-3">
-        @TempData["Error"]
-    </div>
-}
+
 
 
 <div class="card h-100 p-0 radius-12">
@@ -69,6 +58,18 @@
 
     <div class="card-body p-24">
         <div class="table-responsive scroll-sm">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success mt-3">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger mt-3">
+                    @TempData["Error"]
+                </div>
+            }
             <table class="table bordered-table sm-table mb-0">
                 <thead>
                     <tr>
