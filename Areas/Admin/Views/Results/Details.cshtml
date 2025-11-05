@@ -114,6 +114,7 @@
                     <th>Question</th>
                     <th>Answer</th>
                     <th>Mark</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -124,9 +125,20 @@
                         <td>@Html.Raw(detail.Question.QuestionContent)</td>
                         <td>@Html.Raw(detail.Answer.AnswerContent)</td>
                         <td>@detail.Mark</td>
+                        <td class="text-center">
+                            <a asp-area="Admin"
+                               asp-controller="ResultDetails"
+                               asp-action="Delete"
+                               asp-route-id="@detail.Id"
+                               onclick="return confirm('Bạn có chắc chắn muốn xóa chi tiết này không?')"
+                               class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i> Xóa
+                            </a>
+                        </td>
                     </tr>
                 }
             </tbody>
+
         </table>
     }
     else
