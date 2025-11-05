@@ -78,12 +78,19 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Nếu người dùng không chọn ngày => tự gán ngày hiện tại
+                if (!contact.CreatedDate.HasValue)
+                {
+                    contact.CreatedDate = DateTime.Now;
+                }
+
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(contact);
         }
+
 
         // GET: Admin/Contacts/Edit/5
         public async Task<IActionResult> Edit(int? id)

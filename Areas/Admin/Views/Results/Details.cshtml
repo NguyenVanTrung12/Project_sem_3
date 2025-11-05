@@ -3,6 +3,61 @@
     Layout = "_Admin";
 }
 
+<style>
+    /* ======= STYLE CHO BẢNG CHI TIẾT KẾT QUẢ ======= */
+    table.table {
+        table-layout: fixed;
+        width: 100%;
+        word-wrap: break-word;
+        border-collapse: collapse;
+    }
+
+        table.table th,
+        table.table td {
+            vertical-align: top;
+            white-space: normal;
+            max-width: 400px;
+            padding: 8px 12px;
+        }
+
+            table.table td p {
+                margin-bottom: 0.5rem;
+            }
+
+            table.table td ul,
+            table.table td ol {
+                padding-left: 20px;
+                margin-bottom: 0.5rem;
+            }
+
+            table.table td img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 6px;
+            }
+
+    /* Làm nổi bật hàng chẵn lẻ */
+    table.table-striped tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    table.table-striped tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+        border-radius: 6px;
+    }
+
+    .card h5 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+    }
+</style>
+
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <h6 class="fw-semibold mb-0">Result Details</h6>
     <a asp-action="Index" class="btn btn-secondary">← Back to List</a>
@@ -66,8 +121,8 @@
                 {
                     <tr>
                         <td>@detail.Id</td>
-                        <td>@detail.Question.QuestionContent</td>
-                        <td>@detail.Answer.AnswerContent</td>
+                        <td>@Html.Raw(detail.Question.QuestionContent)</td>
+                        <td>@Html.Raw(detail.Answer.AnswerContent)</td>
                         <td>@detail.Mark</td>
                     </tr>
                 }

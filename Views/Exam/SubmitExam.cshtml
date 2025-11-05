@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Kết quả bài thi";
+}
+
+<div class="card shadow-sm p-4 mt-4">
+    <h2 class="text-success">Kết quả bài thi</h2>
+
+    <p><strong>Số câu đúng:</strong> @ViewBag.CorrectCount / @ViewBag.TotalQuestions</p>
+    <p><strong>Tổng điểm:</strong> @ViewBag.TotalScore</p>
+
+    <a href="@Url.Action("Start", "Exam")" class="btn btn-primary mt-3">Làm lại</a>
+</div>
