@@ -6,15 +6,19 @@ namespace Project_sem_3.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly online_aptitude_testsContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, online_aptitude_testsContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Manage = _context.Managers.ToList();
+            ViewBag.Blog = _context.Blogs.ToList();
             return View();
         }
 

@@ -1,5 +1,8 @@
-﻿@{
+﻿@model Project_sem_3.Models.Contact
+
+@{
     Layout = "_Layout";
+    var contact = ViewBag.Contact as Project_sem_3.Models.Contact;
 }
 
 
@@ -58,46 +61,46 @@
 
             <!-- General Knowledge -->
             <div class="col-lg-4 col-sm-6">
-          
-                    <div class="features-card feature-one">
-                        <i class="flaticon-technical-support"></i>
-                        <h3>General Knowledge</h3>
-                        <p>Test your awareness of the world, history, science, and current affairs.</p>
-                        <div class="theme-button mt-4">
-                            <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="default-btn">Take the Test</a>
-                        </div>
+
+                <div class="features-card feature-one">
+                    <i class="flaticon-technical-support"></i>
+                    <h3>General Knowledge</h3>
+                    <p>Test your awareness of the world, history, science, and current affairs.</p>
+                    <div class="theme-button mt-4">
+                        <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="default-btn">Take the Test</a>
                     </div>
-              
+                </div>
+
             </div>
 
             <!-- Mathematics -->
             <div class="col-lg-4 col-sm-6">
-             
-                    <div class="features-card feature-two">
-                        <i class="flaticon-megaphone"></i>
-                        <h3>Mathematics</h3>
-                        <p>Challenge your problem-solving and quantitative reasoning abilities.</p>
-                        <div class="theme-button mt-4">
-                            <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="default-btn">Take the Test</a>
-                        </div>
+
+                <div class="features-card feature-two">
+                    <i class="flaticon-megaphone"></i>
+                    <h3>Mathematics</h3>
+                    <p>Challenge your problem-solving and quantitative reasoning abilities.</p>
+                    <div class="theme-button mt-4">
+                        <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="default-btn">Take the Test</a>
                     </div>
-              
+                </div>
+
             </div>
 
             <!-- Computer Technology -->
             <div class="col-lg-4 col-sm-6">
-               
-                    <div class="features-card feature-three">
-                        <i class="flaticon-settings"></i>
-                        <h3>Computer Technology</h3>
-                        <p>Assess your understanding of computers, programming, and IT fundamentals.</p>
-                        <div class="theme-button mt-4">
-                            <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="default-btn">Take the Test</a>
-                        </div>
+
+                <div class="features-card feature-three">
+                    <i class="flaticon-settings"></i>
+                    <h3>Computer Technology</h3>
+                    <p>Assess your understanding of computers, programming, and IT fundamentals.</p>
+                    <div class="theme-button mt-4">
+                        <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="default-btn">Take the Test</a>
                     </div>
-                 
-               
-             
+                </div>
+
+
+
             </div>
 
         </div>
@@ -149,208 +152,80 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/1.jpg" alt="team member">
+            @foreach (var item in ViewBag.Manage)
+            {
+                <div class="col-lg-3 col-sm-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="@item.Image" width="100%" height="350" style="object-fit:cover" alt="team member">
 
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
+                            <div class="team-text">
+                                <div class="team-social">
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.facebook.com/"><i class="flaticon-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/"><i class="flaticon-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/"><i class="flaticon-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/"><i class="flaticon-linkedin"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h3>@item.Fullname</h3>
+                                @* <p>Business Consultant</p> *@
                             </div>
-                            <h3>Jerry Hudson</h3>
-                            <p>Business Consultant</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/2.jpg" alt="team member">
 
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Juho Hudson</h3>
-                            <p>Research Consultant</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/3.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Sarah Tylor</h3>
-                            <p>Marketing Consultant</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/4.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Aikin Ward</h3>
-                            <p>Business Consultant</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 <!-- Team Section End -->
-
-
-
 <!-- Blog Section Start -->
 <section class="blog-section pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">
-            <span>Our Blog</span>
             <h2>Latest Tips & Guides</h2>
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="assets/img/blog/1.jpg" alt="blog image"></a>
-                        <div class="blog-date">
-                            <span>21 Feb</span>
+            @foreach (var item in ViewBag.Blog)
+            {
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <a href="/blog-detail/@item.Id"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
+                            <div class="blog-date">
+                                <span>@item.CreatedAt.ToString("dd MMM")</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-text">
-
-                        <h3><a href="blog-details.html">10 Essential Tips to Ace Your Aptitude Test</a></h3>
-
-                        <div class="post-info">
-                            <img src="assets/img/blog/author-1.png" alt="blog author">
-                            <a href="#"><p>Aikin Ward</p></a>
-                            <a href="blog-details.html" class="blog-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
+                        <div class="blog-text">
+                            <a href="/blog-detail/@item.Id">
+                                <h3>The next genaration IT will change the world</h3>
                             </a>
+
+                            <div class="post-info">
+                                <a href="#"><p>@item.Title</p></a>
+                                <a href="/blog-detail/@item.Id" class="blog-btn">
+                                    Read More
+                                    <i class="flaticon-right-chevron"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="assets/img/blog/2.jpg" alt="blog image"></a>
-                        <div class="blog-date">
-                            <span>22 Feb</span>
-                        </div>
-                    </div>
-                    <div class="blog-text">
 
-                        <h3><a href="blog-details.html">Understanding Logical Reasoning: A Complete Guide</a></h3>
-
-                        <div class="post-info">
-                            <img src="assets/img/blog/author-2.png" alt="blog author">
-                            <a href="#"><p>John Smith</p></a>
-                            <a href="blog-details.html" class="blog-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="assets/img/blog/3.jpg" alt="blog image"></a>
-                        <div class="blog-date">
-                            <span>23 Feb</span>
-                        </div>
-                    </div>
-                    <div class="blog-text">
-
-                        <h3><a href="blog-details.html">How to Improve Your Numerical Reasoning Skills Fast</a></h3>
-
-                        <div class="post-info">
-                            <img src="assets/img/blog/author-3.png" alt="blog author">
-                            <a href="#"><p>Sarah Tylor</p></a>
-                            <a href="blog-details.html" class="blog-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -370,42 +245,40 @@
                         <p>Have questions about our tests? Need help getting started? Contact us anytime.</p>
                     </div>
 
-                    <form id="contactForm">
+                    <form asp-action="Create" asp-controller="Contact" method="post">
                         <div class="row">
-                            <div class="col-md-12 col-sm-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Name">
-                                    <div class="help-block with-errors"></div>
+                                    <input asp-for="FullName" class="form-control" placeholder="Full Name" />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            <div class="col-md-12 col-sm-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="Email">
-                                    <div class="help-block with-errors"></div>
+                                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            <div class="col-md-12 col-sm-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please enter your subject" placeholder="Subject">
-                                    <div class="help-block with-errors"></div>
+                                    <input asp-for="Subject" class="form-control" placeholder="Subject" />
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-md-12">
+                            <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="message" class="message-field" id="message" cols="30" rows="5" required data-error="Please type your message" placeholder="Message"></textarea>
-                                    <div class="help-block with-errors"></div>
+                                    <textarea asp-for="Message" class="form-control message-field" cols="30" rows="5" placeholder="Message"></textarea>
+                                    <span asp-validation-for="Message" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-md-12">
+                            <div class="col-lg-12">
                                 <button type="submit" class="default-btn contact-btn">
                                     Send Message
                                 </button>
-                                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </form>

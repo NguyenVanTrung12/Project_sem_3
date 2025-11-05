@@ -124,3 +124,25 @@
     </div>
 </div>
 <!-- Map Section End -->
+@if (TempData["Success"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '@TempData["Success"]',
+                position: 'top', // hiện trên cùng
+                showConfirmButton: false,
+                timer: 3000, // tự tắt sau 3 giây
+                timerProgressBar: true,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+        });
+    </script>
+}
