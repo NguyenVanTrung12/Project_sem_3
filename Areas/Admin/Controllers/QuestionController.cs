@@ -24,17 +24,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 10;
-
             var query = _context.Questions
                 .Include(q => q.Subject) // nếu có quan hệ
                 .Include(q => q.@Type)    // nếu có quan hệ
+                .AsQueryable();
 
-                                .AsQueryable();
-
+            
             // Tìm kiếm theo tên
             if (!string.IsNullOrEmpty(q))
             {
-                query = query.Where(m => m.QuestionTitle.Contains(q));
+                query = query.Where(m => m.QuestionTitle!.Contains(q));
             }
 
             // Lọc theo trạng thái
@@ -135,8 +134,6 @@ namespace Project_sem_3.Areas.Admin.Controllers
             ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName", model.TypeId);
             return View(model);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var question = await _context.Questions.FindAsync(id);
@@ -150,9 +147,47 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmDelete(int id)
+        {
+            // Tìm câu hỏi cần xóa
+            var question = await _context.Questions
+                .Include(q => q.Answers) // Load luôn danh sách Answer để kiểm tra
+                .FirstOrDefaultAsync(q => q.Id == id);
+
+            if (question == null)
+            {
+                TempData["ErrorMessage"] = "❌ Question not found!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Kiểm tra xem có liên kết Answer nào không
+            if (question.Answers != null && question.Answers.Any())
+            {
+                TempData["ErrorMessage"] = "⚠️ Cannot delete this question because it already has answers linked to it.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                _context.Questions.Remove(question);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "✅ Question deleted successfully!";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"❌ Error occurred while deleting question: {ex.Message}";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool QuestionExists(int id)
         {
             return _context.Questions.Any(e => e.Id == id);
         }
+
     }
 }
