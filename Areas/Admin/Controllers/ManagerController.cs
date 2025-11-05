@@ -146,10 +146,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
             if (id == null)
                 return NotFound();
 
-            var manager = await _context.Managers.FindAsync(id);
+            var manager = await _context.Managers
+    .Include(m => m.Role)
+    .FirstOrDefaultAsync(m => m.Id == id);
             if (manager == null)
                 return NotFound();
-
+            if (manager.Role.RoleName == "Role_Supper_Managers")
+            {
+                TempData["Error"] = "Super Manager account cannot be edited.";
+                return RedirectToAction("Index");
+            }
             ViewData["RoleId"] = new SelectList(
               _context.Roles
                   .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
@@ -183,10 +189,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
             try
             {
                 // Lấy bản ghi hiện tại trong DB
-                var manager = await _context.Managers.FindAsync(id);
+                var manager = await _context.Managers
+       .Include(m => m.Role)
+       .FirstOrDefaultAsync(m => m.Id == id);
                 if (manager == null)
                     return NotFound();
-
+                if (model.Role.RoleName == "Role_Supper_Managers")
+                {
+                    TempData["Error"] = "Super Manager account cannot be edited.";
+                    return RedirectToAction("Index");
+                }
                 // 1️⃣ Kiểm tra trùng Username (loại trừ bản ghi hiện tại)
                 var usernameExists = await _context.Managers
                     .AnyAsync(m => m.Username == model.Username && m.Id != id);
@@ -301,12 +313,18 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var manager = await _context.Managers.FindAsync(id);
+            var manager = await _context.Managers
+      .Include(m => m.Role)
+      .FirstOrDefaultAsync(m => m.Id == id);
             if (manager == null)
             {
                 return NotFound();
             }
-
+            if (manager.Role.RoleName == "Role_Supper_Managers")
+            {
+                TempData["Error"] = "Super Manager account cannot be deleted.";
+                return RedirectToAction(nameof(Index));
+            }
             _context.Managers.Remove(manager);
             await _context.SaveChangesAsync();
 
