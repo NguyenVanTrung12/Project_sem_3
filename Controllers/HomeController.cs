@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
-using System.Diagnostics;
+using Project_sem_3.Models.ViewModels;
 
 namespace Project_sem_3.Controllers
 {
@@ -9,7 +9,7 @@ namespace Project_sem_3.Controllers
     {
         private readonly online_aptitude_testsContext _context;
         private readonly ILogger<HomeController> _logger;
-        private readonly online_aptitude_testsContext _context;
+
 
         public HomeController(ILogger<HomeController> logger, online_aptitude_testsContext context)
         {
@@ -85,9 +85,21 @@ namespace Project_sem_3.Controllers
                 ViewData[$"LockedDueToFail_{subject.Id}"] = lockedDueToFail;
             }
 
-            ViewData["IsLoggedIn"] = candidateId != null;
+            var viewModel = new HomeViewModel
+            {
+                Subjects = subjects,
+                Contact = new Contact(),
+                Banner = _context.Banners.Where(b => b.Active == 1).ToList(),
+                Manager = _context.Managers
+           .Include(m => m.Role)
+           .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
+           .ToList(),
+                Blog = _context.Blogs
+           .Where(m => m.Status == 1)
+           .ToList()
+            };
 
-            return View(subjects);
+            return View(viewModel);
         }
 
 
