@@ -2,49 +2,52 @@
     Layout = "_Layout";
     var error = TempData["Error"] as string;
 }
-@model IEnumerable<Project_sem_3.Models.Subject>
+@model IEnumerable<Project_sem_3.Models.Subject> 
+@* @model Project_sem_3.Models *@
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Banner Section Start -->
-<div class="main-banner">
+<!-- Banner Section Start -->
+<div class="main-banner" style="height:450px">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
-                <div class="row align-items-center">
+                @if (ViewBag.Banner != null && ((IEnumerable<Project_sem_3.Models.Banner>)ViewBag.Banner).Any())
+                {
+                    @foreach (var item in (IEnumerable<Project_sem_3.Models.Banner>)ViewBag.Banner)
+                    {
+                        <div class="row align-items-center banner-slide" style="display: none;">
+                            <!-- Content Column -->
+                            <div class="col-lg-7 col-md-12">
+                                <div class="banner-text">
+                                    <h1>@item.Name</h1>
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
 
-                    <!-- Content Column -->
-                    <div class="col-lg-7 col-md-12">
-                        <div class="banner-text">
-                            <h1>Oil & Gas Recruitment Competency Test</h1>
-                            <p>
-                                An online assessment system for technical, operation, and maintenance candidates in the oil and gas industry.
-                                Get ready to showcase your skills, knowledge, and professionalism.
-                            </p>
-
-                            <div class="theme-button">
-                                <a href="/Test" class="default-btn">Start Test</a>
-                                <a href="https://www.youtube.com/watch?v=Fbps7_mkIT0" class="video-btn popup-vimeo">
-                                    <i class="flaticon-play"></i>
-                                    Watch Tutorial
-                                </a>
+                            <!-- Image Column -->
+                            <div class="col-lg-5 col-md-12">
+                                <div class="banner-image text-center">
+                                    <img src="@item.Image" alt="@item.Name" class="img-fluid rounded shadow">
+                                </div>
                             </div>
                         </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center py-5">
+                        <h3 class="text-muted">No banners available</h3>
+                        <p>Please check back later for new updates.</p>
                     </div>
-
-                    <!-- Image Column -->
-                    <div class="col-lg-5 col-md-12">
-                        <div class="banner-image">
-                            <img src="assets/img/banner/1.png" alt="Oil and gas recruitment test">
-                        </div>
-                    </div>
-
-                </div>
+                }
             </div>
         </div>
     </div>
-
     <div id="particles-js"></div>
 </div>
+
 
 <section class="features-section pb-70">
     <div class="container">
@@ -184,208 +187,93 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/1.jpg" alt="team member">
+            @if (ViewBag.Manage != null && ((IEnumerable<Project_sem_3.Models.Manager>)ViewBag.Manage).Any())
+            {
+                foreach (var item in (IEnumerable<Project_sem_3.Models.Manager>)ViewBag.Manage)
+                {
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="team-card">
+                            <div class="team-img">
+                                <img src="@item.Image" width="100%" height="350" style="object-fit:cover" alt="team member">
 
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
+                                <div class="team-text">
+                                    <div class="team-social">
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.facebook.com/"><i class="flaticon-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="https://twitter.com/"><i class="flaticon-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.instagram.com/"><i class="flaticon-instagram"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.linkedin.com/"><i class="flaticon-linkedin"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h3>@item.Fullname</h3>
+                                </div>
                             </div>
-                            <h3>Jerry Hudson</h3>
-                            <p>Business Consultant</p>
                         </div>
                     </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center mt-4 mb-4">
+                    <h4 class="text-muted">No team members available.</h4>
+                    <p>Please check back later to meet our amazing staff.</p>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/2.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Juho Hudson</h3>
-                            <p>Research Consultant</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/3.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Sarah Tylor</h3>
-                            <p>Marketing Consultant</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="assets/img/team/4.jpg" alt="team member">
-
-                        <div class="team-text">
-                            <div class="team-social">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="flaticon-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="flaticon-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3>Aikin Ward</h3>
-                            <p>Business Consultant</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
 <!-- Team Section End -->
-
-
-
 <!-- Blog Section Start -->
 <section class="blog-section pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">
-            <span>Our Blog</span>
             <h2>Latest Tips & Guides</h2>
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="assets/img/blog/1.jpg" alt="blog image"></a>
-                        <div class="blog-date">
-                            <span>21 Feb</span>
+            @if (ViewBag.Blog != null && ((IEnumerable<Project_sem_3.Models.Blog>)ViewBag.Blog).Any())
+            {
+                foreach (var item in (IEnumerable<Project_sem_3.Models.Blog>)ViewBag.Blog)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-card">
+                            <div class="blog-img">
+                                <a href="/blog-detail/@item.Id"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
+                                <div class="blog-date">
+                                    <span>@(item.CreatedAt.ToString("dd MMM") ?? "")</span>
+                                </div>
+                            </div>
+                            <div class="blog-text">
+                                <a href="/blog-detail/@item.Id">
+                                    <h3>The next generation IT will change the world</h3>
+                                </a>
+                                <div class="post-info">
+                                    <a href="#"><p>@item.Title</p></a>
+                                    <a href="/blog-detail/@item.Id" class="blog-btn">
+                                        Read More
+                                        <i class="flaticon-right-chevron"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="blog-text">
-
-                        <h3><a href="blog-details.html">10 Essential Tips to Ace Your Aptitude Test</a></h3>
-
-                        <div class="post-info">
-                            <img src="assets/img/blog/author-1.png" alt="blog author">
-                            <a href="#"><p>Aikin Ward</p></a>
-                            <a href="blog-details.html" class="blog-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center mt-4 mb-4">
+                    <h4 class="text-muted">No blog posts available.</h4>
+                    <p>Please check back later for the latest updates from us.</p>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="assets/img/blog/2.jpg" alt="blog image"></a>
-                        <div class="blog-date">
-                            <span>22 Feb</span>
-                        </div>
-                    </div>
-                    <div class="blog-text">
-
-                        <h3><a href="blog-details.html">Understanding Logical Reasoning: A Complete Guide</a></h3>
-
-                        <div class="post-info">
-                            <img src="assets/img/blog/author-2.png" alt="blog author">
-                            <a href="#"><p>John Smith</p></a>
-                            <a href="blog-details.html" class="blog-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="assets/img/blog/3.jpg" alt="blog image"></a>
-                        <div class="blog-date">
-                            <span>23 Feb</span>
-                        </div>
-                    </div>
-                    <div class="blog-text">
-
-                        <h3><a href="blog-details.html">How to Improve Your Numerical Reasoning Skills Fast</a></h3>
-
-                        <div class="post-info">
-                            <img src="assets/img/blog/author-3.png" alt="blog author">
-                            <a href="#"><p>Sarah Tylor</p></a>
-                            <a href="blog-details.html" class="blog-btn">
-                                Read More
-                                <i class="flaticon-right-chevron"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -405,45 +293,26 @@
                         <p>Have questions about our tests? Need help getting started? Contact us anytime.</p>
                     </div>
 
-                    <form id="contactForm">
+                    <form asp-action="Create" asp-controller="Contact" method="post">
                         <div class="row">
-                            <div class="col-md-12 col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Name">
-                                    <div class="help-block with-errors"></div>
-                                </div>
+                            <div class="col-md-12">
+                                <input name="FullName" class="form-control" placeholder="Full Name" />
                             </div>
-
-                            <div class="col-md-12 col-sm-6">
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="Email">
-                                    <div class="help-block with-errors"></div>
-                                </div>
+                            <div class="col-md-12">
+                                <input name="Email" class="form-control" placeholder="Email" />
                             </div>
-
-                            <div class="col-md-12 col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" name="msg_subject" id="msg_subject" class="form-control" required data-error="Please enter your subject" placeholder="Subject">
-                                    <div class="help-block with-errors"></div>
-                                </div>
+                            <div class="col-md-12">
+                                <input name="Subject" class="form-control" placeholder="Subject" />
                             </div>
-
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group">
-                                    <textarea name="message" class="message-field" id="message" cols="30" rows="5" required data-error="Please type your message" placeholder="Message"></textarea>
-                                    <div class="help-block with-errors"></div>
-                                </div>
+                            <div class="col-lg-12">
+                                <textarea name="Message" class="form-control message-field" cols="30" rows="5" placeholder="Message"></textarea>
                             </div>
-
-                            <div class="col-lg-12 col-md-12">
-                                <button type="submit" class="default-btn contact-btn">
-                                    Send Message
-                                </button>
-                                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                <div class="clearfix"></div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="default-btn contact-btn">Send Message</button>
                             </div>
                         </div>
                     </form>
+
 
                     <img src="assets/img/shapes/1.png" class="contact-shape" alt="shape">
                 </div>
@@ -456,21 +325,42 @@
 <script>
 
     function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      const windowHeight = window.innerHeight;
+        const reveals = document.querySelectorAll('.reveal');
+        const windowHeight = window.innerHeight;
 
-      reveals.forEach(section => {
-        const revealTop = section.getBoundingClientRect().top;
-        const revealPoint = 100; // càng nhỏ càng dễ kích hoạt
+        reveals.forEach(section => {
+            const revealTop = section.getBoundingClientRect().top;
+            const revealPoint = 100; // càng nhỏ càng dễ kích hoạt
 
-        if (revealTop < windowHeight - revealPoint) {
-          section.classList.add('active');
-        } else {
-          section.classList.remove('active');
-        }
-      });
+            if (revealTop < windowHeight - revealPoint) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
     }
 
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
+</script>
+<script>
+    const slides = document.querySelectorAll('.banner-slide');
+    let current = 0;
+
+    // Hiển thị banner đầu tiên
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.display = i === index ? 'flex' : 'none';
+            slide.style.opacity = i === index ? '1' : '0';
+            slide.style.transition = 'opacity 0.8s ease-in-out';
+        });
+    }
+
+    showSlide(current);
+
+    // Tự động chuyển banner mỗi 5 giây
+    setInterval(() => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    }, 3000);
 </script>
