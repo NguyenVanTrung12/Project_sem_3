@@ -87,22 +87,20 @@ namespace Project_sem_3.Controllers
                 ViewData[$"LockedDueToFail_{subject.Id}"] = lockedDueToFail;
             }
 
+            ViewData["IsLoggedIn"] = candidateId != null;
+            ViewBag.Banner = _context.Banners
+     .Where(b => b.Active == 1)
+     .ToList();
 
-            var viewModel = new HomeViewModel
-            {
-                Subjects = subjects,
-                Contact = new Contact(),
-                Banner = _context.Banners.Where(b => b.Active == 1).ToList(),
-                Manager = _context.Managers
-           .Include(m => m.Role)
-           .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
-           .ToList(),
-                Blog = _context.Blogs
-           .Where(m => m.Status == 1)
-           .ToList()
-            };
+            ViewBag.Manage = _context.Managers
+                 .Include(m => m.Role)
+                 .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
+                 .ToList();
 
-            return View(viewModel);
+            ViewBag.Blog = _context.Blogs
+                  .Where(m => m.Status == 1)
+                  .ToList();
+            return View(subjects);
         }
 
 
