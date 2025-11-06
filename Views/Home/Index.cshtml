@@ -2,9 +2,10 @@
 
 @{
     Layout = "_Layout";
-    var contact = ViewBag.Contact as Project_sem_3.Models.Contact;
+    var error = TempData["Error"] as string;
 }
-
+@model IEnumerable<Project_sem_3.Models.Subject>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Banner Section Start -->
 <div class="main-banner" style="height:450px">
@@ -36,8 +37,6 @@
     <div id="particles-js"></div>
 </div>
 
-
-
 <section class="features-section pb-70">
     <div class="container">
         <div class="section-title text-center">
@@ -47,54 +46,89 @@
         </div>
 
         <div class="row">
+            @foreach (var subject in Model)
+            {
+                var canAccess = ViewData[$"CanAccess_{subject.Id}"] as bool? ?? false;
+                var isDone = ViewData[$"IsDone_{subject.Id}"] as bool? ?? false;
+                var isFailed = ViewData[$"IsFailed_{subject.Id}"] as bool? ?? false;
+                var isLoggedIn = ViewData["IsLoggedIn"] as bool? ?? false;
+                var lockedDueToFail = ViewData[$"LockedDueToFail_{subject.Id}"] as bool? ?? false;
 
-            <!-- General Knowledge -->
-            <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="features-card feature-one p-3 border rounded text-center">
+                        <i class="flaticon-technical-support display-4"></i>
+                        <h3 class="mt-3">@subject.SubjectName</h3>
 
-                <div class="features-card feature-one">
-                    <i class="flaticon-technical-support"></i>
-                    <h3>General Knowledge</h3>
-                    <p>Test your awareness of the world, history, science, and current affairs.</p>
-                    <div class="theme-button mt-4">
-                        <a asp-controller="Exam" asp-action="Start" asp-route-topic="GeneralKnowledge" class="default-btn">Take the Test</a>
+                        @if (isFailed)
+                        {
+                            <p class="text-danger fw-bold">
+                                You have taken this round and did not pass. Retake is not allowed.
+                            </p>
+                        }
+
+                        <div class="theme-button mt-3">
+                            @if (isLoggedIn)
+                            {
+                                if (isDone)
+                                {
+                                    <span class="badge bg-success">✅ Completed</span>
+                                }
+                                else if (isFailed)
+                                {
+                                    <button type="button" class="default-btn" disabled>
+                                        ❌ You did not pass this round
+                                    </button>
+                                }
+                                else if (canAccess)
+                                {
+                                    <a asp-controller="Exam" asp-action="Start" asp-route-subjectId="@subject.Id"
+                                       class="default-btn">
+                                        🎯 Take the Test
+                                    </a>
+                                }
+                                else
+                                {
+                                    if (lockedDueToFail)
+                                    {
+                                        <button type="button" class="default-btn" onclick="showFailMessage()">Locked</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="default-btn" onclick="showLockedMessage()">Locked</button>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <a asp-controller="Logon" asp-action="Index" class="default-btn">
+                                    🔐 Login to Take the Test
+                                </a>
+                            }
+                        </div>
                     </div>
                 </div>
-
-            </div>
-
-            <!-- Mathematics -->
-            <div class="col-lg-4 col-sm-6">
-
-                <div class="features-card feature-two">
-                    <i class="flaticon-megaphone"></i>
-                    <h3>Mathematics</h3>
-                    <p>Challenge your problem-solving and quantitative reasoning abilities.</p>
-                    <div class="theme-button mt-4">
-                        <a asp-controller="Exam" asp-action="Start" asp-route-topic="Mathematics" class="default-btn">Take the Test</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Computer Technology -->
-            <div class="col-lg-4 col-sm-6">
-
-                <div class="features-card feature-three">
-                    <i class="flaticon-settings"></i>
-                    <h3>Computer Technology</h3>
-                    <p>Assess your understanding of computers, programming, and IT fundamentals.</p>
-                    <div class="theme-button mt-4">
-                        <a asp-controller="Exam" asp-action="Start" asp-route-topic="ComputerTechnology" class="default-btn">Take the Test</a>
-                    </div>
-                </div>
-
-
-
-            </div>
-
+            }
         </div>
     </div>
 </section>
+
+<script>
+    // ⚠️ Alert when the test is locked because the previous round hasn’t been passed yet
+    function showLockedMessage() {
+        alert("🔒 You need to pass the previous round to unlock this test!");
+    }
+
+    // ⚠️ Alert when the next round is locked due to failure in the previous one
+    function showFailMessage() {
+        alert("❌ You failed the previous round. You cannot continue to the next ones.");
+    }
+</script>
+
+
+
+
+
+
 
 
 
@@ -281,6 +315,7 @@
 <!-- Contact Section End -->
 
 <script>
+
     function revealOnScroll() {
         const reveals = document.querySelectorAll('.reveal');
         const windowHeight = window.innerHeight;

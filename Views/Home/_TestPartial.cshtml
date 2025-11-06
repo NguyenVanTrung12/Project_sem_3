@@ -1,0 +1,28 @@
+﻿@model Project_sem_3.Models.Subject
+
+<div class="test-card p-4 border rounded bg-light">
+    <h3>@Model.SubjectName - Bài thi</h3>
+
+    <form id="examForm_@Model.Id" onsubmit="submitTest(event, @Model.Id)">
+        <div class="mb-3">
+            <label>Câu hỏi 1:</label>
+            <input type="text" class="form-control" placeholder="Nhập đáp án" required>
+        </div>
+        <div class="mb-3">
+            <label>Câu hỏi 2:</label>
+            <input type="text" class="form-control" placeholder="Nhập đáp án" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Nộp bài</button>
+    </form>
+
+    <div id="result_@Model.Id" class="mt-3"></div>
+</div>
+
+<script>
+    function submitTest(e, subjectId) {
+        e.preventDefault();
+        document.getElementById('result_' + subjectId).innerHTML =
+            '<div class="alert alert-success">Bài thi đã được nộp!</div>';
+        document.getElementById('examForm_' + subjectId).style.display = 'none';
+    }
+</script>

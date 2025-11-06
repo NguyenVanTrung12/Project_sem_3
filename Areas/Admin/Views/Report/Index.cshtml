@@ -1,0 +1,149 @@
+﻿@model IEnumerable<ReportViewModel>
+
+@{
+    ViewData["Title"] = "Exam Result Report";
+    Layout = "_Admin";
+}
+<link href="~/assets/css/report.css" rel="stylesheet" />
+<div class="container mt-4">
+
+    <h2 class="mb-4">📊 Exam Result Report</h2>
+
+    <!-- Filter -->
+    <form method="get" asp-controller="Report" asp-action="Index" class="row g-2 mb-4">
+        <div class="col-md-2">
+            <select name="range" class="form-select" onchange="this.form.submit()">
+                <option value="">-- Select --</option>
+                <option value="today">Today</option>
+                <option value="week">Last 7 Days</option>
+                <option value="month">Last 30 Days</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <input type="date" class="form-control" name="startDate" placeholder="Start Date">
+        </div>
+
+        <div class="col-md-3">
+            <input type="date" class="form-control" name="endDate" placeholder="End Date">
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+    <!-- Summary Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="p-3 bg-primary text-white rounded text-center">
+                <h4>@ViewBag.TotalCandidates</h4>
+                <p>Total Candidates</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 bg-info text-white rounded text-center">
+                <h4>@ViewBag.Appeared</h4>
+                <p>Participants</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 bg-success text-white rounded text-center">
+                <h4>@ViewBag.Passed</h4>
+                <p>Passed</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <canvas id="passFailChart"></canvas>
+        </div>
+
+        <div class="col-md-4">
+            <canvas id="subjectAvgChart"></canvas>
+        </div>
+
+        <div class="col-md-4">
+            <canvas id="trendChart"></canvas>
+        </div>
+
+    </div>
+
+    <hr class="my-4" />
+
+    <!-- Table -->
+    <h4>Detailed Results</h4>
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Candidate</th>
+                <th>Subject</th>
+                <th>Score</th>
+                <th>Exam Date</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CandidateName</td>
+                    <td>@item.SubjectName</td>
+                    <td>@item.TotalMark</td>
+                    <td>@item.SubmitDate.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>
+                        @if (item.Passed)
+                        {
+                            <span class="badge bg-success">Passed</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Failed</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Pie chart
+    const passFailData = @Html.Raw(ViewBag.PassFailData);
+    new Chart(document.getElementById("passFailChart"), {
+        type: "pie",
+        data: {
+            labels: ["Passed", "Failed"],
+            datasets: [{ data: passFailData }]
+        }
+    });
+
+    // Bar chart (average by subject)
+    const subjectLabels = @Html.Raw(ViewBag.SubjectLabels);
+    const subjectScores = @Html.Raw(ViewBag.SubjectScores);
+    new Chart(document.getElementById("subjectAvgChart"), {
+        type: "bar",
+        data: {
+            labels: subjectLabels,
+            datasets: [{ label: "Average Score", data: subjectScores }]
+        }
+    });
+
+    // Line chart (test count by date)
+    const dates = @Html.Raw(ViewBag.Dates);
+    const testCounts = @Html.Raw(ViewBag.TestCounts);
+    new Chart(document.getElementById("trendChart"), {
+        type: "line",
+        data: {
+            labels: dates,
+            datasets: [{ label: "Number of Tests", data: testCounts }]
+        }
+    });
+</script>

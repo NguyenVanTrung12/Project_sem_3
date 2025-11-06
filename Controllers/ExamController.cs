@@ -22,31 +22,66 @@ namespace Project_sem_3.Controllers
         public async Task<IActionResult> Index()
         {
             var sessionCandidateId = HttpContext.Session.GetInt32("CandidateId");
-            if (sessionCandidateId == null)
-                return RedirectToAction("Index", "Logon");
+            int? candidateId = sessionCandidateId;
 
-            int candidateId = sessionCandidateId.Value;
+            var subjects = await _context.Subjects.OrderBy(s => s.Id).ToListAsync();
+            var results = candidateId != null
+                ? await _context.Results.Where(r => r.CandidateId == candidateId.Value).ToListAsync()
+                : new List<Result>();
 
-            // Lấy danh sách 3 phần thi
-            var subjects = await _context.Subjects.ToListAsync();
+            bool blocked = false; // ✅ Nếu một vòng bị trượt, tất cả vòng sau bị khóa
 
-            // Lấy kết quả hiện tại của thí sinh
-            var results = await _context.Results
-                .Where(r => r.CandidateId == candidateId)
-                .ToListAsync();
-
-            // Xác định trạng thái mở/khóa từng phần
-            foreach (var s in subjects)
+            for (int i = 0; i < subjects.Count; i++)
             {
-                bool canAccess = CanAccess(s.Id, results);
-                ViewData[$"CanAccess_{s.Id}"] = canAccess;
+                var subject = subjects[i];
+                var currentResult = results.FirstOrDefault(r => r.SubjectId == subject.Id);
+                var prevResult = i > 0 ? results.FirstOrDefault(r => r.SubjectId == subjects[i - 1].Id) : null;
 
-                bool isDone = results.Any(r => r.SubjectId == s.Id && r.Status == 1);
-                ViewData[$"IsDone_{s.Id}"] = isDone;
+                bool isDone = currentResult?.Status == 1;   // Đã đậu
+                bool isFailed = currentResult?.Status == 2; // Thi trượt
+                bool canAccess = false;
+                bool lockedDueToFail = false;
+
+                // 🔒 Nếu vòng trước hoặc bất kỳ vòng nào trước đó đã trượt => khóa
+                if (blocked)
+                {
+                    canAccess = false;
+                    lockedDueToFail = true;
+                }
+                else
+                {
+                    if (i == 0)
+                    {
+                        // ✅ Vòng đầu tiên: mở nếu chưa trượt
+                        canAccess = !isFailed;
+                    }
+                    else
+                    {
+                        // ✅ Các vòng sau: chỉ mở nếu vòng trước đậu và chưa trượt chính vòng này
+                        canAccess = (prevResult != null && prevResult.Status == 1) && !isFailed;
+                    }
+                }
+
+                // ❌ Nếu chính vòng hiện tại trượt => khóa tất cả vòng sau
+                if (isFailed)
+                {
+                    blocked = true;
+                    canAccess = false;
+                    lockedDueToFail = true;
+                }
+
+                // 🔽 Truyền dữ liệu sang View
+                ViewData[$"CanAccess_{subject.Id}"] = canAccess;
+                ViewData[$"IsDone_{subject.Id}"] = isDone;
+                ViewData[$"IsFailed_{subject.Id}"] = isFailed;
+                ViewData[$"LockedDueToFail_{subject.Id}"] = lockedDueToFail;
             }
 
+            ViewData["IsLoggedIn"] = candidateId != null;
             return View(subjects);
         }
+
+
 
         // 2️⃣ Bắt đầu thi
         public async Task<IActionResult> Start(int subjectId, int typeId = 1)
@@ -59,7 +94,7 @@ namespace Project_sem_3.Controllers
 
             // ⚠️ 1️⃣ Kiểm tra nếu thí sinh đã từng bị rớt ở phần thi trước
             var failedBefore = await _context.Results
-                .AnyAsync(r => r.CandidateId == candidateId && r.TotalMark < 5 && r.Status == 1);
+                .AnyAsync(r => r.CandidateId == candidateId && r.TotalMark < 2 && r.Status == 1);
             if (failedBefore)
             {
                 TempData["Error"] = "Bạn đã không đạt yêu cầu ở vòng trước, không thể tiếp tục thi.";
@@ -164,8 +199,9 @@ namespace Project_sem_3.Controllers
             if (result == null) return NotFound("Không tìm thấy bài thi.");
             if (result.CandidateId != candidateId) return Unauthorized();
 
-            if (result.Status == 1 || result.SubmitDate != null)
-                return RedirectToAction("Result", new { id = resultId, pass = result.TotalMark >= 5 });
+            // Nếu đã nộp rồi thì không cho nộp lại
+            if (result.Status == 1 || result.Status == 2 || result.SubmitDate != null)
+                return RedirectToAction("Result", new { id = resultId, pass = result.Status == 1 });
 
             // Lấy danh sách câu trả lời
             var selectedAnswers = new Dictionary<int, int>();
@@ -201,6 +237,7 @@ namespace Project_sem_3.Controllers
 
                 var exist = await _context.ResultDetails
                     .FirstOrDefaultAsync(rd => rd.ResultId == resultId && rd.QuestionId == questionId);
+
                 if (exist == null)
                 {
                     _context.ResultDetails.Add(new ResultDetail
@@ -213,18 +250,18 @@ namespace Project_sem_3.Controllers
                 }
             }
 
-            // Cập nhật Result
+            // ✅ Cập nhật kết quả bài thi
+            bool isPassed = totalMark >= 2;
             result.TotalMark = totalMark;
             result.SubmitDate = DateTime.Now;
-            result.Status = 1;
+            result.Status = isPassed ? 1 : 2; // 1 = Đậu, 2 = Trượt
             await _context.SaveChangesAsync();
 
+            // Xóa session bài thi (tránh F5 thi lại)
             if (!string.IsNullOrEmpty(sessionKey))
                 HttpContext.Session.Remove(sessionKey);
 
-            bool isPassed = totalMark >= 5;
-
-            // Nếu đã hoàn tất phần cuối (Computer Technology) → chuyển sang bảng Transfer
+            // ✅ Nếu đậu phần cuối (Computer Technology) → chuyển sang HR Round
             if (isPassed && result.SubjectId == 3)
             {
                 var transfer = new Transfer
@@ -240,6 +277,7 @@ namespace Project_sem_3.Controllers
 
             return RedirectToAction("Result", new { id = result.Id, pass = isPassed });
         }
+
 
         // 4️⃣ Trang xem kết quả
         public async Task<IActionResult> Result(int id, bool pass = false)
@@ -266,19 +304,35 @@ namespace Project_sem_3.Controllers
         // ⚙️ Kiểm tra quyền truy cập phần thi
         private bool CanAccess(int subjectId, List<Result> results)
         {
-            // General (1) luôn mở
-            if (subjectId == 1) return true;
+            // Phần 1 (Kiến thức chung) luôn mở
+            if (subjectId == 1)
+                return true;
 
-            // Math (2) chỉ khi General pass
-            if (subjectId == 2)
-                return results.Any(r => r.SubjectId == 1 && r.TotalMark >= 5);
+            // Kiểm tra tất cả các phần trước
+            for (int prevId = 1; prevId < subjectId; prevId++)
+            {
+                var prevResult = results.FirstOrDefault(r => r.SubjectId == prevId);
 
-            // Computer (3) chỉ khi Math pass
-            if (subjectId == 3)
-                return results.Any(r => r.SubjectId == 2 && r.TotalMark >= 5);
+                // Nếu chưa có kết quả phần trước → khóa
+                if (prevResult == null)
+                    return false;
 
-            return false;
+                // Nếu phần trước bị trượt (Status = 2) → khóa luôn phần này
+                if (prevResult.Status == 2)
+                    return false;
+
+                // Nếu phần trước chưa hoàn thành hoặc trạng thái khác đậu → khóa
+                if (prevResult.Status != 1)
+                    return false;
+            }
+
+            // Nếu tất cả phần trước đều đã đậu → mở khóa phần này
+            return true;
         }
+
+
+
+
 
         // ⚙️ Giới hạn thời gian (phút)
         private int GetTimeLimit(int subjectId)

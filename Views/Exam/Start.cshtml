@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Project_sem_3.Models.Question>
 
 @{
-    Layout = "_Layout"; // hoặc "_CustomerLayout"
-    ViewData["Title"] = "Bài thi năng lực";
+    Layout = "_Layout"; // or "_CustomerLayout"
+    ViewData["Title"] = "Aptitude Test";
 }
 
 <div id="candidate-test" class="page">
@@ -10,11 +10,11 @@
         <!-- HEADER -->
         <div class="test-header d-flex justify-content-between align-items-center mb-4">
             <div class="test-info">
-                <h2>Đánh giá năng lực @Model.FirstOrDefault()?.Subject?.SubjectName</h2>
-                <p>@Model.Count() câu hỏi • 60 phút • Điểm tối đa: @Model.Count()</p>
+                <h2>Aptitude Test - @Model.FirstOrDefault()?.Subject?.SubjectName</h2>
+                <p>@Model.Count() questions • 60 minutes • Max score: @Model.Count()</p>
             </div>
             <div class="timer text-center">
-                <div class="timer-label">Thời gian còn lại</div>
+                <div class="timer-label">Time Remaining</div>
                 <div id="timer" class="timer-display fw-bold text-danger fs-4">60:00</div>
             </div>
         </div>
@@ -35,8 +35,8 @@
                         {
                             <div class="question-card mb-4" id="question-@index" style="display:@(index == 1 ? "block" : "none")">
                                 <div class="question-header d-flex justify-content-between mb-2">
-                                    <div class="question-number fw-bold">Câu @index/@Model.Count()</div>
-                                    <div style="color: #666; font-size: 14px">@q.Mark điểm</div>
+                                    <div class="question-number fw-bold">Question @index/@Model.Count()</div>
+                                    <div style="color: #666; font-size: 14px">@q.Mark point(s)</div>
                                 </div>
 
                                 <div class="question-text mb-3">@Html.Raw(q.QuestionContent)</div>
@@ -54,7 +54,7 @@
                                     }
                                     else
                                     {
-                                        <p class="text-danger">Không có đáp án cho câu hỏi này.</p>
+                                        <p class="text-danger">No answers available for this question.</p>
                                     }
                                 </div>
                             </div>
@@ -64,14 +64,14 @@
 
                     <!-- BUTTONS -->
                     <div class="d-flex justify-content-between mt-4">
-                        <button type="button" class="btn btn-outline" id="prevBtn">⬅️ Câu trước</button>
-                        <button type="button" class="btn btn-primary" id="nextBtn">Câu tiếp ➡️</button>
+                        <button type="button" class="btn btn-outline" id="prevBtn">⬅️ Previous</button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">Next ➡️</button>
                     </div>
                 </div>
 
                 <!-- RIGHT: NAVIGATION -->
                 <div class="question-nav">
-                    <h3 style="font-size: 16px; margin-bottom: 15px; color: #333;">Danh sách câu hỏi</h3>
+                    <h3 style="font-size: 16px; margin-bottom: 15px; color: #333;">Question List</h3>
                     <div class="question-grid d-grid" style="grid-template-columns: repeat(5, 1fr); gap: 5px;">
                         @{
                             int num = 1;
@@ -84,10 +84,10 @@
                     </div>
 
                     <div id="answered-summary" style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; font-size: 13px; color: #856404;">
-                        <strong>Lưu ý:</strong> Bạn đã trả lời <span id="answeredCount">0</span>/@Model.Count() câu hỏi
+                        <strong>Note:</strong> You have answered <span id="answeredCount">0</span> out of @Model.Count() questions
                     </div>
 
-                    <button type="submit" class="btn btn-success w-100 mt-3" id="submitBtn">Nộp bài thi</button>
+                    <button type="submit" class="btn btn-success w-100 mt-3" id="submitBtn">Submit Test</button>
                 </div>
             </div>
         </form>
@@ -97,7 +97,7 @@
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // 🕐 60 phút = 3600 giây
+            // 🕐 60 minutes = 3600 seconds
             const examDuration = 60 * 60;
             const timerDisplay = document.getElementById("timer");
             const storageKey = "examTimer";
@@ -128,7 +128,7 @@
 
                 if (timeLeft <= 0) {
                     clearInterval(timer);
-                    alert("⏰ Hết thời gian! Hệ thống sẽ tự động nộp bài.");
+                    alert("⏰ Time’s up! The system will automatically submit your test.");
                     localStorage.removeItem(storageKey);
                     examForm.submit();
                 }
@@ -139,7 +139,7 @@
             });
         });
 
-        // 🎯 CHUYỂN CÂU HỎI
+        // 🎯 QUESTION NAVIGATION
         document.addEventListener("DOMContentLoaded", function () {
             let currentIndex = 1;
             const totalQuestions = @Model.Count();
@@ -178,7 +178,7 @@
             showQuestion(currentIndex);
         });
 
-        // ✅ ĐÁNH DẤU CÂU ĐÃ TRẢ LỜI
+        // ✅ MARK ANSWERED QUESTIONS
         document.addEventListener("DOMContentLoaded", function () {
             const answeredSet = new Set();
             const answeredCount = document.getElementById("answeredCount");
@@ -193,59 +193,58 @@
                 });
             });
         });
-        // ✅ LƯU, KHÔI PHỤC VÀ ĐẾM CÂU TRẢ LỜI
+
+        // ✅ SAVE, RESTORE, AND COUNT ANSWERS
         document.addEventListener("DOMContentLoaded", function () {
             const storageKey = "examAnswers";
             let answers = JSON.parse(localStorage.getItem(storageKey)) || {};
-            const answeredSet = new Set(Object.keys(answers)); // tạo set chứa câu đã trả lời
+            const answeredSet = new Set(Object.keys(answers));
             const answeredCount = document.getElementById("answeredCount");
 
-            // Khi người dùng chọn đáp án
+            // When user selects an answer
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener("change", () => {
-                    const qName = radio.name; // ví dụ: selectedAnswers[12]
+                    const qName = radio.name;
                     answers[qName] = radio.value;
                     localStorage.setItem(storageKey, JSON.stringify(answers));
 
                     answeredSet.add(qName);
                     answeredCount.textContent = answeredSet.size;
 
-                    // Tô xanh nút câu hỏi
+                    // Highlight the answered question
                     const qId = qName.match(/\[(\d+)\]/)[1];
                     const btn = document.querySelector(`.question-btn[data-index="${qId}"]`);
                     if (btn) btn.classList.add("btn-success");
                 });
             });
 
-            // Khi load trang -> khôi phục lại lựa chọn
+            // Restore saved answers
             for (const [key, value] of Object.entries(answers)) {
                 const radio = document.querySelector(`input[name="${key}"][value="${value}"]`);
                 if (radio) {
                     radio.checked = true;
 
-                    // tô xanh nút đã trả lời
                     const qId = key.match(/\[(\d+)\]/)[1];
                     const btn = document.querySelector(`.question-btn[data-index="${qId}"]`);
                     if (btn) btn.classList.add("btn-success");
                 }
             }
 
-            // ✅ Cập nhật lại tổng số câu đã trả lời khi load trang
+            // Update answered count on load
             answeredCount.textContent = answeredSet.size;
 
-            // Khi nộp bài -> xóa lưu tạm
+            // Clear saved data when submitting
             const examForm = document.getElementById("examForm");
             examForm.addEventListener("submit", () => {
                 localStorage.removeItem(storageKey);
             });
         });
 
-
-        // ⚠️ XÁC NHẬN KHI NỘP BÀI
+        // ⚠️ CONFIRM BEFORE SUBMITTING
         document.addEventListener("DOMContentLoaded", function () {
             const submitBtn = document.getElementById("submitBtn");
             submitBtn.addEventListener("click", function (e) {
-                const confirmSubmit = confirm("Bạn có chắc chắn muốn nộp bài không? Sau khi nộp sẽ không thể làm lại.");
+                const confirmSubmit = confirm("Are you sure you want to submit? Once submitted, you cannot retake the test.");
                 if (!confirmSubmit) {
                     e.preventDefault();
                 }

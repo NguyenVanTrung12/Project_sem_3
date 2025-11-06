@@ -1,0 +1,108 @@
+﻿/* Wrapper */
+.report-container {
+    padding: 20px;
+}
+
+/* Header title */
+.report-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2b2b2b;
+}
+
+/* Filter buttons */
+.filter-btns button {
+    padding: 8px 16px;
+    border: none;
+    background: #e7e7e7;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+    .filter-btns button:hover {
+        background: #007bff;
+        color: white;
+    }
+
+.filter-btns .active {
+    background: #007bff;
+    color: white;
+}
+
+/* Date filter inputs */
+.date-filter input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Charts boxes */
+.chart-box {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Table */
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+    .report-table th {
+        background: #007bff;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .report-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .report-table tr:hover {
+        background: #f7f9ff;
+    }
+
+/* Status chip */
+.pass-status {
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+}
+
+.pass {
+    background: #28a745;
+}
+
+.fail {
+    background: #dc3545;
+}
+
+/* Buttons actions */
+.action-btn {
+    padding: 6px 12px;
+    background: #17a2b8;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+    .action-btn:hover {
+        background: #138496;
+    }
