@@ -1,7 +1,7 @@
 ﻿@model Project_sem_3.Models.Result
 
 @{
-    ViewData["Title"] = "Kết quả bài thi";
+    ViewData["Title"] = "Exam Result";
     Layout = "_Layout";
 }
 
@@ -11,20 +11,20 @@
             <div class="card-body p-5 text-center">
                 <div class="mb-4">
                     <div class="display-3 mb-2">🎉</div>
-                    <h2 class="fw-bold text-primary mb-1">Chúc mừng bạn đã hoàn thành bài thi!</h2>
+                    <h2 class="fw-bold text-primary mb-1">Congratulations! You have completed the test!</h2>
                     <p class="text-muted mb-4">
-                        Môn thi: <strong>@Model.Subject?.SubjectName</strong>
+                        Subject: <strong>@Model.Subject?.SubjectName</strong>
                     </p>
                 </div>
 
-                <!-- ✅ ĐIỂM THẬT -->
+                <!-- ✅ SCORE -->
                 <div class="score-display mb-4">
                     <div class="fw-bold" style="font-size: 60px; color: #198754;">
                         @Model.TotalMark<span style="font-size: 32px;">/@Model.ResultDetails.Count</span>
                     </div>
                 </div>
 
-                <!-- ✅ SỐ CÂU ĐÚNG, TỶ LỆ, XẾP LOẠI -->
+                <!-- ✅ CORRECT COUNT, PERCENTAGE, RANK -->
                 @{
                     int totalQuestions = Model.ResultDetails.Count;
                     int correctCount = Model.ResultDetails.Count(r => r.Answer.Correctly == true);
@@ -32,38 +32,38 @@
 
                     string rank = percent switch
                     {
-                        >= 90 => "Xuất sắc",
-                        >= 75 => "Giỏi",
-                        >= 50 => "Khá",
-                        >= 30 => "Trung bình",
-                        _ => "Yếu"
+                        >= 90 => "Excellent",
+                        >= 75 => "Good",
+                        >= 50 => "Fair",
+                        >= 30 => "Average",
+                        _ => "Poor"
                     };
                 }
 
                 <div class="d-flex justify-content-center flex-wrap gap-4 mb-4">
                     <div class="result-item">
-                        <h5 class="text-muted mb-1">Số câu đúng</h5>
+                        <h5 class="text-muted mb-1">Correct Answers</h5>
                         <p class="fw-bold fs-5 text-dark">@correctCount/@totalQuestions</p>
                     </div>
                     <div class="result-item">
-                        <h5 class="text-muted mb-1">Tỷ lệ đúng</h5>
+                        <h5 class="text-muted mb-1">Accuracy</h5>
                         <p class="fw-bold fs-5 text-dark">@percent.ToString("0.0")%</p>
                     </div>
                     <div class="result-item">
-                        <h5 class="text-muted mb-1">Xếp loại</h5>
+                        <h5 class="text-muted mb-1">Rank</h5>
                         <p class="fw-bold fs-5 text-dark">@rank</p>
                     </div>
                 </div>
 
                 <div class="analysis-box text-start mt-4">
-                    <h4 class="fw-semibold mb-3 text-primary">📊 Phân tích chi tiết</h4>
+                    <h4 class="fw-semibold mb-3 text-primary">📊 Detailed Analysis</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered align-middle">
                             <thead class="table-light">
                                 <tr>
-                                    <th>Câu hỏi</th>
-                                    <th>Đáp án bạn chọn</th>
-                                    <th>Kết quả</th>
+                                    <th>Question</th>
+                                    <th>Your Answer</th>
+                                    <th>Result</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,11 +75,11 @@
                                         <td>
                                             @if (detail.Answer.Correctly == true)
                                             {
-                                                <span class="text-success fw-bold">✅ Đúng</span>
+                                                <span class="text-success fw-bold">✅ Correct</span>
                                             }
                                             else
                                             {
-                                                <span class="text-danger fw-bold">❌ Sai</span>
+                                                <span class="text-danger fw-bold">❌ Incorrect</span>
                                             }
                                         </td>
                                     </tr>
@@ -88,32 +88,50 @@
                         </table>
                     </div>
                 </div>
+
                 @if (ViewBag.IsPassed == true)
                 {
-                    <div class="alert alert-success mt-4">
-                        🎉 Chúc mừng bạn đã vượt qua vòng @Model.TypeId!
-                    </div>
+                    if (Model.SubjectId == 3)
+                    {
+                        <!-- ✅ Passed Round 3 -->
+                        <div class="alert alert-success mt-4">
+                            🎉 Congratulations! You have completed <strong>ALL aptitude test rounds!</strong><br />
+                            You will be moved to the <strong>HR Round</strong>. Our HR department will contact you soon.
+                        </div>
 
-                    <form asp-action="Start" method="get" class="mt-3">
-                        <input type="hidden" name="subjectId" value="@Model.SubjectId" />
-                        <input type="hidden" name="typeId" value="@(Model.TypeId + 1)" />
-                        <button type="submit" class="btn btn-primary">Thi vòng @(Model.TypeId + 1)</button>
-                    </form>
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-success px-4">🏠 Back to Home</a>
+                            <a href="@Url.Action("Index", "Transfer")" class="btn btn-outline-primary px-4">📋 View HR Round Notice</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- ✅ Passed Round 1 or 2 -->
+                        <div class="alert alert-success mt-4">
+                            🎉 Congratulations! You have passed <strong>@Model.Subject?.SubjectName</strong>!
+                        </div>
+
+                        <form asp-action="Start" asp-controller="Exam" method="get" class="mt-3">
+                            <input type="hidden" name="subjectId" value="@(Model.SubjectId + 1)" />
+                            <input type="hidden" name="typeId" value="@(Model.TypeId + 1)" />
+                            <button type="submit" class="btn btn-primary">👉 Start Next Round</button>
+                        </form>
+                    }
                 }
                 else
                 {
                     <div class="alert alert-danger mt-4">
-                        😔 Bạn chưa đạt yêu cầu, hãy ôn tập và thử lại sau.
+                        😔 You did not meet the passing requirement. Please review and try again later.
                     </div>
                 }
 
                 <div class="d-flex justify-content-center gap-3 mt-4">
-                    <a href="@Url.Action("Index", "Exam")" class="btn btn-outline-primary px-4">🔙 Làm lại / Xem môn khác</a>
-                    <a href="@Url.Action("Index", "Home")" class="btn btn-success px-4">Về trang chủ</a>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-outline-primary px-4">🔙 Retry / View Other Subjects</a>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-success px-4">Next Test</a>
                 </div>
 
                 <p class="text-muted mt-4" style="font-size: 14px;">
-                    Kết quả đã được lưu vào hồ sơ của bạn • Ngày thi: @Model.SubmitDate?.ToString("dd/MM/yyyy HH:mm")
+                    Your result has been saved to your profile • Exam Date: @Model.SubmitDate?.ToString("dd/MM/yyyy HH:mm")
                 </p>
             </div>
         </div>
