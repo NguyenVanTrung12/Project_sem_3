@@ -165,6 +165,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     {
                         blog.Image = existingBlog.Image;
                     }
+
                     if (!Request.Form.ContainsKey("Status"))
                     {
                         blog.Status = 0;

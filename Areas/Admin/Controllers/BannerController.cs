@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Project_sem_3.Models;
+using System.Reflection.Metadata;
 using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
@@ -80,6 +81,11 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     obj.Image = "/uploads/banner/" + fileName;
                 }
 
+
+                if (!Request.Form.ContainsKey("Active"))
+                {
+                    obj.Active = 0;
+                }
                 _context.Banners.Add(obj);
                 _context.SaveChanges();
 
@@ -138,6 +144,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 banner.Image = "/uploads/banner/" + fileName;
             }
 
+            if (!Request.Form.ContainsKey("Active"))
+            {
+                banner.Active = 0;
+            }
             _context.Banners.Update(banner);
             _context.SaveChanges();
 
