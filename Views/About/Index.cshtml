@@ -52,25 +52,29 @@
 <section class="theory-section theory-style-two pt-80 pb-80">
     <div class="container">
         <div class="row theory-area">
-            <div class="col-lg-7">
-                <div class="theory-text">
-                    <h2>Our Mission</h2>
-                    <p>
-                        Our mission is to make aptitude testing accessible, engaging, and meaningful for everyone.
-                        We believe that through smart technology, individuals can discover their strengths,
-                        identify areas for improvement, and reach their full potential.
-                    </p>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-7">
+                    <div class="theory-text">
+                        <h2>@item.Fullname</h2>
+                        <p>
+                            Our mission is to make aptitude testing accessible, engaging, and meaningful for everyone.
+                            We believe that through smart technology, individuals can discover their strengths,
+                            identify areas for improvement, and reach their full potential.
+                        </p>
 
-                    <div class="signature-box">
-                        <img src="/assets/img/signature.png" alt="signature">
-                        <p>Online Aptitude Team</p>
-                        <span>Development & Innovation</span>
+                        <div class="signature-box">
+                            <img src="/assets/img/signature.png" alt="signature">
+                            <p>@item.Email</p>
+                            <span>@item.Phone</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="theory-img">
-                <img src="/assets/img/theory-img.png" alt="theory image">
-            </div>
+
+                <div class="theory-img">
+                    <img src="@item.Image" alt="theory image">
+                </div>
+            }
         </div>
     </div>
 </section>
@@ -107,57 +111,6 @@
                     <p>We value transparency and fairness in every test and result.</p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Team Section -->
-<section class="team-section pt-100 pb-70">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>Development Team</span>
-            <h2>Meet the People Behind Our Platform</h2>
-        </div>
-
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-3 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img">
-                            <img src="@item.Image" width="100" height="300" style="object-fit:cover" alt="@item.Fullname">
-
-                            <div class="team-text">
-                                <div class="team-social">
-                                    <ul>
-                                        <li>
-                                            <a href="https://www.facebook.com/" target="_blank">
-                                                <i class="flaticon-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://twitter.com/" target="_blank">
-                                                <i class="flaticon-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.instagram.com/" target="_blank">
-                                                <i class="flaticon-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.linkedin.com/" target="_blank">
-                                                <i class="flaticon-linkedin"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h3>@item.Fullname</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
         </div>
     </div>
 </section>
