@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
 
 namespace Project_sem_3.Controllers
@@ -17,8 +18,12 @@ namespace Project_sem_3.Controllers
         [Route("/about")]
         public IActionResult Index()
         {
-            var manager = _context.Managers.ToList();
-            return View(manager);
+            var managers = _context.Managers
+            .Include(e => e.Role)
+            .Where(e => e.Role.RoleName == "Role_Managers")
+            .Take(1)
+            .ToList();
+            return View(managers);
         }
     }
 }

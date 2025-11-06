@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
 using System.Diagnostics;
 
@@ -17,7 +18,7 @@ namespace Project_sem_3.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Manage = _context.Managers.ToList();
+            ViewBag.Manage = _context.Managers.Include(e => e.Role).Where(e => e.Role.RoleName == "Role_Managers").ToList();
             ViewBag.Blog = _context.Blogs.ToList();
             return View();
         }
