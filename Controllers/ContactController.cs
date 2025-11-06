@@ -10,7 +10,7 @@ namespace Project_sem_3.Controllers
         {
             _context = context;
         }
-        [Route("contact.html")]
+
         public IActionResult Index()
         {
             var contact = _context.Contacts.ToList();
