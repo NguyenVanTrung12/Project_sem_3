@@ -32,7 +32,8 @@ namespace Project_sem_3.Controllers
                 : new List<Result>();
 
             bool blocked = false; // Nếu trượt ở vòng nào → khóa tất cả vòng sau
-            bool lockedDueToFail = false;
+
+
 
             foreach (var subject in subjects)
             {
@@ -41,17 +42,18 @@ namespace Project_sem_3.Controllers
                 bool isDone = currentResult?.Status == 1;   // 1 = Đậu
                 bool isFailed = currentResult?.Status == 2; // 2 = Trượt
                 bool canAccess = false;
+                bool lockedDueToFail = false;
 
-                // Nếu đã bị khóa trước đó => khóa tiếp
+                // Nếu đã bị khóa từ vòng trước thì không thể truy cập
                 if (blocked)
                 {
                     canAccess = false;
                 }
                 else
                 {
-                    if (subject.Id == subjects.First().Id)
+                    if (subject == subjects.First())
                     {
-                        // Vòng đầu mở nếu chưa trượt
+                        // Vòng đầu tiên luôn mở nếu chưa trượt
                         canAccess = !isFailed;
                     }
                     else
@@ -66,12 +68,12 @@ namespace Project_sem_3.Controllers
                             ? results.FirstOrDefault(r => r.SubjectId == prevSubject.Id)
                             : null;
 
-                        // Mở nếu vòng trước đậu
-                        canAccess = (prevResult != null && prevResult.Status == 1) && !isFailed;
+                        // Nếu vòng trước đậu thì mở
+                        canAccess = prevResult?.Status == 1;
                     }
                 }
 
-                // Nếu vòng này trượt → khóa tất cả vòng sau
+                // Nếu trượt ở vòng hiện tại => khóa tất cả vòng sau
                 if (isFailed)
                 {
                     blocked = true;
@@ -84,6 +86,7 @@ namespace Project_sem_3.Controllers
                 ViewData[$"IsFailed_{subject.Id}"] = isFailed;
                 ViewData[$"LockedDueToFail_{subject.Id}"] = lockedDueToFail;
             }
+
 
             var viewModel = new HomeViewModel
             {
