@@ -106,7 +106,7 @@ namespace Project_sem_3.Controllers
                 .Where(r => r.CandidateId == candidateId)
                 .ToListAsync();
 
-            if (CanAccess(subjectId, allResults))
+            if (!CanAccess(subjectId, allResults))
             {
                 TempData["Error"] = "Bạn chưa được mở khóa phần thi này!";
                 return RedirectToAction("Index");
@@ -149,7 +149,14 @@ namespace Project_sem_3.Controllers
 
             foreach (var q in questions)
             {
-                q.Answers = q.Answers.OrderBy(a => Guid.NewGuid()).ToList();
+                if (q.Answers != null && q.Answers.Any())
+                {
+                    q.Answers = q.Answers.OrderBy(a => Guid.NewGuid()).ToList();
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Question ID {q.Id} has no answers in DB");
+                }
             }
 
             // 💾 Lưu vào Session

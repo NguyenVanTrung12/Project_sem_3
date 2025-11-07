@@ -20,7 +20,7 @@ namespace Project_sem_3.Models
         [StringLength(100, ErrorMessage = "Interviewer name cannot exceed 100 characters.")]
         public string? Interviewer { get; set; }
 
-        [StringLength(200, ErrorMessage = "Location cannot exceed 200 characters.")]
+        [StringLength(200, ErrorMessage = "Location cannot exceed 200 characters.")]    
         public string? Location { get; set; }
 
         [StringLength(100, ErrorMessage = "Result cannot exceed 100 characters.")]
