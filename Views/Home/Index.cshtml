@@ -1,22 +1,15 @@
-﻿@model Project_sem_3.Models.ViewModels.HomeViewModel
+﻿@model IEnumerable<Project_sem_3.Models.Subject>
 @{
     Layout = "_Layout";
     var error = TempData["Error"] as string;
 }
-@model IEnumerable<Project_sem_3.Models.Subject> 
-@* @model Project_sem_3.Models *@
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Banner Section Start -->
-<!-- Banner Section Start -->
 <div class="main-banner" style="height:450px">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
-                @if (ViewBag.Banner != null && ((IEnumerable<Project_sem_3.Models.Banner>)ViewBag.Banner).Any())
-                {
-                    @foreach (var item in (IEnumerable<Project_sem_3.Models.Banner>)ViewBag.Banner)
+              
+                    @foreach (var item in ViewBag.Banner)
                     {
                         <div class="row align-items-center banner-slide" style="display: none;">
                             <!-- Content Column -->
@@ -35,14 +28,7 @@
                             </div>
                         </div>
                     }
-                }
-                else
-                {
-                    <div class="text-center py-5">
-                        <h3 class="text-muted">No banners available</h3>
-                        <p>Please check back later for new updates.</p>
-                    </div>
-                }
+               
             </div>
         </div>
     </div>
@@ -59,7 +45,7 @@
         </div>
 
         <div class="row">
-            @foreach (var subject in Model.Subjects)
+            @foreach (var subject in Model)
             {
                 var canAccess = ViewData[$"CanAccess_{subject.Id}"] as bool? ?? false;
                 var isDone = ViewData[$"IsDone_{subject.Id}"] as bool? ?? false;
@@ -188,9 +174,8 @@
         </div>
 
         <div class="row">
-            @if (ViewBag.Manage != null && ((IEnumerable<Project_sem_3.Models.Manager>)ViewBag.Manage).Any())
-            {
-                foreach (var item in (IEnumerable<Project_sem_3.Models.Manager>)ViewBag.Manage)
+           
+                @foreach (var item in ViewBag.Manage)
                 {
                     <div class="col-lg-3 col-sm-6">
                         <div class="team-card">
@@ -221,13 +206,7 @@
                     </div>
                 }
             }
-            else
-            {
-                <div class="col-12 text-center mt-4 mb-4">
-                    <h4 class="text-muted">No team members available.</h4>
-                    <p>Please check back later to meet our amazing staff.</p>
-                </div>
-            }
+            
         </div>
     </div>
 </section>
@@ -240,9 +219,8 @@
         </div>
 
         <div class="row">
-            @if (ViewBag.Blog != null && ((IEnumerable<Project_sem_3.Models.Blog>)ViewBag.Blog).Any())
-            {
-                foreach (var item in (IEnumerable<Project_sem_3.Models.Blog>)ViewBag.Blog)
+           
+                @foreach (var item in (IEnumerable<Project_sem_3.Models.Blog>)ViewBag.Blog)
                 {
                     <div class="col-lg-4 col-md-6">
                         <div class="blog-card">
@@ -267,14 +245,7 @@
                         </div>
                     </div>
                 }
-            }
-            else
-            {
-                <div class="col-12 text-center mt-4 mb-4">
-                    <h4 class="text-muted">No blog posts available.</h4>
-                    <p>Please check back later for the latest updates from us.</p>
-                </div>
-            }
+           
         </div>
     </div>
 </section>

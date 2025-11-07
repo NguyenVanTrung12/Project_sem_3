@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
-using Project_sem_3.Models.ViewModels;
+using System.Diagnostics;
 
 namespace Project_sem_3.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly online_aptitude_testsContext _context;
         private readonly ILogger<HomeController> _logger;
-
+        private readonly online_aptitude_testsContext _context;
 
         public HomeController(ILogger<HomeController> logger, online_aptitude_testsContext context)
         {
@@ -32,28 +31,29 @@ namespace Project_sem_3.Controllers
                 : new List<Result>();
 
             bool blocked = false; // Nếu trượt ở vòng nào → khóa tất cả vòng sau
-
-
+            bool lockedDueToFail = false;
 
             foreach (var subject in subjects)
             {
-                var currentResult = results.FirstOrDefault(r => r.SubjectId == subject.Id);
+                var currentResult = results
+                    .Where(r => r.SubjectId == subject.Id)
+                    .OrderByDescending(r => r.Id)
+                    .FirstOrDefault();
 
                 bool isDone = currentResult?.Status == 1;   // 1 = Đậu
                 bool isFailed = currentResult?.Status == 2; // 2 = Trượt
                 bool canAccess = false;
-                bool lockedDueToFail = false;
 
-                // Nếu đã bị khóa từ vòng trước thì không thể truy cập
+                // Nếu đã bị khóa trước đó => khóa tiếp
                 if (blocked)
                 {
                     canAccess = false;
                 }
                 else
                 {
-                    if (subject == subjects.First())
+                    if (subject.Id == subjects.First().Id)
                     {
-                        // Vòng đầu tiên luôn mở nếu chưa trượt
+                        // Vòng đầu mở nếu chưa trượt
                         canAccess = !isFailed;
                     }
                     else
@@ -68,12 +68,12 @@ namespace Project_sem_3.Controllers
                             ? results.FirstOrDefault(r => r.SubjectId == prevSubject.Id)
                             : null;
 
-                        // Nếu vòng trước đậu thì mở
-                        canAccess = prevResult?.Status == 1;
+                        // Mở nếu vòng trước đậu
+                        canAccess = (prevResult != null && prevResult.Status == 1) && !isFailed;
                     }
                 }
 
-                // Nếu trượt ở vòng hiện tại => khóa tất cả vòng sau
+                // Nếu vòng này trượt → khóa tất cả vòng sau
                 if (isFailed)
                 {
                     blocked = true;

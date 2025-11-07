@@ -94,11 +94,11 @@ namespace Project_sem_3.Controllers
 
             // ⚠️ 1️⃣ Kiểm tra nếu thí sinh đã từng bị rớt ở phần thi trước
             var failedBefore = await _context.Results
-                .AnyAsync(r => r.CandidateId == candidateId && r.Status == 2);
+                .AnyAsync(r => r.CandidateId == candidateId && r.TotalMark < 2 && r.Status == 1);
             if (failedBefore)
             {
                 TempData["Error"] = "Bạn đã không đạt yêu cầu ở vòng trước, không thể tiếp tục thi.";
-                return RedirectToAction("Index", "Home"); // ✅ Sửa ở đây
+                return RedirectToAction("Index");
             }
 
             // 🔒 2️⃣ Kiểm tra quyền truy cập phần thi hiện tại (tuần tự)
@@ -106,10 +106,10 @@ namespace Project_sem_3.Controllers
                 .Where(r => r.CandidateId == candidateId)
                 .ToListAsync();
 
-            if (!CanAccess(subjectId, allResults))
+            if (CanAccess(subjectId, allResults))
             {
                 TempData["Error"] = "Bạn chưa được mở khóa phần thi này!";
-                return RedirectToAction("Index", "Home"); // ✅ Sửa ở đây
+                return RedirectToAction("Index");
             }
 
             // 🔑 Session key duy nhất cho bài thi này
@@ -167,7 +167,6 @@ namespace Project_sem_3.Controllers
 
             return View("Start", questions);
         }
-
 
 
         // 3️⃣ Nộp bài thi
@@ -305,28 +304,31 @@ namespace Project_sem_3.Controllers
         // ⚙️ Kiểm tra quyền truy cập phần thi
         private bool CanAccess(int subjectId, List<Result> results)
         {
-            // ✅ Vòng 1 (General Knowledge) luôn mở nếu chưa trượt
+            // Phần 1 (Kiến thức chung) luôn mở
             if (subjectId == 1)
+                return true;
+
+            // Kiểm tra tất cả các phần trước
+            for (int prevId = 1; prevId < subjectId; prevId++)
             {
-                var first = results.FirstOrDefault(r => r.SubjectId == 1);
-                return first == null || first.Status != 2; // mở nếu chưa thi hoặc chưa trượt
+                var prevResult = results.FirstOrDefault(r => r.SubjectId == prevId);
+
+                // Nếu chưa có kết quả phần trước → khóa
+                if (prevResult == null)
+                    return false;
+
+                // Nếu phần trước bị trượt (Status = 2) → khóa luôn phần này
+                if (prevResult.Status == 2)
+                    return false;
+
+                // Nếu phần trước chưa hoàn thành hoặc trạng thái khác đậu → khóa
+                if (prevResult.Status != 1)
+                    return false;
             }
 
-            // ✅ Các vòng sau: chỉ mở nếu vòng trước đậu
-            var prevResult = results.FirstOrDefault(r => r.SubjectId == subjectId - 1);
-
-            // Nếu vòng trước chưa thi → khóa
-            if (prevResult == null)
-                return false;
-
-            // Nếu vòng trước trượt → khóa
-            if (prevResult.Status == 2)
-                return false;
-
-            // Nếu vòng trước đậu → mở
-            return prevResult.Status == 1;
+            // Nếu tất cả phần trước đều đã đậu → mở khóa phần này
+            return true;
         }
-
 
 
 
