@@ -10,7 +10,7 @@ namespace Project_sem_3.Controllers
         {
             _context = context;
         }
-        [Route("contact.html")]
+
         public IActionResult Index()
         {
             var contact = _context.Contacts.ToList();
@@ -25,6 +25,7 @@ namespace Project_sem_3.Controllers
             {
                 _context.Contacts.Add(contact);
                 _context.SaveChanges();
+                TempData["Success"] = "Contact sent successfully! We will respond as soon as possible.";
                 return RedirectToAction(nameof(Index));
             }
                 return View("Index",contact);

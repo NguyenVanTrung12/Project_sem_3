@@ -158,18 +158,36 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _context.Results.FindAsync(id);
+            var result = await _context.Results
+                .Include(r => r.ResultDetails)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
             if (result == null)
             {
-                TempData["Error"] = "No transfe found to delete!";
+                TempData["Error"] = "No results found, please delete";
                 return RedirectToAction(nameof(Index));
             }
 
-            _context.Results.Remove(result);
-            await _context.SaveChangesAsync();
-            TempData["Success"] = "Delete successfuly";
+            if (result.ResultDetails != null && result.ResultDetails.Any())
+            {
+                TempData["Error"] = "Cannot delete because ResultDetails already exists.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                _context.Results.Remove(result);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Deleted successfully!";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"Error while deleting: {ex.Message}";
+            }
+
             return RedirectToAction(nameof(Index));
         }
+
 
     }
 }

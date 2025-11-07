@@ -1,34 +1,4 @@
-﻿/*
-@File: Everb Template Style
-
-* This file contains the styling for the actual template, this
-is the file you need to edit to change the look of the
-template.
-
-This files table contents are outlined below>>>>>
-
-*******************************************
-*******************************************
-** - Default CSS
-** - Header Area CSS
-** - Navbar Area CSS
-** - Banner Section CSS
-** - Video Section CSS
-** - Theory Section CSS
-** - About Section CSS
-** - Feature Section CSS
-** - Service Section CSS
-** - Team Section CSS
-** - Testimonial Section CSS
-** - Portfolio Section CSS
-** - Progress Section CSS
-** - Blog Section CSS
-** - Contact Section CSS
-** - Footer Section CSS
-*/
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500,600&amp;display=swap");
-/* Color Variable */
-/* Font Variable */
+﻿
 body {
     color: #717477;
     font-family: "Montserrat", sans-serif;
@@ -622,7 +592,7 @@ h3 {
 /* Banner CSS Start */
 .main-banner {
     position: relative;
-    height: 700px;
+    height: 450px !important;
 }
 
     .main-banner .banner-text {
@@ -3865,3 +3835,4 @@ h3 {
         opacity: 1;
         transform: translateY(0);
     }
+

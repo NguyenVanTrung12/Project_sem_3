@@ -149,41 +149,37 @@ namespace Project_sem_3.Areas.Admin.Controllers
             return View(subject);
         }
 
-        // GET: Subjects/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var subject = await _context.Subjects
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (subject == null)
-            {
-                return NotFound();
-            }
-
-            return View(subject);
-        }
-
-        // POST: Subjects/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var subject = await _context.Subjects.FindAsync(id);
+            var subject = await _context.Subjects
+                .Include(s => s.Questions)
+                .Include(s => s.Results)
+                .Include(s => s.SubjectTypes)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
             if (subject == null)
             {
-                return NotFound();
+                TempData["Error"] = "❌ Subject not found!";
+                return RedirectToAction(nameof(Index));
             }
 
-            // Kiểm tra xem subject có đang được sử dụng ở bảng khác không
-            bool hasRelations = await _context.SubjectTypes.AnyAsync(st => st.SubjectId == id);
-
-            if (hasRelations)
+            if (subject.Questions.Any())
             {
-                TempData["ErrorMessage"] = "❌ Cannot delete this subject because it is linked to other data (SubjectType, Question, or Result).";
+                TempData["Error"] = "⚠️ Cannot delete this subject because it already has linked questions.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (subject.Results.Any())
+            {
+                TempData["Error"] = "⚠️ Cannot delete this subject because it already has linked results.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            if (subject.SubjectTypes.Any())
+            {
+                TempData["Error"] = "⚠️ Cannot delete this subject because it already has linked subject types.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -191,16 +187,22 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 _context.Subjects.Remove(subject);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "✅ Successfully deleted subject!";
+                TempData["Success"] = "✅ Subject deleted successfully!";
             }
-            catch (Exception)
+            catch (DbUpdateException ex)
             {
-                TempData["ErrorMessage"] = "⚠️ An error occurred while deleting the subject.";
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "⚠️ Cannot delete this subject because it is referenced by other data.";
+                }
+                else
+                {
+                    TempData["Error"] = $"❌ Unexpected error: {ex.Message}";
+                }
             }
 
             return RedirectToAction(nameof(Index));
         }
-
         private bool SubjectExists(int id)
         {
             return _context.Subjects.Any(e => e.Id == id);

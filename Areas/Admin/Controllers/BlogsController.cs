@@ -165,6 +165,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     {
                         blog.Image = existingBlog.Image;
                     }
+
                     if (!Request.Form.ContainsKey("Status"))
                     {
                         blog.Status = 0;
@@ -185,7 +186,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: BlogsController/Delete/5
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var blog = await _context.Blogs.FindAsync(id);

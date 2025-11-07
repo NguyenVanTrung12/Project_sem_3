@@ -203,6 +203,8 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        
         private bool CandidateExists(int id)
         {
             return _context.Candidates.Any(e => e.Id == id);

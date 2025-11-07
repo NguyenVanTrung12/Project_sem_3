@@ -80,7 +80,7 @@
                                 </div>
                             </td>
                             <td>@item.Fullname</td>
-                            <td>@item.Gender</td>
+                            <td>@(item.Gender == true ? "Male" : item.Gender == false ? "Female" : "Unknown")</td>
                             <td>@item.University</td>
                             <td>@item.ExpectedPosition</td>
                             <td>@item.Phone</td>
@@ -108,12 +108,12 @@
                                         <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                     </a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" method="post"
-                                          onsubmit="return confirm('⚠️ Bạn có chắc chắn muốn xóa ứng viên này không?');"
+                                          onsubmit="return confirm('Are you sure you want to delete?');"
                                           style="display:inline;">
                                         @Html.AntiForgeryToken()
                                         <button type="submit"
                                                 class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                                title="Xóa">
+                                                title="Delete">
                                             <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                                         </button>
                                     </form>

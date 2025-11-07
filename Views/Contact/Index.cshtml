@@ -28,7 +28,7 @@
                     <i class="flaticon-pin"></i>
                     <h3>Location</h3>
                     <ul>
-                        <li>28 Hoàng Quốc Việt</li>
+                        <li>250 Hoang Quoc Viet, Hanoi, Vietnam</li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     <i class="flaticon-call"></i>
                     <h3>Phone</h3>
                     <ul>
-                        <li>+376553563</li>
+                        <li>+0379255680</li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <i class="flaticon-envelope"></i>
                     <h3>Email</h3>
                     <ul>
-                        <li><a href="" class="__cf_email__">dung@gmail.com</a></li>
+                        <li><a href="" class="__cf_email__">dorganizationwebster@gmail.com/a></li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +120,29 @@
 <!-- Map Section Start -->
 <div class="map">
     <div class="container-fluid p-0">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27991517034!2d-74.25987556253516!3d40.697670063539654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1585718484314!5m2!1sen!2sbd" aria-hidden="false" tabindex="0"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6578208523642!2d105.7812694759701!3d21.046373187171966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab3b4220c2bd%3A0x1c9e359e2a4f618c!2sB%C3%A1ch%20Khoa%20Aptech!5e0!3m2!1svi!2s!4v1762414018004!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
 <!-- Map Section End -->
+@if (TempData["Success"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '@TempData["Success"]',
+                position: 'top', // hiện trên cùng
+                showConfirmButton: false,
+                timer: 3000, // tự tắt sau 3 giây
+                timerProgressBar: true,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+        });
+    </script>
+}

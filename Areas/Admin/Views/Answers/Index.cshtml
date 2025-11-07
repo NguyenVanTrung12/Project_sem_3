@@ -26,17 +26,17 @@
         <div class="d-flex align-items-center flex-wrap gap-3">
             <a asp-action="Index" asp-controller="Question"
                class="btn btn-danger text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
-
+            
                 Back to List
             </a>
         </div>
-
+    
         <a asp-action="Create" asp-controller="Answers" asp-route-questionId="@ViewBag.QuestionId"
            class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
             <iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>
             Add Answer
         </a>
-
+   
     </div>
 
     <!-- Table -->
@@ -108,9 +108,9 @@
                             <td colspan="6" class="text-center text-muted">No answers found.</td>
                         </tr>
                     }
-
+                
                 </tbody>
-
+             
             </table>
         </div>
 
@@ -139,6 +139,6 @@
                 })
             </div>
         </div>
-
+       
     </div>
 </div>

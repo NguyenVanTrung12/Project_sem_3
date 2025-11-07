@@ -24,17 +24,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Index(string? q, int? status, int page = 1)
         {
             int pageSize = 10;
-
             var query = _context.Questions
                 .Include(q => q.Subject) // nếu có quan hệ
                 .Include(q => q.@Type)    // nếu có quan hệ
+                .AsQueryable();
 
-                                .AsQueryable();
-
+            
             // Tìm kiếm theo tên
             if (!string.IsNullOrEmpty(q))
             {
-                query = query.Where(m => m.QuestionTitle.Contains(q));
+                query = query.Where(m => m.QuestionTitle!.Contains(q));
             }
 
             // Lọc theo trạng thái
@@ -139,20 +138,58 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var question = await _context.Questions.FindAsync(id);
+            // Tìm câu hỏi theo ID và load các bảng liên quan
+            var question = await _context.Questions
+                .Include(q => q.Answers)
+                .Include(q => q.ResultDetails)
+                .FirstOrDefaultAsync(q => q.Id == id);
+
             if (question == null)
             {
-                return NotFound();
+                TempData["Error"] = "❌ Question not found!";
+                return RedirectToAction(nameof(Index));
             }
 
-            _context.Questions.Remove(question);
-            await _context.SaveChangesAsync();
+            // Kiểm tra nếu câu hỏi có câu trả lời liên kết
+            if (question.Answers.Any())
+            {
+                TempData["Error"] = "⚠️ Cannot delete this question because it already has linked answers.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Kiểm tra nếu câu hỏi xuất hiện trong kết quả thi
+            if (question.ResultDetails.Any())
+            {
+                TempData["Error"] = "⚠️ Cannot delete this question because it is linked to test results.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                _context.Questions.Remove(question);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "✅ Question deleted successfully!";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Bắt lỗi xóa có ràng buộc khóa ngoại
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "⚠️ Cannot delete this question because it is referenced by other data.";
+                }
+                else
+                {
+                    TempData["Error"] = $"❌ Unexpected error: {ex.Message}";
+                }
+            }
 
             return RedirectToAction(nameof(Index));
         }
+
         private bool QuestionExists(int id)
         {
             return _context.Questions.Any(e => e.Id == id);
         }
+
     }
 }

@@ -36,10 +36,9 @@ namespace Project_sem_3.Controllers
             foreach (var subject in subjects)
             {
                 var currentResult = results
-    .Where(r => r.SubjectId == subject.Id)
-    .OrderByDescending(r => r.Id)
-    .FirstOrDefault();
-
+                    .Where(r => r.SubjectId == subject.Id)
+                    .OrderByDescending(r => r.Id)
+                    .FirstOrDefault();
 
                 bool isDone = currentResult?.Status == 1;   // 1 = Đậu
                 bool isFailed = currentResult?.Status == 2; // 2 = Trượt

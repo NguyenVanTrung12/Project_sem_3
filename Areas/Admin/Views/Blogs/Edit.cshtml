@@ -74,7 +74,7 @@
                                     Views
                                     <span class="text-danger-600">*</span>
                                 </label>
-                                <input type="text" asp-for="Views" class="form-control radius-8" />
+                                    <input type="number" asp-for="Views" class="form-control radius-8" />
                                 <span asp-validation-for="Views" class="text-danger"></span>
                             </div>
                             <div class="mb-20">
@@ -90,6 +90,7 @@
                                     <span class="text-danger-600">*</span>
                                 </label>
                                 <input type="file" name="uploadfile" class="form-control radius-8" />
+                                <img src="@Model.Image" title="@Model.Title" width="100" alt="Alternate Text" />
                             </div>
                             <div class="mb-20">
                                 <label asp-for="CreatedAt"
@@ -112,10 +113,9 @@
                                        class="form-control radius-8" />
                                 <span asp-validation-for="UpdatedAt" class="text-danger"></span>
                             </div>
+
+
                             <div class="mb-20">
-                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Status <span class="text-danger-600">*</span>
-                                </label>
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">Status</label>

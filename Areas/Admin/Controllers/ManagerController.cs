@@ -146,10 +146,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
             if (id == null)
                 return NotFound();
 
-            var manager = await _context.Managers.FindAsync(id);
+            var manager = await _context.Managers
+    .Include(m => m.Role)
+    .FirstOrDefaultAsync(m => m.Id == id);
             if (manager == null)
                 return NotFound();
-
+            if (manager.Role.RoleName == "Role_Supper_Managers")
+            {
+                TempData["Error"] = "Super Manager account cannot be edited.";
+                return RedirectToAction("Index");
+            }
             ViewData["RoleId"] = new SelectList(
               _context.Roles
                   .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
@@ -183,10 +189,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
             try
             {
                 // Lấy bản ghi hiện tại trong DB
-                var manager = await _context.Managers.FindAsync(id);
+                var manager = await _context.Managers
+       .Include(m => m.Role)
+       .FirstOrDefaultAsync(m => m.Id == id);
                 if (manager == null)
                     return NotFound();
-
+                if (model.Role.RoleName == "Role_Supper_Managers")
+                {
+                    TempData["Error"] = "Super Manager account cannot be edited.";
+                    return RedirectToAction("Index");
+                }
                 // 1️⃣ Kiểm tra trùng Username (loại trừ bản ghi hiện tại)
                 var usernameExists = await _context.Managers
                     .AnyAsync(m => m.Username == model.Username && m.Id != id);
@@ -301,18 +313,42 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            var manager = await _context.Managers.FindAsync(id);
+            var manager = await _context.Managers
+                .Include(m => m.Role)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (manager == null)
             {
                 return NotFound();
             }
 
-            _context.Managers.Remove(manager);
-            await _context.SaveChangesAsync();
+            if (manager.Role.RoleName == "Role_Supper_Managers")
+            {
+                TempData["Error"] = "Super Manager account cannot be deleted.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                _context.Managers.Remove(manager);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Manager deleted successfully.";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Nếu lỗi do ràng buộc khóa ngoại
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "Cannot delete this manager because it is linked to existing candidates.";
+                }
+                else
+                {
+                    TempData["Error"] = "An error occurred while deleting the manager.";
+                }
+            }
 
             return RedirectToAction(nameof(Index));
         }
-
         private bool ManagerExists(int id)
         {
             return _context.Managers.Any(e => e.Id == id);

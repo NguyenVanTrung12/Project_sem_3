@@ -94,16 +94,21 @@
                             </div>
 
                             <div class="mb-20">
-                                <label for="Active"
-                                       class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                    Status
-                                </label>
-                                <select asp-for="Active"
-                                        class="form-control radius-8 form-select">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
-                                <span asp-validation-for="Active" class="text-danger"></span>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-semibold">Status</label>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox"
+                                               class="form-check-input"
+                                               id="statusSwitch"
+                                               name="Active"
+                                               value="1"
+                                        @(Model != null && Model.Active == 1 ? "checked" : "") />
+                                        <label class="form-check-label" for="statusSwitch">
+                                            @(Model != null && Model.Active == 1 ? "Active" : "Inactive")
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-center gap-3">
@@ -124,3 +129,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleStatusLabel(checkbox) {
+        const label = document.getElementById('statusLabel');
+        if (checkbox.checked) {
+            label.textContent = 'Active';
+        } else {
+            label.textContent = 'Inactive';
+        }
+    }
+</script>

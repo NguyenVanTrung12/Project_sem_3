@@ -60,7 +60,21 @@
     </div>
 
     <div class="card-body p-24">
-        <div class="table-responsive scroll-sm">
+        <div class="table-responsive scroll-sm"> 
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["Success"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <table class="table bordered-table sm-table mb-0">
                 <thead>
                     <tr>
@@ -109,21 +123,21 @@
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
 
                                     <a asp-area="Admin" asp-controller="Answers" asp-action="Index" asp-route-questionId="@item.Id"
-                                        class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                       class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" title="list Answer">
                                         <iconify-icon icon="mdi:plus-box-outline" class="menu-icon"></iconify-icon>
                                     </a>
 
                                     <a asp-action="Edit" asp-route-id="@item.Id"
-                                        class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle">
+                                       class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" title="Edit">
                                         <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                     </a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" method="post"
-                                        onsubmit="return confirm('⚠️ Bạn có chắc chắn muốn xóa câu hỏi này không?');"
+                                        onsubmit="return confirm('Are you sure you want to delete?');"
                                         style="display:inline;">
                                         @Html.AntiForgeryToken()
                                         <button type="submit"
                                             class="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                            title="Xóa">
+                                            title="Delete">
                                             <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                                         </button>
                                     </form>

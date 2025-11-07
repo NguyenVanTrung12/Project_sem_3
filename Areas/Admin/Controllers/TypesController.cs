@@ -26,7 +26,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: Types
-        public async Task<IActionResult> Index(string searchString, int? page, int? status)
+        public IActionResult Index(string searchString, int? page, int? status)
         {
 
             var query = _context.Types
@@ -149,42 +149,25 @@ namespace Project_sem_3.Areas.Admin.Controllers
             return View(@type);
         }
 
-        // GET: Types/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var @type = await _context.Types
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (@type == null)
-            {
-                return NotFound();
-            }
-
-            return View(@type);
-        }
-
-        // POST: Types/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var type = await _context.Types.FindAsync(id);
+            var type = await _context.Types
+                .Include(t => t.Questions)
+                .Include(t => t.Results)
+                .Include(t => t.SubjectTypes)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
             if (type == null)
             {
-                return NotFound();
+                TempData["Error"] = "❌ Type not found!";
+                return RedirectToAction(nameof(Index));
             }
 
-            // Kiểm tra xem subject có đang được sử dụng ở bảng khác không
-            bool hasRelations = await _context.SubjectTypes.AnyAsync(st => st.TypeId == id);
-                                
-
-            if (hasRelations)
+            if (type.Questions.Any() || type.Results.Any() || type.SubjectTypes.Any())
             {
-                TempData["ErrorMessage"] = "❌ Cannot delete this type because it is linked to other data (SubjectType, Question, or Result).";
+                TempData["Error"] = "⚠️ Cannot delete this Type because it is linked to other data.";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -192,15 +175,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 _context.Types.Remove(type);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "✅ Successfully deleted type!";
+                TempData["Success"] = "✅ Type deleted successfully!";
             }
-            catch (Exception)
+            catch (DbUpdateException ex)
             {
-                TempData["ErrorMessage"] = "⚠️ An error occurred while deleting the type.";
+                TempData["Error"] = $"❌ Error deleting Type: {ex.Message}";
             }
 
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool TypeExists(int id)
         {

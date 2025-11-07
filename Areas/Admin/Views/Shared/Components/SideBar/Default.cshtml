@@ -17,6 +17,7 @@
     </div>
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
+            <!-- 1️⃣ Tổng quan hệ thống -->
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
@@ -26,23 +27,23 @@
                     <li>
                         <a asp-controller="Report" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            AI
+                            AI Overview
                         </a>
                     </li>
                 </ul>
             </li>
+
+            <!-- 2️⃣ Quản lý người dùng & nhân sự -->
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
-                    <span>Invoice</span>
+                    <span>Management</span>
                 </a>
                 <ul class="sidebar-submenu">
-                 
-
                     <li>
                         <a asp-area="Admin" asp-controller="Manager" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                             Managers
+                            Managers
                         </a>
                     </li>
                     <li>
@@ -51,113 +52,56 @@
                             Candidates
                         </a>
                     </li>
-
-              
-
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>Blogs</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <a asp-controller="BlogCategories" asp-action="Index">
-                        <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                        BlogCategories List
-                    </a>
-                    <li>
-                        <a asp-controller="Blogs" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Blogs List
-                        </a>
-                    </li>
-
-                  
-                   
-                </ul>
-            </li>
-          
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>Results</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a asp-controller="Results" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Results List
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>Transfes</span>
-                </a>
-                <ul class="sidebar-submenu">
                     <li>
                         <a asp-controller="Transfes" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Transfes List
+                            Transfers
                         </a>
                     </li>
-
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>InterviewSchedules</span>
-                </a>
-                <ul class="sidebar-submenu">
                     <li>
                         <a asp-controller="InterviewSchedules" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            InterviewSchedules List
+                            Interview Schedules
                         </a>
-                    </li>         
-
+                    </li>
                 </ul>
             </li>
 
-
+            <!-- 3️⃣ Quản lý nội dung -->
             <li class="dropdown">
                 <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline"
-                                  class="menu-icon"></iconify-icon>
-                    <span>Question</span>
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>Blog</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a asp-controller="BlogCategories" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Blog Categories
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Blogs" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Blog List
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- 4️⃣ Hệ thống câu hỏi & môn học -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="mdi:book-open-variant" class="menu-icon"></iconify-icon>
+                    <span>Questions & Subjects</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
                         <a asp-area="Admin" asp-controller="Question" asp-action="Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Question
+                            Questions
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="Admin" asp-controller="Contacts" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Contacts
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
-                    <span>Subject</span>
-                </a>
-                <ul class="sidebar-submenu">
                     <li>
                         <a href="/Admin/Subjects/Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
@@ -173,25 +117,34 @@
                     <li>
                         <a href="/Admin/Types/Index">
                             <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Types
+                            Question Types
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
-                    <span>Banner</span>
+            <!-- 5️⃣ Kết quả thi -->
+            <li>
+                <a asp-controller="Results" asp-action="Index">
+                    <iconify-icon icon="mdi:chart-line" class="menu-icon"></iconify-icon>
+                    <span>Results</span>
                 </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="/Admin/Banner/Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Banner
-                        </a>
-                    </li>
-                </ul>
+            </li>
+
+            <!-- 6️⃣ Hệ thống hiển thị -->
+            <li>
+                <a href="/Admin/Banner/Index">
+                    <iconify-icon icon="mdi:image-outline" class="menu-icon"></iconify-icon>
+                    <span>Banners</span>
+                </a>
+            </li>
+
+            <!-- 7️⃣ Liên hệ & phản hồi -->
+            <li>
+                <a asp-area="Admin" asp-controller="Contacts" asp-action="Index">
+                    <iconify-icon icon="mdi:email-outline" class="menu-icon"></iconify-icon>
+                    <span>Contacts</span>
+                </a>
             </li>
         </ul>
     </div>

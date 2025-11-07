@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -165,41 +165,43 @@ namespace Project_sem_3.Areas.Admin.Controllers
             return View(subjectType);
         }
 
-        // GET: SubjectTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            // Tìm SubjectType theo ID, load luôn Subject và Type để kiểm tra
             var subjectType = await _context.SubjectTypes
-                .Include(s => s.Subject)
-                .Include(s => s.Type)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(st => st.Subject)
+                .Include(st => st.Type)
+                .FirstOrDefaultAsync(st => st.Id == id);
+
             if (subjectType == null)
             {
-                return NotFound();
+                TempData["Error"] = "❌ Subject Type not found!";
+                return RedirectToAction(nameof(Index));
             }
 
-            return View(subjectType);
-        }
-
-        // POST: SubjectTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var subjectType = await _context.SubjectTypes.FindAsync(id);
-            if (subjectType != null)
+            try
             {
                 _context.SubjectTypes.Remove(subjectType);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "✅ Subject Type deleted successfully!";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Nếu có lỗi khóa ngoại
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "⚠️ Cannot delete this Subject Type because it is referenced by other data.";
+                }
+                else
+                {
+                    TempData["Error"] = $"❌ Unexpected error: {ex.Message}";
+                }
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool SubjectTypeExists(int id)
         {
             return _context.SubjectTypes.Any(e => e.Id == id);
