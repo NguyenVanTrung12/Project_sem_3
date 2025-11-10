@@ -25,6 +25,7 @@ namespace Project_sem_3.Models
         [StringLength(255, ErrorMessage = "Question title cannot exceed 255 characters.")]
         public string? QuestionTitle { get; set; }
 
+        [Display(Name = "QuestionContent(more questions)")]
         [Required(ErrorMessage = "Question content is required.")]
         public string? QuestionContent { get; set; }
 

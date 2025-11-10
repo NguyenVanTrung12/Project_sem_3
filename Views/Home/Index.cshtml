@@ -1,19 +1,15 @@
-﻿@model Project_sem_3.Models.ViewModels.HomeViewModel
+﻿@model IEnumerable<Project_sem_3.Models.Subject>
 @{
     Layout = "_Layout";
     var error = TempData["Error"] as string;
 }
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Banner Section Start -->
 <div class="main-banner" style="height:450px">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
-                @if (Model.Banner != null && Model.Banner.Any())
-                {
-                    @foreach (var item in Model.Banner)
+              
+                    @foreach (var item in ViewBag.Banner)
                     {
                         <div class="row align-items-center banner-slide" style="display: none;">
                             <!-- Content Column -->
@@ -32,19 +28,13 @@
                             </div>
                         </div>
                     }
-                }
-                else
-                {
-                    <div class="text-center py-5">
-                        <h3 class="text-muted">No banners available</h3>
-                        <p>Please check back later for new updates.</p>
-                    </div>
-                }
+               
             </div>
         </div>
     </div>
     <div id="particles-js"></div>
 </div>
+
 
 <section class="features-section pb-70">
     <div class="container">
@@ -55,7 +45,7 @@
         </div>
 
         <div class="row">
-            @foreach (var subject in Model.Subjects)
+            @foreach (var subject in Model)
             {
                 var canAccess = ViewData[$"CanAccess_{subject.Id}"] as bool? ?? false;
                 var isDone = ViewData[$"IsDone_{subject.Id}"] as bool? ?? false;
@@ -184,9 +174,8 @@
         </div>
 
         <div class="row">
-            @if (Model.Manager != null && Model.Manager.Any())
-            {
-                foreach (var item in Model.Manager)
+           
+                @foreach (var item in ViewBag.Manage)
                 {
                     <div class="col-lg-3 col-sm-6">
                         <div class="team-card">
@@ -211,21 +200,13 @@
                                         </ul>
                                     </div>
                                     <h3>@item.Fullname</h3>
-                                    @* <p>Business Consultant</p> *@
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
             }
-            else
-            {
-                <div class="col-12 text-center mt-4 mb-4">
-                    <h4 class="text-muted">No team members available.</h4>
-                    <p>Please check back later to meet our amazing staff.</p>
-                </div>
-            }
-
+            
         </div>
     </div>
 </section>
@@ -238,24 +219,21 @@
         </div>
 
         <div class="row">
-            @if (Model.Blog != null && Model.Blog.Any())
-            {
-                foreach (var item in Model.Blog)
+           
+                @foreach (var item in (IEnumerable<Project_sem_3.Models.Blog>)ViewBag.Blog)
                 {
                     <div class="col-lg-4 col-md-6">
-
                         <div class="blog-card">
                             <div class="blog-img">
                                 <a href="/blog-detail/@item.Id"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
                                 <div class="blog-date">
-                                    <span>@(item.CreatedAt?.ToString("dd MMM") ?? "")</span>
+                                    <span>@(item.CreatedAt.ToString("dd MMM") ?? "")</span>
                                 </div>
                             </div>
                             <div class="blog-text">
                                 <a href="/blog-detail/@item.Id">
-                                    <h3>The next genaration IT will change the world</h3>
+                                    <h3>The next generation IT will change the world</h3>
                                 </a>
-
                                 <div class="post-info">
                                     <a href="#"><p>@item.Title</p></a>
                                     <a href="/blog-detail/@item.Id" class="blog-btn">
@@ -267,15 +245,7 @@
                         </div>
                     </div>
                 }
-            }
-            else
-            {
-                <div class="col-12 text-center mt-4 mb-4">
-                    <h4 class="text-muted">No blog posts available.</h4>
-                    <p>Please check back later for the latest updates from us.</p>
-                </div>
-            }
-
+           
         </div>
     </div>
 </section>
@@ -298,40 +268,23 @@
                     <form asp-action="Create" asp-controller="Contact" method="post">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <input asp-for="Contact.FullName" class="form-control" placeholder="Full Name" />
-                                    <span asp-validation-for="Contact.FullName" class="text-danger"></span>
-                                </div>
+                                <input name="FullName" class="form-control" placeholder="Full Name" />
                             </div>
-
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <input asp-for="Contact.Email" class="form-control" placeholder="Email" />
-                                    <span asp-validation-for="Contact.Email" class="text-danger"></span>
-                                </div>
+                                <input name="Email" class="form-control" placeholder="Email" />
                             </div>
-
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <input asp-for="Contact.Subject" class="form-control" placeholder="Subject" />
-                                    <span asp-validation-for="Contact.Subject" class="text-danger"></span>
-                                </div>
+                                <input name="Subject" class="form-control" placeholder="Subject" />
                             </div>
-
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <textarea asp-for="Contact.Message" class="form-control message-field" cols="30" rows="5" placeholder="Message"></textarea>
-                                    <span asp-validation-for="Contact.Message" class="text-danger"></span>
-                                </div>
+                                <textarea name="Message" class="form-control message-field" cols="30" rows="5" placeholder="Message"></textarea>
                             </div>
-
                             <div class="col-lg-12">
-                                <button type="submit" class="default-btn contact-btn">
-                                    Send Message
-                                </button>
+                                <button type="submit" class="default-btn contact-btn">Send Message</button>
                             </div>
                         </div>
                     </form>
+
 
                     <img src="assets/img/shapes/1.png" class="contact-shape" alt="shape">
                 </div>

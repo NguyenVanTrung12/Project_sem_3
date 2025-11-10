@@ -149,7 +149,7 @@ namespace Project_sem_3.Controllers
 
             foreach (var q in questions)
             {
-                q.Answers = q.Answers.OrderBy(a => Guid.NewGuid()).ToList();
+                q.Answers = q.Answers.OrderBy(a => Guid.NewGuid()).Take(4).ToList();
             }
 
             // 💾 Lưu vào Session

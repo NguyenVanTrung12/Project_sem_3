@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
-using Project_sem_3.Models.ViewModels;
+using System.Diagnostics;
 
 namespace Project_sem_3.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly online_aptitude_testsContext _context;
         private readonly ILogger<HomeController> _logger;
-
+        private readonly online_aptitude_testsContext _context;
 
         public HomeController(ILogger<HomeController> logger, online_aptitude_testsContext context)
         {
@@ -36,7 +35,10 @@ namespace Project_sem_3.Controllers
 
             foreach (var subject in subjects)
             {
-                var currentResult = results.FirstOrDefault(r => r.SubjectId == subject.Id);
+                var currentResult = results
+                    .Where(r => r.SubjectId == subject.Id)
+                    .OrderByDescending(r => r.Id)
+                    .FirstOrDefault();
 
                 bool isDone = currentResult?.Status == 1;   // 1 = Đậu
                 bool isFailed = currentResult?.Status == 2; // 2 = Trượt
@@ -85,21 +87,20 @@ namespace Project_sem_3.Controllers
                 ViewData[$"LockedDueToFail_{subject.Id}"] = lockedDueToFail;
             }
 
-            var viewModel = new HomeViewModel
-            {
-                Subjects = subjects,
-                Contact = new Contact(),
-                Banner = _context.Banners.Where(b => b.Active == 1).ToList(),
-                Manager = _context.Managers
-           .Include(m => m.Role)
-           .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
-           .ToList(),
-                Blog = _context.Blogs
-           .Where(m => m.Status == 1)
-           .ToList()
-            };
+            ViewData["IsLoggedIn"] = candidateId != null;
+            ViewBag.Banner = _context.Banners
+     .Where(b => b.Active == 1)
+     .ToList();
 
-            return View(viewModel);
+            ViewBag.Manage = _context.Managers
+                 .Include(m => m.Role)
+                 .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
+                 .ToList();
+
+            ViewBag.Blog = _context.Blogs
+                  .Where(m => m.Status == 1)
+                  .ToList();
+            return View(subjects);
         }
 
 

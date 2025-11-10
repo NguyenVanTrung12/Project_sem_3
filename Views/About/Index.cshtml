@@ -43,7 +43,13 @@
                     </div>
 
                     <div class="theory-img col-lg-5 text-center">
-                        <img src="@item.Image" alt="theory image" class="img-fluid rounded shadow">
+                        @if(item.Image == null)
+                        {
+                            <img src="~/uploads/avata.jpg" alt="theory image" class="img-fluid rounded shadow">
+                        }else{
+                            <img src="@item.Image" alt="theory image" class="img-fluid rounded shadow">
+                        }
+                
                     </div>
                 </div>
             }
