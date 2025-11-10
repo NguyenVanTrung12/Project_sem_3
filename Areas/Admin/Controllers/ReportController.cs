@@ -71,7 +71,10 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // ✅ Dashboard summary
             ViewBag.TotalCandidates = _context.Candidates.Count();
-            ViewBag.Appeared = query.Count();
+            ViewBag.Appeared = query
+            .Select(x => x.CandidateId)
+            .Distinct()
+            .Count();
             ViewBag.Passed = query.Count(x => x.Passed);
 
             // ✅ Pie chart data

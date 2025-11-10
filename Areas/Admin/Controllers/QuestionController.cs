@@ -21,7 +21,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: /Admin/Question
-        public IActionResult Index(string? q, int? status, int page = 1)
+        public IActionResult Index(string? q, int? subjectId, int? typeId, int page = 1)
         {
             int pageSize = 10;
             var query = _context.Questions
@@ -35,11 +35,16 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 query = query.Where(m => m.QuestionTitle!.Contains(q));
             }
-
-            // Lọc theo trạng thái
-            if (status.HasValue)
+            //select subject
+            if (subjectId.HasValue)
             {
-                query = query.Where(m => m.Status == status.Value);
+                query = query.Where(m => m.SubjectId == subjectId.Value);
+            }
+
+            //select type
+            if (typeId.HasValue)
+            {
+                query = query.Where(m => m.TypeId == typeId.Value);
             }
 
             // Sắp xếp + phân trang
@@ -49,7 +54,11 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // Gửi dữ liệu xuống View
             ViewBag.q = q;
-            ViewBag.Status = status;
+            ViewBag.SubjectId = subjectId;
+            ViewBag.TypeId = typeId;
+
+            ViewBag.Subject = new SelectList(_context.Subjects.ToList(), "Id", "SubjectName", subjectId);
+            ViewBag.Type = new SelectList(_context.Types.ToList(), "Id", "TypeName", typeId);
 
             return View(pagedQuestions);
         }
