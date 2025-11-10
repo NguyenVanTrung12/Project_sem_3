@@ -114,31 +114,29 @@
             </table>
         </div>
 
-        <!-- Pagination -->
+        <!-- Phân trang -->
         <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
-            <span>Page @Model.PageNumber / @Model.PageCount (Total: @Model.TotalItemCount items)</span>
+            <span>Page @Model.PageNumber of @Model.PageCount (Total: @Model.TotalItemCount)</span>
             <div>
-                @Html.PagedListPager(Model,
-                         page => Url.Action("Index", new { page, searchString = ViewBag.CurrentSearch, status = ViewBag.CurrentStatus }),
+                @Html.PagedListPager(
+                         Model,
+                         page => Url.Action("Index", new
+                         {
+                             page,
+                             questionId = ViewBag.QuestionId,
+                             active = ViewBag.Status
+                         }),
                          new PagedListRenderOptions
                 {
                     UlElementClasses = new[] { "pagination", "d-flex", "flex-wrap", "gap-2" },
                     LiElementClasses = new[] { "page-item" },
                     PageClasses = new[] { "page-link", "radius-8", "border-0", "bg-neutral-200", "text-secondary-light", "fw-semibold" },
-                    ActiveLiElementClass = "active bg-primary-600 text-white",
-                    ContainerDivClasses = new[] { "d-flex", "justify-content-center" },
-                    DisplayLinkToFirstPage = PagedListDisplayMode.Always,
-                    DisplayLinkToLastPage = PagedListDisplayMode.Always,
-                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                    LinkToFirstPageFormat = "«",
-                    LinkToPreviousPageFormat = "‹",
-                    LinkToNextPageFormat = "›",
-                    LinkToLastPageFormat = "»",
-                    MaximumPageNumbersToDisplay = 5
-                })
+                    ActiveLiElementClass = "active bg-primary-600 text-white"
+                }
+                         )
             </div>
         </div>
-       
+
+
     </div>
 </div>

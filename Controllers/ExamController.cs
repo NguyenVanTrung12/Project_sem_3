@@ -149,14 +149,7 @@ namespace Project_sem_3.Controllers
 
             foreach (var q in questions)
             {
-                if (q.Answers != null && q.Answers.Any())
-                {
-                    q.Answers = q.Answers.OrderBy(a => Guid.NewGuid()).ToList();
-                }
-                else
-                {
-                    Console.WriteLine($"⚠️ Question ID {q.Id} has no answers in DB");
-                }
+                q.Answers = q.Answers.OrderBy(a => Guid.NewGuid()).Take(4).ToList();
             }
 
             // 💾 Lưu vào Session

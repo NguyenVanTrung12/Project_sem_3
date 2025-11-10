@@ -90,6 +90,8 @@
                                         <div>
                                             <img src="@Model.Image" alt="Avatar" class="img-thumbnail radius-12" style="max-width:150px; height:auto;" />
                                         </div>
+                                        <!-- ✅ Lưu ảnh cũ để nếu không chọn ảnh mới vẫn giữ -->
+                                        <input type="hidden" name="OldImage" value="@Model.Image" />
                                     }
                                     else
                                     {
