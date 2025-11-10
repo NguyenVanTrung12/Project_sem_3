@@ -39,8 +39,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // GET: BlogsController/Create
         public IActionResult Create()
         {
-            ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "Fullname");
+            var activeCandidate = _context.Candidates.Where(c => c.Status == 1).ToList();
 
+            ViewBag.CandidateList = new SelectList(activeCandidate, "Id", "Fullname");
             return View();
         }
 
@@ -49,7 +50,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(InterviewSchedule interview)
         {
-            ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "FullName");
+            var activeCandidate = _context.Candidates.Where(c => c.Status == 1).ToList();
+
+            ViewBag.CandidateList = new SelectList(activeCandidate, "Id", "Fullname");
 
             if (ModelState.IsValid)
             {
@@ -71,7 +74,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // GET: BlogsController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "Fullname");
+            var activeCandidate = _context.Candidates.Where(c => c.Status == 1).ToList();
+
+            ViewBag.CandidateList = new SelectList(activeCandidate, "Id", "Fullname");
             var interview = await _context.InterviewSchedules.FirstOrDefaultAsync(e => e.Id == id);
             if (interview == null)
             {
@@ -86,7 +91,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id, InterviewSchedule interviewSchedule)
         {
 
-            ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "Fullname");
+            var activeCandidate = _context.Candidates.Where(c => c.Status == 1).ToList();
+
+            ViewBag.CandidateList = new SelectList(activeCandidate, "Id", "Fullname");
 
             if (id != interviewSchedule.Id)
             {
