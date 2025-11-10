@@ -145,10 +145,18 @@
             const totalQuestions = @Model.Count();
 
             const showQuestion = (index) => {
+                // Ẩn/hiện câu hỏi
                 for (let i = 1; i <= totalQuestions; i++) {
                     const qCard = document.getElementById("question-" + i);
                     if (qCard) qCard.style.display = (i === index) ? "block" : "none";
                 }
+
+                // Cập nhật nút đang chọn
+                document.querySelectorAll(".question-btn").forEach(btn => {
+                    btn.classList.remove("btn-primary");
+                });
+                const currentBtn = document.querySelector(`.question-btn[data-index='${index}']`);
+                if (currentBtn) currentBtn.classList.add("btn-primary");
             };
 
             document.getElementById("prevBtn").addEventListener("click", () => {
@@ -175,8 +183,10 @@
                 });
             });
 
+            // Khởi tạo
             showQuestion(currentIndex);
         });
+
 
         // ✅ MARK ANSWERED QUESTIONS
         document.addEventListener("DOMContentLoaded", function () {
@@ -254,6 +264,12 @@
 }
 
 <style>
+    .question-btn.btn-primary {
+        background-color: #007bff !important;
+        color: white !important;
+        border-color: #007bff !important;
+    }
+
     .question-card {
         background: #fff;
         border-radius: 8px;
