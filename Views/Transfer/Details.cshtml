@@ -1,0 +1,74 @@
+﻿@model Project_sem_3.Models.Transfer
+
+@{
+    ViewData["Title"] = "HR Round Details";
+    Layout = "_Layout";
+}
+
+<div class="container py-5" style="max-width: 800px;">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+            <h3 class="mb-0">HR Round Details</h3>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="text-center mb-4">
+                <div class="display-4 mb-3">💼</div>
+                <h5 class="text-secondary">Candidate Information</h5>
+            </div>
+
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <th style="width: 35%">Candidate ID</th>
+                        <td>@Model.CandidateId</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>@Model.Candidate?.Fullname</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.Candidate?.Email</td>
+                    </tr>
+                    <tr>
+                        <th>From Stage</th>
+                        <td>@Model.FromStage</td>
+                    </tr>
+                    <tr>
+                        <th>To Stage</th>
+                        <td>@Model.ToStage</td>
+                    </tr>
+                    <tr>
+                        <th>Transferred Date</th>
+                        <td>@Model.TransferDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-info mt-4">
+                <strong>Next Step:</strong> The HR Department will contact you shortly for the interview schedule.
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary px-4">🏠 Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        background: #fff;
+        border-radius: 16px;
+    }
+
+    th {
+        color: #555;
+        font-weight: 600;
+    }
+
+    td {
+        font-weight: 500;
+    }
+</style>
