@@ -155,7 +155,9 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _context.Results
@@ -164,30 +166,34 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             if (result == null)
             {
-                TempData["Error"] = "No results found, please delete";
-                return RedirectToAction(nameof(Index));
-            }
-
-            if (result.ResultDetails != null && result.ResultDetails.Any())
-            {
-                TempData["Error"] = "Cannot delete because ResultDetails already exists.";
+                TempData["Error"] = "No result found to delete.";
                 return RedirectToAction(nameof(Index));
             }
 
             try
             {
+                // Kiểm tra FK
+                if (result.ResultDetails != null && result.ResultDetails.Any())
+                {
+                    TempData["Error"] = "Cannot delete this result because it has associated ResultDetails.";
+                    return RedirectToAction(nameof(Index));
+                }
+
                 _context.Results.Remove(result);
                 await _context.SaveChangesAsync();
-                TempData["Success"] = "Deleted successfully!";
+                TempData["Success"] = "✅ Result deleted successfully!";
+            }
+            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("REFERENCE") == true)
+            {
+                TempData["Error"] = "❌ Cannot delete this result because it is referenced by other data.";
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"Error while deleting: {ex.Message}";
+                TempData["Error"] = $"❌ An error occurred while deleting the result: {ex.Message}";
             }
 
             return RedirectToAction(nameof(Index));
         }
-
 
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_sem_3.Models;
+using System.Reflection.Metadata;
 using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
@@ -115,27 +116,45 @@ namespace Project_sem_3.Areas.Admin.Controllers
         }
 
         // GET: BlogsController/Delete/5
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var interview = await _context.InterviewSchedules.FindAsync(id);
             if (interview == null)
             {
-                TempData["Error"] = "No Blogs found to delete!";
+                TempData["Error"] = "No InterviewSchedules  found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
-            _context.InterviewSchedules.Remove(interview);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.InterviewSchedules.Remove(interview);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "InterviewSchedules deleted successfully!";
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "Cannot delete this InterviewSchedules.";
+                }
+                else
+                {
+                    TempData["Error"] = "An unexpected error occurred while deleting the InterviewSchedules.";
+                }
+            }
 
-            TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
+
+
+
+
         private void PopulateInterviewerDropdown(string? selectedInterviewer = null)
         {
             var hrList = (from m in _context.Managers
                           join r in _context.Roles on m.RoleId equals r.Id
-                          where r.RoleName == "Role_HR"
+                          where r.RoleName == "Role_HR_Staff"
                           orderby m.Fullname
                           select m).ToList();
 

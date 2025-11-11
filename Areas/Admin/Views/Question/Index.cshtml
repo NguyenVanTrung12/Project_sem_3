@@ -67,15 +67,6 @@
             <table class="table bordered-table sm-table mb-0">
                 <thead>
                     <tr>
-                        <th scope="col">
-                            <div class="d-flex align-items-center gap-10">
-                                <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox"
-                                        id="selectAll" />
-                                </div>
-                                S.L
-                            </div>
-                        </th>
                         <th scope="col">Title</th>
                         <th scope="col">Mark</th>
                         <th scope="col" class="text-center">Status</th>
@@ -88,15 +79,6 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                <div class="d-flex align-items-center gap-10">
-                                    <div class="form-check style-check d-flex align-items-center">
-                                        <input class="form-check-input radius-4 border border-neutral-400"
-                                            type="checkbox" />
-                                    </div>
-                                    @item.Id
-                                </div>
-                            </td>
                             <td>@item.QuestionTitle</td>
 
                             <td>@item.Mark</td>

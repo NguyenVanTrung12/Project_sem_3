@@ -130,20 +130,34 @@ namespace Project_sem_3.Areas.Admin.Controllers
             }
         }
 
-       
-        [HttpGet]
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Role_Supper_Managers,Role_Managers")]
         public async Task<IActionResult> Delete(int id)
         {
-            var transfe = await _context.Transfers.FindAsync(id);
-            if (transfe == null)
+            var transfer = await _context.Transfers.FindAsync(id);
+            if (transfer == null)
             {
-                TempData["Error"] = "No transfe found to delete!";
+                TempData["Error"] = "No transfer found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
-            _context.Transfers.Remove(transfe);
-            await _context.SaveChangesAsync();
-            TempData["Success"] = "Delete successfuly";
+            try
+            {
+                _context.Transfers.Remove(transfer);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "✅ Transfer deleted successfully!";
+            }
+            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("REFERENCE") == true)
+            {
+                TempData["Error"] = "❌ Cannot delete this transfer because it is referenced by other data.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"❌ An error occurred while deleting the transfer: {ex.Message}";
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

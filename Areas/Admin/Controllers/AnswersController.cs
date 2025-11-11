@@ -194,10 +194,28 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var answer = await _context.Answers.FindAsync(id);
-            if (answer != null)
+            if (answer == null)
+            {
+                return NotFound();
+            }
+
+            try
             {
                 _context.Answers.Remove(answer);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Answers deleted successfully.";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Kiểm tra nếu lỗi liên quan khóa ngoại
+                if (ex.InnerException?.Message.Contains("REFERENCE constraint") == true)
+                {
+                    TempData["Error"] = "Cannot delete this Answers.";
+                }
+                else
+                {
+                    TempData["Error"] = "An unexpected error occurred while deleting the Answers.";
+                }
             }
             return RedirectToAction(nameof(Index), new { questionId = answer?.QuestionId });
         }

@@ -189,17 +189,32 @@ namespace Project_sem_3.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var blog = await _context.Blogs.FindAsync(id);
+            var blog = await _context.Blogs.FindAsync(id);     
+
             if (blog == null)
             {
-                TempData["Error"] = "No Blog found to delete!";
+                TempData["Error"] = "No blog  found to delete!";
                 return RedirectToAction(nameof(Index));
             }
 
-            _context.Blogs.Remove(blog);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Blogs.Remove(blog);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "blog deleted successfully!";
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    TempData["Error"] = "Cannot delete this blogs.";
+                }
+                else
+                {
+                    TempData["Error"] = "An unexpected error occurred while deleting the blog.";
+                }
+            }
 
-            TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
 
