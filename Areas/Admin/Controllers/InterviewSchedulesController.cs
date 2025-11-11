@@ -40,7 +40,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewBag.CandidateList = new SelectList(_context.Candidates, "Id", "Fullname");
-
+            PopulateInterviewerDropdown(); // ← thêm dòng này
             return View();
         }
 
@@ -63,6 +63,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateInterviewerDropdown(interview.Interviewer);
             return View(interview);
         }
 
@@ -77,6 +78,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            PopulateInterviewerDropdown(interview.Interviewer);
             return View(interview);
         }
 
@@ -108,6 +110,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Error while editing" + ex.Message);
                 }
             }
+            PopulateInterviewerDropdown(interviewSchedule.Interviewer);
             return View(interviewSchedule);
         }
 
@@ -128,6 +131,24 @@ namespace Project_sem_3.Areas.Admin.Controllers
             TempData["Success"] = "Blog deleted successfully!";
             return RedirectToAction(nameof(Index));
         }
+        private void PopulateInterviewerDropdown(string? selectedInterviewer = null)
+        {
+            var hrList = (from m in _context.Managers
+                          join r in _context.Roles on m.RoleId equals r.Id
+                          where r.RoleName == "Role_HR"
+                          orderby m.Fullname
+                          select m).ToList();
+
+            if (hrList == null)
+                hrList = new List<Manager>();
+
+            // Loại bỏ item FullName null
+            hrList = hrList.Where(x => !string.IsNullOrEmpty(x.Fullname)).ToList();
+
+            ViewBag.InterviewerList = new SelectList(hrList, "Fullname", "Fullname", selectedInterviewer);
+        }
+
+
 
     }
 }

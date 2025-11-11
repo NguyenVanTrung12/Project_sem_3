@@ -31,14 +31,17 @@
 
                            
                             <div class="mb-20">
-                                <label for="name"
+                                <label for="Interviewer"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">
                                     Interviewer
                                     <span class="text-danger-600">*</span>
                                 </label>
-                                <input type="text" asp-for="Interviewer" class="form-control radius-8" />
+                                <select asp-for="Interviewer" asp-items="ViewBag.InterviewerList" class="form-control radius-8">
+                                    <option value="">--Select HR--</option>
+                                </select>
                                 <span asp-validation-for="Interviewer" class="text-danger"></span>
                             </div>
+
                             <div class="mb-20">
                                 <label for="name"
                                        class="form-label fw-semibold text-primary-light text-sm mb-8">

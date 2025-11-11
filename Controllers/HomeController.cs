@@ -89,16 +89,17 @@ namespace Project_sem_3.Controllers
 
             ViewData["IsLoggedIn"] = candidateId != null;
             ViewBag.Banner = _context.Banners
-     .Where(b => b.Active == 1)
-     .ToList();
+             .Where(b => b.Active == 1)
+             .ToList();
 
             ViewBag.Manage = _context.Managers
                  .Include(m => m.Role)
                  .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
-                 .ToList();
+                                  .ToList();
 
             ViewBag.Blog = _context.Blogs
                   .Where(m => m.Status == 1)
+                  .Take(6)
                   .ToList();
             return View(subjects);
         }
