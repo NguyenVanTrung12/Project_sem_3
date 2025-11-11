@@ -169,7 +169,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         // Cập nhật (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Manager model, IFormFile? uploadfile)
+        public async Task<IActionResult> Edit(int id, Manager model, IFormFile? uploadfile, string? OldImage)
         {
             if (id != model.Id)
                 return NotFound();
@@ -194,7 +194,8 @@ namespace Project_sem_3.Areas.Admin.Controllers
        .FirstOrDefaultAsync(m => m.Id == id);
                 if (manager == null)
                     return NotFound();
-                if (model.Role.RoleName == "Role_Supper_Managers")
+                var role = await _context.Roles.FindAsync(model.RoleId);
+                if (role != null && role.RoleName == "Role_Supper_Managers")
                 {
                     TempData["Error"] = "Super Manager account cannot be edited.";
                     return RedirectToAction("Index");
@@ -206,12 +207,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("Username", "Username already exists.");
                     ViewData["RoleId"] = new SelectList(
-         _context.Roles
-             .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
-         "Id",
-         "RoleName",
-         model.RoleId
-     );
+                     _context.Roles
+                         .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+                     "Id",
+                     "RoleName",
+                     model.RoleId
+                 );
                     return PartialView("Edit", model);
                 }
 
@@ -222,12 +223,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("Email", "Email already exists.");
                     ViewData["RoleId"] = new SelectList(
-      _context.Roles
-          .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
-      "Id",
-      "RoleName",
-      model.RoleId
-  );
+                          _context.Roles
+                              .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+                          "Id",
+                          "RoleName",
+                          model.RoleId
+                      );
                     return PartialView("Edit", model);
                 }
 
@@ -237,12 +238,12 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("Phone", "Phone already exists.");
                     ViewData["RoleId"] = new SelectList(
-            _context.Roles
-                .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
-            "Id",
-            "RoleName",
-            model.RoleId
-        );
+                            _context.Roles
+  .Where(r => r.RoleName != "Role_Supper_Managers"),  // Loại bỏ quyền supper
+                            "Id",
+                            "RoleName",
+                            model.RoleId
+                        );
                     return PartialView("Edit", model);
                 }
 
@@ -270,18 +271,17 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     var fileName = $"{Guid.NewGuid()}{ext}";
                     var filePath = Path.Combine(uploadsDir, fileName);
 
-                    await using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await uploadfile.CopyToAsync(stream);
-                    }
+                    await using var stream = new FileStream(filePath, FileMode.Create);
+                    await uploadfile.CopyToAsync(stream);
 
                     manager.Image = $"/uploads/managers/{fileName}";
                 }
                 else
                 {
-                    // Giữ nguyên ảnh cũ
-                    manager.Image = model.Image ?? manager.Image;
+                    // ✅ Giữ lại ảnh cũ nếu không chọn ảnh mới
+                    manager.Image = OldImage;
                 }
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
