@@ -349,6 +349,20 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var manager = await _context.Managers
+                                        .Include(m => m.Role)
+                                        .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (manager == null)
+                return NotFound();
+
+            return View(manager);
+        }
         private bool ManagerExists(int id)
         {
             return _context.Managers.Any(e => e.Id == id);

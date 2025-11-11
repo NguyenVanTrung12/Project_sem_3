@@ -43,26 +43,28 @@
 
     <div class="card-body p-24">
         <div class="table-responsive scroll-sm">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["Success"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <table class="table bordered-table sm-table mb-0">
                 <thead>
                     <tr>
-                        <th scope="col">
-                            <div class="d-flex align-items-center gap-10">
-                                <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border input-form-dark" type="checkbox" id="selectAll" />
-                                </div>
-                                #
-                            </div>
-                        </th>
-
                         <th scope="col">Fullname</th>
                         <th scope="col">Gender</th>
-                        <th scope="col">University</th>
-                        <th scope="col">Expected Position</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>
                         <th scope="col">Manager</th>
-   
                         <th scope="col" class="text-center">Status</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
@@ -71,18 +73,10 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                <div class="d-flex align-items-center gap-10">
-                                    <div class="form-check style-check d-flex align-items-center">
-                                        <input class="form-check-input radius-4 border border-neutral-400" type="checkbox" />
-                                    </div>
-                                    @item.Id
-                                </div>
-                            </td>
+                           
                             <td>@item.Fullname</td>
                             <td>@(item.Gender == true ? "Male" : item.Gender == false ? "Female" : "Unknown")</td>
-                            <td>@item.University</td>
-                            <td>@item.ExpectedPosition</td>
+
                             <td>@item.Phone</td>
                             <td>@item.Email</td>
                             <td>
@@ -103,7 +97,11 @@
                             </td>
                             <td class="text-center">
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
-                             
+                                    <a asp-controller="Candidates" asp-action="Details" asp-route-id="@item.Id"
+                                       class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" title="View Details">
+                                        <iconify-icon icon="majesticons:eye-line"
+                                                      class="icon text-xl"></iconify-icon>
+                                    </a>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle" title="Edit">
                                         <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                     </a>

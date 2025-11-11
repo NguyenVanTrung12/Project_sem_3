@@ -198,13 +198,48 @@ namespace Project_sem_3.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            _context.Candidates.Remove(candidate);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Candidates.Remove(candidate);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "Candidate deleted successfully.";
+            }
+            catch (DbUpdateException ex)
+            {
+                // Kiểm tra nếu lỗi liên quan khóa ngoại
+                if (ex.InnerException?.Message.Contains("REFERENCE constraint") == true)
+                {
+                    TempData["Error"] = "Cannot delete this candidate because interview schedules exist.";
+                }
+                else
+                {
+                    TempData["Error"] = "An unexpected error occurred while deleting the candidate.";
+                }
+            }
 
             return RedirectToAction(nameof(Index));
         }
 
-        
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            // Lấy Candidate cùng Manager để hiển thị thông tin liên quan
+            var candidate = await _context.Candidates
+                                          .Include(c => c.Manager)
+                                          .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (candidate == null)
+            {
+                return NotFound();
+            }
+
+            return View(candidate);
+        }
         private bool CandidateExists(int id)
         {
             return _context.Candidates.Any(e => e.Id == id);

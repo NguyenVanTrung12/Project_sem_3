@@ -32,12 +32,12 @@
 
         </form>
        
-        <a asp-controller="Transfes" asp-action="Create"
+    @*     <a asp-controller="Transfes" asp-action="Create"
            class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
             <iconify-icon icon="ic:baseline-plus"
                           class="icon text-xl line-height-1"></iconify-icon>
             Add New Transfer
-        </a>
+        </a> *@
     </div>
 
     <div class="card-body p-24">
@@ -45,18 +45,7 @@
             <table class="table bordered-table sm-table mb-0">
                 <thead>
                     <tr>
-                        <th scope="col">
-                            <div class="d-flex align-items-center gap-10">
-                                <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input radius-4 border input-form-dark"
-                                           type="checkbox"
-                                           name="checkbox"
-                                           id="selectAll" />
-                                </div>
-                                S.L
-                            </div>
-                        </th>
-                        <th scope="col">Id</th>
+
                         <th scope="col">Candidates</th>
                         <th scope="col">TransferDate</th>
                         <th scope="col">FromStage</th>
@@ -68,18 +57,6 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                <div class="d-flex align-items-center gap-10">
-                                    <div class="form-check style-check d-flex align-items-center">
-                                        <input class="form-check-input radius-4 border border-neutral-400"
-                                               type="checkbox"
-                                               name="checkbox" />
-                                    </div>
-                                    10
-                                </div>
-                            </td>
-
-                            <td>@item.Id</td>
                             <td>@item.Candidate.Fullname</td>
                             <td>@item.TransferDate</td>
                             <td>@item.FromStage</td>

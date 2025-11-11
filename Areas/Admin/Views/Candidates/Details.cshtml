@@ -1,0 +1,89 @@
+﻿@model Project_sem_3.Models.Candidate
+
+@{
+    ViewData["Title"] = "Candidate Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+}
+
+<h1 class="mb-4">Candidate Details</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <strong>@Model.Fullname</strong>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Candidate Code</th>
+                    <td>@Model.CandidateCode</td>
+ 
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td>@Model.Firstname</td>
+                    <th>Last Name</th>
+                    <td>@Model.Lastname</td>
+                </tr>
+                <tr>
+                    <th>Full Name</th>
+                    <td>@Model.Fullname</td>
+                    <th>Gender</th>
+                    <td>@Model.Gender</td>
+                </tr>
+                <tr>
+                    <th>Birth Date</th>
+                    <td>@Model.BirthDate?.ToString("dd/MM/yyyy")</td>
+                    <th>Phone</th>
+                    <td>@Model.Phone</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Model.Email</td>
+                    <th>Status</th>
+                    <td>@Model.Status</td>
+                </tr>
+                <tr>
+                    <th>Hometown</th>
+                    <td>@Model.Hometown</td>
+                    <th>Address</th>
+                    <td>@Model.Address</td>
+                </tr>
+                <tr>
+                    <th>University</th>
+                    <td>@Model.University</td>
+                    <th>Semester</th>
+                    <td>@Model.Semester</td>
+                </tr>
+                <tr>
+                    <th>Faculty</th>
+                    <td>@Model.Faculty</td>
+                    <th>Education</th>
+                    <td>@Model.Education</td>
+                </tr>
+                <tr>
+                    <th>Experience</th>
+                    <td colspan="3">@Model.Experience</td>
+                </tr>
+                <tr>
+                    <th>Skills</th>
+                    <td colspan="3">@Model.Skills</td>
+                </tr>
+                <tr>
+                    <th>Expected Position</th>
+                    <td colspan="3">@Model.ExpectedPosition</td>
+                </tr>
+                <tr>
+                    <th>Created At</th>
+                    <td>@Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+                    <th>Manager</th>
+                    <td>@Model.Manager?.Email</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer text-end">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
