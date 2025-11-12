@@ -94,7 +94,7 @@ namespace Project_sem_3.Controllers
 
             // ⚠️ 1️⃣ Kiểm tra nếu thí sinh đã từng bị rớt ở phần thi trước
             var failedBefore = await _context.Results
-                .AnyAsync(r => r.CandidateId == candidateId && r.TotalMark < 2 && r.Status == 1);
+                .AnyAsync(r => r.CandidateId == candidateId && r.TotalMark < 5 && r.Status == 1);
             if (failedBefore)
             {
                 TempData["Error"] = "Bạn đã không đạt yêu cầu ở vòng trước, không thể tiếp tục thi.";

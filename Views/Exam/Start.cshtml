@@ -144,6 +144,9 @@
             let currentIndex = 1;
             const totalQuestions = @Model.Count();
 
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+
             const showQuestion = (index) => {
                 // Ẩn/hiện câu hỏi
                 for (let i = 1; i <= totalQuestions; i++) {
@@ -151,28 +154,47 @@
                     if (qCard) qCard.style.display = (i === index) ? "block" : "none";
                 }
 
-                // Cập nhật nút đang chọn
+                // Cập nhật nút đang chọn trong danh sách bên phải
                 document.querySelectorAll(".question-btn").forEach(btn => {
                     btn.classList.remove("btn-primary");
                 });
                 const currentBtn = document.querySelector(`.question-btn[data-index='${index}']`);
                 if (currentBtn) currentBtn.classList.add("btn-primary");
+
+                if (index === 1) {
+                    prevBtn.style.display = "none";
+                    nextBtn.style.display = "inline-block";
+                    nextBtn.style.marginLeft = "auto"; // đẩy sang phải
+                } else if (index === totalQuestions) {
+                    prevBtn.style.display = "inline-block";
+                    nextBtn.style.display = "none";
+                    prevBtn.style.marginRight = "auto"; // đẩy sang trái
+                } else {
+                    prevBtn.style.display = "inline-block";
+                    nextBtn.style.display = "inline-block";
+                    prevBtn.style.marginRight = "0";
+                    nextBtn.style.marginLeft = "0";
+                }
+
             };
 
-            document.getElementById("prevBtn").addEventListener("click", () => {
+            // Sự kiện click nút Previous
+            prevBtn.addEventListener("click", () => {
                 if (currentIndex > 1) {
                     currentIndex--;
                     showQuestion(currentIndex);
                 }
             });
 
-            document.getElementById("nextBtn").addEventListener("click", () => {
+            // Sự kiện click nút Next
+            nextBtn.addEventListener("click", () => {
                 if (currentIndex < totalQuestions) {
                     currentIndex++;
                     showQuestion(currentIndex);
                 }
             });
 
+            // Khi bấm số câu hỏi bên phải
             document.querySelectorAll(".question-btn").forEach(btn => {
                 btn.addEventListener("click", () => {
                     const idx = parseInt(btn.getAttribute("data-index"));
@@ -183,9 +205,10 @@
                 });
             });
 
-            // Khởi tạo
+            // Khởi tạo giao diện ban đầu
             showQuestion(currentIndex);
         });
+
 
 
         // ✅ MARK ANSWERED QUESTIONS
@@ -268,6 +291,10 @@
         background-color: #007bff !important;
         color: white !important;
         border-color: #007bff !important;
+    }
+
+    #prevBtn {
+        display: none;
     }
 
     .question-card {
