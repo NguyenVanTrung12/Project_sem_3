@@ -56,13 +56,6 @@
             </div>
 
             <div class="col-lg-4">
-                @* 
-                <div class="blog-search">
-                    <form method="get" action="/blogs">
-                        <input type="text" name="q" placeholder="Search" value="@ViewBag.SearchQuery">
-                        <button type="submit"><i class="flaticon-search"></i></button>
-                    </form>
-                </div> *@
 
                 
                 <div class="recent-blog">
@@ -71,11 +64,11 @@
                     @foreach (var recent in ViewBag.RecentBlogs)
                     {
                         <article class="recent-post">
-                            <a href="/blog-detail/@recent.Id">
+                            <a href="/blog-detail/@recent.Slug">
                                 <img src="@recent.Image" alt="@recent.Title" style="width: 100px; height: 70px; object-fit: cover;" />
                             </a>
                             <h3>
-                                <a href="/blog-detail/@recent.Id">@recent.Title</a>
+                                <a href="/blog-detail/@recent.Slug">@recent.Title</a>
                             </h3>
                             <ul>
                                 <li>

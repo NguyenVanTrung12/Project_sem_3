@@ -26,19 +26,18 @@
 
                     <div class="blog-card">
                         <div class="blog-img">
-                            <a href="/blog-detail/@item.Id"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
+                            <a href="/blog-detail/@item.Slug"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
                             <div class="blog-date">
                                 <span>@item.CreatedAt.ToString("dd MMM")</span>
                             </div>
                         </div>
                         <div class="blog-text">
-                            <a href="/blog-detail/@item.Id">
-                                <h3>The next genaration IT will change the world</h3>
+                            <a href="/blog-detail/@item.Slug">
+                                <h3>@item.Title</h3>
                             </a>
 
                             <div class="post-info">
-                                <a href="/blog-detail/@item.Id"><p>@item.Title</p></a>
-                                <a href="/blog-detail/@item.Id" class="blog-btn">
+                                <a href="/blog-detail/@item.Slug" class="blog-btn">
                                     Read More
                                     <i class="flaticon-right-chevron"></i>
                                 </a>

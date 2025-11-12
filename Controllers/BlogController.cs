@@ -36,18 +36,19 @@ namespace Project_sem_3.Controllers
 
             var blogs = await query
                 .OrderByDescending(b => b.CreatedAt)
+                .Take(9)
                 .ToListAsync();
 
             return View(blogs);
         }
 
         [HttpGet]
-        [Route("/blog-detail/{id}")]
-        public async Task<IActionResult> BlogDetails(int id)
+        [Route("/blog-detail/{Slug}")]
+        public async Task<IActionResult> BlogDetails(string slug)
         {
             var blog = await _context.Blogs
            .Include(b => b.BlogCategory)
-           .FirstOrDefaultAsync(b => b.Id == id);
+           .FirstOrDefaultAsync(b => b.Slug == slug);
 
             if (blog == null)
             {

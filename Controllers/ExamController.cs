@@ -251,7 +251,7 @@ namespace Project_sem_3.Controllers
             }
 
             // ✅ Cập nhật kết quả bài thi
-            bool isPassed = totalMark >= 2;
+            bool isPassed = totalMark >= 5;
             result.TotalMark = totalMark;
             result.SubmitDate = DateTime.Now;
             result.Status = isPassed ? 1 : 2; // 1 = Đậu, 2 = Trượt
