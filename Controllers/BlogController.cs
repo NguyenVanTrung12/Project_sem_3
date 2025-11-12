@@ -36,6 +36,7 @@ namespace Project_sem_3.Controllers
 
             var blogs = await query
                 .OrderByDescending(b => b.CreatedAt)
+                .Take(9)
                 .ToListAsync();
 
             return View(blogs);

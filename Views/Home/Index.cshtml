@@ -23,7 +23,7 @@
                             <!-- Image Column -->
                             <div class="col-lg-5 col-md-12">
                                 <div class="banner-image text-center">
-                                    <img src="@item.Image" alt="@item.Name" class="img-fluid rounded shadow">
+                                    <img src="@item.Image" alt="@item.Name" class="img-fluid rounded shadow" style="height:400px">
                                 </div>
                             </div>
                         </div>
@@ -224,18 +224,17 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="blog-card">
                             <div class="blog-img">
-                                <a href="/blog-detail/@item.Id"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
+                                <a href="/blog-detail/@item.Slug"><img src="@item.Image" width="100%" height="250px" style="object-fit:cover" alt="blog image"></a>
                                 <div class="blog-date">
                                     <span>@(item.CreatedAt.ToString("dd MMM") ?? "")</span>
                                 </div>
                             </div>
                             <div class="blog-text">
-                                <a href="/blog-detail/@item.Id">
-                                    <h3>The next generation IT will change the world</h3>
+                            <a href="/blog-detail/@item.Slug">
+                                    <h3>@item.Title</h3>
                                 </a>
                                 <div class="post-info">
-                                <a href="/blog-detail/@item.Id"><p>@item.Title</p></a>
-                                    <a href="/blog-detail/@item.Id" class="blog-btn">
+                                <a href="/blog-detail/@item.Slug" class="blog-btn">
                                         Read More
                                         <i class="flaticon-right-chevron"></i>
                                     </a>
@@ -267,19 +266,39 @@
                     <form asp-action="Create" asp-controller="Contact" method="post">
                         <div class="row">
                             <div class="col-md-12">
-                                <input name="FullName" class="form-control" placeholder="Full Name" />
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="FullName" placeholder="Full Name">
+                                    
+                                </div>
                             </div>
+
                             <div class="col-md-12">
-                                <input name="Email" class="form-control" placeholder="Email" />
+                                <div class="form-group">
+                                    <input type="email" name="Email" class="form-control" placeholder="Email">
+                                  
+                                </div>
                             </div>
+
                             <div class="col-md-12">
-                                <input name="Subject" class="form-control" placeholder="Subject" />
+                                <div class="form-group">
+                                    <input type="text" name="Subject" class="form-control" placeholder="Subject">
+                                    
+                                </div>
                             </div>
+
                             <div class="col-lg-12">
-                                <textarea name="Message" class="form-control message-field" cols="30" rows="5" placeholder="Message"></textarea>
+                                <div class="form-group">
+                                    <textarea class="message-field" name="Message" cols="30" rows="5" placeholder="Message"></textarea>
+                                   
+                                </div>
                             </div>
+
                             <div class="col-lg-12">
-                                <button type="submit" class="default-btn contact-btn">Send Message</button>
+                                <button type="submit" class="default-btn contact-btn">
+                                    Send Message
+                                </button>
+                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </form>
