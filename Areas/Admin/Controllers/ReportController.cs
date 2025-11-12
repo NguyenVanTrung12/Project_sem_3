@@ -5,6 +5,7 @@ using Project_sem_3.Models;
 
 
 using System.Text;
+using X.PagedList.Extensions;
 
 namespace Project_sem_3.Areas.Admin.Controllers
 {
@@ -19,7 +20,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             _context = context;
         }
 
-        public IActionResult Index(string range, DateTime? startDate, DateTime? endDate)
+        public IActionResult Index(string range, DateTime? startDate, DateTime? endDate, int page = 1)
         {
             DateTime today = DateTime.Now;
 
@@ -68,6 +69,11 @@ namespace Project_sem_3.Areas.Admin.Controllers
                     Passed = (r.TotalMark ?? 0) >= 2 // ✅ rule pass >= 12
                 })
                 .ToList();
+            // ✅ Phân trang
+            int pageSize = 10;
+            var pagedList = query
+                .OrderByDescending(x => x.SubmitDate)
+                .ToPagedList(page, pageSize);
 
             // ✅ Dashboard summary
             ViewBag.TotalCandidates = _context.Candidates.Count();
@@ -102,7 +108,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
             ViewBag.Dates = System.Text.Json.JsonSerializer.Serialize(trend.Select(x => x.Date));
             ViewBag.TestCounts = System.Text.Json.JsonSerializer.Serialize(trend.Select(x => x.Count));
 
-            return View(query);
+            return View(pagedList);
         }
 
         // ✅ Move candidate to HR round
