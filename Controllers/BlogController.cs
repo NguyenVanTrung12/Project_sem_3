@@ -42,12 +42,12 @@ namespace Project_sem_3.Controllers
         }
 
         [HttpGet]
-        [Route("/blog-detail/{id}")]
-        public async Task<IActionResult> BlogDetails(int id)
+        [Route("/blog-detail/{Slug}")]
+        public async Task<IActionResult> BlogDetails(string slug)
         {
             var blog = await _context.Blogs
            .Include(b => b.BlogCategory)
-           .FirstOrDefaultAsync(b => b.Id == id);
+           .FirstOrDefaultAsync(b => b.Slug == slug);
 
             if (blog == null)
             {
