@@ -137,22 +137,11 @@
                             <td>@item.Email</td>
                             <td>@item.Phone</td>
                             <td>@item.CreatedAt?.ToString("dd MMM yyyy")</td>
-                            @if (item.Status == 1)
-                            {
-                                <td class="text-center">
-                                    <span class="bg-success-focus text-success-600 border border-success-main px-24 py-4 radius-4 fw-medium text-sm">
-                                        Active
-                                    </span>
-                                </td>
-                            }
-                            else
-                            {
-                                <td class="text-center">
-                                    <span class="bg-neutral-200 text-neutral-600 border border-neutral-400 px-24 py-4 radius-4 fw-medium text-sm">
-                                        InActive
-                                    </span>
-                                </td>
-                            }
+                            <td class="text-center">
+                                <span class="@(item.Status == 1 ? "bg-success-focus text-success-600 border border-success-main" : "bg-danger-focus text-danger-600 border border-danger-main") px-24 py-4 radius-4 fw-medium text-sm">
+                                    @(item.Status == 1 ? "Active" : "Inactive")
+                                </span>
+                            </td>
                             <td class="text-center">@item.Role.RoleName</td>
                             <td class="text-center">
                                 <div class="d-flex align-items-center gap-10 justify-content-center">

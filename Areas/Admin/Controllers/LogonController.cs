@@ -22,7 +22,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             if (HttpContext.Session.GetInt32("ManagerId") != null)
             {
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index");
             }
             return View();
         }

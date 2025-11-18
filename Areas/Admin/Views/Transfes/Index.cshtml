@@ -20,7 +20,8 @@
     <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center flex-wrap gap-3 justify-content-between">
 
         <form id="filterForm" method="get" class="d-flex align-items-center gap-2 navbar-search">
-            <!-- Ô tìm kiếm -->
+    
+      
             <div class="position-relative">
                 <input type="text"
                        name="q"
@@ -30,14 +31,8 @@
 
             </div>
 
+
         </form>
-       
-    @*     <a asp-controller="Transfes" asp-action="Create"
-           class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2">
-            <iconify-icon icon="ic:baseline-plus"
-                          class="icon text-xl line-height-1"></iconify-icon>
-            Add New Transfer
-        </a> *@
     </div>
 
     <div class="card-body p-24">
@@ -130,3 +125,13 @@
     </div>
 </div>
 
+<script>
+    const form = document.getElementById("filterForm");
+    const searchInput = form.querySelector("input[name='q']");
+    // Khi gõ vào ô tìm kiếm => đợi 0.5s rồi tự submit
+    let timeout;
+    searchInput.addEventListener("input", () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => form.submit(), 500);
+    });
+</script>

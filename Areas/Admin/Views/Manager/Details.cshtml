@@ -42,7 +42,11 @@
                             <th>Role</th>
                             <td>@Model.Role?.RoleName</td>
                             <th>Status</th>
-                            <td>@Model.Status</td>
+                            <td>
+                                <span class="@(Model.Status == 1 ? "bg-success-focus text-success-600 border border-success-main" : "bg-danger-focus text-danger-600 border border-danger-main") px-24 py-4 radius-4 fw-medium text-sm">
+                                    @(Model.Status == 1 ? "Active" : "Inactive")
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <th>Created At</th>

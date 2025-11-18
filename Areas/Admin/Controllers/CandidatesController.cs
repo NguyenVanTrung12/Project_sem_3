@@ -152,17 +152,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             // ❌ Loại bỏ validate navigation property nếu có
             ModelState.Remove("Manager");
-            var emailExists = await _context.Candidates.AnyAsync(c => c.Email == model.Email);
-            if (emailExists)
-            {
-                ModelState.AddModelError("Email", "This email is already used by another candidate.");
-            }
-
-            var phoneExists = await _context.Candidates.AnyAsync(c => c.Phone == model.Phone);
-            if (phoneExists)
-            {
-                ModelState.AddModelError("Phone", "This email is already used by another candidate.");
-            }
+           
             if (!ModelState.IsValid)
             {
                 return View(model);

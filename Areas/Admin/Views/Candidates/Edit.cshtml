@@ -29,7 +29,7 @@
                     <div class="card-body">
 
                         <form asp-action="Edit" method="post"
-                              onsubmit="return confirm('Bạn có chắc muốn lưu thay đổi cho ứng viên này không?');">
+                              onsubmit="return confirm('Are you sure you want to save changes to this application?');">
                             <input type="hidden" asp-for="Id" />
 
 
@@ -137,15 +137,20 @@
                                     <span asp-validation-for="ExpectedPosition" class="text-danger"></span>
                                 </div>
 
-                                <div class="col-md-12 mb-3">
-                                    <label asp-for="Status" class="form-label fw-semibold"></label>
-                                    <select asp-for="Status" class="form-select">
-                                        <option value="0">Not Interviewed Yet</option>
-                                        <option value="1">Interview Scheduled</option>
-                                        <option value="2">Passed</option>
-                                        <option value="3">Failed</option>
-                                    </select>
-                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                <div>
+                                    <label class="form-label fw-semibold">Status</label>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox"
+                                               class="form-check-input"
+                                               id="statusSwitch"
+                                               name="Status"
+                                               value="1"
+                                        @(Model != null && Model.Status == 1 ? "checked" : "") />
+                                        <label class="form-check-label" for="statusSwitch">
+                                            @(Model != null && Model.Status == 1 ? "Active" : "Inactive")
+                                        </label>
+                                    </div>
+
                                 </div>
 
 
@@ -210,3 +215,13 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+<script>
+    function toggleStatusLabel(checkbox) {
+        const label = document.getElementById('statusLabel');
+        if (checkbox.checked) {
+            label.textContent = 'Active';
+        } else {
+            label.textContent = 'Inactive';
+        }
+    }
+</script>
