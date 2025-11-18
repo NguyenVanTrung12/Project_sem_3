@@ -10,7 +10,7 @@ using X.PagedList.Extensions;
 namespace Project_sem_3.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Role_Supper_Managers")]
+    [Authorize]
     public class ManagerController : Controller
     {
         private readonly online_aptitude_testsContext _context;
@@ -18,6 +18,7 @@ namespace Project_sem_3.Areas.Admin.Controllers
         {
             _context = context;
         }
+        
         public IActionResult Index(string? q, int? status, string? role, int page = 1)
         {
             int pageSize = 10;
@@ -52,12 +53,14 @@ namespace Project_sem_3.Areas.Admin.Controllers
 
             return View(pagedManagers);
         }
+        [Authorize(Roles = "Role_Supper_Managers")]
         public IActionResult Create()
         {
             ViewData["RoleId"] = new SelectList(_context.Roles.Where(r => r.RoleName != "Role_Supper_Managers"), "Id", "RoleName");
             return View("Create");
         }
 
+        [Authorize(Roles = "Role_Supper_Managers")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Manager model, IFormFile? uploadfile)
