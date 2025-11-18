@@ -52,21 +52,66 @@
                             Candidates
                         </a>
                     </li>
+                   
+                </ul>
+            </li>
+
+            
+            <!-- 4️⃣ Hệ thống câu hỏi & môn học -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="mdi:book-open-variant" class="menu-icon"></iconify-icon>
+                    <span>Test section</span>
+                </a>
+                <ul class="sidebar-submenu">
+                
                     <li>
-                        <a asp-controller="Transfes" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Transfers
+                        <a href="/Admin/SubjectTypes/Index">
+                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
+                            Subject Types
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="InterviewSchedules" asp-action="Index">
+                        <a href="/Admin/Subjects/Index">
                             <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Interview Schedules
+                            Subjects
+                        </a>
+                    </li>
+               
+                    <li>
+                        <a href="/Admin/Types/Index">
+                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
+                            Question Types
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Question" asp-action="Index">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Questions
                         </a>
                     </li>
                 </ul>
             </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Transfes" asp-action="Index">
+                    <iconify-icon icon="mdi:chart-bar" class="menu-icon"></iconify-icon>
+                    <span>Transfes</span>
+                </a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="InterviewSchedules" asp-action="Index">
+                    <iconify-icon icon="mdi:chart-bar" class="menu-icon"></iconify-icon>
+                    <span>InterviewSchedules</span>
+                </a>
+            </li>
 
+            <!-- 5️⃣ Kết quả thi -->
+            <li>
+                <a asp-controller="Results" asp-action="Index">
+                    <iconify-icon icon="mdi:chart-line" class="menu-icon"></iconify-icon>
+                    <span>Results</span>
+                </a>
+            </li>
             <!-- 3️⃣ Quản lý nội dung -->
             <li class="dropdown">
                 <a href="javascript:void(0)">
@@ -89,47 +134,6 @@
                 </ul>
             </li>
 
-            <!-- 4️⃣ Hệ thống câu hỏi & môn học -->
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="mdi:book-open-variant" class="menu-icon"></iconify-icon>
-                    <span>Questions & Subjects</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a asp-area="Admin" asp-controller="Question" asp-action="Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Questions
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/Admin/Subjects/Index">
-                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Subjects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/Admin/SubjectTypes/Index">
-                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Subject Types
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/Admin/Types/Index">
-                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                            Question Types
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <!-- 5️⃣ Kết quả thi -->
-            <li>
-                <a asp-controller="Results" asp-action="Index">
-                    <iconify-icon icon="mdi:chart-line" class="menu-icon"></iconify-icon>
-                    <span>Results</span>
-                </a>
-            </li>
 
             <!-- 6️⃣ Hệ thống hiển thị -->
             <li>

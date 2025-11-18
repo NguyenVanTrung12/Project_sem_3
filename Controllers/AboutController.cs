@@ -21,7 +21,8 @@ namespace Project_sem_3.Controllers
             var manager = _context.Managers
                  .Include(m => m.Role)
                  .Where(m => m.Status == 1 && m.Role.RoleName == "Role_Managers")
-                 .ToList();
+                  .Take(3) // Lấy top 3
+                    .ToList();
             return View(manager);
         }
     }
